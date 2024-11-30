@@ -3,10 +3,6 @@ import argparse
 import os
 from pathlib import Path
 def extract_python_code(document):
-    """
-    Extract Python code blocks between START_OF_CODE and END_OF_CODE tags,
-    excluding any markdown or code formatting tags like ``` or `python`.
-    """
     # Find all code blocks between START_OF_CODE and END_OF_CODE
     blocks = re.split(r'```python', document)
     extracted_code = []
