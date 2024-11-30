@@ -8,11 +8,24 @@ def extract_python_code(document):
     excluding any markdown or code formatting tags like ``` or `python`.
     """
     # Find all code blocks between START_OF_CODE and END_OF_CODE
-    code_blocks = re.findall(r"<START_OF_CODE>\s*(.*?)\s*<END_OF_CODE>", document, re.DOTALL)
-    # Remove any markdown or code formatting tags
-    sanitized_blocks = [re.sub(r"```.*?(\n|$)", "", block).strip() for block in code_blocks]
-    # Join all blocks with double newlines
-    return "\n\n".join(sanitized_blocks).strip()
+    blocks = re.split(r'```python', document)
+    extracted_code = []
+
+    for block in blocks[1:]:  # Skip the first split segment as it is before the first ```python
+        # Find the end of the current block
+        end_index = block.find("```")
+        if end_index != -1:
+            # Extract content before the closing ```
+            code = block[:end_index].strip()
+            # Append the code if it's non-empty
+            if code:
+                extracted_code.append(code)
+
+    # Combine extracted blocks with a newline separator
+    result = "\n\n".join(extracted_code)
+    return result.replace('python\n', "")
+
+
 
 
 
