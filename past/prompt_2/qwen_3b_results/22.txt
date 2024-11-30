@@ -1,0 +1,29 @@
+```python
+def solve_homework():
+    import sys
+    input = sys.stdin.read
+    data = input().split()
+    n, k = map(int, data[0].split())
+    s = data[1]
+
+    char_count = {}
+    for char in s:
+        if char in char_count:
+            char_count[char] += 1
+        else:
+            char_count[char] = 1
+
+    min_distinct_chars = len(char_count)
+    deletions = 0
+    for char in sorted(char_count.keys()):
+        deletions += char_count[char]
+        if deletions > k:
+            break
+        min_distinct_chars -= 1
+
+    result_string = ''.join([char * (char_count[char] - (deletions > k)) for char in sorted(char_count.keys())])
+    print(min_distinct_chars)
+    print(result_string)
+
+solve_homework()
+```

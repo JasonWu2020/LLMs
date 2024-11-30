@@ -1,0 +1,15 @@
+<start_of_turn>model
+```python
+n, _ = map(int, input().split())
+s, c = input().split()
+c = list(map(int, c.split()))
+
+d = len(s)
+m = 0
+for i in range(d):
+    a = int(s[i])
+    b = int(c[i])
+    m += abs(a - b) - 1
+
+print(m)
+```<eos>

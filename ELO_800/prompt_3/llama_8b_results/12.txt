@@ -1,0 +1,78 @@
+The outputted solution has a few issues:
+
+1. It doesn't handle the case where the string is already balanced from the start. In this case, it will print the length of the string as the right index, which is incorrect. It should print the length of the string as the right index only if the string is already balanced from the start and has at least one 'a' and one 'b', otherwise it should print -1 -1.
+
+2. It doesn't handle the case where the string is already balanced from the start and has only one 'a' and one 'b'. In this case, it will print the length of the string as the right index, which is incorrect. It should print 1 2.
+
+Here is another solution that addresses these issues:
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    s = input()
+    a = 0
+    b = 0
+    for i in range(n):
+        if s[i] == 'a':
+            a += 1
+        else:
+            b += 1
+        if a == b:
+            if a!= n and b!= n:
+                print(i + 1, i + 2)
+                break
+            elif a == n and b == n and a!= 0 and b!= 0:
+                print(1, n)
+                break
+    else:
+        print(-1, -1)
+```
+
+However, this solution can be further improved by using a more concise way to check if the string is already balanced from the start and has at least one 'a' and one 'b':
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    s = input()
+    a = b = 0
+    for i in range(n):
+        if s[i] == 'a':
+            a += 1
+        else:
+            b += 1
+        if a == b:
+            if a < n:
+                print(i + 1, i + 2)
+                break
+            elif a == n and b == n and a!= 0 and b!= 0:
+                print(1, n)
+                break
+    else:
+        print(-1, -1)
+```
+
+Or even more concise:
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    s = input()
+    a = b = 0
+    for i in range(n):
+        if s[i] == 'a':
+            a += 1
+        else:
+            b += 1
+        if a == b:
+            if a < n or (a == n and b == n and a!= 0 and b!= 0):
+                print(i + 1, i + 2 if a < n else n)
+                break
+    else:
+        print(-1, -1)
+```

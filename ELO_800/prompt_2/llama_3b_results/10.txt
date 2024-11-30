@@ -1,0 +1,11 @@
+```python
+# Read the input
+a, b = map(int, input().split())
+
+# Initialize variables
+days_wearing_different = min(a, b)
+days_wearing_same = max(a, b) - min(a, b)
+
+# Print the solution
+print(f"{days_wearing_different} {days_wearing_same}")
+```

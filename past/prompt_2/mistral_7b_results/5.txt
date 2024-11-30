@@ -1,0 +1,26 @@
+[/INST] ```python
+import sys
+
+def read_input():
+    t = int(input().strip())
+    return (input().strip() for _ in range(t))
+
+def cyclic_shift(s, start, end):
+    return sum(1, end-start)
+
+def longest_prefix(s):
+    i = 0
+    while i < len(s):
+        if i > 0 and s[i] == s[i-1] and s[i:] == s[i:]:
+            return i
+        i += 1
+    return len(s)
+
+def solution(s):
+    n = len(s)
+    prefixes = [longest_prefix(s[:i+1]) for i in range(n)]
+    return sum(cyclic_shift(s, i, i+prefixes[i]) for i in range(n))
+
+for s in read_input():
+    print(solution(s))
+```</s>

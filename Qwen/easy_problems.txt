@@ -1,0 +1,594 @@
+You are given a string $s$ of length $n$, which consists only of the first $k$ letters of the Latin alphabet. All letters in string $s$ are uppercase.
+A
+subsequence
+of string $s$ is a string that can be derived from $s$ by deleting some of its symbols without changing the order of the remaining symbols. For example, "
+ADE
+" and "
+BD
+" are subsequences of "
+ABCDE
+", but "
+DEA
+" is not.
+A subsequence of $s$ called
+good
+if the number of occurences of each of the first $k$ letters of the alphabet is the same.
+Find the length of the longest good subsequence of $s$.
+Note
+In the first example, "
+ACBCAB
+" ("
+AC
+AA
+BC
+C
+AB
+") is one of the subsequences that has the same frequency of '
+A
+', '
+B
+' and '
+C
+'. Subsequence "
+CAB
+" also has the same frequency of these letters, but doesn't have the maximum possible length.
+In the second example, none of the subsequences can have '
+D
+', hence the answer is $0$.
+Input Specification Input
+
+The first line of the input contains integers $n$ ($1\le n \le 10^5$) and $k$ ($1 \le k \le 26$).
+
+The second line of the input contains the string $s$ of length $n$. String $s$ only contains uppercase letters from ' A ' to the $k$-th letter of Latin alphabet.
+Output SpecificationOutput
+
+Print the only integer — the length of the longest good subsequence of string $s$.
+Monocarp wants to throw a party. He has $n$ friends, and he wants to have at least $2$ of them at his party.
+The $i$-th friend's best friend is $p_i$. All $p_i$ are distinct, and for every $i \in [1, n]$, $p_i \ne i$.
+Monocarp can send invitations to friends. The $i$-th friend comes to the party if
+both the $i$-th friend and the $p_i$-th friend
+receive an invitation (note that the $p_i$-th friend doesn't have to actually come to the party). Each invitation is sent to exactly one of the friends.
+For example, if $p = [3, 1, 2, 5, 4]$, and Monocarp sends invitations to the friends $[1, 2, 4, 5]$, then the friends $[2, 4, 5]$ will come to the party. The friend $1$ won't come since his best friend didn't receive an invitation; the friend $3$ won't come since he didn't receive an invitation.
+Calculate the minimum number of invitations Monocarp has to send so that
+at least $2$
+friends come to the party.
+Note
+In the first testcase, Monocarp can send invitations to friends $4$ and $5$. Both of them will come to the party since they are each other's best friends, and both of them have invitations.
+In the second testcase, Monocarp can send invitations to friends $1, 2$ and $3$, for example. Then friends $1$ and $2$ will attend: friend $1$ and his best friend $2$ have invitations, friend $2$ and his best friend $3$ have invitations. Friend $3$ won't attend since his friend $4$ doesn't have an invitation. It's impossible to send invitations to fewer than $3$ friends in such a way that at least $2$ come.
+In the third testcase, Monocarp can send invitations to both friends $1$ and $2$, and both of them will attend.
+Input Specification Input
+
+The first line contains one integer $t$ ($1 \le t \le 5000$) — the number of test cases.
+
+Each test case consists of two lines:
+
+ the first line contains one integer $n$ ($2 \le n \le 50$) — the number of friends; the second line contains $n$ integers $p_1, p_2, \dots, p_n$ ($1 \le p_i \le n$; $p_i \ne i$; all $p_i$ are distinct).
+Output SpecificationOutput
+
+Print one integer — the minimum number of invitations Monocarp has to send.
+You are given three integers $n$, $a$, and $b$. Determine if there exist two permutations $p$ and $q$ of length $n$, for which the following conditions hold:
+The length of the longest common prefix of $p$ and $q$ is $a$.
+The length of the longest common suffix of $p$ and $q$ is $b$.
+A permutation of length $n$ is an array containing each integer from $1$ to $n$ exactly once. For example, $[2,3,1,5,4]$ is a permutation, but $[1,2,2]$ is not a permutation ($2$ appears twice in the array), and $[1,3,4]$ is also not a permutation ($n=3$ but there is $4$ in the array).
+Note
+In the first test case, $[1]$ and $[1]$ form a valid pair.
+In the second test case and the third case, we can show that such a pair of permutations doesn't exist.
+In the fourth test case, $[1,2,3,4]$ and $[1,3,2,4]$ form a valid pair.
+Input Specification Input
+
+Each test contains multiple test cases. The first line contains a single integer $t$ ($1\leq t\leq 10^4$) — the number of test cases. The description of test cases follows.
+
+The only line of each test case contains three integers $n$, $a$, and $b$ ($1\leq a,b\leq n\leq 100$).
+Output SpecificationOutput
+
+For each test case, if such a pair of permutations exists, output " Yes "; otherwise, output " No ". You can output each letter in any case (upper or lower).
+You have an $n \times n$ chessboard and $k$ rooks. Rows of this chessboard are numbered by integers from $1$ to $n$ from top to bottom and columns of this chessboard are numbered by integers from $1$ to $n$ from left to right. The cell $(x, y)$ is the cell on the intersection of row $x$ and collumn $y$ for $1 \leq x \leq n$ and $1 \leq y \leq n$.
+The arrangement of rooks on this board is called
+good
+, if no rook is beaten by another rook.
+A rook beats all the rooks that shares the same row or collumn with it.
+The
+good
+arrangement of rooks on this board is called
+not stable
+, if it is possible to move one rook to the adjacent cell so arrangement becomes not good. Otherwise, the
+good
+arrangement is
+stable
+. Here, adjacent cells are the cells
+that share a side
+.
+Such arrangement of $3$ rooks on the $4 \times 4$ chessboard is good, but it is not stable: the rook from $(1, 1)$ can be moved to the adjacent cell $(2, 1)$ and rooks on cells $(2, 1)$ and $(2, 4)$ will beat each other.
+Please, find any stable arrangement of $k$ rooks on the $n \times n$ chessboard or report that there is no such arrangement.
+Note
+In the first test case, you should find stable arrangement of $2$ rooks on the $3 \times 3$ chessboard. Placing them in cells $(3, 1)$ and $(1, 3)$ gives stable arrangement.
+In the second test case it can be shown that it is impossbile to place $3$ rooks on the $3 \times 3$ chessboard to get stable arrangement.
+Input Specification Input
+
+The first line contains a single integer $t$ ($1 \leq t \leq 100$) — the number of test cases.
+
+The first line of each test case contains two integers $n$, $k$ ($1 \leq k \leq n \leq 40$) — the size of the chessboard and the number of rooks.
+Output SpecificationOutput
+
+If there is a stable arrangement of $k$ rooks on the $n \times n$ chessboard, output $n$ lines of symbols . and R . The $j$-th symbol of the $i$-th line should be equals R if and only if there is a rook on the cell $(i, j)$ in your arrangement.
+
+If there are multiple solutions, you may output any of them.
+
+If there is no stable arrangement, output $-1$.
+There is a string $a$ (unknown to you), consisting of lowercase Latin letters, encrypted according to the following rule into string $s$:
+after each character of string $a$, an arbitrary (possibly zero) number of any lowercase Latin letters, different from the character itself, is added;
+after each such addition, the character that we supplemented is added.
+You are given string $s$, and you need to output the initial string $a$. In other words, you need to decrypt string $s$.
+Note that each string encrypted in this way is decrypted
+uniquely
+.
+Note
+In the first encrypted message, the letter $a$ is encrypted as $aba$, and the letter $c$ is encrypted as $cabac$.
+In the second encrypted message, only one letter $q$ is encrypted as $qzxcq$.
+In the third encrypted message, zero characters are added to each letter.
+Input Specification Input
+
+The first line of the input contains a single integer $t$ ($1 \le t \le 1000$) — the number of test cases.
+
+The descriptions of the test cases follow.
+
+The first line of each test case contains a single integer $n$ ($2 \le n \le 100$) — the length of the encrypted message.
+
+The second line of each test case contains a string $s$ of length $n$ — the encrypted message obtained from some string $a$.
+Output SpecificationOutput
+
+For each test case, output the decrypted message $a$ on a separate line.
+You are given two positive integers $a$ and $b$. In one move you can increase $a$ by $1$ (replace $a$ with $a+1$). Your task is to find the minimum number of moves you need to do in order to make $a$ divisible by $b$. It is possible, that you have to make $0$ moves, as $a$ is already divisible by $b$. You have to answer $t$ independent test cases.
+Input Specification Input
+
+The first line of the input contains one integer $t$ ($1 \le t \le 10^4$) — the number of test cases. Then $t$ test cases follow.
+
+The only line of the test case contains two integers $a$ and $b$ ($1 \le a, b \le 10^9$).
+Output SpecificationOutput
+
+For each test case print the answer — the minimum number of moves you need to do in order to make $a$ divisible by $b$.
+Gennady owns a small hotel in the countryside where he lives a peaceful life. He loves to take long walks, watch sunsets and play cards with tourists staying in his hotel. His favorite game is called "Mau-Mau".
+To play Mau-Mau, you need a pack of $52$ cards. Each card has a suit (Diamonds —
+D
+, Clubs —
+C
+, Spades —
+S
+, or Hearts —
+H
+), and a rank (
+2
+,
+3
+,
+4
+,
+5
+,
+6
+,
+7
+,
+8
+,
+9
+,
+T
+,
+J
+,
+Q
+,
+K
+, or
+A
+).
+At the start of the game, there is one card on the table and you have five cards in your hand. You can play a card from your hand if and only if it has the same rank or the same suit as the card on the table.
+In order to check if you'd be a good playing partner, Gennady has prepared a task for you. Given the card on the table and five cards in your hand, check if you can play at least one card.
+Note
+In the first example, there is an Ace of Spades (
+AS
+) on the table. You can play an Ace of Diamonds (
+AD
+) because both of them are Aces.
+In the second example, you cannot play any card.
+In the third example, you can play an Ace of Diamonds (
+AD
+) because it has the same suit as a Four of Diamonds (
+4D
+), which lies on the table.
+Input Specification Input
+
+The first line of the input contains one string which describes the card on the table. The second line contains five strings which describe the cards in your hand.
+
+Each string is two characters long. The first character denotes the rank and belongs to the set $\{{\tt 2}, {\tt 3}, {\tt 4}, {\tt 5}, {\tt 6}, {\tt 7}, {\tt 8}, {\tt 9}, {\tt T}, {\tt J}, {\tt Q}, {\tt K}, {\tt A}\}$. The second character denotes the suit and belongs to the set $\{{\tt D}, {\tt C}, {\tt S}, {\tt H}\}$.
+
+All the cards in the input are different.
+Output SpecificationOutput
+
+If it is possible to play a card from your hand, print one word " YES ". Otherwise, print " NO ".
+
+You can print each letter in any case (upper or lower).
+You are given strings $S$ and $T$, consisting of lowercase English letters. It is guaranteed that $T$ is a permutation of the string
+abc
+.
+Find string $S'$, the
+lexicographically smallest
+permutation of $S$ such that $T$ is
+not
+a subsequence of $S'$.
+String $a$ is a
+permutation
+of string $b$ if the number of occurrences of each distinct character is the same in both strings.
+A string $a$ is a
+subsequence
+of a string $b$ if $a$ can be obtained from $b$ by deletion of several (possibly, zero or all) elements.
+A string $a$ is
+lexicographically smaller
+than a string $b$ if and only if one of the following holds:
+$a$ is a prefix of $b$, but $a \ne b$;
+in the first position where $a$ and $b$ differ, the string $a$ has a letter that appears earlier in the alphabet than the corresponding letter in $b$.
+Note
+In the first test case, both
+aaaabbc
+and
+aaaabcb
+are lexicographically smaller than
+aaaacbb
+, but they contain
+abc
+as a subsequence.
+In the second test case,
+abccc
+is the smallest permutation of
+cccba
+and does not contain
+acb
+as a subsequence.
+In the third test case,
+bcdis
+is the smallest permutation of
+dbsic
+and does not contain
+bac
+as a subsequence.
+Input Specification Input
+
+Each test contains multiple test cases. The first line contains a single integer $t$ ($1 \le t \le 1000$) — the number of test cases. Description of the test cases follows.
+
+The first line of each test case contains a string $S$ ($1 \le |S| \le 100$), consisting of lowercase English letters.
+
+The second line of each test case contains a string $T$ that is a permutation of the string abc . (Hence, $|T| = 3$).
+
+Note that there is no limit on the sum of $|S|$ across all test cases.
+Output SpecificationOutput
+
+For each test case, output a single string $S'$, the lexicographically smallest permutation of $S$ such that $T$ is not a subsequence of $S'$.
+Alice is playing with some stones.
+Now there are three numbered heaps of stones. The first of them contains $a$ stones, the second of them contains $b$ stones and the third of them contains $c$ stones.
+Each time she can do one of two operations:
+take one stone from the first heap and two stones from the second heap (this operation can be done only if the first heap contains at least one stone and the second heap contains at least two stones);
+take one stone from the second heap and two stones from the third heap (this operation can be done only if the second heap contains at least one stone and the third heap contains at least two stones).
+She wants to get the maximum number of stones, but she doesn't know what to do. Initially, she has $0$ stones. Can you help her?
+Note
+For the first test case in the first test, Alice can take two stones from the second heap and four stones from the third heap, making the second operation two times. Then she can take one stone from the first heap and two stones from the second heap, making the first operation one time. The summary number of stones, that Alice will take is $9$. It is impossible to make some operations to take more than $9$ stones, so the answer is $9$.
+Input Specification Input
+
+The first line contains one integer $t$ ($1 \leq t \leq 100$)  — the number of test cases. Next $t$ lines describe test cases in the following format:
+
+Line contains three non-negative integers $a$, $b$ and $c$, separated by spaces ($0 \leq a,b,c \leq 100$) — the number of stones in the first, the second and the third heap, respectively.
+
+In hacks it is allowed to use only one test case in the input, so $t = 1$ should be satisfied.
+Output SpecificationOutput
+
+Print $t$ lines, the answers to the test cases in the same order as in the input. The answer to the test case is the integer  — the maximum possible number of stones that Alice can take after making some operations.
+Greg is a beginner bodybuilder. Today the gym coach gave him the training plan. All it had was
+n
+integers
+a
+1
+,
+a
+2
+, ...,
+a
+n
+. These numbers mean that Greg needs to do exactly
+n
+exercises today. Besides, Greg should repeat the
+i
+-th in order exercise
+a
+i
+times.
+Greg now only does three types of exercises: "chest" exercises, "biceps" exercises and "back" exercises. Besides, his training is cyclic, that is, the first exercise he does is a "chest" one, the second one is "biceps", the third one is "back", the fourth one is "chest", the fifth one is "biceps", and so on to the
+n
+-th exercise.
+Now Greg wonders, which muscle will get the most exercise during his training. We know that the exercise Greg repeats the maximum number of times, trains the corresponding muscle the most. Help Greg, determine which muscle will get the most training.
+Note
+In the first sample Greg does 2 chest, 8 biceps and zero back exercises, so the biceps gets the most exercises.
+In the second sample Greg does 5 chest, 1 biceps and 10 back exercises, so the back gets the most exercises.
+In the third sample Greg does 18 chest, 12 biceps and 8 back exercises, so the chest gets the most exercise.
+Input Specification Input
+
+The first line contains integer *n* (1 ≤  *n*  ≤ 20) . The second line contains *n* integers *a* 1 ,  *a* 2 , ...,  *a* *n* (1 ≤  *a* *i*  ≤ 25) — the number of times Greg repeats the exercises.
+Output SpecificationOutput
+
+Print word " chest " (without the quotes), if the chest gets the most exercise, " biceps " (without the quotes), if the biceps gets the most exercise and print " back " (without the quotes) if the back gets the most exercise.
+
+It is guaranteed that the input is such that the answer to the problem is unambiguous .
+One day Vasya the Hipster decided to count how many socks he had. It turned out that he had
+a
+red socks and
+b
+blue socks.
+According to the latest fashion, hipsters should wear the socks of different colors: a red one on the left foot, a blue one on the right foot.
+Every day Vasya puts on new socks in the morning and throws them away before going to bed as he doesn't want to wash them.
+Vasya wonders, what is the maximum number of days when he can dress fashionable and wear different socks, and after that, for how many days he can then wear the same socks until he either runs out of socks or cannot make a single pair from the socks he's got.
+Can you help him?
+Note
+In the first sample Vasya can first put on one pair of different socks, after that he has two red socks left to wear on the second day.
+Input Specification Input
+
+The single line of the input contains two positive integers *a* and *b* ( 1 ≤  *a* ,  *b*  ≤ 100 ) — the number of red and blue socks that Vasya's got.
+Output SpecificationOutput
+
+Print two space-separated integers — the maximum number of days when Vasya can wear different socks and the number of days when he can wear the same socks until he either runs out of socks or cannot make a single pair from the socks he's got.
+
+Keep in mind that at the end of the day Vasya throws away the socks that he's been wearing on that day.
+Polycarp urgently needs a shovel! He comes to the shop and chooses an appropriate one. The shovel that Policarp chooses is sold for
+k
+burles. Assume that there is an unlimited number of such shovels in the shop.
+In his pocket Polycarp has an unlimited number of "10-burle coins" and exactly one coin of
+r
+burles (
+1 ≤
+r
+≤ 9
+).
+What is the minimum number of shovels Polycarp has to buy so that he can pay for the purchase without any change? It is obvious that he can pay for 10 shovels without any change (by paying the requied amount of 10-burle coins and not using the coin of
+r
+burles). But perhaps he can buy fewer shovels and pay without any change. Note that Polycarp should buy at least one shovel.
+Note
+In the first example Polycarp can buy 9 shovels and pay
+9·117 = 1053
+burles. Indeed, he can pay this sum by using 10-burle coins and one 3-burle coin. He can't buy fewer shovels without any change.
+In the second example it is enough for Polycarp to buy one shovel.
+In the third example Polycarp should buy two shovels and pay
+2·15 = 30
+burles. It is obvious that he can pay this sum without any change.
+Input Specification Input
+
+The single line of input contains two integers *k* and *r* ( 1 ≤  *k*  ≤ 1000 , 1 ≤  *r*  ≤ 9 ) — the price of one shovel and the denomination of the coin in Polycarp's pocket that is different from "10-burle coins". 
+
+Remember that he has an unlimited number of coins in the denomination of 10, that is, Polycarp has enough money to buy any number of shovels.
+Output SpecificationOutput
+
+Print the required minimum number of shovels Polycarp has to buy so that he can pay for them without any change.
+You are given a string $s$, consisting of $n$ letters, each letter is either '
+a
+' or '
+b
+'. The letters in the string are numbered from $1$ to $n$.
+$s[l; r]$ is a continuous substring of letters from index $l$ to $r$ of the string inclusive.
+A string is called balanced if the number of letters '
+a
+' in it is equal to the number of letters '
+b
+'. For example, strings "
+baba
+" and "
+aabbab
+" are balanced and strings "
+aaab
+" and "
+b
+" are not.
+Find any non-empty balanced substring $s[l; r]$ of string $s$. Print its $l$ and $r$ ($1 \le l \le r \le n$). If there is no such substring, then print $-1$ $-1$.
+Note
+In the first testcase there are no non-empty balanced subtrings.
+In the second and third testcases there are multiple balanced substrings, including the entire string "
+abbaba
+" and substring "
+baba
+".
+Input Specification Input
+
+The first line contains a single integer $t$ ($1 \le t \le 1000$) — the number of testcases.
+
+Then the descriptions of $t$ testcases follow.
+
+The first line of the testcase contains a single integer $n$ ($1 \le n \le 50$) — the length of the string.
+
+The second line of the testcase contains a string $s$, consisting of $n$ letters, each letter is either ' a ' or ' b '.
+Output SpecificationOutput
+
+For each testcase print two integers. If there exists a non-empty balanced substring $s[l; r]$, then print $l$ $r$ ($1 \le l \le r \le n$). Otherwise, print $-1$ $-1$.
+Lord Omkar has permitted you to enter the Holy Church of Omkar! To test your worthiness, Omkar gives you a password which you must interpret!
+A password is an array $a$ of $n$ positive integers. You apply the following operation to the array: pick any two adjacent numbers that are not equal to each other and replace them with their sum. Formally, choose an index $i$ such that $1 \leq i < n$ and $a_{i} \neq a_{i+1}$, delete both $a_i$ and $a_{i+1}$ from the array and put $a_{i}+a_{i+1}$ in their place.
+For example, for array $[7, 4, 3, 7]$ you can choose $i = 2$ and the array will become $[7, 4+3, 7] = [7, 7, 7]$. Note that in this array you can't apply this operation anymore.
+Notice that one operation will decrease the size of the password by $1$. What is the shortest possible length of the password after some number (possibly $0$) of operations?
+Note
+In the first test case, you can do the following to achieve a length of $1$:
+Pick $i=2$ to get $[2, 4, 1]$
+Pick $i=1$ to get $[6, 1]$
+Pick $i=1$ to get $[7]$
+In the second test case, you can't perform any operations because there is no valid $i$ that satisfies the requirements mentioned above.
+Input Specification Input
+
+Each test contains multiple test cases. The first line contains the number of test cases $t$ ($1 \le t \le 100$). Description of the test cases follows.
+
+The first line of each test case contains an integer $n$ ($1 \leq n \leq 2 \cdot 10^5$) — the length of the password.
+
+The second line of each test case contains $n$ integers $a_{1},a_{2},\dots,a_{n}$ ($1 \leq a_{i} \leq 10^9$) — the initial contents of your password.
+
+The sum of $n$ over all test cases will not exceed $2 \cdot 10^5$.
+Output SpecificationOutput
+
+For each password, print one integer: the shortest possible length of the password after some number of operations.
+Being stuck at home, Ray became extremely bored. To pass time, he asks Lord Omkar to use his time bending power: Infinity Clock! However, Lord Omkar will only listen to mortals who can solve the following problem:
+You are given an array $a$ of $n$ integers. You are also given an integer $k$. Lord Omkar wants you to do $k$ operations with this array.
+Define one operation as the following:
+Set $d$ to be the maximum value of your array.
+For every $i$ from $1$ to $n$, replace $a_{i}$ with $d-a_{i}$.
+The goal is to predict the contents in the array after $k$ operations. Please help Ray determine what the final sequence will look like!
+Note
+In the first test case the array changes as follows:
+Initially, the array is $[-199, 192]$. $d = 192$.
+After the operation, the array becomes $[d-(-199), d-192] = [391, 0]$.
+Input Specification Input
+
+Each test contains multiple test cases. The first line contains the number of cases $t$ ($1 \le t \le 100$). Description of the test cases follows.
+
+The first line of each test case contains two integers $n$ and $k$ ($1 \leq n \leq 2 \cdot 10^5, 1 \leq k \leq 10^{18}$) – the length of your array and the number of operations to perform.
+
+The second line of each test case contains $n$ integers $a_{1},a_{2},...,a_{n}$ $(-10^9 \leq a_{i} \leq 10^9)$ – the initial contents of your array.
+
+It is guaranteed that the sum of $n$ over all test cases does not exceed $2 \cdot 10^5$.
+Output SpecificationOutput
+
+For each case, print the final version of array $a$ after $k$ operations described above.
+Codeforces user' handle color depends on his rating — it is red if his rating is greater or equal to
+2400
+; it is orange if his rating is less than
+2400
+but greater or equal to
+2200
+, etc. Each time participant takes part in a rated contest, his rating is changed depending on his performance.
+Anton wants the color of his handle to become red. He considers his performance in the rated contest to be
+good
+if he outscored some participant, whose handle was colored red before the contest and his rating has increased after it.
+Anton has written a program that analyses contest results and determines whether he performed good or not. Are you able to do the same?
+Note
+In the first sample, Anton has outscored user with handle
+Burunduk1
+, whose handle was colored red before the contest and his rating has increased after the contest.
+In the second sample,
+Applejack
+'s rating has not increased after the contest, while both
+Fluttershy
+'s and
+Pinkie_Pie
+'s handles were not colored red before the contest.
+Input Specification Input
+
+The first line of the input contains a single integer *n* ( 1 ≤  *n*  ≤ 100 ) — the number of participants Anton has outscored in this contest .
+
+The next *n* lines describe participants results: the *i* -th of them consists of a participant handle *name* *i* and two integers *before* *i* and *after* *i* (  - 4000 ≤  *before* *i* ,  *after* *i*  ≤ 4000 ) — participant's rating before and after the contest, respectively. Each handle is a non-empty string, consisting of no more than 10 characters, which might be lowercase and uppercase English letters, digits, characters « _ » and « - » characters.
+
+It is guaranteed that all handles are distinct.
+Output SpecificationOutput
+
+Print « YES » (quotes for clarity), if Anton has performed good in the contest and « NO » (quotes for clarity) otherwise.
+Let's define $S(x)$ to be the sum of digits of number $x$ written in decimal system. For example, $S(5) = 5$, $S(10) = 1$, $S(322) = 7$.
+We will call an integer $x$
+interesting
+if $S(x + 1) < S(x)$. In each test you will be given one integer $n$. Your task is to calculate the number of integers $x$ such that $1 \le x \le n$ and $x$ is interesting.
+Note
+The first interesting number is equal to $9$.
+Input Specification Input
+
+The first line contains one integer $t$ ($1 \le t \le 1000$)  — number of test cases.
+
+Then $t$ lines follow, the $i$-th line contains one integer $n$ ($1 \le n \le 10^9$) for the $i$-th test case.
+Output SpecificationOutput
+
+Print $t$ integers, the $i$-th should be the answer for the $i$-th test case.
+Scrooge McDuck keeps his most treasured savings in a home safe with a combination lock. Each time he wants to put there the treasures that he's earned fair and square, he has to open the lock.
+The combination lock is represented by
+n
+rotating disks with digits from 0 to 9 written on them. Scrooge McDuck has to turn some disks so that the combination of digits on the disks forms a secret combination. In one move, he can rotate one disk one digit forwards or backwards. In particular, in one move he can go from digit 0 to digit 9 and vice versa. What minimum number of actions does he need for that?
+Note
+In the sample he needs 13 moves:
+1 disk:
+2 disk:
+3 disk:
+4 disk:
+5 disk:
+Input Specification Input
+
+The first line contains a single integer *n* ( 1 ≤  *n*  ≤ 1000 ) — the number of disks on the combination lock.
+
+The second line contains a string of *n* digits — the original state of the disks.
+
+The third line contains a string of *n* digits — Scrooge McDuck's combination that opens the lock.
+Output SpecificationOutput
+
+Print a single integer — the minimum number of moves Scrooge McDuck needs to open the lock.
+You are given two arrays of integers $a_1,\ldots,a_n$ and $b_1,\ldots,b_m$.
+Your task is to find a
+non-empty
+array $c_1,\ldots,c_k$ that is a subsequence of $a_1,\ldots,a_n$, and also a subsequence of $b_1,\ldots,b_m$. If there are multiple answers, find one of the
+smallest
+possible length. If there are still multiple of the smallest possible length, find any. If there are no such arrays, you should report about it.
+A sequence $a$ is a subsequence of a sequence $b$ if $a$ can be obtained from $b$ by deletion of several (possibly, zero) elements. For example, $[3,1]$ is a subsequence of $[3,2,1]$ and $[4,3,1]$, but not a subsequence of $[1,3,3,7]$ and $[3,10,4]$.
+Note
+In the first test case, $[4]$ is a subsequence of $[10, 8, 6, 4]$ and $[1, 2, 3, 4, 5]$. This array has length $1$, it is the smallest possible length of a subsequence of both $a$ and $b$.
+In the third test case, no non-empty subsequences of both $[3]$ and $[2]$ exist, so the answer is "
+NO
+".
+Input Specification Input
+
+The first line contains a single integer $t$ ($1\le t\le 1000$)  — the number of test cases. Next $3t$ lines contain descriptions of test cases.
+
+The first line of each test case contains two integers $n$ and $m$ ($1\le n,m\le 1000$)  — the lengths of the two arrays.
+
+The second line of each test case contains $n$ integers $a_1,\ldots,a_n$ ($1\le a_i\le 1000$)  — the elements of the first array.
+
+The third line of each test case contains $m$ integers $b_1,\ldots,b_m$ ($1\le b_i\le 1000$)  — the elements of the second array.
+
+It is guaranteed that the sum of $n$ and the sum of $m$ across all test cases does not exceed $1000$ ($\sum\limits_{i=1}^t n_i, \sum\limits_{i=1}^t m_i\le 1000$).
+Output SpecificationOutput
+
+For each test case, output " YES " if a solution exists, or " NO " otherwise.
+
+If the answer is " YES ", on the next line output an integer $k$ ($1\le k\le 1000$)  — the length of the array, followed by $k$ integers $c_1,\ldots,c_k$ ($1\le c_i\le 1000$)  — the elements of the array.
+
+If there are multiple solutions with the smallest possible $k$, output any.
+Given an integer $n$, find the maximum value of integer $k$ such that the following condition holds:
+$n$ & ($n-1$) & ($n-2$) & ($n-3$) & ... ($k$) = $0$
+where & denotes the
+bitwise AND operation.
+Note
+In the first testcase, the maximum value for which the continuous & operation gives 0 value, is 1.
+In the second testcase, the maximum value for which the continuous & operation gives 0 value, is 3. No value greater then 3, say for example 4, will give the & sum 0.
+$5 \, \& \, 4 \neq 0$,
+$5 \, \& \, 4 \, \& \, 3 = 0$.
+Hence, 3 is the answer.
+Input Specification Input
+
+The first line contains a single integer $t$ ($1 \le t \le 3 \cdot 10^4$). Then $t$ test cases follow.
+
+The first line of each test case contains a single integer $n$ ($1 \le n \le 10^9$).
+Output SpecificationOutput
+
+For each test case, output a single integer — the required integer $k$.
+Given an integer $n$, find the maximum value of integer $k$ such that the following condition holds:
+$n$ & ($n-1$) & ($n-2$) & ($n-3$) & ... ($k$) = $0$
+where & denotes the
+bitwise AND operation.
+Note
+In the first testcase, the maximum value for which the continuous & operation gives 0 value, is 1.
+In the second testcase, the maximum value for which the continuous & operation gives 0 value, is 3. No value greater then 3, say for example 4, will give the & sum 0.
+$5 \, \& \, 4 \neq 0$,
+$5 \, \& \, 4 \, \& \, 3 = 0$.
+Hence, 3 is the answer.
+Input Specification Input
+
+The first line contains a single integer $t$ ($1 \le t \le 3 \cdot 10^4$). Then $t$ test cases follow.
+
+The first line of each test case contains a single integer $n$ ($1 \le n \le 10^9$).
+Output SpecificationOutput
+
+For each test case, output a single integer — the required integer $k$.
+Polycarp has $n$ coins, the value of the $i$-th coin is $a_i$. Polycarp wants to distribute all the coins between his pockets, but he cannot put two coins with the same value into the same pocket.
+For example, if Polycarp has got six coins represented as an array $a = [1, 2, 4, 3, 3, 2]$, he can distribute the coins into two pockets as follows: $[1, 2, 3], [2, 3, 4]$.
+Polycarp wants to distribute all the coins with the minimum number of used pockets. Help him to do that.
+Input Specification Input
+
+The first line of the input contains one integer $n$ ($1 \le n \le 100$) — the number of coins.
+
+The second line of the input contains $n$ integers $a_1, a_2, \dots, a_n$ ($1 \le a_i \le 100$) — values of coins.
+Output SpecificationOutput
+
+Print only one integer — the minimum number of pockets Polycarp needs to distribute all the coins so no two coins with the same value are put into the same pocket.

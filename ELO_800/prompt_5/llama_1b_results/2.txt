@@ -1,0 +1,14 @@
+```python
+
+def solve():
+    n, a, b = map(int, input().split())
+    if a + b > n or a == b:
+        print("No")
+    else:
+        print("Yes" if a == 1 or b == 1 else "No")
+
+t = int(input())
+for _ in range(t):
+    solve()
+
+```

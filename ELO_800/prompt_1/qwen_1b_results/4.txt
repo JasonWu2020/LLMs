@@ -1,0 +1,13 @@
+```python
+def decrypt(s):
+    res = ""
+    for i in range(len(s)):
+        if s[i] != "a":
+            res += s[i]
+    return res[:-len(res)//2]
+
+for _ in range(int(input())):
+    n = int(input())
+    s = input()
+    print(decrypt(s))
+```

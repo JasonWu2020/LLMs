@@ -1,0 +1,60 @@
+### Critique of the Provided Solution
+
+The provided Python script attempts to solve the problem but lacks clarity on how it determines the minimum number of invitations needed to ensure at least two friends come to the party. The logic seems convoluted and does not clearly map to the given constraints and examples. Additionally, the script does not handle edge cases like repeated friends or invalid inputs effectively.
+
+### Proposed Solution
+
+```python
+def min_invitations(n, p):
+    """
+    Calculate the minimum number of invitations needed for at least two friends to come to the party,
+    given their respective best friends' presence.
+
+    :param n: Number of friends.
+    :param p: List of indices representing the best friend of each friend.
+    :return: Minimum number of invitations required.
+    """
+    
+    # Create a list to track whether each friend has been invited.
+    invited_friends = [-1]*n
+    
+    # Iterate over each pair of friends and their best friend.
+    for i in range(n):
+        j = p[i]
+        
+        # If the current friend hasn't been invited yet, invite him/her.
+        if invited_friends[j] == -1:
+            invited_friends[j] = i
+            
+        # If the best friend hasn't been invited yet, invite the current friend.
+        elif invited_friends[i] == -1:
+            invited_friends[i] = j
+            
+        # If both friends haven't been invited yet, we need more invitations.
+        else:
+            return float('inf')
+            
+    # Count the number of unique friends who have been invited.
+    count = sum(1 for x in invited_friends if x >= 0)
+    
+    return count
+
+# Read input from stdin
+t = int(input().strip())
+for _ in range(t):
+    n = int(input().strip())
+    p = list(map(int, input().split()))
+    
+    result = min_invitations(n, p)
+    print(result)
+```
+
+This revised solution takes into account the following improvements:
+
+1. **Clarity**: The function name (`min_invitations`) now clearly indicates its purpose.
+2. **Logic Simplification**: The logic is simplified and made more straightforward.
+3. **Error Handling**: The script handles invalid inputs by returning infinity when necessary.
+4. **Efficiency**: The use of `sum` with a generator expression makes the counting process efficient.
+5. **Readability**: Comments explain key steps, making the code easier to understand.
+
+This should fulfill the requirements while being clear and concise.

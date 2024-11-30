@@ -1,0 +1,14 @@
+```python
+def count_interesting_numbers():
+    t = int(input())
+    interesting_numbers = 0
+    for n in range(1, 10**9 + 1):
+        x = n
+        while x:
+            if x >= 9 and (x + 1 < n):
+                interesting_numbers += 1
+            x //= 10
+    return interesting_numbers
+
+print(count_interesting_numbers())
+```

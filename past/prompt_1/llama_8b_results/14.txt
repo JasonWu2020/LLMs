@@ -1,0 +1,80 @@
+import sys
+input = sys.stdin.readline
+
+n, m = map(int, input().split())
+a = [input() for _ in range(n)]
+s = None
+for i in range(n):
+    for j in range(m):
+        if a[i][j] == 'S':
+            s = (i, j)
+
+def check(x, y):
+    for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+        nx, ny = x + dx, y + dy
+        if nx < 0 or nx >= n or ny < 0 or ny >= m:
+            return False
+        if a[nx % n][ny % m] == '#':
+            return False
+    return True
+
+def check2(x, y):
+    for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+        nx, ny = x + dx, y + dy
+        if nx < 0 or nx >= n or ny < 0 or ny >= m:
+            return False
+        if a[nx % n][ny % m] == '#':
+            return False
+    return True
+
+def check3(x, y):
+    for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+        nx, ny = x + dx, y + dy
+        if nx < 0 or nx >= n or ny < 0 or ny >= m:
+            return False
+        if a[nx % n][ny % m] == '#':
+            return False
+    return True
+
+def check4(x, y):
+    for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+        nx, ny = x + dx, y + dy
+        if nx < 0 or nx >= n or ny < 0 or ny >= m:
+            return False
+        if a[nx % n][ny % m] == '#':
+            return False
+    return True
+
+for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+    nx, ny = s[0] + dx, s[1] + dy
+    if nx < 0 or nx >= n or ny < 0 or ny >= m or a[nx % n][ny % m] == '#':
+        continue
+    if check(nx, ny):
+        print('Yes')
+        exit()
+
+for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+    nx, ny = s[0] + dx, s[1] + dy
+    if nx < 0 or nx >= n or ny < 0 or ny >= m or a[nx % n][ny % m] == '#':
+        continue
+    if check2(nx, ny):
+        print('Yes')
+        exit()
+
+for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+    nx, ny = s[0] + dx, s[1] + dy
+    if nx < 0 or nx >= n or ny < 0 or ny >= m or a[nx % n][ny % m] == '#':
+        continue
+    if check3(nx, ny):
+        print('Yes')
+        exit()
+
+for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+    nx, ny = s[0] + dx, s[1] + dy
+    if nx < 0 or nx >= n or ny < 0 or ny >= m or a[nx % n][ny % m] == '#':
+        continue
+    if check4(nx, ny):
+        print('Yes')
+        exit()
+
+print('No')

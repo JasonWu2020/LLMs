@@ -1,0 +1,14 @@
+<start_of_turn>model
+```python
+n = int(input())
+a = list(map(int, input().split()))
+
+exercises = {"chest": 0, "biceps": 0, "back": 0}
+
+for i in range(n):
+    exercises[a[i]] += 1
+
+muscle = max(exercises, key=exercises.get)
+
+print(muscle)
+```<eos>

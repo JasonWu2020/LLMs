@@ -1,0 +1,14 @@
+```python
+import sys
+
+def min_invitations(n):
+    return max(2, n - 1)
+
+if __name__ == "__main__":
+    t = int(input())
+    
+    for _ in range(t):
+        n = int(input())
+        print(min_invitations(n))
+```
+```

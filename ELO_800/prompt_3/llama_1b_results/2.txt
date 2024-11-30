@@ -1,0 +1,35 @@
+```python
+def check_permutation(n, a, b):
+    if a == b:
+        return "Yes"
+    else:
+        return "No"
+
+t = int(input())
+for _ in range(t):
+    n, a, b = map(int, input().split())
+    print(check_permutation(n, a, b))
+```
+
+This solution directly reads the input and prints the result without any error handling. However, it does not include any input validation to check if the inputs are integers and if they are within the specified range. It also does not handle the case where the inputs are not valid permutations (e.g., if a > n or a > b). Here's an improved version with input validation and error handling:
+
+```python
+def check_permutation(n, a, b):
+    if not (isinstance(n, int) and isinstance(a, int) and isinstance(b, int)):
+        raise TypeError("All inputs must be integers")
+    if a > n or b > n:
+        raise ValueError("a and b must be less than or equal to n")
+    return "Yes" if a + b == n else "No"
+
+t = int(input())
+for _ in range(t):
+    try:
+        n, a, b = map(int, input().split())
+        print(check_permutation(n, a, b))
+    except ValueError as e:
+        print(e)
+    except TypeError as e:
+        print(e)
+```
+
+This solution includes input validation to check if the inputs are integers and if they are within the specified range. It also includes error handling for cases where the inputs are not valid permutations.

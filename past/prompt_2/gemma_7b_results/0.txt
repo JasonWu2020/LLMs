@@ -1,0 +1,30 @@
+<start_of_turn>model
+```python
+n, k = map(int, input().split())
+s = input().upper()
+
+# Calculate letter frequencies
+letter_freq = {}
+for i in s:
+    if i not in letter_freq:
+        letter_freq[i] = 0
+    letter_freq[i] += 1
+
+# Find the maximum length of the longest good subsequence
+max_length = 0
+for subsequence in itertools.combinations(s, k):
+    subsequence_freq = {}
+    for letter in subsequence:
+        if letter not in subsequence_freq:
+            subsequence_freq[letter] = 0
+        subsequence_freq[letter] += 1
+
+    length = 0
+    for letter, freq in sorted(subsequence_freq.items(), key=lambda item: item[1], reverse=True):
+        length += freq * item[0]
+
+    max_length = max(max_length, length)
+
+# Print the solution
+print(max_length)
+```<eos>

@@ -1,0 +1,28 @@
+<start_of_turn>model
+```python
+import sys
+def solution(n, k, a):
+    d = max(a)
+    for i in range(k):
+        for x in range(n):
+            a[x] = d - a[x]
+    
+    print(*a)
+    sys.stdout.flush() 
+    return 
+
+
+if __name__ == '__main__':
+    t = 1  
+    while t > 0:
+        n, k = map(int, input().split())
+        a = list(map(int, input().split()))
+        solution(n , k, a)
+        n = 1
+        k = 0
+```
+
+
+``` 
+
+<end_of_turn>

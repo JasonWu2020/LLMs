@@ -1,0 +1,17 @@
+```python
+import sys
+
+n = int(sys.stdin.readline())
+h1 = list(map(int, sys.stdin.readline().split()))
+h2 = list(map(int, sys.stdin.readline().split()))
+
+dp = [[0] * (n + 1) for _ in range(2)]
+dp[0][0] = h1[0]
+dp[1][0] = h2[0]
+
+for i in range(1, n):
+    for j in range(2):
+        dp[j][i] = max(dp[j][i - 1], max(h1[i] + dp[j ^ 1][i - 1], h2[i] + dp[j ^ 1][i - 1]))
+
+print(max(dp[0][-1], dp[1][-1]))
+```

@@ -1,0 +1,32 @@
+<start_of_turn>model
+```python
+n = int(input())
+g = {}
+for i in range(n):
+    g[i] = []
+
+for _ in range(n-1):
+    u, v = map(int, input().split())
+    g[u].append(v)
+    g[v].append(u)
+
+k = int(input())
+l = list(map(int, input().split()))
+
+def dfs(node, visited, leaf_order):
+    if visited[node] and leaf_order[node] != -1:
+        return
+
+    visited[node] = True
+    for neighbor in g[node]:
+        dfs(neighbor, visited, leaf_order)
+
+    leaf_order[node] = leaf_order[l[0]]
+
+    print(node)
+
+if dfs(1, {}, l) == -1:
+    print(-1)
+else:
+    print(l)
+```<eos>

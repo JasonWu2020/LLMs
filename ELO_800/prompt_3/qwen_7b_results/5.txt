@@ -1,0 +1,48 @@
+```python
+import sys
+
+def min_divisible_operations(a: int, b: int) -> int:
+    """ 
+    Function to determine the minimum number of operations needed to make a divisible by b.
+
+    Parameters:
+    a (int): The initial number
+    b (int): The divisor
+
+    Returns:
+    int: Minimum operations needed
+    """
+    # Directly return zero if 'a' is already divisible by 'b'
+    if a % b == 0:
+        return 0
+    
+    # Calculate the minimum operations required using modulo operation
+    return b - a % b
+
+def solve_and_print(test_cases: int) -> None:
+    """
+    Main function that processes multiple test cases based on user input.
+
+    Parameters:
+    test_cases (int): Number of test cases
+    """
+    for _ in range(test_cases):
+        # Read a single line from stdin
+        a_b_input = sys.stdin.readline().strip()
+        
+        # Split the input into two parts: a and b
+        a, b = map(int, a_b_input.split())
+        
+        # Print the solution for the current test case
+        print(min_divisible_operations(a, b))
+
+# Main program execution starts here
+if __name__ == "__main__":
+    # Read the number of test cases from stdin
+    num_test_cases = int(sys.stdin.readline().strip())
+
+    # Process all test cases
+    solve_and_print(num_test_cases)
+```
+
+This alternative solution maintains the essence of solving the problem but changes the function names, the implementation style, and integrates more seamlessly with handling inputs and outputs through standard input/output operations, following the guidelines provided.

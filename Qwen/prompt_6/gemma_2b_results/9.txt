@@ -1,0 +1,24 @@
+<start_of_turn>model
+```python
+n = int(input())
+a = list(map(int, input().split()))
+
+chest_count = 0
+biceps_count = 0
+back_count = 0
+
+for i in range(n):
+    if a[i] == 1:
+        chest_count += 1
+    elif a[i] == 2:
+        biceps_count += 1
+    else:
+       back_count += 1
+
+if chest_count > biceps_count and chest_count > back_count:
+    print(" chest ")
+elif biceps_count > chest_count and biceps_count > back_count:
+    print(" biceps ")
+else:
+    print(" back ")
+```<end_of_turn>

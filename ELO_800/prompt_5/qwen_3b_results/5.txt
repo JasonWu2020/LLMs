@@ -1,0 +1,13 @@
+```python
+def min_moves_to_divisible(a, b):
+    return max(0, b - a % b)
+
+# Reading input
+t = int(input().strip())
+for _ in range(t):
+    a, b = map(int, input().strip().split())
+    # Calculating and printing the result for each test case
+    print(min_moves_to_divisible(a, b))
+```
+
+This Python script reads an integer `t` indicating the number of test cases. For each test case, it reads two integers `a` and `b`, and calculates the minimum number of moves required to make `a` divisible by `b`. It then prints the result for each test case.

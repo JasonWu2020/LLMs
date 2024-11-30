@@ -1,0 +1,43 @@
+<start_of_turn>model
+```python
+t = int(input())
+for _ in range(t):
+    a, b, c = map(int, input().split()) 
+    max_stones = 0
+    if a >= 1 and b >= 2:
+        if c >= 2:
+            max_stones = 2 + (max(2, b) * 2)
+    print(max_stones)
+``` 
+
+
+**Explanation**
+
+
+* **`t = int(input())`**: This line reads the number of test cases and stores it in the variable `t`.
+ 
+* **`for _ in range(t):`**: This loop ensures we process each test case separately.
+
+*  **`a, b, c = map(int, input().split())`**: Reads the three heap sizes as integers and assigns them to the variables `a`, `b`, and `c`.
+
+* **`max_stones = 0`**: Initializes a variable to store the maximum number of stones. 
+
+* **`if a >= 1 and b >= 2:`**: Checks if both the first and second heap have enough stones to be eligible for the operation.
+ 
+* **`if c >= 2:`**:checks if the third heap has enough stones to be eligible for the second operation.
+
+*  **`max_stones = 2 + (max(2, b) * 2)`**:  Calculates the maximum number of stones if the conditions above are met.  We choose the larger number between 2 and the number of stones from the second heap
+
+* **`print(max_stones)`**: Prints the maximum number of stones Alice can get.
+
+
+**Key Steps**
+ 
+* **Understanding the Rules:** Analyze the condition in the problem statement. These conditions represent restrictions.
+* **Logical Reasoning:** The code uses the provided constraints and then calculates the maximum number of stones that can be picked, given Alice's choices. 
+
+
+
+
+
+<end_of_turn>

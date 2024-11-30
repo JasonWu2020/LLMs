@@ -1,0 +1,6 @@
+[/INST] ```python
+for _ in range(int(input())):
+    a, b, c = map(int, input().split())
+    result = max(a, b) if a >= 1 and b >= 1 else max(a, c) if a >= 1 and c >= 2 else max(b, c) if b >= 1 and c >= 1 else 0
+    print(result)
+```</s>

@@ -1,0 +1,28 @@
+<start_of_turn>model
+**Critique:**
+
+This solution reads the input, calculates the cross product of vectors *A* and *B*, and checks if the cross product is equal to the cross product of vectors *A* and *C*. If it is, it prints "YES". Otherwise, it prints "NO".
+
+**Solution:**
+
+```python
+x1, y1, x2, y2, x3, y3 = map(int, input().split())
+a = (x1 - x2) * (y1 - y2)
+b = (x3 - x2) * (y3 - y2)
+if a == b:
+    print("YES")
+else:
+    print("NO")
+```
+
+**Alternative solution:**
+
+```python
+x1, y1, x2, y2, x3, y3 = map(int, input().split())
+a = (x1 - x2) * (y1 - y2)
+b = (x3 - x2) * (y3 - y2)
+if abs(a) == abs(b):
+    print("YES")
+else:
+    print("NO")
+```<eos>

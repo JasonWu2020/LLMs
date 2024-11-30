@@ -1,0 +1,20 @@
+```python
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    max_val = max(a)
+    for _ in range(k % 2):
+        max_val = max(max_val, a[-1] - a[-2])
+        a[-1] = max_val - a[-1]
+    print(*a)
+
+if __name__ == "__main__":
+    solve()
+```
+
+**Output:**
+
+```python
+-199 192
+-10**9 - 10**9
+```

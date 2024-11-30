@@ -1,0 +1,18 @@
+<start_of_turn>model
+**Critique:**
+
+The outputted solution is correct, but it does not read the input correctly. The input should be read as two integers, *a* and *b*, and the output should be printed as two space-separated integers, the maximum number of days when Vasya can wear different socks and the number of days when he can wear the same socks.
+
+**Updated solution:**
+
+```python
+a, b = map(int, input().split())
+print(min(a, b) - 1, max(0, min(a, b) - 1))
+```
+
+**Explanation:**
+
+* The first line of the code reads the input as two integers, *a* and *b*, which represent the number of red and blue socks, respectively.
+* The second line calculates the maximum number of days when Vasya can wear different socks, which is equal to the minimum of *a* and *b* minus 1.
+* The third line calculates the number of days when Vasya can wear the same socks, which is equal to the maximum of 0 and the minimum of *a* and *b* minus the maximum number of days when he can wear different socks.
+* Finally, the two results are printed as two space-separated integers.<eos>

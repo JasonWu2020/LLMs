@@ -1,0 +1,12 @@
+n, k = map(int, input().split())
+s = input()
+a = [0] * k
+for i in s:
+    a[ord(i) - ord('A')] += 1
+b = [a[i] for i in range(k) if a[i] > 0]
+if len(b) == 1 or len(b) == k:
+    print(n)
+else:
+    c = min(b)
+    d = sum(b) - c
+    print(c * k + d)

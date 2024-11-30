@@ -1,0 +1,37 @@
+<start_of_turn>model
+**Critique:**
+The code reads the input, sorts the array of coin values in ascending order, and uses a variable `cur` to keep track of the current coin value. It iterates over the array and checks if the current coin value is the same as the previous coin value. If it is, it increments `res`, otherwise, it updates `cur` to the current coin value. The final value of `res` is printed as the output.
+
+**Solution:**
+```python
+n = int(input())
+a = list(map(int, input().split()))
+a.sort()
+res = 1
+cur = a[0]
+for i in a[1:]:
+    if i == cur:
+        res += 1
+    else:
+        cur = i
+print(res)
+```
+
+**Output:**
+```
+2
+```
+
+**Input:**
+```
+6
+1 2 4 3 3 2
+```
+
+**Output:**
+```
+2
+```
+
+**Explanation:**
+The coins are distributed into two pockets as follows: $[1, 2, 3], [2, 3, 4]$.<eos>

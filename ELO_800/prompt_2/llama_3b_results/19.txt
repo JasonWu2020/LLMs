@@ -1,0 +1,14 @@
+```python
+import math
+
+def find_k(n):
+    return math.floor(math.log2(n))
+
+def main():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        print(find_k(n))
+
+main()
+```

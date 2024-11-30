@@ -1,0 +1,29 @@
+```python
+def find_balanced_substring(t, n, s):
+    for _ in range(t):
+        i = j = k = -1
+        while j < n:
+            count_a = count_b = 0
+            while j < n and (s[j] == 'a' or s[j] == 'b'):
+                if s[j] == 'a':
+                    count_a += 1
+                else:
+                    count_b += 1
+                if count_a == count_b:
+                    k = j + 1
+                j += 1
+            if k != -1:
+                break
+        if k != -1:
+            return f"{k} {j}"
+        return "-1 -1"
+
+# Read input
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()
+    result = find_balanced_substring(t, n, s)
+    # Output the result
+    print(result)
+```

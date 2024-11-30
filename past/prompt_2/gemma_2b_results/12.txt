@@ -1,0 +1,13 @@
+<start_of_turn>model
+```python
+def main():
+  n, m, a, b = map(int, input().split())
+  g0, x, y, z = map(int, input().split())
+  
+  result = 0
+  for i in range(n - a + 1):
+    for j in range(m - b + 1):
+      result += min(list(map(int, list((row for row in zip(list(range(m)), list((-list(map(int, list((row * m + c) % z for c in range(range(m)))))) for row in range(n)))))[i][j])))
+
+main() 
+```<end_of_turn>

@@ -1,0 +1,21 @@
+```python
+def min_pockets(n, coins):
+    coins.sort(reverse=True)
+    pockets = 0
+    for coin in coins:
+        if pockets < len(coins):
+            if coins[pockets] == coin:
+                pockets += 1
+            else:
+                pockets = 1
+    return pockets
+
+n = int(input())
+coins = list(map(int, input().split()))
+print(min_pockets(n, coins))
+```
+
+```
+127
+1 2 3 3 2 4
+```

@@ -1,0 +1,24 @@
+```python
+import sys
+
+def find_route(n):
+    route = []
+    cities = set()
+    
+    for _ in range(n):
+        a, b = map(int, input().split())
+        if a not in cities:
+            route.append(a)
+            cities.add(a)
+        if b not in cities:
+            route.append(b)
+            cities.add(b)
+        route.append(min(a, b))
+        route.append(max(a, b))
+    
+    print(*route)
+
+if __name__ == "__main__":
+    n = int(input())
+    find_route(n)
+```

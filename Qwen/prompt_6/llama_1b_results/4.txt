@@ -1,0 +1,26 @@
+```python
+# -*- coding: utf-8 -*-
+
+def decrypt_string(s):
+    n = int(input())
+    s = input()
+    decrypted_string = ""
+    i = 0
+    while i < n:
+        if i + 1 < n and s[i] == s[i + 1]:
+            decrypted_string += s[i]
+            i += 2
+        else:
+            decrypted_string += s[i]
+            i += 1
+    return decrypted_string
+
+# Test the function
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()
+    print(decrypt_string(s))
+```
+
+This code reads the input string and decrypts it according to the specified rule. It then prints the decrypted string. The decryption process continues until all characters in the input string have been processed.

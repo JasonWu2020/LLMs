@@ -1,0 +1,24 @@
+[/INST] In the given code, the input and output specifications were not considered when printing the solution. Here is the corrected version of the code that adheres to the given input and output specifications:
+
+```python
+import math
+
+def find_maximum_k(n):
+    # Calculate the position of the highest set bit (one's complement)
+    # and round down to the nearest integer
+    k = int(math.log2(n) + 0.5)
+    return k
+
+# Read input and process test cases
+input_data = []
+
+# Read the number of test cases
+t = int(input())
+input_data = [int(x) for x in map(int, input().split())]
+
+# Process each test case and print the result
+for n in input_data:
+    print(find_maximum_k(n))
+```
+
+This code reads the input as a list of integers, processes each test case using the function `find_maximum_k()`, and prints the result for each test case. The input and output specifications are met as described in the problem statement.</s>

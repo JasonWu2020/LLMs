@@ -1,0 +1,22 @@
+```python
+# Required libraries
+import sys
+
+# Reading the input
+input_lines = sys.stdin.read().splitlines()
+
+# Splitting input into parts
+test_cases = int(input_lines[0])
+input_data = [line.split() for line in input_lines[1:]]
+
+# Function to calculate maximum stones
+def max_stones(a, b, c):
+    return 3 * min(b // 2 + c // 2, a)
+
+# Processing each test case
+for i in range(test_cases):
+    # Extracting values for each heap
+    a, b, c = map(int, input_data[i])
+    # Calculating and printing the maximum stones that can be taken
+    print(max_stones(a, b, c))
+```

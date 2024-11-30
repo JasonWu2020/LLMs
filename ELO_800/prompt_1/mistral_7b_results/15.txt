@@ -1,0 +1,15 @@
+[/INST] ```python
+n = int(input())
+handles = []
+for i in range(n):
+ handle, before, after = input().split()
+ handles.append((handle, before, after))
+
+red_handles = [h[0] for h in handles if h[1] >= 2400]
+good = False
+for handle, before, after in handles:
+ if handle in red_handles and before < int(after) and before < 2400:
+ good = True
+ break
+ print("YES" if good else "NO")
+```</s>

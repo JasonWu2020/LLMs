@@ -1,0 +1,18 @@
+```python
+s = input()
+h = input()
+h = [input() for _ in range(5)]
+s = [input() for _ in range(5)]
+for i in range(5):
+    if h[i] == s[0]:
+        if h[i] in h:
+            print("YES")
+            exit()
+    if h[i][1] == s[0][1]:
+        if h[i] in h:
+            print("YES")
+            exit()
+print("NO")
+```
+
+This code reads the input from the user and checks if a card can be played by iterating over each card in the hand and the card on the table. If a card can be played, it prints "YES", otherwise it prints "NO".

@@ -1,0 +1,26 @@
+<start_of_turn>model
+```python
+def solve(n, a, b):
+  for i in range(n):
+    for j in range(i + 1, n):
+      if a >= len(str(i)) and b >= len(str(i)):
+        if a == len(str(i)) and b == len(str(i)):
+          print("Yes")
+      
+# This is the function that you will use to solve the problem.
+
+t = int(input())
+
+for i in range(t):
+    n, a, b = map(int, input().split())
+    solve(n, a, b) 
+```
+
+
+
+**Explanation:** 
+ 
+This Code Reads the  number of test cases (`t`), then it reads `n`, `a`, and `b` from the user input in each test case and then uses the `solve` function to  solve it. 
+
+
+<end_of_turn>

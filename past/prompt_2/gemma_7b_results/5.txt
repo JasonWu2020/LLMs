@@ -1,0 +1,10 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    s = input().strip()
+    n = len(s)
+    ps = sum(ord(s[i]) - ord(s[0]) // 2 for i in range(n))
+    print(min(ps) + n - 1)
+```<eos>

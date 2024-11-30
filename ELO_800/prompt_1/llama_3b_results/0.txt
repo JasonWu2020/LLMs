@@ -1,0 +1,26 @@
+```python
+import sys
+
+def solve():
+    n, k = map(int, input().split())
+    s = input()
+
+    freq = [0] * 26
+    for char in s:
+        freq[ord(char) - ord('A')] += 1
+
+    if max(freq) == 0:
+        print(0)
+        return
+
+    ans = 0
+    for i in range(k):
+        ans += min(freq[i], freq[i] // 2)
+
+    print(ans * 2)
+
+t = 1
+while t:
+    solve()
+    t -= 1
+```

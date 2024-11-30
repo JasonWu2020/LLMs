@@ -1,0 +1,54 @@
+The original solution has a few issues:
+
+1. The variable names `a`, `b`, and `c` are not descriptive. It's better to use more descriptive names like `heap1`, `heap2`, and `heap3`.
+2. The solution does not handle the case where one or more of the heaps have zero stones. In this case, the solution should return the sum of the stones in the other two heaps.
+3. The solution does not read the input correctly. It should read the number of test cases and the values of `a`, `b`, and `c` for each test case from the standard input.
+4. The solution does not print the output correctly. It should print the maximum number of stones that Alice can collect for each test case.
+
+Here's an updated solution that addresses these issues:
+
+```python
+def max_stones(heap1, heap2, heap3):
+    """
+    Calculate the maximum number of stones Alice can collect.
+
+    Args:
+    heap1 (int): The number of stones in the first heap.
+    heap2 (int): The number of stones in the second heap.
+    heap3 (int): The number of stones in the third heap.
+
+    Returns:
+    int: The maximum number of stones Alice can collect.
+    """
+    # If any of the heaps have zero stones, return the sum of the stones in the other two heaps
+    if heap1 == 0:
+        return heap2 + heap3
+    if heap2 == 0:
+        return heap1 + heap3
+    if heap3 == 0:
+        return heap1 + heap2
+    
+    # Calculate the minimum number of stones in the first two heaps
+    min_ab = min(heap1, 2*heap2)
+    
+    # Calculate the minimum number of stones in the second and third heaps
+    min_bc = min(heap2, 2*heap3)
+    
+    # Calculate the maximum number of stones Alice can collect
+    max_stones = min_ab + 2*min_bc
+    
+    return max_stones
+
+# Read the number of test cases
+t = int(input())
+
+# Process each test case
+for _ in range(t):
+    # Read the number of stones in each heap
+    heap1, heap2, heap3 = map(int, input().split())
+    
+    # Calculate and print the maximum number of stones Alice can collect
+    print(max_stones(heap1, heap2, heap3))
+```
+
+This solution reads the input correctly, handles the case where one or more of the heaps have zero stones, and prints the output correctly. It also uses more descriptive variable names and includes comments to explain the logic of the solution.

@@ -1,0 +1,20 @@
+```python
+def longest_good_subsequence(n, k, s):
+    freq = [0] * k
+    for char in s:
+        freq[ord(char) - ord('A')] += 1
+
+    dp = [0] * k
+    for i in range(n):
+        for j in range(1, k):
+            if freq[j-1] > 0:
+                dp[j] = max(dp[j], dp[j-1] - freq[j-1] + 1)
+        freq[freq.index(max(freq))] -= 1
+
+    return max(dp)
+
+
+n, k = map(int, input().split())
+s = input()
+print(longest_good_subsequence(n, k, s))
+```

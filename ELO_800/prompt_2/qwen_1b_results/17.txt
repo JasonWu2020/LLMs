@@ -1,0 +1,32 @@
+```python
+import sys
+input = sys.stdin.readline
+from collections import deque
+
+def min_moves(n, original, target):
+    queue = deque([(original, 0)])
+    
+    visited = set()
+    while queue:
+        current, moves = queue.popleft()
+        
+        if tuple(current) == tuple(target):
+            return moves
+        
+        for i in range(10):
+            new_current = list(current)
+            if 0 <= new_current[i] - 1 < 10:
+                new_current[i] -= 1
+            elif new_current[i] + 1 > 9:
+                new_current[i] += 1
+            
+            if tuple(new_current) not in visited:
+                visited.add(tuple(new_current))
+                queue.append((new_current, moves + 1))
+
+n = int(input())
+original = input().strip()
+target = input().strip()
+
+print(min_moves(n, original, target))
+```

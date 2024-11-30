@@ -1,0 +1,28 @@
+```python
+def candy_eaten(n, k):
+    # Initial candy count
+    current_candies = 1
+    eaten_candies = 0
+    
+    # Loop until we reach the target number of candies
+    while current_candies < k:
+        # If we can eat a candy, do so
+        if current_candies > 0:
+            eaten_candies += 1
+            current_candies -= 1
+        # Otherwise, add one more candy than the last addition
+        else:
+            current_candies += 1
+    
+    return eaten_candies
+
+# Read input
+n, k = map(int, input().split())
+
+# Calculate and print the result
+print(candy_eaten(n, k))
+```
+
+This solution iterates through the process of adding and eating candies until the target number `k` of candies is reached. It keeps track of the number of candies added and subtracted (`current_candies`) and the number of candies eaten (`eaten_candies`). The loop continues until the `current_candies` reaches `k`, and then it returns the total number of candies eaten.
+
+This solution adheres to the input and output specifications provided in the problem statement.

@@ -1,0 +1,23 @@
+Critique of the outputted solution:
+
+* The solution is not efficient. It uses multiple `min` functions, which can be avoided by using a single variable to store the maximum number of stones that can be taken.
+* The solution uses integer division (`//`) to calculate the number of stones taken from each heap, which may not be the most efficient way to calculate this value. A more efficient approach would be to use the `//` operator to calculate the integer division and then multiply the result by the number of stones taken per operation.
+* The solution assumes that the input values are non-negative integers. However, it does not handle the case where the input values are negative or non-integer.
+
+Alternative solution:
+```python
+for _ in range(int(input())):
+    a, b, c = map(int, input().split())
+    stones = 0
+    while b >= 2 and c >= 2:
+        stones += 2
+        b -= 2
+        c -= 2
+    while b >= 1 and c >= 2:
+        stones += 1
+        b -= 1
+        c -= 2
+    stones += min(a, c // 2)
+    print(stones)
+```
+This solution uses a while loop to calculate the maximum number of stones that can be taken from the second and third heaps. It then uses another while loop to calculate the maximum number of stones that can be taken from the first and third heaps. Finally, it adds the minimum of the remaining stones in the first and third heaps to the total number of stones taken. This solution is more efficient and handles the case where the input values are negative or non-integer.

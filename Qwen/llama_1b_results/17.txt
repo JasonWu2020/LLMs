@@ -1,0 +1,60 @@
+Here is the updated Python code:
+
+```python
+def min_moves(n, s, t):
+    """
+    Calculate the minimum number of moves to open a combination.
+
+    Args:
+    n (int): The number of disks on the combination lock.
+    s (str): The original state of the disks.
+    t (str): The target combination.
+
+    Returns:
+    int: The minimum number of moves to open the combination.
+    """
+    n = len(s)
+    t = list(t)
+
+    # Initialize the dp array
+    dp = [[float('inf')] * (n + 1) for _ in range(n + 1)]
+    dp[0][0] = 0
+
+    # Initialize the result
+    res = 0
+
+    # Iterate over the disks
+    for i in range(1, n + 1):
+        # Iterate over the possible rotations
+        for j in range(n + 1):
+            # If the current disk is out of order
+            if t[i - 1] > t[j - 1]:
+                # Rotate the disk to the left
+                if j > 0 and t[j - 1] < t[j]:
+                    dp[i][j] = min(dp[i][j], dp[i - 1][j] + 1)
+                # Rotate the disk to the right
+                elif j < n and t[j + 1] < t[j]:
+                    dp[i][j] = min(dp[i][j], dp[i - 1][j] + 1)
+            # If the current disk is in order
+            else:
+                # If the current disk is out of order
+                if t[i - 1] > t[j - 1]:
+                    # Rotate the disk to the left
+                    dp[i][j] = min(dp[i][j], dp[i - 1][j] + 1)
+                # Rotate the disk to the right
+                elif t[i - 1] < t[j - 1]:
+                    dp[i][j] = min(dp[i][j], dp[i - 1][j] + 1)
+
+            # Update the result
+            res = min(res, dp[i][j])
+
+    return res
+
+n = int(input())
+s = input()
+t = input()
+
+print(min_moves(n, s, t))
+```
+
+This updated code first reads the number of disks `n` and the original state of the disks `s` and the target combination `t`. It then initializes the dp array and the result. It iterates over the disks and the possible rotations, updating the dp array and the result as it goes. The result is the minimum number of moves required to open the combination.

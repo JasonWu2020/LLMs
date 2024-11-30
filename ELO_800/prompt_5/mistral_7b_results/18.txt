@@ -1,0 +1,22 @@
+[/INST] ```python
+import sys
+from itertools import accumulate, chain, compress, takewhile
+
+def common_subsequence(a, b):
+ n, m = len(a), len(b)
+ if not n or not m: return [] if n and m else a or b
+ s1, s2 = accumulate(chain([0], a), lambda x, y: x+y), accumulate(chain([0], b), lambda x, y: x+y)
+ i, j = 0, 0
+ res = []
+ while i < n and j < m:
+ if s1[i] <= s2[j]: res.append(a[i]); i += 1
+ else: j += 1
+ return res if i < n and j < m else []
+
+for _ in range(int(input())):
+ a, b = list(map(list, zip(*map(lambda x: list(map(int, input().split())[1:], repeat(input().split(), 2)))))
+ ans = common_subsequence(a, b)
+ if not ans: print("NO")
+ else: print("YES")
+ print(len(ans), *ans, sep=" ")
+```</s>

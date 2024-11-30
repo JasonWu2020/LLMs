@@ -1,0 +1,49 @@
+Here's a critique of the original solution:
+
+* The code correctly calculates the minimum of `a` and `b` to determine the number of days Vasya can wear the same socks. However, it doesn't correctly calculate the maximum number of days Vasya can wear different socks.
+* The code prints the result as a tuple, but the problem statement requires the output to be two space-separated integers.
+
+Here's an updated solution that correctly calculates the maximum number of days Vasya can wear different socks and the number of days he can wear the same socks:
+
+```python
+def calculate_days(a, b):
+    """
+    Calculate the maximum number of days Vasya can wear different socks and 
+    the number of days he can wear the same socks.
+
+    Args:
+    a (int): The number of red socks.
+    b (int): The number of blue socks.
+
+    Returns:
+    tuple: A tuple containing the maximum number of days for different socks and 
+           the number of days for the same socks.
+    """
+    # Calculate the maximum number of days Vasya can wear different socks
+    different_socks_days = min(a, b)
+    
+    # Calculate the number of days Vasya can wear the same socks
+    same_socks_days = 0
+    if a > 0 and b > 0:
+        same_socks_days = min(a - 1, b - 1)
+    else:
+        same_socks_days = 0
+    
+    # Calculate the total number of socks remaining after wearing different socks
+    remaining_socks = a - different_socks_days + b - different_socks_days
+    
+    # Calculate the number of days Vasya can wear the same socks after wearing different socks
+    same_socks_days += remaining_socks // 2
+    
+    return different_socks_days, same_socks_days
+
+
+# Read the input from the user
+a, b = map(int, input().split())
+
+# Calculate and print the result
+different_socks_days, same_socks_days = calculate_days(a, b)
+print(different_socks_days, same_socks_days)
+```
+
+This updated solution correctly calculates the maximum number of days Vasya can wear different socks and the number of days he can wear the same socks, and prints the result as two space-separated integers.

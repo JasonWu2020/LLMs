@@ -1,0 +1,27 @@
+<start_of_turn>model
+```python
+def is_stable(board, size):
+  n = size
+  matrix = [ [0 for x in range(n)] for x in range(n)]
+  for i in range(0, n):
+      for j in range(0, n):
+          if board[i][j] == 1:
+              matrix[i][j] = 1
+
+  # ...code goes here...
+
+
+def solve_problem(n, k):
+    # ...code goes here...
+
+if __name__ == "__main__":  
+    t = int(input())
+    for _ in range(t):
+  
+        n, k = map(int, input().split())
+        solve_problem(n, k) 
+``` 
+
+
+
+Let me know if you would like me to elaborate on this code. <end_of_turn>

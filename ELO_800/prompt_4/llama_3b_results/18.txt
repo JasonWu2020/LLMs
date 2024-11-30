@@ -1,0 +1,47 @@
+**Critique of the original solution:**
+
+*   The solution uses sets to find the intersection of the two arrays, which is a good approach for this problem. However, it does not handle the case where there are duplicate elements in the arrays.
+*   The solution uses two pointers to iterate through the sorted arrays and find the common elements. This approach is efficient and works well for this problem.
+*   However, the solution does not handle the case where one of the arrays is empty. In this case, the solution should return the non-empty array as the result.
+*   The solution does not handle the case where there is only one common element. In this case, the solution should return the common element as the result.
+
+**Alternative solution:**
+
+```python
+```python
+import sys
+
+def find_common_subsequence(a, b):
+    if not a or not b:
+        return "YES\n1\n" + str(min(a + b))
+    a_set = set(a)
+    b_set = set(b)
+    common = a_set & b_set
+    if not common:
+        return "NO"
+    a.sort()
+    b.sort()
+    result = []
+    i, j = 0, 0
+    while i < len(a) and j < len(b):
+        if a[i] == b[j]:
+            result.append(a[i])
+            i += 1
+            j += 1
+        elif a[i] < b[j]:
+            i += 1
+        else:
+            j += 1
+    if i!= len(a) and j!= len(b):
+        return "NO"
+    if len(result) == 1:
+        return "YES\n1\n" + str(result[0])
+    return "YES\n" + str(len(result)) + "\n" + " ".join(map(str, result))
+
+t = int(input())
+for _ in range(t):
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    print(find_common_subsequence(a, b))
+```

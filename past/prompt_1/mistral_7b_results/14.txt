@@ -1,0 +1,19 @@
+[/INST] ```python
+import sys
+
+n, m = map(int, sys.stdin.readline().split())
+maze = [list(map(lambda x: x if x != "S" else (0, 0), line)) for line in sys.stdin.buffer.readline().decode().splitlines()]
+x, y = 0, 0
+dx, dy = 0, 0
+
+while maze[y][x] != "#":
+    maze[y][x] = ord(".") if maze[y][x] in ".#" else ord(".") + 1
+    next_x, next_y = x + dx, y + dy
+    if 0 <= next_x < m and 0 <= next_y < n and maze[next_y][next_x] != "#":
+        x, y, dx, dy = next_x, next_y, dy, -dx
+
+if dx == 0:
+    print("Yes")
+else:
+    print("No")
+```</s>

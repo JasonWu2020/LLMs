@@ -1,0 +1,30 @@
+```python
+
+import sys
+from collections import *
+from math import gcd
+from bisect import *
+from heapq import *
+
+def solve():
+    n, k = map(int, input().split())
+    arr = list(map(int, input().split()))
+
+    ans = []
+    for i in range(n):
+        ans.append(max(arr[i], arr[i] + n - i))
+
+    for i in range(k % 2):
+        if k % 2 == 0:
+            ans.append(max(arr[-1] - arr[-2]))
+        else:
+            ans.append(arr[-1] - (arr[-1] + n - 1))
+
+    print(*ans)
+
+if __name__ == "__main__":
+    t = int(input())
+    for _ in range(t):
+        solve()
+
+```

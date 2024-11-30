@@ -1,0 +1,27 @@
+```python
+def determine_most_exercised_muscle(n, exercises):
+    chest_count = exercises[0]
+    biceps_count = exercises[1]
+    back_count = exercises[2]
+    
+    for i in range(3, n, 3):
+        chest_count += exercises[i]
+        biceps_count += exercises[i + 1]
+        back_count += exercises[i + 2]
+    
+    max_count = max(chest_count, biceps_count, back_count)
+    if max_count == chest_count:
+        return "chest"
+    elif max_count == biceps_count:
+        return "biceps"
+    else:
+        return "back"
+
+# Example usage
+# Uncomment these lines to test your function with provided data points
+# n = int(input().strip())
+# exercises = list(map(int, input().strip().split()))
+# print(determine_most_exercised_muscle(n, exercises))
+```
+
+This Python script takes an integer `n` followed by a list of `n` integers representing how many times each type of exercise is repeated. It then determines which muscle receives the most repetitions based on the given pattern and prints the corresponding muscle name.

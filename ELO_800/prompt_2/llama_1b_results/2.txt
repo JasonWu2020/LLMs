@@ -1,0 +1,23 @@
+```python3.8
+import sys
+
+def solve():
+    for _ in range(int(input())):
+        n, a, b = map(int, input().split())
+        if a + b!= n:
+            print("No")
+            continue
+        if a == 1 and b == 1:
+            print("Yes")
+            continue
+        if b == n:
+            print("Yes")
+            continue
+        if a > b:
+            print("Yes")
+            continue
+        print("No")
+
+if __name__ == "__main__":
+    solve()
+```

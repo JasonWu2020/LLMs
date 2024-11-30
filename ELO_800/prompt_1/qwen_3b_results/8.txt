@@ -1,0 +1,6 @@
+```python
+for _ in range(int(input())):
+    a, b, c = map(int, input().split())
+    max_stones = min(a + 2 * b, b + 2 * c)
+    print(max_stones)
+```

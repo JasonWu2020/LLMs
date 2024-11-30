@@ -1,0 +1,27 @@
+```python
+import sys
+
+n = int(input())
+a = list(map(int, input().split()))
+
+chest = 0
+biceps = 0
+back = 0
+
+for i in range(n):
+    if (i % 3) == 0:
+        chest += a[i]
+    elif (i % 3) == 1:
+        biceps += a[i]
+    else:
+        back += a[i]
+
+max_val = max(chest, biceps, back)
+
+if max_val == chest:
+    print("chest")
+elif max_val == biceps:
+    print("biceps")
+else:
+    print("back")
+```

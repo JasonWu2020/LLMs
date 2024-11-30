@@ -1,0 +1,14 @@
+[/INST] ```python
+from math import ceil, floor
+
+l, d, v, g, r = map(int, input().split())
+
+green_segments = floor((l - d) / (g + r)) * g + g
+time_to_traffic_light = g if v > 0 else 0
+car_speed = v if v > 0 else -v
+
+total_time = green_segments * (g + r) + time_to_traffic_light
+time_to_reach_b = (l - d) / abs(car_speed) if car_speed != 0 else green_segments * g
+
+print(min(total_time, time_to_reach_b))
+```</s>

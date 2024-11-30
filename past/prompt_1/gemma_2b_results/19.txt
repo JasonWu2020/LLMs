@@ -1,0 +1,45 @@
+<start_of_turn>model
+```python
+def solve(n, edges, leaves):
+  adj = [[] for _ in range(n + 1)]
+  for u, v in edges:
+    adj[u].append(v)
+    adj[v].append(u)
+  visited = [False] * (n + 1)
+  stack = [1]
+  while stack:
+    vertex = stack.pop()
+    visited[vertex] = True
+    for neighbor in adj[vertex]:
+      if not visited[neighbor]:
+        visited[neighbor] = True
+        stack.append(neighbor)
+  leaf_order = [i for i in range(n + 1) if visited[i]]
+  if leaf_order:
+    route = []
+  else:
+    return -1
+  
+  for i in range(len(leaf_order)):
+    for j in range(i, len(leaf_order)):
+      if leaf_order[j] - leaf_order[i] == 1:
+        route.append(leaf_order[i])
+  return route
+
+n, m = map(int, input().split()) 
+edges = []
+for _ in range(m):
+  u, v = map(int, input().split())
+  edges.append((u, v))
+
+k = int(input()) 
+leaves = list(map(int, input().split()))
+
+route = solve(n, edges, leaves)
+
+if route != -1:
+  print(*route)
+else:
+  print(-1)
+
+```<end_of_turn>

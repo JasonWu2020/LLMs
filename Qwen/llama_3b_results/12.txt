@@ -1,0 +1,56 @@
+The original solution has some issues:
+
+1. It does not handle the case where the entire string is balanced.
+2. It does not handle the case where there are multiple balanced substrings.
+
+Here is an updated solution that addresses these issues:
+
+```python
+def find_balanced_substring(s):
+    """
+    Finds the first balanced substring in a given string of 'a's and 'b's.
+
+    Args:
+    s (str): The input string.
+
+    Returns:
+    tuple: The indices of the first balanced substring, or (-1, -1) if no such substring exists.
+    """
+    n = len(s)
+    for i in range(n):
+        count_a = 0
+        count_b = 0
+        for j in range(i, n):
+            if s[j] == 'a':
+                count_a += 1
+            elif s[j] == 'b':
+                count_b += 1
+            if count_a == count_b:
+                return (i + 1, j + 1)
+    # Check if the entire string is balanced
+    if count_a == count_b:
+        return (1, n)
+    return (-1, -1)
+
+
+def main():
+    """
+    Reads the number of test cases, then for each test case, reads the length of the string and the string itself,
+    and prints the indices of the first balanced substring, or (-1, -1) if no such substring exists.
+    """
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        s = input()
+        result = find_balanced_substring(s)
+        if result == (-1, -1):
+            print(-1, -1)
+        else:
+            print(*result)
+
+
+if __name__ == "__main__":
+    main()
+```
+
+This updated solution checks if the entire string is balanced after iterating over all possible substrings. If the entire string is balanced, it returns (1, n), which represents the indices of the entire string.

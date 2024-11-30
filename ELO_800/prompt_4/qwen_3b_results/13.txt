@@ -1,0 +1,13 @@
+```python
+def min_password_length(n, arr):
+    arr.sort()
+    unique_elements = set(arr)
+    return len(unique_elements)
+
+# Reading input
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    arr = list(map(int, input().split()))
+    print(min_password_length(n, arr))
+```

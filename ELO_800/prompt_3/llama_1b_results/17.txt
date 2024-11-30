@@ -1,0 +1,15 @@
+```python
+def min_moves(n, s, t):
+    # Calculate the minimum number of moves required to open the combination
+    ans = 0
+    for i in range(n):
+        t = t[::-1]
+        for j in range(n):
+            ans += abs(ord(s[j] - t[j])
+    return ans
+
+n = int(input())
+s = input()
+t = input()
+print(min_moves(n, s, t))
+```

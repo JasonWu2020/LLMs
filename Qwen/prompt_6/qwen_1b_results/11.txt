@@ -1,0 +1,21 @@
+```python3.8
+# Read the input values k and r
+k, r = map(int, input().split())
+
+# Initialize variables to store the minimum number of shovels needed and the total cost
+min_shovels_needed = float('inf')
+total_cost = 0
+
+# Iterate over possible numbers of shovels to buy
+for num_shovels in range(1, k + 1):
+    # Calculate the total cost if buying 'num_shovels' shovels
+    total_cost += num_shovels * k
+    
+    # Check if the total cost is less than or equal to the current minimum
+    if total_cost <= min_shovels_needed:
+        min_shovels_needed = total_cost
+        
+# Print the result
+print(min_shovels_needed)
+```
+This Python script follows the guidelines provided and reads the inputs `k` and `r`, then iterates through all possible combinations of shovels to find the minimum number needed to cover the total cost with no change.

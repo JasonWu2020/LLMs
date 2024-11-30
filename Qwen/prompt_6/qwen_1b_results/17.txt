@@ -1,0 +1,35 @@
+```python3.8
+import sys
+from math import inf
+
+def min_moves_to_open_lock(n, initial_state, target_combination):
+    # Initialize distance matrix
+    dist = [[inf] * n for _ in range(n)]
+    
+    # Fill distance matrix
+    for i in range(n):
+        dist[i][i] = 0
+    
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                if dist[i][j] > dist[i][k] + dist[k][j]:
+                    dist[i][j] = dist[i][k] + dist[k][j]
+    
+    # Calculate minimum moves required
+    min_moves = inf
+    for i in range(n):
+        if dist[initial_state.index('0')][target_combination.index(str(i))] < min_moves:
+            min_moves = dist[initial_state.index('0')][target_combination.index(str(i))]
+    
+    return min_moves
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    initial_state = list(map(int, input().strip()))
+    target_combination = list(map(int, input().strip()))
+    
+    result = min_moves_to_open_lock(n, initial_state, target_combination)
+    print(result)
+```
+This Python script reads an input file containing the number of disks (`n`), the initial state of the disks, and the target combination. It then calculates and prints the minimum number of moves needed to transform the initial state into the target combination using dynamic programming. The provided code adheres to the specified format, including importing necessary modules, defining the function `min_moves_to_open_lock`, reading input, calculating distances, finding the optimal path, and printing the result.

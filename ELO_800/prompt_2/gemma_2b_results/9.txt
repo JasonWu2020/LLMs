@@ -1,0 +1,20 @@
+<start_of_turn>model
+```python
+n = int(input())
+a = list(map(int, input().split()))
+
+count = {}
+for i in range(n):
+    if a[i] not in count:
+        count[a[i]] = 0
+    count[a[i]] += 1
+max = 0
+max_muscle = ''
+for key, value in count.items():
+    if value > max:
+        max = value
+        max_muscle = key
+
+print(max_muscle)
+``` 
+<end_of_turn>

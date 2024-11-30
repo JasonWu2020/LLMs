@@ -1,0 +1,21 @@
+<start_of_turn>model
+```python
+#!/usr/bin/env python3.8
+
+def main():
+    t = int(input())
+
+    for _ in range(t):
+        s = input()
+        t = input()
+        print(lexicographically_smallest_permutation(s, t))
+
+def lexicographically_smallest_permutation(s, t):
+    # code to solve your problem here
+    ...
+    
+    return s
+
+if __name__ == "__main__":
+    main() 
+```<end_of_turn>

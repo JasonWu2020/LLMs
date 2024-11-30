@@ -1,0 +1,37 @@
+```python
+from typing import List
+
+def infinity_clock(a: List[int], k: int) -> List[int]:
+    """
+    Simulates the operation described in the problem statement for k times on the array a.
+    
+    Parameters:
+    a (List[int]): The initial array of integers.
+    k (int): The number of operations to perform.
+    
+    Returns:
+    List[int]: The array after performing k operations.
+    """
+    for _ in range(k):
+        max_val = max(a)
+        for i in range(len(a)):
+            a[i] -= max_val
+    return a
+
+# Reading input
+import sys
+input = sys.stdin.read
+data = input().split()
+
+# Convert data into integers or lists as needed
+n_k = list(map(int, data.pop(0).split()))
+n, k = n_k[:2]
+
+# Perform the simulation
+result = infinity_clock(list(map(int, data)), k)
+
+# Printing the result
+print(' '.join(map(str, result)))
+```
+
+This Python script solves the problem by simulating the described operations using a loop for `k` iterations. It reads the input values, performs the necessary calculations, and outputs the final state of the array after the specified number of operations.

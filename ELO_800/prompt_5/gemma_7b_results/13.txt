@@ -1,0 +1,13 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    a_sum = sum(a)
+    a_unique = len(set(a))
+
+    print(a_unique)
+```<eos>

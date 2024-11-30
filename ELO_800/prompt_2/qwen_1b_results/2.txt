@@ -1,0 +1,19 @@
+```python3
+import sys
+
+def check_permutations(n, a, b):
+    # Check if it's possible to have a permutation with the required properties
+    return True if a == 1 and b == 1 else False
+
+# Read input
+input = sys.stdin.read
+data = input().split()
+
+t = int(data[0])
+for _ in range(t):
+    n, a, b = map(int, data[1].strip('][').split(', '))
+    
+    result = "Yes" if check_permutations(n, a, b) else "No"
+    print(result)
+```
+```

@@ -1,0 +1,51 @@
+# Python Critique & New Solution
+
+### Critique:
+
+1. **Function Naming:** The function name `find_lcs` could be misleading, since it suggests a function that finds the longest common subsequence of `a` and `b`. In reality, it just checks for a common subsequence of unique elements, not the longest common subsequence.
+
+2. **Variable Naming:** `lcs` (longest common subsequence) might be confused with the actual `lcs` array created here. It would be clearer to rename this variable to reflect its content more accurately, such as `found_elements`.
+
+3. **Efficiency Concerns:** The current approach, although working fine for this problem's constraints, may not perform optimally for larger inputs due to repeated comparisons between elements in `a` and `b` when looking for common elements.
+
+### New Solution:
+
+```python
+from collections import Counter
+
+def find_subsequence(a, b):
+    # Count occurrences of each element in a and b
+    count_a = Counter(a)
+    count_b = Counter(b)
+
+    # Get unique elements in a that appear in b
+    common_elements = {element for element in a if element in b}
+
+    # Check if common_elements is non-empty
+    if not common_elements:
+        return 'NO'
+
+    # Sort common_elements and append them in sorted order to the result
+    result = [' '.join(map(str, sorted(common_elements)))]
+
+    return '\n'.join(result)
+
+# Read input and process queries
+T = int(input())
+for _ in range(T):
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    print(find_subsequence(A, B))
+```
+
+### Explanation:
+
+- **Use of Counter:** Instead of iterating over each element in `a` and `b` to check if they're common, a `Counter` object is used to efficiently count occurrences of each element in both lists. This allows us to quickly see which elements are common.
+
+- **Finding Unique Common Elements:** We create a set of elements that are present in both `a` and `b` using `set()`, which automatically eliminates duplicates.
+
+- **Sorting and Result Formation:** The common elements are sorted and returned directly in the format specified in the question. This approach reduces the time complexity by avoiding unnecessary comparisons and computations.
+
+This solution leverages Python’s built-in data structures to improve readability and efficiency, especially for handling large inputs more effectively than the previous version.

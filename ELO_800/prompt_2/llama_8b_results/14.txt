@@ -1,0 +1,12 @@
+```python
+import sys
+
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    d = max(a)
+    if k % 2 == 0:
+        print(*a)
+    else:
+        print(*[d - x for x in a])
+```

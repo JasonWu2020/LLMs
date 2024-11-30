@@ -1,0 +1,42 @@
+```python
+import sys
+
+input = sys.stdin.read
+data = input().split()
+
+t = int(data[0])
+data = data[1:]
+
+for _ in range(t):
+    n, m = map(int, data[:2])
+    data = data[2:n + 2]
+    a = list(map(int, data))
+    data = data[n + 2:n + 2 + m]
+    b = list(map(int, data))
+
+    # Find common subsequences
+    result = []
+    i, j = 0, 0
+    while i < len(a) and j < len(b):
+        if a[i] == b[j]:
+            result.append(a[i])
+            i += 1
+            j += 1
+        elif a[i] > b[j]:
+            j += 1
+        else:
+            i += 1
+
+    # Check if result is valid for both sequences
+    if len(result) == min(len(a), len(b)):
+        print("YES")
+        print(len(result), " ".join(map(str, result)))
+    else:
+        print("NO")
+```
+
+This solution reads the input as specified and attempts to find a common subsequence between the two arrays `a` and `b`. It iterates through both arrays simultaneously, comparing their elements at the current indices. When elements match, it adds the element to the result list and moves both pointers forward. If elements don't match, it advances the pointer of the array that currently has the smaller element value.
+
+After constructing the result list, it checks if the length of the result list is equal to the minimum length of the two input arrays. If it is, it prints "YES" followed by the length of the result list and the elements of the result list. Otherwise, it prints "NO". 
+
+Please note that this solution assumes that the input follows the format provided in the question. If the input structure is different, adjustments might be necessary.

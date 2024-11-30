@@ -1,0 +1,9 @@
+<start_of_turn>model
+```python
+n = int(input().strip()) 
+disks = list(map(int, input().strip()))
+target = list(map(int, input().strip()))
+print(min(len(disks)-i for i in (list(range(len(disks)))))  
+``` 
+
+<end_of_turn>

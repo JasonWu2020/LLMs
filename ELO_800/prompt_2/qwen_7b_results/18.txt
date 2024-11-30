@@ -1,0 +1,32 @@
+```python
+from typing import List
+
+def find_common_subsequence(t: int, n: int, m: int, a: List[int], b: List[int]) -> None:
+    for _ in range(t):
+        k = max(len(a), len(b))
+        c = []
+        for i in range(n):
+            if a[i] in set(b):
+                c.append(a[i])
+                k = min(k, len(c))
+        for i in range(m):
+            if b[i] in set(a):
+                c.append(b[i])
+                k = min(k, len(c))
+        
+        if not c:
+            print("NO")
+        else:
+            print("YES")
+            print(k)
+            print(*sorted(set(c)), sep=" ")
+
+if __name__ == "__main__":
+    t = int(input())
+    for _ in range(t):
+        n, m = map(int, input().split())
+        a = list(map(int, input().split()))
+        b = list(map(int, input().split()))
+        find_common_subsequence(1, n, m, a, b)
+```
+```

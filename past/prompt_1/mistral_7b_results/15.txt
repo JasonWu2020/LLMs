@@ -1,0 +1,30 @@
+[/INST] ```python
+import math
+import collections
+
+n = int(input())
+edges = [list(map(int, input().split())) for _ in range(n-1)]
+points = [list(map(int, input().split())) for _ in range(n)]
+
+graph = collections.defaultdict(list)
+for u, v in edges:
+ graph[u].append(v)
+ graph[v].append(u)
+
+def distance_sq(p1, p2):
+ return sum((a-b) ** 2 for a, b in zip(p1, p2))
+
+segments = []
+for p in points:
+ parent = p[0]
+ for child in graph[parent]:
+ point2 = points[child-1]
+ seg = [p, point2]
+ segments.append((distance_sq(p, point2), seg))
+ segments.sort()
+
+ans = [0] * n
+for s in segments:
+ ans[s[1][0]] = ans[s[1][1]] = s[0] ** 0.5
+ print(*ans)
+```</s>

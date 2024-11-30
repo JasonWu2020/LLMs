@@ -1,0 +1,14 @@
+```python
+def solve():
+    t = int(input())
+    ans = [0] * t
+    for i in range(t):
+        n = int(input())
+        if n == 1:
+            ans[i] = 1
+        else:
+            ans[i] = sum(int(digit) for digit in str(n) if digit!= '0') - 1
+    print(*ans)
+
+solve()
+```

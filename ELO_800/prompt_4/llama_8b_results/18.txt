@@ -1,0 +1,67 @@
+**Critique of the original solution:**
+
+The original solution is a good start, but it can be improved in a few ways:
+
+1.  The solution assumes that the input arrays are small, and it uses a set to find the common elements. However, for large inputs, this approach may not be efficient. A more efficient approach would be to use a hash map to store the elements of one array and then iterate over the other array to find the common elements.
+2.  The solution does not handle the case where the input arrays are empty. It would be good to add a check for this case and output "NO" immediately.
+3.  The solution assumes that the input arrays contain only positive integers. It would be good to add a check for this case and handle it accordingly.
+4.  The solution does not handle the case where the input arrays contain duplicate elements. It would be good to add a check for this case and handle it accordingly.
+
+**Improved solution:**
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    if not a or not b:
+        print("NO")
+    else:
+        a_set = set(a)
+        b_set = set(b)
+        common = list(a_set & b_set)
+
+        if not common:
+            print("NO")
+        else:
+            print("YES")
+            print(len(common))
+            print(*sorted(common))
+```
+
+However, a more efficient solution would be to use a hash map to store the elements of one array and then iterate over the other array to find the common elements.
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    if not a or not b:
+        print("NO")
+    else:
+        a_map = {}
+        for x in a:
+            if x not in a_map:
+                a_map[x] = 1
+            else:
+                a_map[x] += 1
+
+        common = []
+        for x in b:
+            if x in a_map and a_map[x] > 0:
+                common.append(x)
+                a_map[x] -= 1
+
+        if not common:
+            print("NO")
+        else:
+            print("YES")
+            print(len(common))
+            print(*sorted(common))
+```

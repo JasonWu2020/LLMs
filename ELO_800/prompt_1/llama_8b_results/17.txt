@@ -1,0 +1,18 @@
+```python
+import sys
+
+n = int(input())
+a = input()
+b = input()
+
+def calc(a, b):
+    ans = 0
+    for i in range(n):
+        d = abs((ord(b[i]) - ord(a[i])) % 10)
+        if d > 5:
+            d = 10 - d
+        ans += d
+    return ans
+
+print(calc(a, b))
+```

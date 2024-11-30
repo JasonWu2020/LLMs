@@ -1,0 +1,34 @@
+```python
+import sys
+
+n = int(input())
+
+red = []
+orange = []
+yellow = []
+green = []
+
+for _ in range(n):
+    name, before, after = input().split()
+    before, after = int(before), int(after)
+    if after > before:
+        if after > 2400:
+            red.append((name, before, after))
+        elif after >= 2200:
+            orange.append((name, before, after))
+        elif after >= 2000:
+            yellow.append((name, before, after))
+        else:
+            green.append((name, before, after))
+
+red.sort(key=lambda x: x[2])
+orange.sort(key=lambda x: x[2])
+yellow.sort(key=lambda x: x[2])
+green.sort(key=lambda x: x[2])
+
+for handle, before, after in red:
+    if (name := handle) in (name := handle for name, _, _ in orange + yellow + green) and after > before:
+        print("YES")
+        sys.exit(0)
+print("NO")
+```

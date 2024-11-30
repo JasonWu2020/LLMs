@@ -1,0 +1,20 @@
+[/INST] ```python
+import collections
+
+n, k = map(int, input().split())
+s = input()
+
+counter = collections.Counter(s[:k])
+prefix = counter.values()[0]
+max_len = 0
+
+current_prefix = prefix
+for i in range(len(s)):
+    if i >= len(s) - (k - len(s[:i]) % k):
+        if counter[s[i]] != prefix:
+            current_prefix = counter[s[i]]
+        else:
+            max_len = max(max_len, i - i % k + 1)
+
+print(max_len)
+```</s>

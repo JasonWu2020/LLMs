@@ -1,0 +1,48 @@
+<start_of_turn>model
+The provided solution is functional, but could be made more efficient and refined. 
+
+
+```python
+def balancedSubstring(s):
+  """
+  Determines if the given string 's' contains at least one balanced substring.
+
+  Args:
+      s (string): String to check
+  Returns:
+      int: [start, end] of the balanced substring if found, otherwise -1 -1
+  """ 
+  n = len(s)
+  if n == 0:
+    return [-1, -1] 
+  balance = 0
+  for i in range(n):
+   if s[i] == 'a':
+     balance +=1
+   if s[i] == 'b':
+     balance -=1
+     if balance<0:
+      return [-1, -1]
+  if balance == 0:
+    return [0, n] 
+  return [-1, -1] 
+
+def main():
+  T = int(input())
+  for _ in range(T):
+    n = int(input())
+    s = input()
+    ans = balancedSubstring(s)
+    print(ans)
+
+if __name__ == "__main__":
+  main()
+```
+**Explanation of the Code** 
+
+* **Input Handling:**  The `input()` function reads the inputs from the shell. Input must be converted accordingly
+* **Solution:** An efficient method of finding balanced sub-strings.
+
+
+
+This solution should follow your specified format.  Let me know if you have further questions or if there's anything else I can do!<end_of_turn>

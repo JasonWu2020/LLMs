@@ -1,0 +1,12 @@
+n, k = map(int, input().split())
+s = input()
+s = list(s)
+counter = [0]*26
+for i in s:
+    counter[ord(i)-65] += 1
+ans = 0
+for i in range(k):
+    if counter[i] == 0:
+        break
+    ans += counter[i]
+print(ans)

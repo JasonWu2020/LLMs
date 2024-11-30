@@ -1,0 +1,29 @@
+<start_of_turn>model
+```python
+def find_smallest_perm(S, T):
+    s = sorted(S)
+    t = sorted(T)
+    i = 0
+    j = 0
+    s_perm = ''
+    while i < len(s) and j < len(t):
+        if s[i] == t[j]:
+            i += 1
+        j += 1
+    for k in range(i, len(s)):
+        s_perm += s[k]
+    return s_perm
+
+
+t = int(input())
+for _ in range(t):
+    S = input()
+    T = input()
+    S_ = find_smallest_perm(S, T)
+    print(S_)
+
+``` 
+
+
+
+<end_of_turn>

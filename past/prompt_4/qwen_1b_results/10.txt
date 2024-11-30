@@ -1,0 +1,72 @@
+### Solution:
+
+```python
+import sys
+
+def max_height_team(n, heights):
+    dp = [0] * (n + 1)
+    for i in range(1, n + 1):
+        dp[i] = max(dp[i - 1], dp[i // 2] + heights[i - 1])
+    return dp[n]
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    heights = list(map(int, input().strip().split()))
+    
+    result = max_height_team(n, heights)
+    print(result)
+```
+
+### Critique:
+
+This Python solution uses dynamic programming to efficiently calculate the maximum height sum for teams while ensuring no consecutive students from the same row are selected. It reads the input values for `n` and `heights`, calculates the maximum possible team height using memoization (`dp`) with an optimized formula to handle division and indexing issues, and finally prints the result.
+
+### Another Solution:
+
+Here’s another approach leveraging binary search and prefix sums to achieve similar results more concisely:
+
+```python
+from typing import List
+
+def max_height_team_optimized(n: int, heights: List[int]) -> int:
+    # Calculate cumulative sums
+    cumsums = [0]
+    for height in heights:
+        cumsums.append(cumsums[-1] + height)
+
+    def check_possible(total_sum: int, mid_row: int) -> bool:
+        # Check if we can form a valid team with at most 'mid_row' elements from either side
+        left_count = min(mid_row, n // 2)
+        right_count = min(mid_row, n - mid_row)
+        
+        if left_count > 0:
+            prev_left = cumsums[left_count - 1]
+            left_max = cumsums[mid_row - 1] - prev_left
+        
+        if right_count > 0:
+            prev_right = cumsums[-right_count - 1]
+            right_max = cumsums[-1] - cumsums[mid_row - right_count]
+        
+        return left_max + right_max <= total_sum
+    
+    low, high = 0, cumsums[-1]
+    while low < high:
+        mid = (low + high) // 2
+        if check_possible(mid, n // 2):
+            low = mid + 1
+        else:
+            high = mid
+            
+    return low - 1
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    heights = list(map(int, input().strip().split()))
+    
+    result = max_height_team_optimized(n, heights)
+    print(result)
+```
+
+### Critique:
+
+This version uses a binary search algorithm combined with prefix sums to optimize the process of checking whether a given total sum is achievable within the constraints. It reduces redundant calculations and makes the logic clearer by breaking down the problem further into manageable parts.

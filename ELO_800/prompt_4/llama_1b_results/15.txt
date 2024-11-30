@@ -1,0 +1,12 @@
+```python
+def check_performance(n, scores):
+    for _ in range(n):
+        a, b = map(str, input().split())
+        if int(b) - int(a) >= 2200:
+            print("YES")
+            return
+    print("NO")
+
+n = int(input())
+check_performance(n, input().split())
+```

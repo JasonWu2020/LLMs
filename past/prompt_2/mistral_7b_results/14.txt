@@ -1,0 +1,31 @@
+[/INST] ```python
+import sys
+
+def is_reachable(maze, x, y, visited, min_x, min_y, max_x, max_y):
+    if (x < min_x or x > max_x or y < min_y or y > max_y):
+        return False
+    if visited[x][y]:
+        return visited[x][y]
+    visited[x][y] = True
+    for dx, dy in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
+        nx, ny = x + dx, y + dy
+        if 0 <= nx < len(maze) and 0 <= ny < len(maze[0]) and maze[nx][ny] != "#"::
+            if is_reachable(maze, nx, ny, visited, min_x, min_y, max_x, max_y):
+                return True
+    visited[x][y] = False
+    return False
+
+n, m = map(int, sys.stdin.readline().strip().split())
+maze = [list(sys.stdin.readline().strip()) for _ in range(n)]
+start_x, start_y = 0, 0
+for i, row in enumerate(maze):
+    for j, cell in enumerate(row):
+        if cell == "S":
+            start_x, start_y = i, j
+visited = [[False] * m for _ in range(n)]
+min_x, min_y, max_x, max_y = 0, 0, n - 1, m - 1
+if not is_reachable(maze, start_x, start_y, visited, min_x, min_y, max_x, max_y):
+    print("No")
+else:
+    print("Yes")
+```</s>

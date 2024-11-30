@@ -1,0 +1,14 @@
+<start_of_turn>model
+```python3.8
+
+n = int(input())
+h1 = list(map(int, input().split()))
+h2 = list(map(int, input().split()))
+
+h_total = 0
+i = 0
+for i in range(n):
+    h_total += max(h1[i], h2[i])
+
+print(h_total)
+```<eos>

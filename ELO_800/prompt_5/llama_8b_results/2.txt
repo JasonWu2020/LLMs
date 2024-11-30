@@ -1,0 +1,19 @@
+```python
+def solve(n, a, b):
+    if a + b > n:
+        return "No"
+    if a == b == n:
+        return "Yes"
+    if a == 0 or b == 0:
+        return "Yes"
+    if a + b == n:
+        return "Yes"
+    return "No"
+
+t = int(input())
+for _ in range(t):
+    n, a, b = map(int, input().split())
+    print(solve(n, a, b))
+```
+
+This Python script will read the number of test cases from the input, then for each test case, it will read the values of `n`, `a`, and `b` and print whether a pair of permutations exists or not. The `solve` function takes these values as input and returns "Yes" if a pair of permutations exists and "No" otherwise.

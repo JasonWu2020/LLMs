@@ -1,0 +1,11 @@
+```python
+n = int(input())
+spits = [list(map(int, input().split())) for _ in range(n)]
+spits.sort()
+for i in range(n):
+    for j in range(i + 1, n):
+        if spits[i][0] + spits[i][1] == spits[j][0] and spits[j][0] + spits[j][1] == spits[i][0]:
+            print("YES")
+            exit()
+print("NO")
+```

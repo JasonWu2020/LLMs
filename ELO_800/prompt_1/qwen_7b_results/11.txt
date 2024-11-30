@@ -1,0 +1,12 @@
+```python
+def min_shovels(k, r):
+    if k % r == 0:
+        return max(1, k // r)
+    return (k // r) + 1
+
+if __name__ == "__main__":
+    input_data = list(map(int, input().split()))
+    k = input_data[0]
+    r = input_data[1]
+    print(min_shovels(k, r))
+```

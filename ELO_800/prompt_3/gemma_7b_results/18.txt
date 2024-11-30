@@ -1,0 +1,32 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is well-written and efficient. It uses sets to store the elements of arrays `a` and `b` and checks for their intersection. The time complexity is O(n + m) where n and m are the total number of elements in the two arrays. However, the space complexity is O(n + m) as well, as the set data structure can store up to n and m elements.
+
+**Solution:**
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    sa = set(a)
+    sb = set(b)
+
+    if not sa & sb:
+        print("NO")
+    else:
+        k = min(len(a) + len(b) - len(sa.intersection(sb))  # Length of the array
+        print("YES")
+        print(k)
+        print(*sa.intersection(sb))
+
+        # Alternative solution using slicing and indexing
+        # k = min(len(a) + len(b) - len(a & b)
+        # print("YES")
+        # print(k)
+        # print(*sorted(a & b)[:k])
+```<eos>

@@ -1,0 +1,13 @@
+```python
+def find_spitting_camel_pairs(n):
+    positions = {}
+    for _ in range(n):
+        x, d = map(int, input().split())
+        if x in positions:
+            return "YES"
+        positions[x + d] = 1
+    return "NO"
+
+n = int(input())
+print(find_spitting_camel_pairs(n))
+```

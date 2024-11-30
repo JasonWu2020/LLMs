@@ -1,0 +1,36 @@
+```python
+import sys
+
+def can_transform(A, B, C):
+    ax, ay = A
+    bx, by = B
+    cx, cy = C
+    
+    # Normalize vectors to simplify calculations
+    mag = max(abs(ax), abs(ay), abs(bx), abs(by), abs(cx), abs(cy))
+    ax /= mag
+    ay /= mag
+    bx /= mag
+    by /= mag
+    cx /= mag
+    cy /= mag
+    
+    # Check if we can reach B from A through allowed operations
+    for _ in range(4):  # 4 possible rotations (0, 90, 180, 270 degrees)
+        if (ax == bx and ay == by):
+            return "YES"
+        ax, ay = -ay, ax  # Rotate vector A 90 degrees clockwise
+    return "NO"
+
+# Reading input
+A = tuple(map(int, input().split()))
+B = tuple(map(int, input().split()))
+C = tuple(map(int, input().split()))
+
+# Outputting result
+print(can_transform(A, B, C))
+```
+
+This solution reads three sets of two space-separated integers each representing the x and y coordinates of vectors A, B, and C. It then normalizes these vectors to make them unit vectors, which simplifies the comparison logic. The function `can_transform` attempts to rotate and add vector C to vector A in four possible ways (representing 0, 90, 180, and 270-degree rotations) to see if it can match vector B. If at any point the coordinates of A match those of B after applying the operations, it returns "YES". Otherwise, it returns "NO".
+
+Please adapt this code to your specific needs, including input handling and output formatting.

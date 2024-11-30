@@ -1,0 +1,8 @@
+<start_of_turn>model
+```python3.8
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    print(int((str(n).split())[-1])
+```<eos>

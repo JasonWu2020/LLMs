@@ -1,0 +1,24 @@
+The given solution has a time complexity of O(n log n) due to the sorting operation, which is not efficient for large inputs.
+
+Here's a revised solution that uses a hash set to count the frequency of each person's friend:
+
+```python
+def get_ans(n,p):
+    p = [0] + [x-1 for x in p]
+    cnt = [0] * (n+1)
+    for i in range(1,n+1):
+        cnt[p[i]] += 1
+    ans = 0
+    for i in range(1,n+1):
+        ans += min(cnt[i],cnt[i-1])
+    print(ans)
+
+T = int(input())
+while T:
+    n = int(input())
+    p = list(map(int,input().split()))
+    get_ans(n,p)
+    T-=1
+```
+
+This solution has a time complexity of O(n) and is more efficient for large inputs. It first counts the frequency of each person's friend and then calculates the minimum number of invitations needed for each person.

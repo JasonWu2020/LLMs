@@ -1,0 +1,16 @@
+```python
+from collections import Counter
+
+def min_pockets(n, a):
+    counter = Counter(a)
+    return max(counter.values())
+
+# Read input
+n = int(input())
+a = list(map(int, input().split()))
+
+# Calculate result
+result = min_pockets(n, a)
+
+print(result)
+```

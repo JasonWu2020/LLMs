@@ -1,0 +1,40 @@
+```python
+# Solution 1
+from typing import List
+
+def find_smallest_not_subsequence(s: str, t: str) -> str:
+    t = 'abc' + t + 'zzz'
+    s = sorted(s)
+    i, j = 0, 0
+    while i < len(s) and j < len(t):
+        if s[i] == t[j]:
+            j += 1
+        i += 1
+    if j < len(t):  # If t wasn't found in s
+        return ''.join(s)  # Return lexicographically smallest permutation of s
+
+    t = 'abc' + t + 'zzz'  # Reformat t as before
+    result = [''] * len(s)  # To store resulting permutation
+    for char in s:  # Initialize permutation with characters from s
+        if char == t[j]:  # If char is a match in t
+            j += 1
+            continue
+        elif char == t[j - 1]:  # If char is before a match in t
+            result[i] = char  # Insert char at position i
+            i += 1
+            j -= 1
+        else:  # If char is different from previous characters and isn't needed to form t
+            result[i] = char  # Insert char at position i
+            i += 1
+
+    return ''.join(result)  # Join characters in result to form final permutation
+
+
+# Read input
+t = int(input())
+for _ in range(t):
+    s = input()
+    t = input()
+    # Call function with input strings and print output
+    print(find_smallest_not_subsequence(s, t))
+```

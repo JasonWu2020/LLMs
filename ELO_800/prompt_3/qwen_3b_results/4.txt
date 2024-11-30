@@ -1,0 +1,25 @@
+```python
+def decrypt_message(s):
+    decrypted = []
+    for i, char in enumerate(s):
+        # Find the original character before adding any extra characters
+        for j in range(i - 1, -1, -1):
+            if s[j] != char:
+                decrypted.append(s[j])
+                break
+        else:
+            # If no match found, it means the original character was 'a'
+            decrypted.append('a')
+    return ''.join(decrypted)
+
+# Read input
+t = int(input().strip())
+for _ in range(t):
+    n = int(input().strip())
+    s = input().strip()
+    print(decrypt_message(s))
+```
+
+This solution iterates over each character in the string `s` and tries to find the original character that existed before any additional characters were added. It does this by checking backward through the string `s` until it finds a character that doesn't match the current character being processed. If no such character is found, it assumes the original character was 'a'. The decrypted message is then constructed by appending these original characters in reverse order.
+
+Please note that the logic used here assumes a straightforward pattern where the decryption process can be reversed based on the given examples. However, without more specific constraints or examples, this approach may not always work correctly for all possible encrypted strings.

@@ -1,0 +1,14 @@
+```python3
+import sys
+
+def max_stones(a, b, c):
+    return max(a + 2 * min(b, c), 2 * min(a, b) + c)
+
+if __name__ == "__main__":
+    t = int(input())
+    
+    for _ in range(t):
+        a, b, c = map(int, input().split())
+        print(max_stones(a, b, c))
+```
+```

@@ -1,0 +1,13 @@
+```python
+import sys
+
+t = int(input().strip())
+for i in range(t):
+    n, a, b = map(int, input().strip().split())
+    if a + b > n:
+        print("No")
+    elif a == n or b == n:
+        print("Yes")
+    else:
+        print("Yes")
+```

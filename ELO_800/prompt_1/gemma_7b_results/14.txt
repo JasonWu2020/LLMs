@@ -1,0 +1,14 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    d = max(a)
+    for i in range(k):
+        a = [d - x for x in a]
+
+    print(*a)
+```<eos>

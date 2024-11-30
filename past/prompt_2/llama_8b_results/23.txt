@@ -1,0 +1,20 @@
+```python
+MOD = 10**9 + 7
+
+n, m = map(int, input().split())
+
+stops = [0] * (n + 1)
+for _ in range(m):
+    s, t = map(int, input().split())
+    for j in range(s, t):
+        stops[j] |= (1 << (t - 1))
+
+dp = [0] * (n + 1)
+dp[0] = 1
+for i in range(n):
+    for j in range(i):
+        if stops[i] & (1 << j):
+            dp[i + 1] = (dp[i + 1] + dp[j]) % MOD
+
+print(dp[n])
+```

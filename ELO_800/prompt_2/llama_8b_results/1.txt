@@ -1,0 +1,18 @@
+```python
+for _ in range(int(input())):
+    n = int(input())
+    p = list(map(lambda x: int(x) - 1, input().split()))
+    seen = [False] * n
+    ans = 2
+    for i in range(n):
+        if not seen[i]:
+            seen[i] = True
+            j = p[i]
+            while not seen[j]:
+                seen[j] = True
+                j = p[j]
+            ans = max(ans, 2)
+            if seen.count(True) > 2:
+                break
+    print(ans)
+```

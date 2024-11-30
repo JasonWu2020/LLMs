@@ -1,0 +1,34 @@
+Critique of the original solution:
+
+* The original solution has a time complexity of O(n^2) due to the nested loops. This can be improved.
+* The original solution is not efficient because it checks every camel against every other camel, resulting in unnecessary comparisons.
+* The original solution uses a lot of repetition, as it checks if the first camel spits at the second camel and then checks if the second camel spits at the first camel.
+
+Here's an improved solution:
+
+```python
+import sys
+
+def main():
+    n = int(input())
+    camels = [tuple(map(int, input().split())) for _ in range(n)]
+
+    camels.sort(key=lambda x: x[0])
+    for i in range(n):
+        if i > 0 and camels[i][0] == camels[i-1][0] and camels[i][1] == -camels[i-1][1]:
+            print("YES")
+            return
+    print("NO")
+
+if __name__ == "__main__":
+    input = sys.stdin.readline
+    main()
+```
+
+This improved solution works as follows:
+
+* It sorts the list of camels based on their x-coordinates. This allows us to efficiently check if a camel spits at the previous camel in the sorted list.
+* It then iterates through the sorted list of camels. If it finds a camel that has the same x-coordinate as the previous camel and the distance between them is equal to the negative of the previous camel's spit distance, it prints "YES" and returns.
+* If no such camel is found after iterating through the entire list, it prints "NO".
+
+This improved solution has a time complexity of O(n log n) due to the sorting operation, which is a significant improvement over the original O(n^2) solution.

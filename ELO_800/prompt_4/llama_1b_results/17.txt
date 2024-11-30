@@ -1,0 +1,17 @@
+```python
+def min_moves(n, s, t):
+    ans = 0
+    for i in range(n):
+        if s[i]!= t[i]:
+            if t[i] == '0':
+                ans += 2
+            else:
+                ans += 1
+        ans += abs(int(s[i]) - int(t[i]))
+    return ans
+
+n = int(input())
+s = input()
+t = input()
+print(min_moves(n, s, t))
+```

@@ -1,0 +1,12 @@
+<start_of_turn>model
+```python
+t = int(input())
+for _ in range(t):
+  a, b = map(int, input().split())
+  count = 0
+  while a != 0 and a % b != 0:
+      a += 1
+      count += 1
+  print(count) 
+``` 
+<end_of_turn>

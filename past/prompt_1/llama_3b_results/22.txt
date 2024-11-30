@@ -1,0 +1,21 @@
+```python
+import sys
+
+s = input()
+k = int(input())
+f = {}
+for c in s:
+    f[c] = f.get(c, 0) + 1
+
+del_ = [c for c in f if f[c] > k]
+del_ = sorted(del_, key=lambda x: f[x], reverse=True)
+ans = []
+for c in s:
+    if c in del_:
+        continue
+    if len(ans) < k:
+        ans.append(c)
+
+print(len(ans))
+print(''.join(ans))
+```

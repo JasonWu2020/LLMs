@@ -1,0 +1,32 @@
+[/INST] The outputted solution does not contain any errors but it could be improved by adding some comments for better readability:
+
+```python
+# Read the number of coins
+n = int(input())
+
+# Read the coins values
+coins = list(map(int, input().split()))
+
+# Sort the coins in non-descending order
+coins.sort(reverse=True)
+
+# Initialize the number of pockets
+pockets = 1
+
+# Initialize the last coin variable
+last_coin = coins[0]
+
+# Iterate through the sorted array of coins
+for coin in coins[1:]:
+    # If the current coin value is different from the value of the last coin added to a pocket
+    if coin != last_coin:
+        # Increment the number of pockets
+        pockets += 1
+        # Update the last coin value
+        last_coin = coin
+
+# Print the minimum number of pockets needed
+print(pockets)
+```
+
+This solution follows the same input and output specifications and includes comments for better readability.</s>

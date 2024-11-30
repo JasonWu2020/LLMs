@@ -1,0 +1,60 @@
+Here is the Python solution for the given problem:
+
+```python
+import sys
+
+def min_moves_to_open_lock(n, initial_state, target_combination):
+    # Create a dictionary to store the difference between each pair of states
+    diff_dict = {}
+    
+    # Calculate the differences between each pair of states
+    for i in range(n):
+        if initial_state[i] != target_combination[i]:
+            diff = abs(ord(initial_state[i]) - ord(target_combination[i]))
+            if diff <= n:
+                continue
+            elif diff > n:
+                diff = 10 - diff
+            else:
+                diff = diff % n
+            
+            key = f"{i}_{diff}"
+            if key in diff_dict:
+                diff_dict[key].append(i)
+            else:
+                diff_dict[key] = [i]
+    
+    # Find the shortest path using BFS
+    visited = set()
+    queue = [(initial_state.index('0'), '0', 0)]
+    while queue:
+        current_index, current_diff, steps = queue.pop(0)
+        
+        if current_index == len(target_combination) - 1:
+            return steps
+        
+        if current_index + current_diff < len(target_combination) and \
+           (current_index + current_diff, str(current_index + current_diff)) not in visited:
+            visited.add((current_index + current_diff, str(current_index + current_diff)))
+            queue.append((current_index + current_diff, str(current_index + current_diff), steps + 1))
+            
+        if current_index - current_diff >= 0 and \
+           (current_index - current_diff, str(current_index - current_diff)) not in visited:
+            visited.add((current_index - current_diff, str(current_index - current_diff)))
+            queue.append((current_index - current_diff, str(current_index - current_diff), steps + 1))
+    
+    return -1
+
+if __name__ == "__main__":
+    input = sys.stdin.read()
+    data = input.splitlines()
+
+    n = int(data[0])
+    initial_state = data[1]
+    target_combination = data[2]
+
+    result = min_moves_to_open_lock(n, initial_state, target_combination)
+    print(result)
+```
+
+This Python script reads the inputs from standard input and prints the output as specified. The `min_moves_to_open_lock` function calculates the minimum number of moves required to transform the initial state into the target combination using breadth-first search (BFS). It uses a dictionary to keep track of the differences between each pair of states and their corresponding indices. Then it performs BFS starting from the index of the first zero in the initial state and returns the total number of moves when it reaches the end of the target combination. If no valid sequence exists, it returns `-1`.

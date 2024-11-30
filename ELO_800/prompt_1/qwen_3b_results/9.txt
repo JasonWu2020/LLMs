@@ -1,0 +1,20 @@
+```python
+def most_exercised_muscle(n, exercises):
+    chest_count = exercises.count(1)
+    biceps_count = exercises.count(2)
+    back_count = exercises.count(3)
+    
+    max_count = max(chest_count, biceps_count, back_count)
+    
+    if max_count == chest_count:
+        return "chest"
+    elif max_count == biceps_count:
+        return "biceps"
+    else:
+        return "back"
+
+n = int(input())
+exercises = list(map(int, input().split()))
+
+print(most_exercised_muscle(n, exercises))
+```

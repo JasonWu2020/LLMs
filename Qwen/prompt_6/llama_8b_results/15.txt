@@ -1,0 +1,39 @@
+```python
+import sys
+
+def get_color(rating):
+    if rating >= 2400:
+        return "red"
+    elif rating >= 2200:
+        return "orange"
+    elif rating >= 2000:
+        return "yellow"
+    elif rating >= 1800:
+        return "green"
+    elif rating >= 1600:
+        return "lightblue"
+    elif rating >= 1400:
+        return "blue"
+    else:
+        return "grey"
+
+n = int(input())
+red_users = {}
+for _ in range(n):
+    name, before, after = input().split()
+    before, after = int(before), int(after)
+    if get_color(after) == "red" and before < after:
+        red_users[name] = True
+    if name == "Anton":
+        anton_before, anton_after = before, after
+
+for _ in range(n):
+    name, before, after = input().split()
+    before, after = int(before), int(after)
+    if name == "Anton":
+        anton_before, anton_after = before, after
+    if name in red_users and before < after and anton_after > before:
+        print("YES")
+        sys.exit(0)
+print("NO")
+```

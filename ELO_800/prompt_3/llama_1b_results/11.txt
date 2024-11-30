@@ -1,0 +1,9 @@
+```python
+def min_shovels(k, r):
+    if k < r:
+        return k
+    return (k + r - 1) // r
+
+k, r = map(int, input().split())
+print(min_shovels(k, r))
+```

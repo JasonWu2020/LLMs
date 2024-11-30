@@ -1,0 +1,24 @@
+```python
+import sys
+
+def decrypt_string(s):
+    result = []
+    for i in range(len(s)):
+        if s[i] == 'a':
+            result.append('b')
+        elif s[i] == 'b':
+            result.append('a')
+        elif s[i] == 'c':
+            result.append('ab')
+        else:
+            result.append(s[i])
+    return ''.join(result)
+
+if __name__ == "__main__":
+    t = int(input().strip())
+    for _ in range(t):
+        n = int(input().strip())
+        s = input().strip()
+        print(decrypt_string(s))
+```
+This Python script reads the number of test cases `t` followed by `t` sets of data, where each set consists of the length of the encrypted message `n` and the encrypted message `s`. For each test case, it decrypts the message using the `decrypt_string` function and prints the resulting original string.

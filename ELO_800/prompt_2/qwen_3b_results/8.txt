@@ -1,0 +1,21 @@
+```python
+def max_stones_taken():
+    t = int(input())
+    for _ in range(t):
+        a, b, c = map(int, input().split())
+        # First operation: take 1 stone from first heap and 2 stones from second heap
+        op1 = min(a, b // 2)
+        b -= 2 * op1
+        a -= op1
+        
+        # Second operation: take 1 stone from second heap and 2 stones from third heap
+        op2 = min(b, c // 2)
+        c -= 2 * op2
+        b -= op2
+        
+        # Total stones taken
+        total_stones = op1 + op2
+        print(total_stones)
+
+max_stones_taken()
+```

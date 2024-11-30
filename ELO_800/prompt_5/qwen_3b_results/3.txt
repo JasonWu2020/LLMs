@@ -1,0 +1,53 @@
+```python
+def find_stable_arrangement(n, k):
+    if k == 1:
+        return "R\n" + "." * n + "\n" * n
+    
+    if k == n:
+        return "." * n + "\n" * n + "R\n" * n
+    
+    if n == 2:
+        return "-1"
+    
+    # For larger boards, we need to ensure that no two rooks are in the same row or column,
+    # and no rook can be moved to an adjacent cell without causing a conflict.
+    # This is impossible for k > n in a nxn board, hence we return -1.
+    if k > n:
+        return "-1"
+    
+    # Try placing rooks in a pattern that avoids immediate conflicts.
+    # A simple pattern is to place rooks in every other row and column starting from (1,1).
+    result = []
+    for i in range(1, n+1):
+        row = ""
+        for j in range(1, n+1):
+            if (i+j) % 2 == 1:
+                row += "R"
+            else:
+                row += "."
+        result.append(row)
+    
+    # Check if the arrangement is stable.
+    for i in range(n):
+        for j in range(n):
+            if result[i][j] == "R":
+                for di, dj in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                    ni, nj = i + di, j + dj
+                    if 0 <= ni < n and 0 <= nj < n and result[ni][nj] == "R":
+                        return "-1"
+    
+    return "\n".join(result)
+
+# Read input
+import sys
+input = sys.stdin.read
+data = input().split()
+
+t = int(data[0])
+test_cases = [tuple(map(int, data[i].split())) for i in range(1, len(data), 2)]
+
+for n, k in test_cases:
+    print(find_stable_arrangement(n, k))
+```
+
+This script reads the number of test cases and the parameters for each test case, then attempts to find a stable arrangement of rooks on an `n x n` chessboard. If no such arrangement exists, it outputs `-1`. Otherwise, it prints the arrangement as specified.

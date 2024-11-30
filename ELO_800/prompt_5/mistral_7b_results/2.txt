@@ -1,0 +1,14 @@
+[/INST] ```python
+import itertools as it
+
+def lcp(x, y): return len(list(filter(lambda c: x[0] == y[0], zip(x, y)))[0])
+def lcs(x, y): return x[-lcp(x, y):] + y[-lcs(x, y):]
+
+for _ in range(int(input())):
+    n, a, b = map(int, input().split())
+    print("Yes" if sum(map(lambda x: len(list(filter(lambda p: len(lcp(p, list(it.permutations(list(range(1, n+1))))[0])) == a and len(lcs(p, list(it.permutations(list(range(1, n+1))))[0])) == b, it.permutations(list(range(1, n+1)))) != 0) else "No")
+```
+
+The input is read with one line containing the number of test cases `t`, followed by `t` lines, each containing the three integers `n`, `a`, and `b` separated by spaces.
+
+The output is a single string for each test case: "Yes" if there exist two permutations of length `n` with the given longest common prefix length `a` and longest common suffix length `b`, and "No" otherwise.</s>

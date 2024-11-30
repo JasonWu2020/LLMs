@@ -1,0 +1,12 @@
+[/INST] ```python
+import collections, sys, itertools
+n = int(sys.stdin.readline().strip())
+coins = list(map(int, sys.stdin.readline().strip().split()))
+
+ans = len(list(collections.Counter(coins).elements()))
+print(ans)
+
+# or
+# answer = len(list(set(map(tuple, coins.split(',')))))
+# print(answer)
+```</s>

@@ -1,0 +1,31 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is well-structured, but it can be improved.
+
+**Improvements:**
+
+- **Check for validity first:** Instead of constructing the permutations and then checking if they satisfy the conditions, it is more efficient to check if the permutations are valid first, and only construct them if they are valid.
+- **Use sets to check for uniqueness:** Instead of using a list to store the permutations and checking for uniqueness using the `set` function, it is more efficient to use sets to store the permutations.
+
+**Revised Solution:**
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n, a, b = map(int, input().split())
+
+    # Check if the permutations are valid
+    valid = True
+    p = list(map(int, input().split()))
+    q = list(map(int, input().split()))
+    if len(set(p)) != n or len(set(q)) != n or set(p) & set(q) != set(range(1, n+1)):
+        valid = False
+
+    # Construct the permutations if they are valid
+    if valid:
+        print(" Yes ")
+    else:
+        print(" No ")
+```<eos>

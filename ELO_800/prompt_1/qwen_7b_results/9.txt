@@ -1,0 +1,24 @@
+```python
+def main():
+    n = int(input())
+    exercises = list(map(int, input().split()))
+    chest, biceps, back = [0] * 3
+    for i, count in enumerate(exercises):
+        idx = (i % n) + 1
+        if idx == 1:
+            chest += count
+        elif idx == 2:
+            biceps += count
+        else:
+            back += count
+    max_exercise = max(chest, biceps, back)
+    if max_exercise == chest:
+        print("chest")
+    elif max_exercise == biceps:
+        print("biceps")
+    else:
+        print("back")
+
+if __name__ == "__main__":
+    main()
+```

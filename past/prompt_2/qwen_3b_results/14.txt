@@ -1,0 +1,32 @@
+```python
+def can_infinite_walk(n, m, maze):
+    sx, sy = None, None
+    for i in range(n):
+        for j in range(m):
+            if maze[i][j] == 'S':
+                sx, sy = j, i
+                break
+        if sx is not None: break
+
+    directions = [(0, -1), (-1, 0), (0, 1), (1, 0)]
+    visited = set()
+    
+    def dfs(x, y):
+        if (x, y) in visited:
+            return False
+        visited.add((x, y))
+        
+        for dx, dy in directions:
+            nx, ny = x + dx, y + dy
+            nx, ny = nx % n, ny % m
+            if maze[ny][nx] != '#' and dfs(nx, ny):
+                return True
+        return False
+    
+    return dfs(sx, sy)
+
+n, m = map(int, input().split())
+maze = [input() for _ in range(n)]
+
+print("Yes" if can_infinite_walk(n, m, maze) else "No")
+```

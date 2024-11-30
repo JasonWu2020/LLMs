@@ -1,0 +1,16 @@
+<start_of_turn>model
+```python
+def solve(n):
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        max_k = 0
+        for i in range(2, n + 1):
+            if((n & (n-i)) & (n-i-1) & (n-i-2) & ... & (n-i-k) == 0):
+               max_k = i
+        print(max_k)  
+
+t = int(input())
+for _ in range(t):
+    solve(int(input()))
+```<end_of_turn>

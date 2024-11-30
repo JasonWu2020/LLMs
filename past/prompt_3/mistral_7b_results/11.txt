@@ -1,0 +1,32 @@
+[/INST] The outputted solution correctly reads the input and computes the maximum possible total height of a team that Demid can choose according to the given conditions. However, it could be improved by making the code more readable and efficient.
+
+First, the input is read twice, which is unnecessary. Instead, we can read it once and store it in two separate lists. Also, the check for consecutive students from the same row could be optimized by keeping track of the last row's student index.
+
+Second, the code can be made more readable by using more descriptive variable names and breaking down the logic into smaller functions.
+
+Here is an alternative solution that addresses these issues:
+
+```python
+def read_input():
+ n = int(input())
+ row1 = list(map(int, input().split()))
+ row2 = list(map(int, input().split()))
+ return n, row1, row2
+
+def is_valid_team_member(student, last_row, last_index, row):
+ if not (last_index is None and student == 1 or student > last_index + 1 or student != row[student-1]):
+ return False
+ last_index = student
+ return True
+
+def max_team_height(n, row1, row2):
+ team_height = 0
+ last_index = None
+ for student in range(1, 2*n):
+ if is_valid_team_member(student, 1, last_index, row1) or is_valid_team_member(student, 2, last_index, row2):
+ team_height += max(row1[student-1] if student <= n else row2[student-n], 0)
+ return team_height
+
+n, row1, row2 = read_input()
+print(max_team_height(n, row1, row2))
+```</s>

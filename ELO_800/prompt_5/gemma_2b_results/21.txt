@@ -1,0 +1,19 @@
+<start_of_turn>model
+```python
+n = int(input())
+a = list(map(int, input().split()))
+a.sort()
+pockets = 0
+count = 0
+i = 0
+while i < n:
+    if count == 0:
+        count = 1
+    if a[i] == a[i-1]:
+        i+=1
+        continue
+    count += 1
+    pockets += 1
+    i+= 1
+print(pockets)
+```<end_of_turn>

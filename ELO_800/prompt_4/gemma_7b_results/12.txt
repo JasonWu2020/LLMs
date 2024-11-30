@@ -1,0 +1,49 @@
+<start_of_turn>model
+**Critique:**
+
+The code is well-structured and efficient. It uses a single loop to traverse the string and maintains two pointers to track the number of letters 'a' and 'b' in the substring. The time complexity of the code is O(n), where n is the length of the string.
+
+**Solutions:**
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    s = input().strip()
+
+    l = -1
+    r = -1
+
+    for i in range(n):
+        a_cnt = s[0:i].count('a')
+        b_cnt = s[0:i].count('b')
+
+        if a_cnt == b_cnt and l == -1:
+            l = i
+            r = i
+
+    print(l, r) if l != -1 else print(-1, -1)
+
+```
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    s = input().strip()
+
+    l = -1
+    r = -1
+
+    for i in range(n):
+        a_cnt = s[0:i].count('a')
+        b_cnt = s[0:i].count('b')
+
+        if a_cnt == b_cnt and l == -1:
+            l = i
+            r = i
+
+    print(-1, -1) if l == -1 else print(l, r)
+```<eos>

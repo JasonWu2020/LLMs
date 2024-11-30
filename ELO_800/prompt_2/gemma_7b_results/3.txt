@@ -1,0 +1,27 @@
+<start_of_turn>model
+```python3.8
+t = int(input())
+
+for _ in range(t):
+    n, k = map(int, input().split())
+
+    # Calculate the maximum number of rooks that can be placed in a row or column
+    max_rooks = min(n, k)
+
+    # Place the rooks one by one
+    arrangement = [[0] * max_rooks for _ in range(n)]
+    arrangement[0][0] = 1
+
+    # Check for stability
+    for i in range(1, n):
+        for j in range(max_rooks):
+            if arrangement[0][j] and arrangement[i][j]:
+                arrangement[i][j] = -1
+
+    # Print the solution
+    if arrangement[0][0] == -1:
+        print(-1)
+    else:
+        for i in range(n):
+            print("".join(["R" if arrangement[i][j] else "." for j in range(max_rooks)]))
+```<eos>

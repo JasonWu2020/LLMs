@@ -1,0 +1,43 @@
+```python
+def check_play(c, h, hand):
+    a = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
+    b = ['D', 'C', 'S', 'H']
+    if c in h:
+        return True
+    if any(x in b and x in a for x in h):
+        return True
+    return False
+
+a = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
+b = ['D', 'C', 'S', 'H']
+while True:
+    c = input()
+    d = input()
+    e = input()
+    f = input()
+    g = input()
+    h = input()
+    i = []
+    j = []
+    for x in c:
+        i.append(x)
+    for x in d:
+        i.append(x)
+    for x in e:
+        i.append(x)
+    for x in f:
+        i.append(x)
+    for x in g:
+        i.append(x)
+    for x in h:
+        i.append(x)
+    k = []
+    for x in i:
+        if x in b and x in a:
+            k.append(x)
+    if k:
+        print("YES")
+        break
+    else:
+        print("NO")
+```

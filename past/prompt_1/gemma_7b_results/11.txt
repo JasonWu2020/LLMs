@@ -1,0 +1,9 @@
+<start_of_turn>model
+```python
+n = int(input())
+h1 = list(map(int, input().split()))
+h2 = list(map(int, input().split()))
+h = h1 + h2
+h.sort()
+print(sum(h[1:]) - h[0])
+```<eos>

@@ -1,0 +1,23 @@
+Critique of the original solution:
+
+* The solution is concise and readable, but it doesn't handle the case when a and b are both 0.
+* It assumes that the input values are valid (i.e., a and b are less than or equal to n, and n is an integer). It would be better to add some error checking to handle invalid inputs.
+* The solution uses a simple and efficient approach, but it doesn't provide any insight into why it works.
+
+Here's an alternative solution:
+
+```python
+for _ in range(int(input())):
+    n, a, b = map(int, input().split())
+    if a == b == 0 or a + b > n - 1:
+        print("No")
+    elif n == a + b:
+        if n == 1:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("Yes")
+```
+
+This solution also handles the case when a and b are both 0, and it checks for the case when a + b is equal to n. It also handles the case when n is 1, and provides a more detailed output for this case. The solution is still concise and efficient, but it provides more insight into why it works.

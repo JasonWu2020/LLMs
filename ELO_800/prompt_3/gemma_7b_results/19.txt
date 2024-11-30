@@ -1,0 +1,18 @@
+<start_of_turn>model
+**Critique:**
+
+The solution reads the input for the number of test cases, then iterates over each test case, reading the input for the integer $n$, and finding the maximum value of $k$ that satisfies the condition. The solution uses a while loop to iterate over the values of $k$, and checks if the bitwise AND of $n$ and $n-k$ is 0. If it is, the value of $k$ is updated, and the loop continues. Finally, the value of $k$ is printed.
+
+**Solution:**
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    k = 1
+    while n & (n-k):
+        n &= n-k
+        k += 1
+    print(k)
+```<eos>

@@ -1,0 +1,64 @@
+To solve this problem in Python 3.8, we need to follow these steps:
+
+1. Read the input values for `n` and then the list of integers `a`.
+2. Calculate how many chest, biceps, and back exercises Greg will perform based on the given pattern.
+3. Count the occurrences of each type of exercise.
+4. Determine which muscle gets the most exercise by comparing counts.
+
+Here's the Python code to achieve this:
+
+```python
+def find_most_exercised_muscle(n, exercises):
+    # Initialize counters for each type of exercise
+    chest_count = 0
+    biceps_count = 0
+    back_count = 0
+    
+    # Iterate through the exercises
+    for i in range(1, n + 1):
+        exercise_type = 'chest' if (i - 1) % 3 == 0 else ('biceps' if (i - 1) % 3 == 1 else 'back')
+        
+        if exercise_type == 'chest':
+            chest_count += exercises[i-1]
+        elif exercise_type == 'biceps':
+            biceps_count += exercises[i-1]
+        elif exercise_type == 'back':
+            back_count += exercises[i-1]
+    
+    # Determine which muscle gets the most exercise
+    if chest_count > biceps_count and chest_count > back_count:
+        return 'chest'
+    elif biceps_count > chest_count and biceps_count > back_count:
+        return 'biceps'
+    else:
+        return 'back'
+
+# Example usage
+if __name__ == "__main__":
+    import sys
+    input = sys.stdin.read
+    data = input().split()
+    
+    n = int(data[0])
+    exercises = [int(num) for num in data[1:]]
+    
+    result = find_most_exercised_muscle(n, exercises)
+    print(result)
+```
+
+### Explanation:
+
+1. **Initialization**: 
+   - `chest_count`, `biceps_count`, and `back_count` are initialized to keep track of the total count of each type of exercise performed.
+
+2. **Iteration**:
+   - For each exercise from 1 to `n`, we calculate its type (`chest`, `biceps`, or `back`) using `(i - 1) % 3`. This gives us the position in the cycle.
+   - If the exercise type matches 'chest', we add the corresponding value from `exercises` to `chest_count`.
+   - Similarly, if the exercise type matches 'biceps', we add the corresponding value to `biceps_count`.
+   - If the exercise type matches 'back', we add the corresponding value to `back_count`.
+
+3. **Result Determination**:
+   - After counting all the exercises, we compare the counts of chest, biceps, and back exercises.
+   - The muscle with the highest count is determined and returned as the result.
+
+This approach ensures that we correctly interpret the training plan and determine which muscle receives the most exercise based on the given constraints.

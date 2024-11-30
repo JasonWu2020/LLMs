@@ -1,0 +1,42 @@
+The outputted solution has a few issues:
+
+1. It does not handle the case where the graph is a cycle, i.e., when there is a sequence of friends where each friend's best friend is the next friend in the sequence. In this case, the solution will incorrectly output 2, when it should output n-1.
+2. It does not handle the case where there are multiple cycles in the graph.
+3. It does not handle the case where the graph is a tree, i.e., when every friend's best friend is not in the same cycle.
+
+To fix these issues, we need to use a more sophisticated algorithm to detect cycles in the graph.
+
+Here's an alternative solution that uses a different approach:
+
+```python
+for _ in range(int(input())):
+    n = int(input())
+    p = list(map(int, input().split()))
+    p = [x-1 for x in p]
+
+    graph = [[] for _ in range(n)]
+    for i in range(n):
+        graph[p[i]].append(i)
+
+    visited = [False]*n
+    for i in range(n):
+        if not visited[i]:
+            stack = [i]
+            visited[i] = True
+            cycle_size = 0
+            while stack:
+                node = stack.pop()
+                cycle_size += 1
+                for neighbor in graph[node]:
+                    if not visited[neighbor]:
+                        visited[neighbor] = True
+                        stack.append(neighbor)
+                    elif neighbor in stack:
+                        cycle_size = n
+                        break
+            if cycle_size < n:
+                print(2)
+                break
+    else:
+        print(n-1)
+```

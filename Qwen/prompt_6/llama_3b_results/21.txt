@@ -1,0 +1,28 @@
+```python
+import sys
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # Sort the list of coin values in descending order
+    a.sort(reverse=True)
+
+    # Initialize a dictionary to keep track of the pockets
+    pockets = {}
+
+    # Iterate through the sorted list of coin values
+    for i in a:
+        # If the pocket does not exist, create a new one
+        if i not in pockets:
+            pockets[i] = 1
+        # If the pocket exists, increment its count
+        else:
+            pockets[i] += 1
+
+    # The number of pockets is equal to the maximum count in the dictionary
+    print(max(pockets.values()))
+
+if __name__ == "__main__":
+    main()
+```

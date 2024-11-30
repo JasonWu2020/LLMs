@@ -1,0 +1,32 @@
+```python
+def can_walk_infinity(n, m, maze):
+    directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
+    directions_str = ['up', 'down', 'left', 'right']
+
+    start_x, start_y = None, None
+    for i in range(n):
+        for j in range(m):
+            if maze[i][j] == 'S':
+                start_x, start_y = i, j
+
+    for i in range(n):
+        for j in range(m):
+            if maze[i][j] == 'S':
+                for dx, dy in directions:
+                    new_x, new_y = (i + dx) % n, (j + dy) % m
+                    if maze[new_x][new_y]!= '#' and maze[new_x][new_y]!= 'S':
+                        if (dx, dy) == (0, -1) and (i == 0 or maze[(i - 1) % n][j] == '#'):
+                            return 'No'
+                        if (dx, dy) == (0, 1) and (i == n - 1 or maze[(i + 1) % n][j] == '#'):
+                            return 'No'
+                        if (dx, dy) == (-1, 0) and (j == 0 or maze[i][j - 1] == '#'):
+                            return 'No'
+                        if (dx, dy) == (1, 0) and (j == m - 1 or maze[i][j + 1] == '#'):
+                            return 'No'
+
+    return 'Yes'
+
+n, m = map(int, input().split())
+maze = [list(input()) for _ in range(n)]
+print(can_walk_infinity(n, m, maze))
+```

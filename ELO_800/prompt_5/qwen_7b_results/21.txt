@@ -1,0 +1,21 @@
+Here's the Python code to solve the given problem:
+
+```python
+from collections import Counter
+
+def min_pockets():
+    coins_count = int(input())
+    coins_values = list(map(int, input().split()))
+
+    # Count occurrences of each coin value
+    coins_count_dict = Counter(coins_values)
+
+    # The minimum number of pockets required is equal to the number of distinct coin values,
+    # because each distinct coin value needs its own pocket according to the rule.
+    return len(coins_count_dict)
+
+# Call the function and print the result
+print(min_pockets())
+```
+
+This code imports the `Counter` class from the `collections` module to count the occurrences of each coin value efficiently. It then reads an integer for the number of coins and their values, counts the occurrences of each coin value using `Counter`, and returns the number of distinct coin values which corresponds to the minimum number of pockets needed.

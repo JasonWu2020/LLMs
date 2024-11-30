@@ -1,0 +1,11 @@
+<start_of_turn>model
+```python3.8
+
+k, r = map(int, input().split())
+
+d = divmod(k, r)[0]
+n = d * (r - 1)
+
+print(n)
+
+```<eos>

@@ -1,0 +1,14 @@
+```python
+def solve(n, p):
+    p.sort()
+    ans = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            if p[i]!= j:
+                ans += 1
+    print(ans)
+
+n = int(input())
+p = list(map(int, input().split()))
+solve(n, p)
+```

@@ -1,0 +1,6 @@
+<start_of_turn>model
+```python
+s = input().strip()
+ss = sorted(set(s))
+print(''.join(ss))
+```<eos>

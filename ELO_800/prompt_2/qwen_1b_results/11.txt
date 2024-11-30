@@ -1,0 +1,26 @@
+```python3.8
+from math import inf
+
+def min_shovels(k, r):
+    if k % 10 == 0:
+        return k // 10 + 1
+    
+    max_coins = k - r
+    min_shovels = inf
+    
+    for i in range(1, max_coins + 1):
+        remaining_k = k - i * 10
+        current_min_shovels = min_shovels(remaining_k, r)
+        
+        if current_min_shovels < min_shovels:
+            min_shovels = current_min_shovels
+            
+    return min_shovels
+
+# Read input
+k, r = map(int, input().split())
+
+# Print output
+print(min_shovels(k, r))
+```
+```

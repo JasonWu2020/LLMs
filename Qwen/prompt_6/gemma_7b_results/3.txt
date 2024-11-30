@@ -1,0 +1,39 @@
+<start_of_turn>model
+```python
+t = int(input())  # Number of test cases
+
+for _ in range(t):
+    n, k = map(int, input().split())  # Size of the chessboard and number of rooks
+
+    # Calculate the maximum number of rooks that can be placed safely
+    max_rooks = min(n, k)
+
+    # Create a 2D list to store the arrangement of rooks
+    arrangement = [['.' for _ in range(n)] for _ in range(n)]
+
+    # Place the rooks in the safe positions
+    for i in range(k):
+        x, y = map(int, input().split())
+        arrangement[x][y] = 'R'
+
+    # Check if the arrangement is stable
+    stable = True
+    for i in range(n):
+        for j in range(n):
+            # If there is a rook on this cell, check if it is under attack
+            if arrangement[i][j] == 'R':
+                # Check if there is a rook on the same row or column
+                for r in range(n):
+                    if arrangement[r][j] == 'R' and r != i:
+                        stable = False
+                for c in range(n):
+                    if arrangement[i][c] == 'R' and c != j:
+                        stable = False
+
+    # Print the arrangement
+    if stable:
+        for i in range(n):
+            print(''.join(arrangement[i]))
+    else:
+        print(-1)
+```<eos>

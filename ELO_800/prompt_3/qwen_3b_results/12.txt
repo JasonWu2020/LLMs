@@ -1,0 +1,81 @@
+Sure, I'll critique the provided solution and then generate a new one. Let's begin with the critique:
+
+### Critique of Provided Solution
+
+Since the provided solution is missing, I'll assume that a typical approach to solving this problem would involve iterating through the string and checking for balanced substrings. However, based on the input and output format, here’s a sample solution that adheres to the specified requirements.
+
+### Sample Solution
+
+```python
+def find_balanced_substring(s):
+    n = len(s)
+    
+    # Iterate over all possible substrings
+    for i in range(n):
+        for j in range(i + 1, n + 1):
+            substring = s[i:j]
+            if substring.count('a') == substring.count('b'):
+                return i, j - 1
+    
+    return -1, -1
+
+# Read input
+T = int(input())
+for _ in range(T):
+    n = int(input())
+    s = input()
+    
+    # Find the balanced substring
+    result = find_balanced_substring(s)
+    
+    # Output the result
+    print(result[0], result[1])
+```
+
+### Explanation
+
+1. **Function `find_balanced_substring(s)`**:
+   - Takes a string `s` as input.
+   - Iterates over all possible substrings using nested loops (`i` and `j`).
+   - Checks if the count of 'a' equals the count of 'b' within the substring.
+   - Returns the indices `(i, j-1)` if a balanced substring is found, otherwise returns `(-1, -1)`.
+
+2. **Main Logic**:
+   - Reads the number of test cases `T`.
+   - For each test case, reads the length `n` and the string `s`.
+   - Calls the function `find_balanced_substring(s)` to get the indices of the balanced substring.
+   - Prints the indices.
+
+This approach ensures that we check every possible substring and find the first (or any) balanced substring, if it exists. If no balanced substring is found, it will print `-1 -1`.
+
+### Final Code Block
+
+Here is the complete solution wrapped in the required format:
+
+```python
+def find_balanced_substring(s):
+    n = len(s)
+    
+    # Iterate over all possible substrings
+    for i in range(n):
+        for j in range(i + 1, n + 1):
+            substring = s[i:j]
+            if substring.count('a') == substring.count('b'):
+                return i, j - 1
+    
+    return -1, -1
+
+# Read input
+T = int(input())
+for _ in range(T):
+    n = int(input())
+    s = input()
+    
+    # Find the balanced substring
+    result = find_balanced_substring(s)
+    
+    # Output the result
+    print(result[0], result[1])
+```
+
+This should adhere to the given input and output specifications.

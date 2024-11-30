@@ -1,0 +1,13 @@
+```python
+k, r = map(int, input().split())
+ans = 0
+while True:
+    ans += 1
+    if k % r == 0:
+        print(ans)
+        break
+    k -= k // r
+    if k == 0:
+        break
+print(ans)
+```

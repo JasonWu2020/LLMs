@@ -1,0 +1,25 @@
+```python
+from sys import stdin
+from collections import deque
+
+def solve():
+    t = int(stdin.readline())
+    for _ in range(t):
+        n, m = map(int, stdin.readline().split())
+        a = list(map(int, stdin.readline().split()))
+        b = list(map(int, stdin.readline().split()))
+        found = False
+        for i in range(n):
+            for j in range(m):
+                if a[i] == b[j]:
+                    print("YES")
+                    print(len([i+1, *b[:j]+a[i+1:]])
+                    found = True
+                    break
+            if found:
+                break
+        if not found:
+            print("NO")
+
+solve()
+```

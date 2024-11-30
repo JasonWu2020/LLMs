@@ -1,0 +1,27 @@
+<start_of_turn>model
+```python
+# Input
+table = input()
+hand = input().split() # split the input to get all five cards in your hand.
+
+#Check for playability
+def is_playable_card(hand, table):
+    for card in hand:
+        rank = int(card[0])
+        suit = card[1]
+
+        if suit == table:
+            print("YES")
+
+        return
+
+```
+        
+
+
+
+
+```    python
+input()
+print(is_playable_card())
+```<end_of_turn>

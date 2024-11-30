@@ -1,0 +1,32 @@
+Here's a Python function that solves the given problem:
+
+```python
+def count_interesting_numbers(n):
+    def sum_of_digits(x):
+        return sum(int(digit) for digit in str(x))
+
+    count = 0
+    current_sum = sum_of_digits(n)
+    next_sum = sum_of_digits(n + 1)
+
+    while next_sum <= current_sum:
+        n -= 1
+        if next_sum < current_sum:
+            count += 1
+        current_sum, next_sum = next_sum, sum_of_digits(n + 1)
+
+    return count
+
+# Function to test your solution
+def check_solution():
+    assert count_interesting_numbers(9) == 1, "Test case 1 failed"
+    assert count_interesting_numbers(10) == 1, "Test case 2 failed"
+    assert count_interesting_numbers(100) == 18, "Test case 3 failed"
+    assert count_interesting_numbers(1000) == 181, "Test case 4 failed"
+    print("All test cases passed!")
+
+# Run the check function to verify your solution
+check_solution()
+```
+
+This code defines a function `count_interesting_numbers(n)` that calculates the number of interesting numbers less than or equal to `n`. It also includes a helper function `sum_of_digits(x)` to compute the sum of digits of a number `x`. The `check_solution()` function tests the `count_interesting_numbers()` function with various inputs to ensure it works correctly.

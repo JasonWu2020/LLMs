@@ -1,0 +1,25 @@
+```python
+def find_most_exercised_muscle(n, a):
+    # Read input
+    for num in a:
+        count = {i: 0 for i in range(1, 21)}
+        for i in range(1, num + 1):
+            count[i] += 1
+
+    # Find the muscle with the most exercises
+    max_num = max(count.keys())
+    max_count = count[max_num]
+
+    # Print the result
+    if max_count == count[1]:
+        print("chest")
+    elif max_count == count[2]:
+        print("biceps")
+    else:
+        print("back")
+
+# Test the function
+n = int(input())
+a = list(map(int, input().split()))
+find_most_exercised_muscle(n, a)
+```

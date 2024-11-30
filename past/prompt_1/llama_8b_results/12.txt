@@ -1,0 +1,30 @@
+import sys
+input = sys.stdin.readline
+from math import log2, ceil
+from bisect import bisect_right as upper_bound
+from bisect import bisect_left as lower_bound
+
+n, m, a, b = map(int, input().split())
+g0, x, y, z = map(int, input().split())
+g = [0] * (m * (n + 1))
+g[0] = g0
+for i in range(m * n):
+    g[i + 1] = (g[i] * x + y) % z
+
+def f(i, j):
+    return (i - 1) * m + j - 1
+
+s = [0] * (m * (n + 1))
+for i in range(n):
+    for j in range(m):
+        s[f(i + 1, j + 1)] = min(s[f(i, j + 1)], s[f(i + 1, j)] + g[f(i + 1, j + 1)])
+
+def getMin(i, j):
+    return s[f(i, j + b - 1)] + s[f(i + a - 1, j) - f(i, j + b - 1)] - s[f(i + a - 1, j + b - 1)]
+
+ans = 0
+for i in range(n - a + 1):
+    for j in range(m - b + 1):
+        ans += getMin(i, j)
+
+print(ans)

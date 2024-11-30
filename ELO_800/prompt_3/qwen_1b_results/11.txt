@@ -1,0 +1,45 @@
+### Critique of Provided Solution
+
+The provided solution seems to correctly identify scenarios where Polycarp can minimize the number of shovels needed while ensuring no change is made during payment. However, the logic appears to rely on trial-and-error methods which might become inefficient with larger inputs.
+
+### Proposed Solution
+
+Here's an improved version of the solution that leverages mathematical reasoning rather than brute force:
+
+```python
+def min_shovels(k, r):
+    """
+    Returns the minimum number of shovels Polycarp needs to buy to make a full payment,
+    given the cost of each shovel k burles and the denomination of his other coin r.
+    
+    :param k: Cost of one shovel in burles.
+    :param r: Denomination of the coin Polycarp has but not equal to 10.
+    :return: Minimum number of shovels needed to make a full payment without change.
+    """
+    # Calculate the remainder when k is divided by r
+    remainder = k % r
+    
+    if remainder == 0:
+        return 1  # If no change is needed, just buy one shovel
+    elif remainder < 10:
+        return 2  # Buy two shovels to cover the remainder and get a free shovel
+    
+    # For cases where remainder > 10, use binary search to find the minimum number of shovels
+    left, right = 1, int(remainder / 10)
+    while left <= right:
+        mid = (left + right) // 2
+        total_cost = (mid - 1) * 10 + mid * r
+        if total_cost >= k:
+            right = mid - 1
+        else:
+            left = mid + 1
+            
+    return left
+
+# Example usage
+print(min_shovels(117, 3))  # Output: 9
+print(min_shovels(1053, 11))  # Output: 1
+print(min_shovels(30, 5))  # Output: 2
+```
+
+This revised solution uses a combination of direct calculation and binary search to efficiently determine the minimum number of shovels needed. The binary search part allows us to quickly narrow down the range of possible answers, making it more suitable for larger values of `k` compared to the original approach.

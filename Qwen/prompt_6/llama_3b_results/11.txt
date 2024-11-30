@@ -1,0 +1,12 @@
+```python
+import math
+
+k, r = map(int, input().split())
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+print(math.ceil(k / gcd(k, r)))
+```

@@ -1,0 +1,23 @@
+```python
+import sys
+
+def max_students_with_favorite_drink(n, k, preferences):
+    preference_counts = [0] * k
+    for drink in preferences:
+        preference_counts[drink - 1] += 1
+    
+    total_sets = (n + 1) // 2
+    distributed_sets = min(total_sets, sum(preference_counts))
+    
+    return distributed_sets
+
+if __name__ == "__main__":
+    input_lines = sys.stdin.read().splitlines()
+    n, k = list(map(int, input_lines[0].split()))
+    preferences = []
+    for i in range(1, n + 1):
+        preferences.append(int(input_lines[i]))
+    
+    result = max_students_with_favorite_drink(n, k, preferences)
+    print(result)
+```

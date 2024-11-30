@@ -1,0 +1,19 @@
+The outputted solution has a time complexity of O(n log n) due to the sorting operation. This is not the most efficient solution, as it can be solved in O(n) time complexity by iterating through the array and keeping track of the count of consecutive equal elements.
+
+Here is an alternative solution:
+
+```python
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    count = 1
+    for i in range(1, n):
+        if a[i] == a[i - 1]:
+            count += 1
+        else:
+            count = 1
+    print(count)
+```
+
+This solution has a time complexity of O(n) and should be more efficient for large inputs.

@@ -1,0 +1,24 @@
+```python
+from collections import defaultdict
+
+# Read the input
+table_card = input()
+hand_cards = [input() for _ in range(5)]
+
+# Define a mapping of the input strings to their corresponding ranks and suits
+ranks = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'T': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
+suits = {'D': 1, 'C': 2, 'S': 3, 'H': 4}
+
+# Create a set of the cards on the table and in the hand
+table_set = set()
+for card in hand_cards:
+    table_set.add((ranks[card[0]], suits[card[1]]))
+
+# Check for each card in the hand if it has the same rank or suit as the card on the table
+for card in hand_cards:
+    if (ranks[card[0]], suits[card[1]]) in table_set or ranks[card[0]] == ranks[table_card[0]]:
+        print("YES")
+        exit()
+
+print("NO")
+```

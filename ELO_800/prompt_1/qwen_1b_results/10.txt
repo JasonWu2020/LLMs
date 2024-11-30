@@ -1,0 +1,17 @@
+```python
+# Read input
+a, b = map(int, input().split())
+
+# Calculate maximum number of days with different socks
+max_diff_days = min(a, b)
+
+# Calculate remaining socks after max_diff_days
+remaining_red = a - max_diff_days
+remaining_blue = b - max_diff_days
+
+# Calculate minimum number of days with the same socks
+min_same_days = min(remaining_red, remaining_blue) // 2
+
+# Print result
+print(max_diff_days, min_same_days)
+```

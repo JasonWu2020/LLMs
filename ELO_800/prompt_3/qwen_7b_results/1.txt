@@ -1,0 +1,43 @@
+```python
+import sys
+
+# Reading input directly from stdin and writing output to stdout
+t = int(sys.stdin.readline().strip())
+
+for _ in range(t):
+    n = int(sys.stdin.readline().strip())
+    p = list(map(int, sys.stdin.readline().strip().split()))
+
+    # Creating graph using list of indexes where p[i] == i+1 indicates i is friend with i+1
+    friends = [set() for _ in range(n)]
+    for i in range(n):
+        if p[i] == i + 1:
+            friends[i].add(i)
+        else:
+            friends[p[i]-1].add(i)
+
+    # Initialize the number of needed invitations as n 
+    num_invitations = n
+    
+    # DFS traversal to find connected components
+    visited = [False]*n
+    for i in range(n):
+        if not visited[i]:
+            count = 1  # current node itself 
+            stack = [i]
+            visited[i] = True
+            
+            while stack:
+                curr = stack.pop()
+                for next_node in friends[curr]:
+                    if not visited[next_node]:
+                        stack.append(next_node)
+                        visited[next_node] = True
+                        count += 1
+            # The size of connected component is less than 2, we need 1 invitation per component
+            num_invitations -= count - 1
+
+    print(num_invitations)
+```
+
+This version of the solution uses Depth-First Search (DFS) to identify connected components in the friendship network graph. By identifying these components, it determines the minimal number of invitations necessary to ensure at least two friends attend the party. The logic accounts for self-loop friends (where `p[i] == i+1`) and calculates the minimum number of invitations needed considering these self-loops reduce the total count.

@@ -1,0 +1,19 @@
+```python
+import math
+from itertools import combinations
+
+def find_partition(n):
+    numbers = list(range(1, n+1))
+    for r in range(1, n//2 + 1):
+        for subset in combinations(numbers, r):
+            S1 = set(subset)
+            S2 = set(numbers) - S1
+            if sum(S1) % 2 == 0 and sum(S2) % 2 == 0:
+                gcd_sum_S1 = math.gcd(sum(S1), sum(S2))
+                if gcd_sum_S1 > 1:
+                    return f"Yes\n{len(S1)} {' '.join(map(str, sorted(S1)))}\n{len(S2)} {' '.join(map(str, sorted(S2)))}"
+    return "No"
+
+n = int(input().strip())
+print(find_partition(n))
+```

@@ -1,0 +1,18 @@
+[/INST] ```python
+import sys
+
+def decrypt_string(s):
+    output = ""
+    stack = []
+    for char in s:
+        while stack and stack[-1] != char:
+            output += stack.pop()
+        stack.append(char)
+        output += char
+    return output
+
+for _ in range(int(input())):
+    n = int(input())
+    s = input().strip()
+    print(decrypt_string(s))
+```</s>

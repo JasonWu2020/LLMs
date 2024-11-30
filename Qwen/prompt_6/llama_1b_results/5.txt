@@ -1,0 +1,15 @@
+```python
+
+def get_moves(a, b):
+    moves = 0
+    while a % b!= 0:
+        a += 1
+        moves += 1
+    return moves
+
+t = int(input())
+for _ in range(t):
+    a, b = map(int, input().split())
+    print(get_moves(a, b))
+
+```

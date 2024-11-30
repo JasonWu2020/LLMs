@@ -1,0 +1,9 @@
+```python
+def sock_wear(a, b):
+    max_days_diff = min(a, b)
+    max_days_same = (a + b) // 2
+    return max_days_diff, max_days_same
+
+a, b = map(int, input().split())
+print(sock_wear(a, b)[0], sock_wear(a, b)[1])
+```

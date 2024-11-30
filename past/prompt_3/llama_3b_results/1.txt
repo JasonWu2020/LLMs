@@ -1,0 +1,49 @@
+Critique of the provided solution:
+
+* The solution only checks if `n` is odd or even, and partitions the numbers accordingly. However, this approach is not sufficient to guarantee that the two sets have a GCD greater than 1.
+* The solution does not consider the case where `n` is even and `n` is not a power of 2. In this case, the solution may not find a valid partition.
+* The solution uses `math.gcd` function which is not necessary and can be replaced with a simple implementation of the Euclidean algorithm.
+* The solution does not handle the case where `n` is a power of 2.
+
+Here's a new solution that addresses these issues:
+
+```python
+import sys
+
+def read():
+    return int(sys.stdin.readline().strip())
+
+def write(x):
+    sys.stdout.write(str(x) + '\n')
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+def main():
+    n = read()
+    if n == 1:
+        write('No')
+        return
+    if n == 2:
+        write('Yes')
+        write('1 2')
+        return
+    for i in range(2, n // 2 + 1):
+        if gcd(i, n - i) == 1:
+            write('Yes')
+            write(str(i) +'' + str(n - i))
+            return
+    for i in range(3, n + 1, 2):
+        if gcd(i, n - i) == 1:
+            write('Yes')
+            write(str(i) +'' + str(n - i))
+            return
+    write('No')
+
+if __name__ == '__main__':
+    main()
+```
+
+This solution first checks if `n` is 1 or 2. If `n` is 1, it prints "No" and exits. If `n` is 2, it prints "Yes" and the numbers 1 and 2. Then it checks all odd numbers from 3 to `n // 2` to see if they and their complements have a GCD of 1. If it finds such a pair, it prints "Yes" and the pair. If it doesn't find such a pair, it checks all odd numbers from 3 to `n` to see if they and their complements have a GCD of 1. If it finds such a pair, it prints "Yes" and the pair. If it doesn't find any such pair, it prints "No".

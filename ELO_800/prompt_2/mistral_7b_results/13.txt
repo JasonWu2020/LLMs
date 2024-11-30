@@ -1,0 +1,21 @@
+[/INST] ```python
+import sys
+
+def shortest\_possible\_length(a):
+ total\_sum = sum(a)
+ if total\_sum % 2 == 1:
+ return 2
+ max\_element = max(a)
+ if max\_element < total\_sum // 2:
+ return -1
+ length = len(a)
+ while length > 2 and max\_element >= total\_sum // 2:
+ length -= 2
+ max\_element += a[length-1] + a[length]
+ return length
+
+for _ in range(int(input())):
+ n = int(input())
+ a = list(map(int, input().split()))
+ print(shortest\_possible\_length(a))
+```</s>

@@ -1,0 +1,18 @@
+[/INST] ```python
+import sys
+
+n, m, a, b, g_start, x, y, z = map(int, sys.stdin.readline().strip().split())
+g = [g_start]
+for _ in range(n * m - 1):
+ g.append((g[-1] * m + y) % z)
+ ans = 0
+ i, j = 0, 0
+ while i * m + j < n * m:
+ min_height = min(g[i * m + j : i * m + j + b])
+ ans += min_height[0]
+ j += b
+ if j + b >= m:
+ i += 1
+ i, j = i * m, j % m
+ print(ans)
+```</s>

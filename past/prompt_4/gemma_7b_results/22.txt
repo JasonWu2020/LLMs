@@ -1,0 +1,33 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is well-written and efficient. It calculates character frequencies, sorts characters by frequency, and then strategically deletes characters until the total number of characters deleted is less than or equal to *k*. The use of a dictionary to store character frequencies is an effective way to manage character data.
+
+**Improvements:**
+
+1. **Use a set to store distinct characters:** Instead of using a dictionary to store character frequencies, a set can be used to store distinct characters. This will reduce the time complexity of finding the distinct characters.
+2. **Use a cumulative sum to track the total number of characters deleted:** Instead of iterating over the sorted characters to count the total number of characters deleted, a cumulative sum can be used to track the total number of characters deleted.
+
+**Modified solution:**
+
+```python
+n, k = map(int, input().split())
+s = input().lower()
+
+# Calculate character frequencies
+char_set = set(s)
+total_chars_deleted = 0
+distinct_chars_remaining = len(char_set)
+
+# Use a cumulative sum to track the total number of characters deleted
+cumulative_sum = 0
+for char in sorted(char_set, key=lambda char: -s.count(char)):
+    cumulative_sum += s.count(char)
+    if cumulative_sum <= k:
+        total_chars_deleted += s.count(char)
+        s = s.replace(char, "")
+
+# Print the number of distinct characters and the resulting string
+print(distinct_chars_remaining)
+print(s)
+```<eos>

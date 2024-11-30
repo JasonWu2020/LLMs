@@ -1,0 +1,16 @@
+<start_of_turn>model
+**Critique:**
+The outputted solution is conceptually correct, but it does not handle the case where there are no coins. In that case, the program will output 0, which is incorrect.
+
+**Updated Solution:**
+
+```python
+n = int(input())
+a = list(map(int, input().split()))
+
+if not a:
+  print(0)
+else:
+  distinct_coin_values = set(a)
+  print(len(distinct_coin_values))
+```<eos>

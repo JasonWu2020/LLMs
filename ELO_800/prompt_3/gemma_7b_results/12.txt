@@ -1,0 +1,27 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is correct, but it can be improved. The time complexity of the solution is O(n) where n is the length of the string. This is because the loop iterates over the string only once. However, the space complexity is O(n) as well, because the solution stores the entire substring in memory.
+
+**Improved Solution:**
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    s = input().strip().split()
+    s = ''.join(s)
+
+    l, r = -1, -1
+    for i in range(n):
+        left, right = i, i
+        a, b = s[left:right+1].count('a'), s[left:right+1].count('b')
+        if a == b:
+            l, r = left, right
+            break
+
+    print(l, r) if l != -1 else print(-1, -1)
+```
+
+This solution improves the space complexity by not storing the entire substring in memory. Instead, it only stores the count of letters 'a' and 'b' in the substring. This reduces the space complexity to O(1).<eos>

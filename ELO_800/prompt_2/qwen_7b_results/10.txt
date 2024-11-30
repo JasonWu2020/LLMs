@@ -1,0 +1,13 @@
+```python
+def calculate_vasya_hipster_socks(a: int, b: int) -> None:
+    min_socks = min(a, b)
+    remaining_socks = abs(a - b) // 2
+    print(f"{min_socks} {remaining_socks}")
+
+# Reading input values
+a = int(input())
+b = int(input())
+
+# Function call to print the solution
+calculate_vasya_hipster_socks(a, b)
+```

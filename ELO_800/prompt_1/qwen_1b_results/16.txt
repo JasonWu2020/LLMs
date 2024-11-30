@@ -1,0 +1,16 @@
+```python
+def digit_sum(n):
+    return sum(int(digit) for digit in str(n))
+
+for _ in range(int(input())):
+    n = int(input())
+    ans = 0
+    i = 1
+    while True:
+        if digit_sum(i+1) < digit_sum(i):
+            ans += 1
+        else:
+            break
+        i += 1
+    print(ans)
+```

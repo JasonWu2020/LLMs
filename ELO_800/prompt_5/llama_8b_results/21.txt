@@ -1,0 +1,8 @@
+```python
+n = int(input())
+a = list(map(int, input().split()))
+b = set(a)
+print(len(b))
+```
+
+This code will first read the number of coins and the values of the coins from the input, then it will create a set from the values. A set in Python is an unordered collection of unique elements, so it will automatically remove any duplicate values. The length of the set will then be the minimum number of pockets Polycarp needs to use.

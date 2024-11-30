@@ -1,0 +1,8 @@
+[/INST] ```python
+import sys
+
+a, b = map(int, sys.stdin.readline().strip().split())
+different_days = min(a, b, sum(map(sum, [itertools.combinations((a, b), 2)]) + 1) // 2
+same_days = min(a, b)
+print(*[different_days, same_days])
+```</s>

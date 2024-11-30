@@ -1,0 +1,9 @@
+```python
+for _ in range(int(input())):
+    n = int(input())
+    k = 0
+    while n > 0:
+        n &= n - 1
+        k += 1
+    print(k)
+```

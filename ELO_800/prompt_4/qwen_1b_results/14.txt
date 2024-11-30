@@ -1,0 +1,39 @@
+Solution:
+
+```python
+import sys
+from typing import List
+
+def process_cases(test_cases: int):
+    for _ in range(test_cases):
+        n, k = map(int, input().split())
+        a = list(map(int, input().split()))
+        
+        # Initialize d with the maximum element in the array
+        d = max(a)
+        
+        # Perform k operations
+        while k > 0:
+            # Find the index of the maximum element
+            i = a.index(d)
+            
+            # Replace the current element with its complement relative to d
+            a[i] = -a[i]
+            
+            # Update d to the new maximum element
+            d = max(d, -a[i])
+            
+            # Decrease k by 1
+            k -= 1
+        
+        # Print the final array
+        print(" ".join(map(str, a)))
+
+# Read the number of test cases from stdin
+test_cases = int(input())
+
+# Process each test case
+process_cases(test_cases)
+```
+
+This Python script reads the number of test cases from standard input, processes each case, and prints the resulting array after performing `k` operations on it. It handles arrays up to size \(2 \times 10^5\) efficiently using the provided constraints.

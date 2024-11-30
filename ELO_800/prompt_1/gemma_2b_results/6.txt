@@ -1,0 +1,12 @@
+<start_of_turn>model
+```python
+def can_play(table, hand):
+    for card in hand:
+        if card[0] == table[0] or card[1] == table[1]:
+            return 'YES'
+    return 'NO'
+
+table = input().strip()
+hand = list(map(lambda x: x.strip(), input().split()))
+print(can_play(table, hand))
+```<end_of_turn>

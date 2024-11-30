@@ -1,0 +1,28 @@
+```python
+import sys
+input = sys.stdin.readline
+
+def find_stable_rook_arrangement(n, k):
+    if k > n:
+        return -1
+    result = [['.' for _ in range(n)] for _ in range(n)]
+    row = 0
+    col = 0
+    
+    for _ in range(k):
+        result[row][col] = 'R'
+        row += 1
+        if row == n:
+            col += 1
+            row = 0
+        if col == n:
+            return -1
+            
+    return '\n'.join([''.join(row) for row in result])
+
+T = int(input())
+
+for _ in range(T):
+    n, k = map(int, input().split())
+    print(find_stable_rook_arrangement(n, k))
+```

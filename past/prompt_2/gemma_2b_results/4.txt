@@ -1,0 +1,16 @@
+<start_of_turn>model
+```python
+def minimum_invitations(n, p):
+  invitations = set()
+  for i in range(n):
+    invitations.add(i)
+  return len(invitations)
+
+t = int(input())
+for i in range(t):
+  n = int(input())
+  p = list(map(int, input().split()))
+  print(minimum_invitations(n, p))
+```
+ 
+<end_of_turn>

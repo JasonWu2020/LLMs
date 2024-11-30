@@ -1,0 +1,83 @@
+```python
+def check_substring(s):
+    count_a = 0
+    count_b = 0
+    left = 0
+    hashmap = {}
+
+    for right in range(len(s)):
+        if s[right] in hashmap:
+            if hashmap[s[right]] == 0:
+                left = right
+                count_a = 1
+            count_a -= 1
+        else:
+            hashmap[s[right]] = 1
+
+        if count_a == count_b:
+            return left + 1, right + 1
+        elif count_a < count_b:
+            count_b -= 1
+        else:
+            count_a += 1
+
+    return -1, -1
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()
+    a, b = -1, -1
+    for i in range(n):
+        if s[i] == 'a':
+            a = i
+        else:
+            b = i
+        if a!= -1 and b!= -1 and a < b:
+            print(f"{a + 1} {b + 1}")
+            break
+    else:
+        print(-1, -1)
+```
+
+```python
+def check_substring(s):
+    count_a = 0
+    count_b = 0
+    left = 0
+    hashmap = {}
+
+    for right in range(len(s)):
+        if s[right] in hashmap:
+            if hashmap[s[right]] == 0:
+                left = right
+                count_a = 1
+            count_a -= 1
+        else:
+            hashmap[s[right]] = 1
+
+        if count_a == count_b:
+            return left + 1, right + 1
+        elif count_a < count_b:
+            count_b -= 1
+        else:
+            count_a += 1
+
+    return -1, -1
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()
+    a, b = -1, -1
+    for i in range(n):
+        if s[i] == 'a':
+            a = i
+        else:
+            b = i
+        if a!= -1 and b!= -1 and a < b:
+            print(f"{a + 1} {b + 1}")
+            break
+    else:
+        print(-1, -1)
+```

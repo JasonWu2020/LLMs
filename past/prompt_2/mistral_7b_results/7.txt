@@ -1,0 +1,32 @@
+[/INST] ```python
+import sys
+from heapq import heappush, heappop
+
+def find_alice_profit(n, k, a, b):
+    items = [(a[i], b[i], i) for i in range(n)]
+    heap = [item[0] - item[1] for item in items]
+    heapq.heapify(heap)
+
+    alice_items = []
+    profit = 0
+    while len(alice_items) < k and heap:
+        diff = heappop(heap)
+        profit += diff
+        alice_items.append(items[items.index(next(filter(lambda x: x[1] == items[0][1], items))])
+
+    bob_items = []
+    while alice_items:
+        current_item = alice_items.pop()
+        profit -= a[current_item[0]]
+        heappush(heap, current_item[1] - a[current_item[0]])
+        if len(bob_items) < k:
+            bob_items.append(current_item)
+
+    return profit
+
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    print(find_alice_profit(n, k, a, b))
+```</s>

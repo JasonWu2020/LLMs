@@ -1,0 +1,29 @@
+def find_beautiful_number(n, k, digits):
+    # Find the first non-repeating segment in the initial number
+    for i in range(n - k):
+        if digits[i] != digits[i + k]:
+            break
+    else:
+        return n, digits  # If all segments match, it's already beautiful
+    
+    # Adjust the first part to make it beautiful
+    for j in range(i + 1):
+        digits[j] = str(digits[j])
+    
+    # Replace the first non-repeating segment with '1'
+    digits[i] = '1'
+    
+    # Generate the rest of the digits
+    for _ in range(k - 1):
+        digits.append('0')
+    
+    return len(digits), digits
+
+# Read input
+n, k = map(int, input().split())
+digits = list(input())
+
+# Find and print the smallest beautiful number
+m, beautiful_number = find_beautiful_number(n, k, digits)
+print(m)
+print(*beautiful_number)

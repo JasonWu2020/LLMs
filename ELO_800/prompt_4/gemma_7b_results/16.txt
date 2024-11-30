@@ -1,0 +1,21 @@
+<start_of_turn>model
+**Critique:**
+
+The solution reads the number of test cases, then for each test case, reads the integer $n$, calculates the sum of digits of $n$, and the sum of digits of $n + 1, and checks if the sum of digits of $n + 1 is less than the sum of digits of $n$. If it is, it prints 1, otherwise prints 0.
+
+**Improvements:**
+
+- The code can be improved by using a function to calculate the sum of digits to reduce code duplication.
+- The code can also be improved by using a more efficient algorithm to calculate the sum of digits.
+
+**Corrected Solution:**
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    def sum_of_digits(x):
+        return sum(int(digit) for digit in str(x).split())
+    print(sum_of_digits(n) - sum_of_digits(n + 1) <= 9)
+```<eos>

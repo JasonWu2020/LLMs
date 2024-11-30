@@ -1,0 +1,12 @@
+```python
+def min_pockets(n, coins):
+    # Using a set to track unique coin values
+    unique_coins = set(coins)
+    return len(unique_coins)
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    coins = list(map(int, input().strip().split()))
+    result = min_pockets(n, coins)
+    print(result)
+```

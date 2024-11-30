@@ -1,0 +1,24 @@
+```python
+def min_password_length(n, password):
+    max_seq_length = 1
+    seq_length = 1
+
+    for i in range(1, n):
+        if password[i] == password[i - 1]:
+            seq_length += 1
+            max_seq_length = max(max_seq_length, seq_length)
+        else:
+            seq_length = 1
+
+    return max(1, n - max_seq_length)
+
+if __name__ == "__main__":
+    import sys
+
+    t = int(sys.stdin.readline().strip())
+    for _ in range(t):
+        n = int(sys.stdin.readline().strip())
+        password = list(map(int, sys.stdin.readline().strip().split()))
+        result = min_password_length(n, password)
+        print(result)
+```

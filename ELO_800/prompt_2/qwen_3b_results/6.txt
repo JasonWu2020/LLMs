@@ -1,0 +1,14 @@
+```python
+def can_play_card(table_card, hand_cards):
+    table_rank, table_suit = table_card[0], table_card[1]
+    for card in hand_cards:
+        rank, suit = card[0], card[1]
+        if (rank == table_rank or suit == table_suit):
+            return "YES"
+    return "NO"
+
+table_card = input().strip()
+hand_cards = [input().strip() for _ in range(5)]
+
+print(can_play_card(table_card, hand_cards))
+```

@@ -1,0 +1,24 @@
+<start_of_turn>model
+**Critique:**
+
+The code reads the number of test cases, then for each test case reads two integers, $a$ and $b$. It calculates the greatest multiple of $b that is less than or equal to $a$ using integer division and then calculates the minimum number of moves required, which is $a - (b * multiple)$. The code is concise and efficient.
+
+**Improved Solution:**
+
+```python
+t = int(input())
+
+for _ in range(t):
+    a, b = map(int, input().split())
+    multiple = a // b
+    moves = a - multiple * b
+
+    # Optimized for cases where a is divisible by b
+    if a % b == 0:
+        moves = 0
+    print(moves)
+```
+
+**Explanation:**
+
+In this improved solution, we check if $a$ is divisible by $b$ and if it is, we set the number of moves to 0. This optimization is important because it can significantly reduce the time complexity of the code.<eos>

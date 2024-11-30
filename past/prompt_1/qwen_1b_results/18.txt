@@ -1,0 +1,39 @@
+```python
+from collections import deque
+
+def find_route(stamps):
+    n = len(stamps)
+    graph = [[] for _ in range(n + 2)]
+    
+    for i in range(1, n + 1):
+        x, y = map(int, stamps[i - 1])
+        graph[x].append(y)
+        graph[y].append(x)
+    
+    visited = [False] * (n + 2)
+    queue = deque([1])
+    visited[1] = True
+    
+    while queue:
+        node = queue.popleft()
+        
+        if not visited[node]:
+            for neighbor in graph[node]:
+                if not visited[neighbor]:
+                    visited[neighbor] = True
+                    queue.append(neighbor)
+    
+    route = []
+    current_node = n + 1
+    while current_node != 1:
+        route.append(current_node)
+        for neighbor in graph[current_node]:
+            if neighbor == 1:
+                break
+        current_node = neighbor
+    
+    return route[::-1]
+
+input_stamps = list(map(str.strip, input().split()))
+print(find_route(input_stamps))
+```

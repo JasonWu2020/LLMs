@@ -1,0 +1,24 @@
+```python
+def find_smallest_beautiful_integer(n, k):
+    # Convert the input string to a list of integers
+    digits = [int(digit) for digit in str(x)]
+    
+    # Find the first non-repeating sequence
+    for i in range(n - k, -1, -1):
+        if all(digits[i + j] == digits[i] for j in range(k)):
+            break
+    
+    # Create the beautiful number
+    beautiful_number = digits[:i+1] * (k + 1)
+    
+    return len(beautiful_number), ''.join(map(str, beautiful_number))
+
+# Reading input
+n, k = map(int, input().split())
+x = input()
+
+# Finding and printing the smallest beautiful integer
+result_length, result_digits = find_smallest_beautiful_integer(n, k)
+print(result_length)
+print(result_digits)
+```

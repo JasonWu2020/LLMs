@@ -1,0 +1,36 @@
+<start_of_turn>model
+**Critique:**
+
+The outputted solution is correct, but it can be improved.
+
+**Updated Solution:**
+
+```python
+t = int(input())
+
+for _ in range(t):
+    s = input().strip()
+    t = input().strip().split()
+
+    # Identify the characters in S that are not in T
+    not_in_t = set(s) - set(t)
+
+    # Rearrange the characters in S that are not in T in the order they appear in S
+    s_prime = ''.join(sorted(not_in_t) + sorted(s))
+
+    # Find the lexicographically smallest permutation of S'
+    print(s_prime)
+```
+
+**Improvements:**
+
+* The updated solution is more efficient than the outputted solution as it uses a set to store the characters in $S$ that are not in $T$, which has a time complexity of O(n) where n is the number of characters in $S$.
+* The updated solution also uses the sorted() function to sort the characters in $S'$ in alphabetical order, which ensures that the lexicographically smallest permutation is found.
+
+**Time Complexity:**
+
+The time complexity of the updated solution is O(n) where n is the number of characters in $S$. This is because the algorithm iterates over the string $S$ only once and the set operations have a time complexity of O(n).
+
+**Space Complexity:**
+
+The space complexity of the updated solution is O(n) where n is the number of characters in $S$. This is because the algorithm uses a set to store the characters in $S$ that are not in $T$, which has a space complexity of O(n).<eos>

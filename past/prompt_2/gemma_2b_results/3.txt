@@ -1,0 +1,15 @@
+<start_of_turn>model
+```python
+def solution(n, a):
+    m = max(a)
+    ans = 0
+    for i in range(n):
+        ans = max(a[i], ans + (a[i] - max(a[:i+1])))
+    return ans
+
+n = int(input())
+a = list(map(int, input().split()))
+print(solution(n, a)) 
+
+
+```<end_of_turn>

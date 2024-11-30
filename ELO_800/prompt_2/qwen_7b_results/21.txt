@@ -1,0 +1,14 @@
+```python
+def min_pockets(n, coin_values):
+    coin_count_map = {}
+    for coin_value in coin_values:
+        if coin_value not in coin_count_map:
+            coin_count_map[coin_value] = 1
+        else:
+            coin_count_map[coin_value] += 1
+    return len(coin_count_map)
+
+n = int(input().strip())
+coin_values = list(map(int, input().strip().split()))
+print(min_pockets(n, coin_values))
+```

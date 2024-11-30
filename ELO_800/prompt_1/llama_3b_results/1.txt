@@ -1,0 +1,24 @@
+```python
+import sys
+
+def solve():
+    n = int(input())
+    p = list(map(int, input().split()))
+    p = [x-1 for x in p]
+    visited = [False] * n
+    ans = 0
+    for i in range(n):
+        if not visited[i]:
+            cycle = [i]
+            while p[i]!= i:
+                cycle.append(p[i])
+                visited[p[i]] = True
+                i = p[i]
+            if len(cycle) > 1:
+                ans += len(cycle) - 1
+    return max(2, ans)
+
+t = int(input())
+for _ in range(t):
+    print(solve())
+```

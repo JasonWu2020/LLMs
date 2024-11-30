@@ -1,0 +1,52 @@
+```python
+from typing import List
+from collections import defaultdict
+
+def check_common_subsequences(a: List[int], b: List[int]) -> bool:
+    """
+    Check if there is at least one common element between two lists.
+    """
+    set_a = set(a)
+    return any(num in set_a for num in b)
+
+def find_common_subsequence(a: List[int], b: List[int]) -> List[int]:
+    """
+    Find the shortest common subsequence between two lists.
+    """
+    common_elements = []
+    last_index = -1
+    
+    for i in range(len(a)):
+        if a[i] in common_elements:
+            continue
+        if check_common_subsequences([a[i]], b):
+            common_elements.append(a[i])
+            last_index = i
+            
+    if not common_elements:
+        return ["NO"]
+    
+    sorted_elements = sorted(common_elements)
+    result = [sorted_elements[0]]
+    for i in range(1, len(sorted_elements)):
+        if sorted_elements[i] != sorted_elements[i-1] + 1:
+            break
+        result.append(sorted_elements[i])
+    
+    return result if result else ["NO"]
+
+def main():
+    num_tests = int(input())
+    for _ in range(num_tests):
+        n, m = map(int, input().split())
+        a = list(map(int, input().split()))
+        b = list(map(int, input().split()))
+
+        result = find_common_subsequence(a, b)
+        print(" ".join(result))
+
+if __name__ == "__main__":
+    main()
+```
+
+This Python script solves the given problem by first checking if there is at least one common element between the two lists `a` and `b`. Then, it attempts to find the shortest common subsequence by iterating through `a` and adding elements to the common list if they are present in `b`. The script then returns the shortest common subsequence as a list, or "NO" if no such subsequence exists.

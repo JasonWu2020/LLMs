@@ -1,0 +1,74 @@
+**Critique of the Outputted Solution**
+
+The solution provided has several issues:
+
+1.  It is overly complex and repetitive. The logic for determining the color of a user's handle is repeated multiple times, which makes the code harder to read and maintain.
+2.  It uses a lot of magic numbers (e.g., 2400, 2200, 2000, etc.) that are not clearly explained. These numbers seem to be thresholds for different colors, but their meaning is not immediately apparent.
+3.  The variable `good` is used to track whether Anton performed well, but it is not clearly explained what "well" means in this context.
+4.  The solution does not handle the case where Anton's rating does not increase after the contest.
+
+**Alternative Solution**
+
+```python
+import sys
+
+# Read input
+n = int(input())
+red_handles = set()
+
+for _ in range(n):
+    name, before, after = input().split()
+    before = int(before)
+    after = int(after)
+
+    # Check if Anton's rating increased
+    if after > before:
+        # Determine the color of the handle before the contest
+        color = 12
+        while before >= 400:
+            if before >= 2400:
+                color = 1
+                break
+            elif before >= 2200:
+                color = 2
+                break
+            elif before >= 2000:
+                color = 3
+                break
+            elif before >= 1800:
+                color = 4
+                break
+            elif before >= 1600:
+                color = 5
+                break
+            elif before >= 1400:
+                color = 6
+                break
+            elif before >= 1200:
+                color = 7
+                break
+            elif before >= 1000:
+                color = 8
+                break
+            elif before >= 800:
+                color = 9
+                break
+            elif before >= 600:
+                color = 10
+                break
+            elif before >= 400:
+                color = 11
+                break
+
+        # If the handle was red before the contest, check if Anton outscored someone who became red
+        if color == 1:
+            for handle, rating in red_handles:
+                if rating < 2400 and rating + 10 >= 2400:
+                    print("YES")
+                    sys.exit(0)
+
+# If no one was outscored, print "NO"
+print("NO")
+```
+
+This solution is simpler and more readable than the original. It uses a `set` to store the handles of users who had a red handle before the contest, and it uses a while loop to determine the color of a user's handle. If Anton outscored someone who became red, it prints "YES" and exits the program. Otherwise, it prints "NO".

@@ -1,0 +1,16 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    print(int((n-9)/S(n+1) + 1))
+
+def S(x):
+    s = 0
+    while x:
+        digit = x % 10
+        s += digit
+        x //= 10
+    return s
+```<eos>

@@ -1,0 +1,20 @@
+```python
+import sys
+
+# Reading input from stdin
+n = int(input())
+a = list(map(int, input().split()))
+
+# Counting the occurrences of each exercise
+chest_count = a.count(1)
+biceps_count = a.count(2)
+back_count = a.count(3)
+
+# Determining which muscle gets the most training
+if chest_count > biceps_count and chest_count > back_count:
+    print("chest")
+elif biceps_count > chest_count and biceps_count > back_count:
+    print("biceps")
+else:
+    print("back")
+```

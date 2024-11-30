@@ -1,0 +1,17 @@
+<start_of_turn>model
+**Critique:**
+
+The solution provided is concise and efficient, but it can be improved. The code calculates the difference between sets of digits, which is an unnecessary operation. Instead, it would be more efficient to calculate the distance between each digit in the current state and the target combination.
+
+**Improved solution:**
+
+```python
+n = int(input())
+s = input().split()
+t = input().split()
+
+d = abs(s - t)
+m = min(sum(min(d) for d in d))
+
+print(m)
+```<eos>

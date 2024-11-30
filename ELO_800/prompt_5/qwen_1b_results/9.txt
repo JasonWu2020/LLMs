@@ -1,0 +1,19 @@
+```python
+import sys
+
+def max_exercise(n, reps):
+    chest = sum(1 for r in reps if r > 7)
+    biceps = sum(r % 2 == 1 for r in reps)
+    back = len(reps) - chest - biceps
+    
+    return 'chest' if chest >= biceps + back else 'biceps' if biceps >= chest + back else 'back'
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    reps = list(map(int, input().strip().split()))
+    
+    result = max_exercise(n, reps)
+    print(result)
+```
+
+This Python script reads an integer `n` followed by `n` integers from standard input, representing how many times each type of exercise Greg repeats. It then calculates the total number of exercises done for each type based on the given rules and prints out the muscle that received the most exercises.

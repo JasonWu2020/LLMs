@@ -1,0 +1,21 @@
+```python
+def min_height_sum(n, m, a, b, g0, x, y, z):
+    total_sum = 0
+    for i in range(n - a + 1):
+        for j in range(m - b + 1):
+            current_min = float('inf')
+            for ii in range(i, i + a):
+                for jj in range(j, j + b):
+                    current_min = min(current_min, g0)
+                    g0 = (g0 * x + y) % z
+                g0 = (g0 * x + y) % z
+            total_sum += current_min
+    return total_sum
+
+# Reading input
+n, m, a, b = map(int, input().split())
+g0, x, y, z = map(int, input().split())
+
+# Calculating and printing the result
+print(min_height_sum(n, m, a, b, g0, x, y, z))
+```

@@ -1,0 +1,44 @@
+**Critique of the outputted solution**
+
+The solution provided has a few issues:
+
+1.  It doesn't handle the case when the input string `s` is empty.
+2.  It doesn't handle the case when the frequency of 'a', 'b', or 'c' is 0 in the string `s`.
+3.  It uses a brute-force approach to fill the result string, which can be inefficient for large inputs.
+4.  It doesn't use a more Pythonic way to create the result string.
+
+**Alternative solution**
+
+```python
+```python
+for _ in range(int(input())):
+    s = input()
+    t = input()
+
+    freq = [0] * 26
+    for char in s:
+        freq[ord(char) - ord('a')] += 1
+
+    if freq[ord(t[0]) - ord('a')] >= freq[ord(t[1]) - ord('a')] and freq[ord(t[1]) - ord('a')] >= freq[ord(t[2]) - ord('a')]:
+        result = []
+        for char in 'abc':
+            for _ in range(freq[ord(char) - ord('a')]):
+                result.append(char)
+        for i in range(26):
+            for _ in range(freq[i]):
+                if i!= ord(t[0]) - ord('a') and i!= ord(t[1]) - ord('a') and i!= ord(t[2]) - ord('a'):
+                    result.append(chr(i + ord('a')))
+        print(''.join(result))
+    else:
+        result = []
+        for char in 'abc':
+            for _ in range(freq[ord(char) - ord('a')]):
+                result.append(char)
+        result = result[::-1]
+        for i in range(26):
+            for _ in range(freq[i]):
+                if i!= ord(t[2]) - ord('a') and i!= ord(t[0]) - ord('a') and i!= ord(t[1]) - ord('a'):
+                    result.append(chr(i + ord('a')))
+        print(''.join(result))
+```
+```

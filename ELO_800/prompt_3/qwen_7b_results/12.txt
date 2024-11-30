@@ -1,0 +1,39 @@
+```python
+from typing import List
+
+def find_balanced_substring(testcase: List[int]) -> None:
+    n = testcase[0]
+    s = ''.join(testcase[1])
+    diff = [0]
+    count_a = 0
+    for char in s:
+        if char == 'a':
+            count_a += 1
+        else:
+            count_a -= 1
+        diff.append(count_a)
+    
+    ans = [-1, -1]
+    for i in range(n):
+        for j in range(i + 1, n + 1):
+            if diff[i] == diff[j]:
+                ans = [i + 1, j]
+                break
+        if ans[0] != -1:
+            break
+    
+    print(*ans)
+
+# A function that mimics reading input
+def mock_input() -> str:
+    return input()
+
+# Call the mock function instead of the real one during testing
+old_input = input
+input = mock_input
+
+# Testing the function with provided data points
+find_balanced_substring([6, "baabab"])
+find_balanced_substring([5, "aabaab"])
+find_balanced_substring([3, "bb"])
+```

@@ -1,0 +1,25 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is correct, but it can be improved.
+
+**Issues:**
+
+- The code is not handling the case where $x$ is 0.
+- The code is not optimized for large inputs.
+
+**Improved Solution:**
+
+```python
+n, k = map(int, input().split())
+x = int("".join(map(str, input().split())))
+m = 1
+y = x // 10 ** (k - 1)
+b = str(y).split(")")
+print(len(b))
+print("".join(map(str, map(int, b))))
+
+if x == 0:
+    print(0)
+
+```<eos>

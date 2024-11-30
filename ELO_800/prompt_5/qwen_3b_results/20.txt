@@ -1,0 +1,18 @@
+```python
+def find_max_k(n):
+    # Start from n-1 and decrement until we find the largest k
+    # where n & (n-1) & (n-2) & ... & (k) == 0
+    while n > k:
+        if (n & (n-1)) == 0:
+            return n - 1
+        n -= 1
+
+if __name__ == "__main__":
+    t = int(input().strip())
+    for _ in range(t):
+        n = int(input().strip())
+        k = find_max_k(n)
+        print(k)
+```
+
+This Python script defines a function `find_max_k` that iterates backward from `n-1` to `1`, checking for the first number `k` where the bitwise AND of all numbers from `n` down to `k` equals zero. It then prints the result for each test case.

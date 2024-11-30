@@ -1,0 +1,10 @@
+```python
+import sys
+
+for _ in range(int(input())):
+    n, a, b = map(int, input().split())
+    if a + b > n - 1 or b > a or n == a == b:
+        print('No')
+    else:
+        print('Yes')
+```

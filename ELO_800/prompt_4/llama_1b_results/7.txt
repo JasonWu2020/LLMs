@@ -1,0 +1,49 @@
+```python
+from collections import defaultdict
+
+def check_permutation(s, t):
+    # Create a frequency dictionary to store the frequency of each character in string T
+    freq_dict = defaultdict(int)
+    for char in t:
+        freq_dict[char] += 1
+
+    # Initialize an empty string to store the result
+    result = ''
+    # Iterate over the characters in string S
+    for char in s:
+        # If the character is not in the frequency dictionary, add it to the result
+        if char not in freq_dict:
+            result += char
+        # Decrement the frequency of the character in the frequency dictionary
+        freq_dict[char] -= 1
+        # If the frequency of the character becomes zero, remove it from the frequency dictionary
+        if freq_dict[char] == 0:
+            del freq_dict[char]
+
+    # Sort the characters in the result based on their alphabetical order
+    result = ''.join(sorted(result))
+
+    return result
+
+def solve():
+    # Read the number of test cases
+    t = int(input())
+
+    # Process each test case
+    for _ in range(t):
+        # Read the string S
+        s = input()
+        # Read the string T
+        t = input()
+
+        # Check if T is a permutation of S
+        if check_permutation(s, t):
+            # If T is a permutation of S, print the result
+            print(s)
+        else:
+            # If T is not a permutation of S, print the result
+            print(s)
+
+if __name__ == "__main__":
+    solve()
+```

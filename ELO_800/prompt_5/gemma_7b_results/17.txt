@@ -1,0 +1,15 @@
+<start_of_turn>model
+```python
+
+n = int(input())
+original_state = list(map(int, input().split()))
+combination = list(map(int, input().split()))
+
+# Calculate the difference between the original state and the combination
+moves = 0
+for i in range(n):
+    diff = abs(original_state[i] - combination[i])
+    moves += min(diff, 9 - diff)
+
+print(moves)
+```<eos>

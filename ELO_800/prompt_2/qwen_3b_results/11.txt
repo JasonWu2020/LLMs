@@ -1,0 +1,6 @@
+```python
+k, r = map(int, input().split())
+min_shovels = k + r - 1
+
+print(min_shovels)
+```

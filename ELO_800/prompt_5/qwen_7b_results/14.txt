@@ -1,0 +1,35 @@
+```python
+from math import gcd
+import sys
+
+input = sys.stdin.readline
+
+def main():
+    for _ in range(int(input())):
+        n, k = map(int, input().split())
+        arr = list(map(int, input().split()))
+
+        max_val = max(arr)
+        arr_sum = sum(arr)
+
+        # Calculate the GCD of differences between elements and max_val
+        gcd_diff = gcd(max_val - arr[0], max_val - arr[1])
+        for i in range(2, n):
+            gcd_diff = gcd(gcd_diff, max_val - arr[i])
+
+        # Check if k is a multiple of n or (k % n) operations will lead to zero array
+        if k % n == 0 or arr_sum * gcd_diff == 0:
+            print(*([max_val - x for x in arr] * int(k / n)), sep=" ")
+        else:
+            # For the remaining operations, make the new array's values either max_val or 0
+            for _ in range(k % n):
+                arr = [max_val - x for x in arr]
+                if arr_sum * gcd_diff != 0:
+                    arr = [x - gcd_diff if x > gcd_diff else 0 for x in arr]
+
+            print(*arr, sep=" ")
+
+if __name__ == "__main__":
+    main()
+```
+This Python script solves the problem by first determining the maximum value in the array and then calculating the greatest common divisor (GCD) of the differences between elements and this maximum value. It uses these calculations to predict the contents of the array after `k` operations, adhering to the constraints and specifications provided.

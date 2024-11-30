@@ -1,0 +1,33 @@
+```python
+for _ in range(int(input())):
+    S = input()
+    T = input()
+
+    a = S.count('a')
+    b = S.count('b')
+    c = S.count('c')
+
+    a_idx = S.find('a')
+    b_idx = S.find('b')
+    c_idx = S.find('c')
+
+    if a > 0 and b > 0 and c > 0 and T == 'abc':
+        if a_idx < b_idx and b_idx < c_idx:
+            S = S[:a_idx] + 'b' + S[b_idx + 1:c_idx] + 'c' + S[c_idx + 1:]
+        elif a_idx < b_idx and c_idx < b_idx:
+            S = S[:a_idx] + 'c' + S[b_idx + 1:c_idx] + 'b' + S[c_idx + 1:]
+        elif a_idx < c_idx and b_idx < c_idx:
+            S = S[:a_idx] + 'b' + S[c_idx + 1:] + 'c' + S[b_idx + 1:c_idx]
+        elif a_idx < c_idx and b_idx < a_idx:
+            S = S[:a_idx] + 'c' + S[b_idx + 1:] + S[c_idx + 1:]
+        elif a_idx < b_idx:
+            S = S[:a_idx] + 'c' + S[b_idx + 1:]
+        elif a_idx > b_idx:
+            S = S[:a_idx] + 'b' + S[c_idx + 1:]
+        elif b_idx < c_idx:
+            S = S[:b_idx] + 'c' + S[c_idx + 1:]
+        else:
+            S = S[:c_idx] + 'b' + S[c_idx + 1:]
+
+    print(S)
+```

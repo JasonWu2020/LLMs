@@ -1,0 +1,15 @@
+[/INST] ```python
+import sys, itertools
+
+for _ in range(int(sys.stdin.readline())):
+    n, k = map(int, sys.stdin.readline().split())
+    a = list(map(int, sys.stdin.readline().split()))
+    d = max(a)
+    a = [d - i for i in a]
+    print(*a)
+    sys.stdout.flush()
+    for _ in range(k - 1):
+        d = max(a)
+        a = [d - i for i in a]
+    print(*a)
+```</s>

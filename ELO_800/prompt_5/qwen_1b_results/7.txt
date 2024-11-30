@@ -1,0 +1,30 @@
+```python
+def is_subsequence(s, t):
+    j = 0
+    for i in range(len(s)):
+        if s[i] == t[j]:
+            j += 1
+        if j == len(t):
+            return True
+    return False
+
+def find_smallest_permutation(S, T):
+    S_sorted = sorted(S)
+    min_permutation = ''
+    for char in T:
+        while S_sorted and S_sorted[0] != char:
+            S_sorted.pop(0)
+        if S_sorted:
+            min_permutation += S_sorted.pop(0)
+    return ''.join(min_permutation)
+
+# Read input
+t = int(input())
+for _ in range(t):
+    S = input().strip()
+    T = input().strip()
+    
+    # Find the smallest permutation of S
+    result = find_smallest_permutation(S, T)
+    print(result)
+```

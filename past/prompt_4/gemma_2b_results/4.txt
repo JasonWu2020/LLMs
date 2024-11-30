@@ -1,0 +1,53 @@
+<start_of_turn>model
+The provided solution while conceptually correct does not provide a concrete and explicit breakdown of the logic. Here's a critique and an improved approach:
+
+
+**Critique:**
+
+* **Lack of Explicit Logic:** The solution seems to solve a  very specific edge case with brute force.
+* **No Explanation of the Logic:** The reasoning is not explicit, leaving the code's working unclear. 
+
+**Improved Approach:** 
+
+ Here's a solution that adheres to the specifications while being more explicit:
+
+```python
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    p = list(map(int, input().split()))
+    invitations = 0
+    
+    
+    
+    for i in range(n):
+        if i == 0:
+            send_to_friend = [i]
+        else:
+            send_to_friend = []
+            
+            for j in range(n):
+                if p[j] == i:
+                    if j in send_to_friend:
+                        send_to_friend.append(j) 
+                
+        for to in send_to_friend:
+            invitations += 1
+
+            
+    print(invitations) 
+```
+
+
+
+**Explanation:**
+ 1.  * **Input:** Take the test cases from the prompt.
+ 2.  * **Initialization:** Set `invitations` to 0 and iteratively iterate the array of friendship. 
+ 3. **Logic:** Iterate over friends. Each iteration through `i` represents the current friend, and each `p[i]` represents their bests friend.  The goal is to find a way to achieve at least 2 friends that can attend the party.
+ 4. **Output:** Return the total number of invitations at the end.
+
+Let's refactor to address some of the issues of complexity:
+
+
+
+<end_of_turn>

@@ -1,0 +1,42 @@
+Here's a Python 3.8 implementation of the solution:
+
+```python
+def analyze_contest_results(n):
+    # Read input
+    inputs = [input().split() for _ in range(n)]
+    
+    # Initialize variables
+    good_count = 0
+    
+    # Iterate through each participant result
+    for i in range(n):
+        name_i, before_i, after_i = inputs[i]
+        
+        # Check if the current participant's handle is colored red
+        if int(before_i) >= 2400:
+            continue
+        
+        # Check if the current participant's rating has increased
+        if int(after_i) > int(before_i):
+            good_count += 1
+            
+    # Print the result
+    if good_count == n:
+        print("YES")
+    else:
+        print("NO")
+
+# Example usage
+analyze_contest_results(5)
+```
+
+### Explanation:
+1. **Reading Inputs**: The script reads `n` lines from standard input, where each line represents a participant's handle (`name`), their rating before the contest (`before`), and their rating after the contest (`after`).
+   
+2. **Iterating Through Results**:
+   - For each participant, we check if their handle is colored red using the condition `int(before_i) >= 2400`.
+   - If the participant's handle is not colored red, we then check if their rating after the contest (`after_i`) is higher than their rating before the contest (`before_i`). This ensures that they have performed well enough to be considered "good".
+
+3. **Counting Good Performances**: We keep track of how many participants Anton has outscored who met the criteria for being "good". Finally, we determine whether Anton has performed "good" based on this count.
+
+This approach efficiently processes the input data and outputs the correct answer for each test case.

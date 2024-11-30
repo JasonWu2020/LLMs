@@ -1,0 +1,29 @@
+[/INST] ```python
+import sys
+
+def lcp(p, q):
+    return len(p[:min(len(p), len(q)])
+
+def lcs(p, q):
+    n = len(p)
+    return [p[n-i-1] for i in range(len(q) if p[n-i:] == q[:i+1])][-1]
+
+def check_permutations(n, a, b):
+    if a + b > n or a > n or b > n:
+        return False
+    if a > 0 and n - a > a:
+        return False
+    if a == 0 or b == 0:
+        return True
+    prefix = set()
+    suffix = set()
+    for i in range(a):
+        prefix.add(ord(input().strip()) - ord('a') + i)
+    for i in range(b):
+        suffix.add(ord(input().strip()) - ord('a') + n - i - 1)
+    return len(prefix.intersection(suffix)) == min(a, b)
+
+for _ in range(int(input())):
+    n, a, b = map(int, input().split())
+    print("Yes" if check_permutations(n, a, b) else "No")
+```</s>

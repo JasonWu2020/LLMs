@@ -1,0 +1,12 @@
+```python
+def optimal_game_difference(n, a, b):
+    a.sort(reverse=True)
+    b.sort(reverse=True)
+    return sum(a) - sum(b)
+
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+print(optimal_game_difference(n, a, b))
+```

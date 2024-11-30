@@ -1,0 +1,17 @@
+```python
+import sys
+
+def can_infinite_walk(n, m):
+    for i in range(n):
+        for j in range(m):
+            if (i + j) % 2 == 0:
+                if grid[i][j] == '#':
+                    return "No"
+    return "Yes"
+
+if __name__ == "__main__":
+    n, m = map(int, input().strip().split())
+    grid = [list(input().strip()) for _ in range(n)]
+    
+    print(can_infinite_walk(n, m))
+```

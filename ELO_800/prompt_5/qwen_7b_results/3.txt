@@ -1,0 +1,72 @@
+```python
+from typing import List
+
+def find_stable_rook_arrangement(n: int, k: int) -> List[str]:
+    """
+    Finds a stable arrangement of k rooks on an n x n chessboard.
+
+    Args:
+        n (int): The size of the chessboard.
+        k (int): The number of rooks.
+
+    Returns:
+        List[str]: A list of strings representing the chessboard layout of rooks.
+                    'R' indicates the position of a rook, '.' represents an empty space.
+    """
+    def check_stability(board):
+        # Check if the current board is stable
+        for i in range(n):
+            row_set = set()
+            col_set = set()
+            for j in range(n):
+                if board[i][j] == 'R':
+                    if j in col_set or i in row_set:
+                        return False
+                    row_set.add(i)
+                    col_set.add(j)
+        return True
+
+    for i in range(1, n+1):
+        for j in range(1, n+1):
+            if k == 1:
+                return [['R'] * n]
+            elif i == j:
+                # Place rook diagonally if k is still greater than 1
+                arr = [['.'] * n for _ in range(n)]
+                arr[i-1][i-1] = 'R'
+                remaining_k = k - 1
+                # Try placing remaining rooks in other diagonals
+                for di in range(n):
+                    dj = di + i - 1
+                    if 0 <= dj < n:
+                        if check_stability([['.'] * n for _ in range(n)]):
+                            arr[di][dj] = 'R'
+                            remaining_arrangement = find_stable_rook_arrangement(n, remaining_k)
+                            if remaining_arrangement:
+                                for r in range(n):
+                                    arr[r] = ['.' if c == 'R' else c for c in remaining_arrangement[r]]
+                                return arr
+                break
+            else:
+                # Place rook off-diagonally if k is still greater than 1
+                arr = [['.'] * n for _ in range(n)]
+                arr[i-1][j-1] = 'R'
+                remaining_k = k - 1
+                # Try placing remaining rooks in other positions
+                for ri in range(n):
+                    for rj in range(n):
+                        if arr[ri][rj] == '.' and check_stability(arr):
+                            arr[ri][rj] = 'R'
+                            remaining_arrangement = find_stable_rook_arrangement(n, remaining_k)
+                            if remaining_arrangement:
+                                for r in range(n):
+                                    arr[r] = ['.' if c == 'R' else c for c in remaining_arrangement[r]]
+                                return arr
+                break
+
+    return ['-1']
+
+# Test cases
+print(find_stable_rook_arrangement(3, 2))  # Example solution: ['...', '..R', 'R..']
+print(find_stable_rook_arrangement(3, 3))  # No stable solution: ['-1']
+```

@@ -1,0 +1,20 @@
+```python
+n = int(input())
+antons_before = None
+antons_after = None
+for _ in range(n):
+    name, before, after = input().split()
+    before = int(before)
+    after = int(after)
+    if before > after:
+        continue
+    if antons_before is not None and antons_after is not None:
+        if before >= 2400 and before > antons_before and after <= antons_after:
+            print("YES")
+            exit()
+    antons_before = before
+    antons_after = after
+print("NO")
+```
+
+This script reads the number of participants that Anton outscored, then for each of them, it checks if their rating increased. If Anton's rating increased and the person he outscored had a rating of 2400 or higher before the contest and did not increase their rating, it prints "YES". If it finds such a case, it stops execution and prints "YES". If it checks all participants without finding such a case, it prints "NO".

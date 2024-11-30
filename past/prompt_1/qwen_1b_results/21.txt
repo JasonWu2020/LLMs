@@ -1,0 +1,16 @@
+```python3
+from typing import List
+
+def max_dominos(n: int, a: List[int]) -> int:
+    dp = [0] * (n + 1)
+    
+    for i in range(1, n + 1):
+        dp[i] = min(dp[max(i - 2, 0)] + 1, dp[min(i + 1, n)]) + a[i-1]
+    
+    return dp[n]
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    a = list(map(int, input().strip().split()))
+    print(max_dominos(n, a))
+```

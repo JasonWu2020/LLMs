@@ -1,0 +1,7 @@
+[/INST] ```python
+def can_play(table, hand):
+ return any(table[i] in (c[0] for c in hand) or table[0] in (c[1] for c in hand))
+
+table, hand = input().split()[(slice(0, 1), slice(1, 11))]
+print(" YES ") if can_play(table, hand.split()) else " NO "
+```</s>

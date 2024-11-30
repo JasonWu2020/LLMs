@@ -1,0 +1,24 @@
+```python
+# The original code solves the problem correctly, but it lacks proper comments and the usage of python-specific features like generators and comprehensions which could improve readability and efficiency.
+
+# The new solution will make use of these features to improve the code quality while maintaining the same logic and functionality.
+
+# Start of code block
+
+def find_max_k(n):
+    # Utilize a generator expression to count the number of iterations until n becomes 0
+    # This is more pythonic and efficient than using a while loop.
+    return sum(1 for _ in range(n.bit_length()) if n & (1 << _) > 0)
+
+# Main function to handle input and output as per the requirements
+def main():
+    for _ in range(int(input())):
+        n = int(input())
+        print(find_max_k(n))
+
+# Entry point of the program
+if __name__ == "__main__":
+    main()
+
+# End of code block
+```

@@ -1,0 +1,13 @@
+```python
+import sys
+
+t = int(input())
+
+for _ in range(t):
+    a, b, c = map(int, input().split())
+    max_value = max(b, c)
+    if a < max_value:
+        print(a + max_value - 1)
+    else:
+        print(max(a, 2 * b, 2 * c))
+```

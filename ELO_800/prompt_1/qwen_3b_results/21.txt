@@ -1,0 +1,17 @@
+```python
+n = int(input())
+coins = list(map(int, input().split()))
+
+# Count occurrences of each coin value
+coin_counts = {}
+for coin in coins:
+    if coin in coin_counts:
+        coin_counts[coin] += 1
+    else:
+        coin_counts[coin] = 1
+
+# Find the maximum count of any coin value
+max_count = max(coin_counts.values())
+
+print(max_count)
+```

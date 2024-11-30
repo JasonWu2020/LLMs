@@ -1,0 +1,16 @@
+```python
+def min_shovels_needed(k, r):
+    total = k
+    n = 1
+    while total % 10 != r:
+        total += k
+        n += 1
+    return n
+
+# Reading input from stdin
+k, r = map(int, input().split())
+
+# Printing output to stdout
+print(min_shovels_needed(k, r))
+```
+```

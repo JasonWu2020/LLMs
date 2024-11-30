@@ -1,0 +1,37 @@
+```python
+# This Python script decodes an encrypted string where each letter in the original string 'a' is 
+# followed by some number of unique letters not equal to 'a', then 'a' itself. It outputs the decoded original string 'a'.
+
+# Initialize an empty list to hold solutions for all test cases
+solutions = []
+
+# Loop through the number of test cases
+for _ in range(int(input())):
+    # Read the length of the encrypted string
+    n = int(input())
+    # Read the encrypted string
+    encrypted_string = input()
+    
+    # Initialize variables for decoding
+    decoded_string = ''
+    prev_char = ''
+    
+    # Loop through each character in the encrypted string
+    for char in encrypted_string:
+        # If it's the first iteration or current char is different from the previous char,
+        # append the current char to the decoded string
+        if prev_char == '' or char != prev_char:
+            decoded_string += char
+        # Otherwise, add the current char again after the last appended char
+        else:
+            decoded_string += char + char[-1]
+        # Update the previous character for next iteration
+        prev_char = char
+    
+    # Append the decoded string to the solutions list
+    solutions.append(decoded_string)
+
+# Print the solutions list
+for sol in solutions:
+    print(sol)
+```

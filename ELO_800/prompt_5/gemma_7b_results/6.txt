@@ -1,0 +1,11 @@
+<start_of_turn>model
+```python
+table_card = input().strip().split()[0]
+hand_cards = input().strip().split()
+
+for card in hand_cards:
+    if card[0] == table_card[0] or card[1] == table_card[1]:
+        print("YES")
+    else:
+        print("NO")
+```<eos>

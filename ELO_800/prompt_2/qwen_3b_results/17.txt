@@ -1,0 +1,14 @@
+```python
+def min_moves(n, initial, target):
+    moves = 0
+    for i in range(n):
+        if initial[i] != target[i]:
+            moves += min(abs(int(initial[i]) - int(target[i])), 10 - abs(int(initial[i]) - int(target[i])))
+    return moves
+
+n = int(input())
+initial = input()
+target = input()
+
+print(min_moves(n, initial, target))
+```

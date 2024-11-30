@@ -1,0 +1,27 @@
+[/INST] ```python
+from heapq import heappush, heappop
+
+n = int(input())
+ascore, bscore = [0] * n, [0] * n
+a, b = [], []
+
+for i in range(n):
+    ai, bi = map(int, input().split())
+    ascore[i] = ai
+    heappush(a, -ai)
+    bscore[i] = bi
+    heappush(b, bi)
+
+while a and b:
+    a_elem = heappop(a)
+    b_elem = heappop(b)
+    diff = abs(a_elem) + abs(b_elem)
+    if ascore[-1] < bscore[-1]:
+        bscore[-1] -= a_elem
+        ascore[-1] += a_elem
+    else:
+        ascore[-1] -= b_elem
+        bscore[-1] += b_elem
+
+print(sum(ascore) - sum(bscore))
+```</s>

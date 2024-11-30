@@ -1,0 +1,29 @@
+```python
+def can_play_card(table_card, hand_cards):
+    table_rank = table_card[0]
+    table_suit = table_card[1]
+
+    for card in hand_cards:
+        hand_rank = card[0]
+        hand_suit = card[1]
+
+        # Check if the ranks match
+        if hand_rank == table_rank:
+            return "YES"
+        
+        # Check if the suits match
+        if hand_suit == table_suit:
+            return "YES"
+
+    return "NO"
+
+# Read input
+table_card = input().strip()
+hand_cards = [input().strip() for _ in range(5)]
+
+# Determine if a card can be played
+result = can_play_card(table_card, hand_cards)
+
+# Print the result
+print(result)
+```

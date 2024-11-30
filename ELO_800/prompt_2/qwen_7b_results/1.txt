@@ -1,0 +1,39 @@
+```python
+from typing import List
+
+def min_invitations(n: int, p: List[int]) -> int:
+    friendship_graph = [[] for _ in range(n)]
+    visited = [False] * n
+
+    for i, friend in enumerate(p):
+        friendship_graph[i].append(friend)
+        friendship_graph[friend].append(i)
+
+    def dfs(node: int) -> None:
+        if not visited[node]:
+            visited[node] = True
+            for neighbor in friendship_graph[node]:
+                dfs(neighbor)
+
+    connected_components = 0
+    for i in range(n):
+        if not visited[i]:
+            dfs(i)
+            connected_components += 1
+
+    if connected_components == 1:
+        return n
+    else:
+        return connected_components + 1
+
+
+if __name__ == "__main__":
+    T = int(input().strip())
+    results = []
+    for _ in range(T):
+        n = int(input().strip())
+        p = list(map(int, input().strip().split()))
+        results.append(min_invitations(n, p))
+
+    print("\n".join(map(str, results)))
+```

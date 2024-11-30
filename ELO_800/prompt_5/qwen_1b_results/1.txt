@@ -1,0 +1,9 @@
+```python
+def min_invitations(n):
+    return 2
+
+# Example usage:
+for _ in range(int(input())):
+    n = int(input())
+    print(min_invitations(n))
+```

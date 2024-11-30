@@ -1,0 +1,24 @@
+[/INST] ```python
+import itertools as it
+
+def next_permutation(s):
+    if not s:
+        return [""] if not isinstance(s, list) else []
+    i = len(s) - 1
+    while i > 0 and s[i-1] > s[i]:
+        i -= 1
+    if i > 0:
+        j = len(s) - 1
+        s[i-1], s[j] = s[j], s[i-1]
+        s[i:] = sorted(s[i:], reverse=True)
+    return s if not isinstance(s, list) else ["".join(s)]
+
+def solution(s, t):
+    perm = list(it.permutations(list(s)))[::-1]
+    idx = next(i for i, p in enumerate(perm) if t not in ["".join(p) for p in it.chain([s], perm)])]
+    return next_permutation(s)[idx]
+
+t = int(input())
+for s, t in it.product(input().strip().split(), repeat=2) if len(t) == 3:
+    print(solution(s, t))
+```</s>

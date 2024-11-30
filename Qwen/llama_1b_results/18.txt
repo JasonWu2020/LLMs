@@ -1,0 +1,29 @@
+```python
+from collections import deque
+
+def solve():
+    for _ in range(int(input())):
+        n, m = map(int, input().split())
+        a = deque(map(int, input().split()))
+        b = deque(map(int, input().split()))
+
+        if len(set(a))!= len(b):
+            print("NO")
+            continue
+
+        ans = []
+        i = 0
+        while i < n and a[-1] in b:
+            ans.append(a[-1])
+            i += 1
+        if i < n:
+            print("NO")
+            continue
+
+        print(len(ans))
+        print(*ans)
+
+solve()
+```
+
+This updated solution works by iterating over the first array and checking if each element is present in the second array. If it is, it adds the element to the answer list and moves to the next element in the first array. If it is not present, it moves to the next element in the first array. This process continues until it has checked all elements in the first array. If it has not checked all elements in the first array, it checks the last element of the first array and moves to the next element in the second array. If it has checked all elements in the second array, it prints "NO" and continues to the next test case. Otherwise, it prints the length of the answer list and prints the elements of the answer list.

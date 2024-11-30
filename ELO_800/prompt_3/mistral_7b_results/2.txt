@@ -1,0 +1,15 @@
+[/INST] The outputted solution seems to be valid as it follows the provided input and output specifications. However, it can be optimized by reducing the number of generated permutations using the symmetry property. Since we only need to check one half of the permutations because the other half would be the mirror image, we can reduce the time complexity from O(n! * n!) to O(n! * (n/2)!).
+
+```python
+def lcp(p, q): return len(list(filter(lambda x: p[x] == q[x], range(len(p)))))
+
+def solution(n, a, b):
+ first_perms = set(permutations(list(range(1, n+1), 2))
+ for p in first_perms:
+ for i in range(len(p)):
+ q = [p[i][::]
+ if lcp(p, q) == a and lcs(p, q) == b: return "Yes"
+ return "No"
+
+for _ in range(int(input())): print(solution(*map(int, input().split())))
+```</s>

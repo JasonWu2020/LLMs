@@ -1,0 +1,5 @@
+```python3
+k, r = map(int, input().split())
+
+print(min(k, r + 9))
+```

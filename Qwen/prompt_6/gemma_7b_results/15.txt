@@ -1,0 +1,14 @@
+<start_of_turn>model
+```python
+n = int(input())
+
+for _ in range(n):
+    name, before, after = input().split()
+    if int(before) < int(after) and name not in red_list:
+        red_list.append(name)
+
+if any(name in red_list for name, rating in results):
+    print("YES")
+else:
+    print("NO")
+```<eos>

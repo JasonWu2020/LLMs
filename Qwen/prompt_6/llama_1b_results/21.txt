@@ -1,0 +1,16 @@
+```python
+# -*- coding: utf-8 -*-
+
+n = int(input())
+coins = list(map(int, input().split()))
+
+coins.sort(reverse=True)
+ans = 0
+for i in range(n):
+    if ans + 1 <= n:
+        ans += 1
+    else:
+        break
+    ans += 1
+print(ans)
+```

@@ -1,0 +1,15 @@
+```python
+import sys
+
+def can_improve_rating():
+    n = int(input())
+    for _ in range(n):
+        name, before, after = input().split()
+        before, after = int(before), int(after)
+        if after > before:
+            print("YES")
+            return
+    print("NO")
+
+can_improve_rating()
+```

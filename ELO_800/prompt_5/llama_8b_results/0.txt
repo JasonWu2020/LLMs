@@ -1,0 +1,22 @@
+```python
+from collections import defaultdict
+
+def solve():
+    n, k = map(int, input().split())
+    s = input()
+    count = defaultdict(int)
+    for c in s:
+        count[c] += 1
+
+    min_count = float('inf')
+    for key in count:
+        min_count = min(min_count, count[key])
+    for key in count:
+        if count[key] < min_count:
+            return 0
+    return min_count * k
+
+print(solve())
+```
+
+This script first reads the length of the string `n` and the number of unique characters `k` from the input, then reads the string `s`. It uses a `defaultdict` to count the occurrences of each character in the string. Then it finds the minimum count of any character, which is the maximum length of the good subsequence. If there is a character with a count less than the minimum count, it returns 0, because a good subsequence cannot be formed. Otherwise, it returns the minimum count times `k`, which is the length of the longest good subsequence.

@@ -1,0 +1,14 @@
+[/INST] ```python
+from sys import stdin, stdout
+input = stdin.readline
+n = int(input())
+for _ in range(n):
+    x = list(map(int, input().split()))[-1:]
+    p = x[::-1]
+    friends = set()
+    invitations = 0
+    while len(friends) < 2:
+        invitations += 1
+        friends.add(x.pop(p.pop()))
+    print(invitations)
+```</s>

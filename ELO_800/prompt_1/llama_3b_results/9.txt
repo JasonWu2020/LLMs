@@ -1,0 +1,26 @@
+```python
+# Read the number of exercises
+n = int(input())
+
+# Read the number of exercises
+a = list(map(int, input().split()))
+
+# Initialize the maximum number of exercises for each muscle
+max_chest = 0
+max_biceps = 0
+max_back = 0
+
+# Calculate the number of exercises for each muscle
+for i in range(n):
+    if i % 3 == 0:
+        max_back = max(max_back, a[i])
+    elif i % 3 == 1:
+        max_biceps = max(max_biceps, a[i])
+    else:
+        max_chest = max(max_chest, a[i])
+
+# Print the muscle with the most exercises
+print("back " if max_back >= max_chest and max_back >= max_biceps else
+      "chest " if max_chest >= max_back and max_chest >= max_biceps else
+      "biceps ")
+```

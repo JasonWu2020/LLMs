@@ -1,0 +1,16 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is concise and efficient. It reads the input, calculates the total sum of the slimes, and then finds the maximum value of the slime that can be eaten in each step. Finally, it subtracts the total sum of the slimes that are eaten in each step from the total sum to find the maximum value of the last slime.
+
+**Second solution:**
+
+```python
+n = int(input())
+a = list(map(int, input().split()))
+
+a.sort()
+s = sum(a) - a[0]
+
+print(s)
+```<eos>

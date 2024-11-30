@@ -1,0 +1,20 @@
+The outputted solution is quite concise and effective. However, it uses a while loop to find the next occurrence of the current character in the string, which has a time complexity of O(n) for each character in the string. This results in a time complexity of O(n^2) for the entire solution.
+
+A more efficient solution would be to use a stack to keep track of the characters in the string, which allows us to find the next occurrence of a character in constant time.
+
+```python
+import sys
+
+for _ in range(int(input())):
+    n = int(input())
+    s = input()
+    stack = []
+    for c in s:
+        if stack and stack[-1] == c:
+            stack.pop()
+        else:
+            stack.append(c)
+    print(''.join(stack))
+```
+
+This solution has a time complexity of O(n), making it more efficient for large inputs. It also uses a more Pythonic approach, utilizing the built-in join function to concatenate the characters in the stack into a single string.

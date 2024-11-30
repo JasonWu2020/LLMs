@@ -1,0 +1,46 @@
+```python
+import sys
+
+def read_input():
+    n, m = map(int, sys.stdin.readline().split())
+    edges = [list(map(int, sys.stdin.readline().split())) for _ in range(m)]
+    return n, edges
+
+def get_distance(n, edges):
+    graph = [[] for _ in range(n)]
+    for u, v in edges:
+        graph[u].append(v)
+        graph[v].append(u)
+
+    distance = [-1] * n
+    distance[0] = 0
+    visited = [False] * n
+    stack = [0]
+
+    while stack:
+        u = stack.pop()
+        visited[u] = True
+        for v in graph[u]:
+            if distance[v] == -1:
+                distance[v] = distance[u] + 1
+                stack.append(v)
+
+    return distance
+
+def get_ways(n, edges, distance):
+    dp = [0] * (n + 1)
+    dp[0] = 1
+    for i in range(n):
+        if distance[i] == -1:
+            continue
+        for j in range(i, n):
+            if distance[j] >= distance[i]:
+                dp[j] += dp[i]
+                dp[j] %= 1000000007
+
+    return sum(dp) % 1000000007
+
+n, edges = read_input()
+distance = get_distance(n, edges)
+print(get_ways(n, edges, distance))
+```

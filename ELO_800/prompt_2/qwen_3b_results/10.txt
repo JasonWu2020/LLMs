@@ -1,0 +1,24 @@
+```python
+def sock_wearing_days(red_socks, blue_socks):
+    # Calculate the maximum number of days with different socks
+    max_different_days = min(red_socks, blue_socks)
+    
+    # Calculate the remaining socks after max_different_days
+    remaining_red = red_socks - max_different_days
+    remaining_blue = blue_socks - max_different_days
+    
+    # Calculate the number of days with same socks
+    same_socks_days = max(remaining_red // 2, remaining_blue // 2)
+    
+    return max_different_days, same_socks_days
+
+# Reading input
+import sys
+red_socks, blue_socks = map(int, sys.stdin.readline().strip().split())
+
+# Getting the result
+max_diff, same_socks = sock_wearing_days(red_socks, blue_socks)
+
+# Printing the result
+print(max_diff, same_socks)
+```

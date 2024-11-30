@@ -1,0 +1,16 @@
+[/INST] ```python
+import sys
+input = sys.stdin.buffer.readline
+
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    d = max(a)
+    for _ in range(k):
+        a = [d - i for i in a]
+    print(*a)
+
+t = int(input())
+for _ in range(t):
+    solve()
+```</s>

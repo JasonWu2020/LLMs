@@ -1,0 +1,29 @@
+<start_of_turn>model
+**Critique:**
+
+The code reads the number of participants Anton has outscored, then reads the results of each participant, checking if their rating has increased and if their handle was colored red. If both conditions are met, it prints `YES`. Otherwise, it prints `NO`.
+
+**Solution:**
+
+```python3.8
+n = int(input())
+
+for _ in range(n):
+    name, before, after = input().split()
+    if int(after) > int(before) and name.color == 'red':
+        print('YES')
+    else:
+        print('NO')
+```
+
+**Explanation:**
+
+- The code reads the number of participants Anton has outscored, `n`.
+- It iterates over the next `n` lines, reading the participant's name, before and after ratings.
+- It checks if the participant's rating has increased and if their handle was colored red. If both conditions are met, it prints `YES`. Otherwise, it prints `NO`.
+
+**Additional notes:**
+
+- The code assumes that the input will be valid, including the number of participants, the participant's name, and their ratings.
+- The code does not handle the case where Anton has not performed well in the contest.
+- The code does not store any intermediate data structures, such as a list of participants or their ratings.<eos>

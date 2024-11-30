@@ -1,0 +1,40 @@
+The outputted solution has a time complexity of O(n log n) due to the sorting operation, where n is the number of elements in the lists. This is not the most efficient solution for large inputs.
+
+Here's another solution with a time complexity of O(n log n + n), where n is the number of elements in the lists. This solution uses a heap data structure to efficiently find the maximum and minimum elements in the lists.
+
+```python
+import sys
+import heapq
+
+input = sys.stdin.readline
+
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+a_max_heap = []
+b_min_heap = []
+
+for num in a:
+    heapq.heappush(a_max_heap, num)
+
+for num in b:
+    heapq.heappush(b_min_heap, num)
+
+a_score = 0
+b_score = 0
+
+while a_max_heap and b_min_heap:
+    a_max = heapq.heappop(a_max_heap)
+    b_min = heapq.heappop(b_min_heap)
+
+    if a_max > b_min:
+        a_score += a_max
+        b_score += b_min
+    else:
+        break
+
+print(a_score - b_score)
+```
+
+This solution first pushes all elements from both lists into two separate heaps, a max heap for list a and a min heap for list b. It then enters a loop where it pops the maximum element from the max heap and the minimum element from the min heap, adds them to the scores, and repeats this process until one of the heaps is empty. The difference between the scores is then printed.

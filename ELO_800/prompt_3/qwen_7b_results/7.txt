@@ -1,0 +1,45 @@
+```python
+from collections import Counter
+
+def check_subsequence(subseq, seq):
+    iter_seq = iter(seq)
+    return all(char in iter_seq for char in subseq)
+
+def generate_lexicographically_smallest_permutation(s, target):
+    counter = Counter(s)
+    target_list = sorted(list(target))
+    result = []
+    
+    for c in target_list:
+        while counter[c] > 0:
+            result.append(c)
+            counter[c] -= 1
+    
+    # Fill remaining characters in lexicographical order
+    remaining_chars = sorted([char for char in 'abcdefghijklmnopqrstuvwxyz' if char not in target_list])
+    for char in remaining_chars:
+        while counter[char] > 0:
+            result.append(char)
+            counter[char] -= 1
+    
+    return ''.join(result)
+
+# Main program
+if __name__ == "__main__":
+    num_cases = int(input())
+    for _ in range(num_cases):
+        s = input().strip()
+        target = "abc"
+        
+        # Generate lexicographically smallest permutation that doesn't contain 'abc' as a subsequence
+        permutation = generate_lexicographically_smallest_permutation(s, target)
+        while check_subsequence("abc", permutation):
+            # Shift leftmost occurrence of each character to next available spot
+            for char in 'abcdefghijklmnopqrstuvwxyz':
+                index = permutation.find(char)
+                if index != -1:
+                    permutation = permutation[:index] + char + permutation[index + 1:]
+                    break
+        
+        print(permutation)
+```

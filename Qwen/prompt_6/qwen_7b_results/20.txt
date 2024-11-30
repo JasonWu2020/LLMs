@@ -1,0 +1,14 @@
+```python
+import sys
+
+def max_k_for_and_operation(n):
+    k = n
+    while n & (n - 1) != 0:
+        n -= 1
+        k -= 1
+    return k
+
+for _ in range(int(input())):
+    n = int(sys.stdin.readline().strip())
+    print(max_k_for_and_operation(n))
+```

@@ -1,0 +1,26 @@
+```python
+def find_balanced_substring():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        s = input()
+        balance = 0
+        l = -1
+        r = -1
+        for i, char in enumerate(s):
+            if char == 'a':
+                balance -= 1
+            else:
+                balance += 1
+            if balance == 0:
+                l = i
+            elif balance > 0:
+                r = i
+        if l != -1 and r != -1:
+            print(l + 1, r + 1)
+        else:
+            print(-1, -1)
+
+find_balanced_substring()
+```
+This Python code solves the given problem by iterating through the string once and maintaining a balance count between 'a' and 'b'. When the balance count reaches zero, it marks the start of a potential balanced substring. As it continues scanning, it keeps track of the end of the substring when the balance becomes positive again. It prints the indices of the balanced substring or "-1 -1" if no such substring exists.

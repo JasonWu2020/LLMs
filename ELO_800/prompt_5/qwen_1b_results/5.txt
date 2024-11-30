@@ -1,0 +1,26 @@
+```python3
+def min_moves_to_divisible(a, b):
+    """
+    Calculate the minimum number of moves needed to make 'a' divisible by 'b'.
+    
+    Parameters:
+    a (int): The initial value of 'a'.
+    b (int): The divisor.
+    
+    Returns:
+    int: The minimum number of moves required.
+    """
+    if a % b == 0:
+        return 0
+    else:
+        return (a - 1) // b + 1
+
+# Read the number of test cases
+t = int(input())
+
+for _ in range(t):
+    # Read the values for 'a' and 'b'
+    a, b = map(int, input().split())
+    # Calculate and print the result
+    print(min_moves_to_divisible(a, b))
+```

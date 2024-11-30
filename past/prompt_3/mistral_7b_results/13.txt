@@ -1,0 +1,18 @@
+[/INST] The outputted solution is a valid Python solution for the given problem, but it can be improved in terms of readability and efficiency. The use of memoization via functools.lru\_cache is not strictly necessary in this case, as the subproblem solutions can be easily computed recursively without storing them in a cache. Moreover, a more concise and readable solution can be achieved using dynamic programming.
+
+Here's a more readable and efficient solution:
+
+```python
+def max_subseq(s):
+    n = len(s)
+    dp = [[0 for _ in range(n)] for _ in range(n)]
+    for i in range(n):
+        dp[i][i] = s[i]
+    for i in range(n-1):
+        for j in range(i+1, n):
+            dp[i][j] = s[i] if s[i] > s[j-1] and i == j-1 else dp[i+1][j] if dp[i+1][j] > dp[i][j] else s[i]
+    return dp[-1][-1]
+
+s = input().strip()
+print(max_subseq(s))
+```</s>

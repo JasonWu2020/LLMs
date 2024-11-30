@@ -1,0 +1,15 @@
+```python
+def can_play_card():
+    table_card = input().strip()
+    hand_cards = input().strip().split()
+
+    for card in hand_cards:
+        if card == table_card:
+            return "YES"
+        if (card[0] == table_card[0]) or (card[1] == table_card[1]):
+            return "YES"
+
+    return "NO"
+
+print(can_play_card())
+```

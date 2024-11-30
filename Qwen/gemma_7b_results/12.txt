@@ -1,0 +1,41 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is well-structured and easy to understand. The algorithm is efficient and has a time complexity of $O(n)$, where $n$ is the length of the string. However, the solution could be improved by using a dictionary to store the prefix sum of the number of letters 'a' and 'b' in the string. This would reduce the time complexity of the algorithm to $O(n) as well.
+
+**Updated Solution:**
+
+```python
+
+t = int(input())  # Number of testcases
+
+for _ in range(t):
+    n = int(input())  # Length of the string
+    s = input().strip()  # The string
+
+    # Calculate the prefix sum of the number of letters 'a' and 'b' in the string
+    a_sum = 0
+    b_sum = 0
+    prefix_sum = {}
+    for i in range(n):
+        if s[i] == 'a':
+            a_sum += 1
+        elif s[i] == 'b':
+            b_sum += 1
+        prefix_sum[a_sum - b_sum] = i
+
+    # Keep track of the minimum and maximum values of the prefix sum that are equal to the desired balance
+    min_sum = float('inf')
+    max_sum = float('-inf')
+    for key, value in prefix_sum.items():
+        if key > min_sum and key < max_sum:
+            min_sum = min(min_sum, key)
+            max_sum = max(max_sum, key)
+
+    # If the maximum value of the prefix sum is equal to the desired balance, then the substring between the minimum and maximum values of the prefix sum is balanced
+    if min_sum != float('inf') and max_sum != float('-inf'):
+        print(prefix_sum[min_sum], prefix_sum[max_sum])
+    else:
+        print(-1, -1)
+
+```<eos>

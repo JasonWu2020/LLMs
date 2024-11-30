@@ -1,0 +1,29 @@
+```python3.8
+import sys
+
+def min_pockets(n, a):
+    # Sort the coins based on their values
+    a.sort()
+    
+    # Initialize the count of pockets and current pocket's maximum value
+    count = 0
+    max_value = -sys.maxsize
+    
+    for i in range(len(a)):
+        if a[i] > max_value:
+            # If the current coin has a higher value than the previous maximum value,
+            # it means we need a new pocket
+            count += 1
+            max_value = a[i]
+    
+    return count
+
+
+# Read input
+input()
+a = list(map(int, input().split()))
+
+# Print the result
+print(min_pockets(*a))
+```
+```

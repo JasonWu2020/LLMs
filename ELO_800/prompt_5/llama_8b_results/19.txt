@@ -1,0 +1,19 @@
+```python
+import math
+
+def solve():
+    n = int(input())
+    ans = 0
+    while n > 0:
+        if n & 1:
+            ans = n
+            break
+        n = n >> 1
+    print(ans - 1)
+
+t = int(input())
+for _ in range(t):
+    solve()
+```
+
+This code will solve the problem by finding the largest number that is a power of 2 and less than or equal to the given number `n`. This is because a number `n` is a power of 2 if and only if it has exactly one bit set to 1 in its binary representation, and all other bits are set to 0. When we perform the bitwise AND operation with a power of 2, all the bits in the result will be 0 except for the corresponding bit in the power of 2. Therefore, the maximum value of `k` for which the condition holds is one less than the largest power of 2 that is less than or equal to `n`.

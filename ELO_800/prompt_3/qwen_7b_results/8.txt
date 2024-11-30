@@ -1,0 +1,22 @@
+```python
+def calculate_max_stones(a, b, c):
+    # Considering the rules, we can maximize the stones taken by maximizing the contribution of each heap
+    # The contribution of 'a' can be calculated as a itself
+    # For 'b', since it gives two contributions, we divide by 3 to account for this
+    # For 'c', it's similar, giving us two contributions, hence divided by 3
+    
+    # We can directly add up these contributions to get the maximum possible stones
+    return a + 2*b//3 + 2*c//3
+
+# Main program structure for handling multiple test cases
+if __name__ == "__main__":
+    # Reading the number of test cases
+    num_cases = int(input())
+
+    for _ in range(num_cases):
+        # Reading the inputs for each heap
+        a, b, c = map(int, input().split())
+
+        # Calculating and printing the result for each test case
+        print(calculate_max_stones(a, b, c))
+```

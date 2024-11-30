@@ -1,0 +1,20 @@
+<start_of_turn>model
+```python
+# Input
+k, r = map(int, input().split())
+
+# Logic and solution
+minimum_shovels = 0
+ 
+# if k>= 10r 
+# then we can immediately buy k-r shovels. 
+if (k-10 * r) >= 0:
+    minimum_shovels = k // (10 * r) 
+    
+   
+else
+    minimum_shovels = k // 10
+ 
+# Output the minimum shovels
+print(minimum_shovels)
+```<end_of_turn>

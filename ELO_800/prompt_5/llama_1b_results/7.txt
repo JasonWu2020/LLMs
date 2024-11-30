@@ -1,0 +1,23 @@
+```python
+
+import sys
+from collections import Counter
+
+def solve():
+    s = input()
+    t = input()
+    cnt = Counter(s)
+    for i in range(len(t)):
+        if t[i] not in cnt:
+            break
+    for i in range(len(t)):
+        if t[i] == 'a':
+            s = s.replace('a', '', 1) + 'b' + s.replace('b', '', 1) + 'c'
+            break
+    print(s)
+
+t = int(input())
+for _ in range(t):
+    solve()
+
+```

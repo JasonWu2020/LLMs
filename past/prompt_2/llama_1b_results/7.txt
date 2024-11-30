@@ -1,0 +1,10 @@
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    dp = [0] * (n + 1)
+    for i in range(n):
+        dp[i + 1] = max(dp[i], b[i] - a[i] if i + 1 <= k else 0)
+        dp[i + 1] = max(dp[i + 1], dp[i] + b[i + 1])
+    print(max(dp[k], dp[n]))

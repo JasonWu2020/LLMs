@@ -1,0 +1,18 @@
+n,k=map(int,input().split())
+s=input()
+freq=[0]*26
+for i in s:
+    freq[ord(i)-ord('A')]+=1
+dp=[[0]*k for i in range(n+1)]
+for i in range(n+1):
+    for j in range(k):
+        if i==0:
+            dp[i][j]=0
+        elif j==0:
+            dp[i][j]=1
+        else:
+            dp[i][j]=float('-inf')
+        for c in range(k):
+            if freq[c]>0 and c!=j:
+                dp[i][j]=max(dp[i][j],dp[i-1][j]+1)
+print(max(dp[n][k-1]))

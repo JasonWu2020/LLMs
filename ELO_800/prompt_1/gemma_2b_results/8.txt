@@ -1,0 +1,21 @@
+<start_of_turn>model
+```python
+# input
+t = int(input())
+for _ in range(t):
+    a, b, c = map(int, input().split())
+    
+    max_stones = 0
+    while a > 0 and b > 0 and c > 0:
+        if a >= 1 and b >= 2:
+            max_stones += 3
+            a -= 1
+            b -= 2
+        elif b >= 1 and c >= 2:
+            max_stones += 2
+            b -= 1
+            c -= 2
+    print(max_stones)
+``` 
+```
+```<end_of_turn>

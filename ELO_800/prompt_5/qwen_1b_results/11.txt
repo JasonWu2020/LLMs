@@ -1,0 +1,23 @@
+```python
+def min_shovels(k, r):
+    """
+    Calculate the minimum number of shovels Polycarp needs to buy to avoid receiving change,
+    given the price of each shovel k burles and the denomination of the coin in his pocket r burles.
+
+    Parameters:
+    k (int): Price of one shovel in burles.
+    r (int): Denomination of the coin in Polycarp's pocket in burles.
+
+    Returns:
+    int: Minimum number of shovels needed to avoid receiving change.
+    """
+    return k // r + (k % r != 0)
+
+# Example usage
+if __name__ == "__main__":
+    # Read input values
+    k, r = map(int, input().split())
+    
+    # Call the function and print the result
+    print(min_shovels(k, r))
+```

@@ -1,0 +1,30 @@
+```python
+n = int(input())
+camels = []
+for _ in range(n):
+    xi, di = map(int, input().split())
+    camels.append((xi-di, xi+di))
+
+camels.sort()
+
+left = None
+right = None
+overlap_found = False
+
+for x_l, x_r in camels:
+    if left is None:
+        left = x_l
+        right = x_r
+    else:
+        if x_l <= right:
+            overlap_found = True
+            break
+        else:
+            left = x_l
+            right = x_r
+
+if overlap_found:
+    print("YES")
+else:
+    print("NO")
+```

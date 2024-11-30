@@ -1,0 +1,22 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is correct, but it can be improved. It finds the first character that is not in its sorted position and then finds the last character that is not in its sorted position. This method is not optimal as it does not consider the possibility of moving the first character to the beginning and the cost of that operation.
+
+**Improved Solution:**
+
+```python
+t = int(input())
+
+for _ in range(t):
+    s = input().strip()
+    n = len(s)
+    l = min([i for i in range(n) if s[i] != s[0] and s[i] > s[0]])
+    r = max([i for i in range(n) if s[i] != s[0] and s[i] > s[0]])
+    cost = r - l + 1
+    if s[0] != 0:
+        cost -= 1
+    print(cost)
+```
+
+The improved solution finds the first character that is not in its sorted position and if that character is not the first character in the string, it reduces the cost by 1. This is because if the first character is not sorted, it can be moved to the beginning in one operation, thereby reducing the cost by 1.<eos>

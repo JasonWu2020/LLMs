@@ -1,0 +1,9 @@
+```python
+def solve_hipster_socks():
+    a, b = map(int, input().split())
+    fashionable_days = min(a, b)
+    same_colored_days = ((max(a, b) - fashionable_days) // 2) + (1 if max(a, b) % 2 else 0)
+    print(fashionable_days, same_colored_days)
+
+solve_hipster_socks()
+```

@@ -1,0 +1,23 @@
+```python
+def max_team_height(n, heights1, heights2):
+    heights1 = [0] + heights1
+    heights2 = [0] + heights2
+    dp = [[0] * (n+1) for _ in range(n+1)]
+    
+    for i in range(1, n+1):
+        for j in range(1, n+1):
+            if i == j:
+                dp[i][j] = max(heights1[i], heights2[j])
+            else:
+                dp[i][j] = max(dp[i-1][j] + heights1[i], dp[i][j-1] + heights2[j])
+                
+    return dp[n][n]
+
+# Reading input
+n = int(input())
+heights1 = list(map(int, input().split()))
+heights2 = list(map(int, input().split()))
+
+# Printing the result
+print(max_team_height(n, heights1, heights2))
+```

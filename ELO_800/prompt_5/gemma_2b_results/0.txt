@@ -1,0 +1,42 @@
+<start_of_turn>model
+```python
+def longest_good_subsequence(s):
+    n = len(s)
+    k = ord(s[0])
+    freq = [0] * (ord('a')+1)
+    for i in range(n):
+        freq[ord(s[i])-ord('A')] += 1
+    
+    max_len = 0
+    for j in range(ord('A') , ord('z')+1):
+        if freq[j-ord('A')] > 0:
+            max_len = max(max_len, freq[j-ord('A')])
+        else:
+            continue
+    return max_len
+
+n, k = map(int, input().split())
+s = input()
+
+print(longest_good_subsequence(s)) 
+``` 
+
+
+
+
+
+This code does the following:
+
+1. **Calculates Frequencies**:
+   - Initializes a frequency array, `freq`, to store the count of each uppercase letter. 
+   - Iterates through the input string `s`, adding 1 to the corresponding frequency in `freq` for every letter.
+
+
+2. **Finds the Longest Good Subsequence**: 
+   - Iterates through the alphabet (assuming uppercase letters).
+   - Checks if the frequency count for each letter in `freq` exists. 
+   - Updates the max length if the found frequency count is greater than the previously held maximum
+3. **Returns the Result**:
+   - Prints the `max_len` that represents the maximum number of occurrences from the original string `s`.
+
+Let me know if you'd like help with a test case to understand how the code works in action! <end_of_turn>

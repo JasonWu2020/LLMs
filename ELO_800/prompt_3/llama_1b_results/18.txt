@@ -1,0 +1,69 @@
+```python
+def solve():
+    t = int(input())
+    for _ in range(t):
+        n, m = map(int, input().split())
+        a = list(map(int, input().split()))
+        b = list(map(int, input().split()))
+        ans = []
+        for i in range(1, 1001):
+            flag = True
+            for j in range(n):
+                if a[j]!= i and b[j]!= i:
+                    flag = False
+                    break
+            if flag:
+                for j in range(m):
+                    if a[j] == i and b[j]!= i:
+                        ans.append(i)
+                        break
+                if len(ans) > 0:
+                    break
+        if len(ans) == 0:
+            print("NO")
+        else:
+            print(len(ans))
+            print(*ans)
+
+solve()
+```
+
+The provided solution is generally correct and adheres to the input and output specifications. However, there are a few minor improvements that can be made:
+
+1.  The variable names could be more descriptive. For example, `t` could be renamed to `num_test_cases` or `num_tests`, and `a` could be renamed to `arr_a`.
+2.  The variable names `n`, `m` could be renamed to `length_a` and `length_b`, respectively.
+3.  The variable `flag` could be renamed to `found` to make its purpose clearer.
+4.  The variable `ans` could be renamed to `result` to make its purpose clearer.
+5.  The `print` statement for the result could be improved by using an f-string to insert the value of `len(ans)` directly into the string.
+6.  The input and output could be formatted to make it clearer that the input is expected to be a list of integers separated by spaces and that the output is expected to be a list of integers separated by spaces.
+
+```python
+def solve():
+    num_test_cases = int(input())
+    for _ in range(num_test_cases):
+        length_a, length_b = map(int, input().split())
+        arr_a = list(map(int, input().split()))
+        arr_b = list(map(int, input().split()))
+        result = []
+        found = False
+        for i in range(1, 1001):
+            found = False
+            for j in range(length_a):
+                if arr_a[j]!= i and arr_b[j]!= i:
+                    found = True
+                    break
+            if found:
+                for j in range(length_b):
+                    if arr_a[j] == i and arr_b[j]!= i:
+                        result.append(i)
+                        break
+                if len(result) > 0:
+                    break
+        if len(result) == 0:
+            print("NO")
+        else:
+            print(len(result))
+            print(*result)
+
+solve()
+```

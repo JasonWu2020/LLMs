@@ -1,0 +1,29 @@
+```python
+def main():
+    n, m = map(int, input().split())
+    maze = [list(input()) for _ in range(n)]
+    directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
+    dx = [i % m for i in range(m)]
+    dy = [i % n for i in range(n)]
+    sx, sy = -1, -1
+    for i in range(n):
+        for j in range(m):
+            if maze[i][j] == 'S':
+                sx, sy = i, j
+                break
+    visited = set()
+    for dx0, dy0 in directions:
+        x, y = sx + dx0, sy + dy0
+        while 0 <= x < n and 0 <= y < m and maze[x][y]!= '#':
+            if (x, y) in visited:
+                break
+            visited.add((x, y))
+            x += dx0
+            y += dy0
+        if (x, y) == (sx, sy):
+            break
+    print("Yes" if len(visited) == n * m else "No")
+
+if __name__ == "__main__":
+    main()
+```

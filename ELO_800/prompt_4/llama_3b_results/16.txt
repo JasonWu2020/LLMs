@@ -1,0 +1,18 @@
+Critique of the current solution:
+
+The current solution is not accurate. It only calculates the number of interesting numbers for numbers ending in 9, and for each number ending in 9 with the next digit to the left being 8, 7,..., 1. However, it does not account for the case where the next digit to the left is not 9. It also does not calculate the number of interesting numbers for numbers ending in 98, 87, 76,..., 65, and 54.
+
+Here is a revised solution:
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    ans = (n + 1) // 10 - 1
+    for i in range(1, (n // 100) + 1):
+        ans += (i * (10 - i))
+    print(ans)
+```
+
+This solution calculates the number of interesting numbers for each number from 1 to n. It starts by calculating the number of interesting numbers for numbers ending in 9. Then, it calculates the number of interesting numbers for numbers ending in 98, 87, 76,..., 65, and 54. The total number of interesting numbers is the sum of these two counts.

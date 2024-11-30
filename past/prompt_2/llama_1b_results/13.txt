@@ -1,0 +1,10 @@
+s = input()
+max_subseq = ""
+for i in range(len(s)):
+    for j in range(i + 1, len(s) + 1):
+        if s[i] > s[j]:
+            if dp[i][j] + 1 > dp[i][j - 1]:
+                dp[i][j] = dp[i][j - 1]
+                if dp[i][j] > max_subseq:
+                    max_subseq = s[i:j]
+print(max_subseq)

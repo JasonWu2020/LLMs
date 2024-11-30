@@ -1,0 +1,19 @@
+<start_of_turn>model
+**Critique:**
+
+The solution above reads the input, calculates the quotient of $a$ divided by $b$, and prints the result. However, it does not handle the case where $a$ is already divisible by $b$. In this case, the output should be 0.
+
+**Improved Solution:**
+
+```python3.8
+t = int(input())
+
+for _ in range(t):
+    a, b = map(int, input().split())
+    moves = a // b
+    if a % b == 0:
+        moves = 0
+    print(moves)
+```
+
+This solution fixes the issue by checking if $a$ is divisible by $b$ and if it is, it assigns 0 moves.<eos>

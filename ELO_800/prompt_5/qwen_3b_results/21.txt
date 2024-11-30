@@ -1,0 +1,22 @@
+```python
+def min_pockets(n, coins):
+    # Create a set to track unique coin values
+    unique_coins = set()
+    
+    # Iterate through each coin's value
+    for coin in coins:
+        # Add the coin's value to the set if it's not already there
+        unique_coins.add(coin)
+    
+    # The number of unique coin values corresponds to the minimum number of pockets needed
+    return len(unique_coins)
+
+# Read input
+n = int(input().strip())
+coins = list(map(int, input().strip().split()))
+
+# Calculate and print the result
+print(min_pockets(n, coins))
+```
+
+This script reads the number of coins and their values from standard input, calculates the minimum number of pockets needed based on unique coin values, and prints the result.

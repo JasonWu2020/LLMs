@@ -1,0 +1,20 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    s = input().strip()
+
+    a = ""
+    seen = set()
+    for i in range(n):
+        char = s[i]
+        # Remove character and added characters
+        while char in seen:
+            s = s.replace(char, "", 1)
+        a += char
+        seen.add(char)
+
+    print(a)
+```<eos>

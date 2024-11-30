@@ -1,0 +1,58 @@
+```python3
+import sys
+from typing import List
+
+def find_route(stamp_list):
+    # Sort the list based on the starting city index
+    sorted_stamps = sorted(stamp_list)
+    
+    # Initialize variables for tracking the current path and visited cities
+    current_path = [sorted_stamps[0][0]]
+    visited = {sorted_stamps[0][0]}
+    
+    # Loop through the remaining stamps
+    for i in range(1, len(sorted_stamps)):
+        next_city = sorted_stamps[i][1]
+        
+        # Check if the next city has been visited before
+        while next_city in visited:
+            # Move back until we find a city that hasn't been visited yet
+            prev_city = current_path.pop()
+            while current_path and current_path[-1] != prev_city:
+                current_path.pop()
+            
+            # If no previous city found, return "No solution"
+            if not current_path:
+                return "No solution"
+                
+            # Add the previous city back to the path
+            current_path.append(prev_city)
+            
+            # Skip the rest of the current iteration
+            continue
+        
+        # Add the next city to the path
+        current_path.append(next_city)
+        
+        # Mark the next city as visited
+        visited.add(next_city)
+    
+    # Return the final path
+    return current_path
+
+# Read input
+input_lines = []
+for _ in range(int(input().strip())):
+    n = int(input().strip())
+    input_lines.append(list(map(lambda x: tuple(map(int, x.split())) , input().strip().split("\n"))))
+
+# Process the input and get the result
+result = []
+for l in input_lines:
+    r = find_route(l[1])
+    if isinstance(r, str):
+        result.append("No solution")
+    else:
+        result.extend([l[0][i], r[i]] for i in range(len(l[0])))
+print(*result[:-1])  # Print the first n-1 elements of the result list
+```

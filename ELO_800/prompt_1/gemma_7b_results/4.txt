@@ -1,0 +1,15 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    s = input().strip()
+
+    a = ""
+    for i in s.split():
+        b = set(i) - set(a)
+        a += "".join(sorted(b)) + i
+
+    print(a)
+```<eos>

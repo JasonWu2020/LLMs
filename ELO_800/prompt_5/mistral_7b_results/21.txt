@@ -1,0 +1,6 @@
+[/INST] ```python
+def min_pockets(coins):
+ return len(set([sum(x) for x in set(map(tuple, set(map(frozenset, zip(coins, coins[1:])))).intersection(set(map(frozenset, zip(coins, coins[1:]))))))+1 if coins else 1
+n, coins = map(int, input().split())
+print(min_pockets(list(map(int, input().split()))))
+```</s>

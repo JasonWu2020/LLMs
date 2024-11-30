@@ -1,0 +1,6 @@
+```python
+import sys
+
+a, b = map(int, input().split())
+print(min(a, b), min((a + b - min(a, b)) // 2, min(a - min(a, b), b)))
+```

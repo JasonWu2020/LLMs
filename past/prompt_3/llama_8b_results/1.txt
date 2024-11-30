@@ -1,0 +1,26 @@
+The outputted solution has several issues:
+
+1.  It does not handle the case where `n` is even but the sum of all even numbers from 1 to `n` is odd. In this case, it prints "No" which is incorrect because we can still partition the numbers into two sets such that the sum of each set is odd.
+
+2.  It does not handle the case where `n` is odd. The solution assumes that we can always partition the numbers into two sets such that the sum of each set is 1, which is not always true.
+
+Here is another solution that addresses these issues:
+
+```python
+n = int(input())
+if n % 2 == 1:
+    print('No')
+else:
+    odd = [i for i in range(1, n+1) if i % 2 == 1]
+    even = [i for i in range(1, n+1) if i % 2 == 0]
+    if sum(odd) > sum(even):
+        print('Yes')
+        print(len(even) +'' +''.join(map(str, even)))
+        print(len(odd) +'' +''.join(map(str, odd)))
+    elif sum(even) > sum(odd):
+        print('Yes')
+        print(len(odd) +'' +''.join(map(str, odd)))
+        print(len(even) +'' +''.join(map(str, even)))
+    else:
+        print('No')
+```

@@ -1,0 +1,36 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is well-structured and easy to understand. It reads the input, determines the minimum number of rows and columns required for stability, places the rooks in different rows and columns, and checks for stability.
+
+**Improvements:**
+
+- The code could be improved by modulizing the logic for placing the rooks and checking for stability into separate functions for better reusability.
+- The code could also be improved by handling the case where there is no stable arrangement more elegantly.
+
+**Alternative solution:**
+
+```python3.8
+t = int(input())
+
+for _ in range(t):
+    n, k = map(int, input().split())
+    if k <= n:
+        board = [['R' if i else '.' for _ in range(n)] for _ in range(n)]
+        board[0][0] = '.'
+        board[0][n-1] = 'R'
+        board[n-1][0] = 'R'
+        board[n-1][n-1] = 'R'
+        print('\n'.join([''.join(board[r]) for r in range(len(board))]))
+    else:
+        print(-1)
+```
+
+**Output:**
+```
+..R
+R...
+...R
+```
+
+This solution places the rooks in the four corners of the chessboard, ensuring stability.<eos>

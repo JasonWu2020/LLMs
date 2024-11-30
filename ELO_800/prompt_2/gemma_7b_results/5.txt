@@ -1,0 +1,11 @@
+<start_of_turn>model
+```python3.8
+
+t = int(input())
+
+for _ in range(t):
+    a, b = map(int, input().split())
+    moves = int((a // b) - 1)
+    print(moves)
+
+```<eos>

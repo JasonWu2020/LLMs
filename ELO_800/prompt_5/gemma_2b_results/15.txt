@@ -1,0 +1,29 @@
+<start_of_turn>model
+```python
+def check_good(name, before, after):
+    if after > before and name == "Burunduk1":  
+        return True
+    elif after >= after + 2000 and name != "Burunduk1":
+        return True
+
+    if before < 2400 and name == "Burunduk1":
+        return True
+    
+    return False
+
+while True:
+    n = int(input())
+    if n == 0:
+        break
+    
+    for i in range(n):
+        name = input()
+        before = int(input())
+        after = int(input())
+        if check_good(name, before, after):
+            print("YES")
+        else:
+            print("NO")
+    
+```   
+<end_of_turn>

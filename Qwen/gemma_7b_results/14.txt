@@ -1,0 +1,10 @@
+<start_of_turn>model
+**Output:**
+
+```
+[391, 0]
+```
+
+**Final Sequence:**
+
+The final sequence of the array after $k$ operations is [391, 0].<eos>

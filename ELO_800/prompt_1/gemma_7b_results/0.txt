@@ -1,0 +1,13 @@
+<start_of_turn>model
+```python
+n, k = map(int, input().split())
+s = input().upper()
+
+cnt = dict.fromkeys(s, 0)
+for letter in s:
+    cnt[letter] += 1
+
+res = max(sum(v for v in cnt.values()) == k for v in cnt.values())  # Checks if the number of occurences of each letter is the same
+
+print(res)
+```<eos>

@@ -1,0 +1,35 @@
+Critique of the original solution:
+
+The original solution is straightforward but can be optimized. It first initializes a rating array of size 4001 with all elements set to 0. It then reads the number of participants and the results for each participant. After that, it updates the rating array based on the before and after ratings for each participant.
+
+However, the solution does not handle the case where a participant's rating is exactly 0. In this case, the rating array will not be updated correctly.
+
+The solution also does not handle the case where a participant's rating does not change after the contest. In this case, the rating array will still be updated incorrectly.
+
+Here's an optimized solution:
+
+```python
+python
+def is_good_performance(n, participants):
+    rating = [0] * 4001
+    for before, after in participants:
+        rating[int(before)] += 1
+        rating[int(after)] -= 1
+    for i in range(2400, 0, -1):
+        if rating[i] > 0:
+            for j in range(i + 1, 4001):
+                if rating[j] < 0:
+                    return True
+    return False
+
+n = int(input())
+participants = []
+for _ in range(n):
+    name, before, after = input().split()
+    participants.append((before, int(after)))
+
+if is_good_performance(n, participants):
+    print("YES")
+else:
+    print("NO")
+```

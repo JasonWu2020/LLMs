@@ -1,0 +1,20 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is concise and efficient, but it can be improved.
+
+**Improvements:**
+
+* **Check if the heaps have enough stones:** The code does not check if the heaps have enough stones for the operations. If the heaps do not have enough stones, the code should output 0.
+* **Switched operations:** The code currently prioritizes the operation that takes two stones from the second heap and four stones from the third heap. If the second heap has fewer than two stones, it should prioritize the operation that takes one stone from the first heap and two stones from the second heap.
+
+**Revised solution:**
+
+```python3.8
+t = int(input())
+
+for _ in range(t):
+    a, b, c = map(int, input().split())
+    if a and b and c:
+        print(min(4, 3) if (a and b and c) else 0)
+```<eos>

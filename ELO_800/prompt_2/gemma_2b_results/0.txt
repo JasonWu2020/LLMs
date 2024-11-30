@@ -1,0 +1,24 @@
+<start_of_turn>model
+```python
+def longest_good_subsequence_length(n, k, s):
+    frequency = {}
+    for i in range(len(s)):
+      if s[i] in frequency:
+        frequency[s[i]] += 1
+      else:
+        frequency[s[i]] = 1
+    maximum_length = 0
+    current_length = 0
+    for i in s:
+      if i in frequency:
+        current_length = current_length +1
+        maximum_length = max(maximum_length, current_length)      
+    return maximum_length 
+
+```
+    
+    
+
+```
+    
+```<end_of_turn>

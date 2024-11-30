@@ -1,0 +1,35 @@
+[/INST] The outputted solution appears to be valid as it follows the input and output specifications provided in the problem statement. However, there are a few potential improvements that could be made to the code:
+
+1. The function `is_subsequence_balanced` is redundant as the substring is balanced if and only if the number of 'a' and 'b' letters are equal.
+2. The function `is_balanced` could be simplified by using two pointers instead of using a while loop to move the left pointer.
+3. The function `is_balanced` could be renamed to something more descriptive.
+4. The input could be validated to ensure it meets the problem specifications.
+5. The code could be formatted for readability.
+
+Here's an alternative solution:
+
+```python
+def is_balanced(s):
+    a_count, b_count = 0, 0
+    left, right = 0, 0
+    while right < len(s):
+        right += 1
+        if s[right] == 'a':
+            a_count += 1
+        else:
+            b_count += 1
+        if a_count == b_count:
+            return (left+1, right)
+    return (-1, -1)
+
+for _ in range(int(input())):
+    n = int(input())
+    if n < 1 or n > 50:
+        print(-1, -1)
+        continue
+    s = input()
+    if len(s) != n:
+        print(-1, -1)
+        continue
+    print(is_balanced(s)[0], is_balanced(s)[1])
+```</s>

@@ -1,0 +1,12 @@
+[/INST] ```python
+for _ in range(int(input())):
+    n = int(input())
+    s, x = 0, 9
+    while True:
+        x += 1
+        s1 = sum(int(digit) for digit in str(x))
+        if s1 < s:
+            print(x)
+            s = s1
+            break
+```</s>

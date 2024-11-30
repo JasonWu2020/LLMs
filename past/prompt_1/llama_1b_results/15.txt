@@ -1,0 +1,31 @@
+n = int(input())
+g = [[] for i in range(n)]
+for i in range(n - 1):
+    u, v = map(int, input().split())
+    g[u - 1].append(v - 1)
+    g[v - 1].append(u - 1)
+for i in range(n):
+    x, y = map(int, input().split())
+    g[i].append(x - 1)
+    g[x - 1].append(i)
+from collections import deque
+def dfs(x, p):
+    for i in g[x]:
+        if i!= p:
+            dfs(i, x)
+            print(i + 1, end ='')
+            for j in g[x]:
+                if j!= p:
+                    if j == i:
+                        continue
+                    if g[i].count(j) == 1:
+                        print(j + 1, end ='')
+                    else:
+                        print(j + 1, end ='')
+    print()
+for i in range(n):
+    if i == 0:
+        for j in range(n):
+            print(i + 1, end ='')
+    else:
+        print(i + 1, end ='')

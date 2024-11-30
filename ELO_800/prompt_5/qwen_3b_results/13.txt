@@ -1,0 +1,44 @@
+```python
+def min_length_password(n, password):
+    # Count the occurrences of each number in the password
+    count = {}
+    for num in password:
+        if num in count:
+            count[num] += 1
+        else:
+            count[num] = 1
+    
+    # If there's only one unique number, no operations can be performed
+    if len(count) == 1:
+        return n
+    
+    # Find the most frequent number, as it will be the one we combine with others
+    max_count = max(count.values())
+    most_frequent = [num for num, freq in count.items() if freq == max_count]
+    
+    # Check if the most frequent number can pair up with others
+    if len(most_frequent) > 1:
+        return n - (max_count - 1)
+    
+    # If the most frequent number cannot pair up, check if there's another number left
+    if len(count) == 2 and max_count > 1:
+        return n - max_count + 1
+    
+    return 1
+
+# Read input
+import sys
+input = sys.stdin.read
+data = input().split()
+
+# Parse the number of test cases
+t = int(data[0])
+
+for _ in range(t):
+    n = int(data[1])
+    data = list(map(int, data[2:]))
+    result = min_length_password(n, data)
+    print(result)
+```
+
+This script reads the input, processes each password according to the rules described, and prints the minimum possible length of the password after performing the allowed operations. It handles multiple test cases as specified.

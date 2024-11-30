@@ -1,0 +1,43 @@
+Critique:
+
+The provided solution is quite straightforward but lacks a clear understanding of the problem. The issue lies in the line where it calculates the moves. The absolute difference between the ASCII values of the characters is used, which is not correct. The correct approach is to calculate the absolute difference in the indices of the characters in the two strings.
+
+Here's a more accurate solution:
+
+```python
+```python
+def min_moves(n, s, t):
+    moves = 0
+    for i in range(n):
+        moves += abs(ord(t[i]) - ord(s[i]))
+    return moves
+
+n = int(input())
+s = input()
+t = input()
+
+print(min_moves(n, s, t))
+```
+
+However, this solution still has room for improvement. The reason is that the problem statement mentions that Scrooge McDuck can rotate a disk one digit forwards or backwards in one move. Therefore, we can simplify the calculation by considering the absolute difference between the indices of the characters in the two strings.
+
+Here's a more optimized solution:
+
+```python
+```python
+def min_moves(n, s, t):
+    moves = 0
+    for i in range(n):
+        moves += abs(i - t.find(s[i]))
+    return moves
+
+n = int(input())
+s = input()
+t = input()
+
+print(min_moves(n, s, t))
+```
+
+This solution works by finding the index of the character `s[i]` in the string `t` and taking the absolute difference between the index `i` and the found index. This represents the minimum number of moves needed to align the disk at position `i` with the correct digit.
+
+This solution has a time complexity of O(n) and a space complexity of O(1), making it more efficient than the previous solutions.

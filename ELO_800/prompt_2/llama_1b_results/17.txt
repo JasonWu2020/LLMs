@@ -1,0 +1,16 @@
+```python3.8
+def min_moves(n, s, t):
+    moves = 0
+    for i in range(n):
+        if s[i]!= t[i]:
+            if i == 0:
+                moves += 9 * n
+            else:
+                moves += 10 * n
+    return min(moves, 10 * n)
+
+n = int(input())
+s = input()
+t = input()
+print(min_moves(n, s, t))
+```

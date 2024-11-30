@@ -1,0 +1,32 @@
+```python
+import math
+
+def min_travel_time(l, d, v, g, r):
+    # Time to reach the traffic lights when the green light is on
+    t_green = d / v
+    
+    # Time to reach the traffic lights when the red light is on
+    t_red = (d - g) / v + g / v
+    
+    # Calculate the time difference
+    t_diff = t_green - t_red
+    
+    # If the car arrives during the red light period, it cannot proceed
+    if t_diff > 0:
+        # Calculate the minimum time needed to reach the destination after waiting
+        min_time = t_red + (l - d) / v
+    else:
+        min_time = t_green + (l - d) / v
+    
+    return min_time
+
+# Reading input
+l, d, v, g, r = map(int, input().split())
+
+# Calculating and printing the result
+print(min_travel_time(l, d, v, g, r))
+```
+
+This Python script calculates the minimum time required for the car to travel from point A to point B while considering the traffic light cycle. It first determines whether the car can pass through the traffic lights based on the timing of the light changes. If the car reaches the lights during the red light phase, it waits until the next green light period. Then it calculates the total time required to travel from the traffic lights to point B.
+
+Please note that this script assumes that `d < l` as specified in the problem statement. The function `min_travel_time` returns the minimum time required for the car to travel from point A to point B under the given constraints.

@@ -1,0 +1,8 @@
+[/INST] ```python
+import re
+
+def decrypt(s):
+ return re.findall(r"(.)\1*(\1|$)", s)[0][0]
+for _ in range(int(input())):
+ print(decrypt(input()))
+```</s>

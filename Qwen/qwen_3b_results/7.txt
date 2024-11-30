@@ -1,0 +1,96 @@
+Certainly! Let's break down the solution step-by-step for this problem.
+
+### Problem Analysis
+
+We need to find the lexicographically smallest permutation of `S` such that `T` (which is a permutation of "abc") is not a subsequence of this permutation.
+
+### Approach
+
+1. **Identify the Subsequence**: We first identify the positions of characters in `S` that match characters in `T`.
+2. **Construct the Lexicographically Smallest Permutation**:
+   - For each position where `T` could appear, we choose the smallest available character from `S` to avoid having `T` as a subsequence.
+   - If there are multiple choices, we pick the smallest character from the remaining ones.
+
+### Python Implementation
+
+```python
+def find_lex_smallest_permutation(S, T):
+    # Convert T to a list for easier manipulation
+    T_list = list(T)
+    
+    # Create a dictionary to keep track of the indices of each character in S
+    char_indices = {}
+    for i, char in enumerate(S):
+        if char in char_indices:
+            char_indices[char].append(i)
+        else:
+            char_indices[char] = [i]
+    
+    # Sort the indices for each character
+    for char in char_indices:
+        char_indices[char].sort()
+    
+    # Construct the result string
+    result = []
+    for char in T_list:
+        if not result:
+            # If no characters have been placed yet, place the smallest character available
+            for index in char_indices[char]:
+                result.append(chr(index + ord('a')))
+                char_indices[char].remove(index)
+                break
+        else:
+            # Place the next smallest character that doesn't create a subsequence
+            for index in char_indices[char]:
+                if index >= len(result) or result[index] != chr(index + ord('a')):
+                    result.append(chr(index + ord('a')))
+                    char_indices[char].remove(index)
+                    break
+    
+    return ''.join(result)
+
+# Read input
+import sys
+input = sys.stdin.read
+data = input().splitlines()
+
+for line in data[1:]:
+    S, T = line.split()
+    result = find_lex_smallest_permutation(S, T)
+    print(result)
+```
+
+### Explanation of the Code
+
+1. **Initialization**:
+   - We convert `T` into a list for easier manipulation.
+   - We create a dictionary to store the indices of each character in `S`.
+
+2. **Sorting Indices**:
+   - We sort the indices of each character in `S` to ensure that when we place characters, we always consider the smallest possible character.
+
+3. **Constructing the Result**:
+   - We iterate through each character in `T` and place it in the result string.
+   - We use the sorted indices to place the smallest available character that doesn't create a subsequence.
+
+4. **Output**:
+   - We join the result list into a string and print it.
+
+### Testing the Solution
+
+To test the solution, you can provide sample inputs and outputs. Here's an example of how to run the solution with some test cases:
+
+```python
+if __name__ == "__main__":
+    test_cases = [
+        ("aaaabbc", "abc"),
+        ("cccba", "acb"),
+        ("dbsic", "bac")
+    ]
+    
+    for S, T in test_cases:
+        result = find_lex_smallest_permutation(S, T)
+        print(f"For input {S} and {T}, the result is {result}")
+```
+
+This should give you the expected results based on the provided examples. The solution should work efficiently within the constraints given.

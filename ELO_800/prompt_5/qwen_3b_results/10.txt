@@ -1,0 +1,23 @@
+```python
+def sock_wearing_days(a, b):
+    # Calculate the maximum number of days Vasya can wear different socks
+    max_diff_days = min(a, b)
+    
+    # After the maximum different days, calculate the remaining socks
+    remaining_red = a - max_diff_days
+    remaining_blue = b - max_diff_days
+    
+    # Calculate the number of days Vasya can wear the same socks
+    max_same_days = min(remaining_red, remaining_blue)
+    
+    return max_diff_days, max_same_days
+
+# Read input
+a, b = map(int, input().split())
+
+# Get the result
+result = sock_wearing_days(a, b)
+
+# Print the result
+print(result[0], result[1])
+```

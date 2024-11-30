@@ -1,0 +1,19 @@
+```python
+from sys import stdin, stdout
+
+def main():
+    # Read the card on the table and five cards in your hand from stdin
+    table_card = stdin.readline().strip()
+    player_cards = [stdin.readline().strip() for _ in range(5)]
+    
+    # Check if you can play a card
+    for card in player_cards:
+        if len(set(table_card + card)) == 10: 
+            return 'YES'
+    
+    return 'NO'
+
+if __name__ == '__main__':
+    print(main())
+```
+```

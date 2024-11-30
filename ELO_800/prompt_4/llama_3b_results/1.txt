@@ -1,0 +1,31 @@
+Critique of the outputted solution:
+
+* The solution does not correctly implement the logic to find the minimum number of invitations. It seems to be trying to find the minimum number of friends that Monocarp needs to send invitations to, but it's not considering the best friend of each friend.
+* The solution also does not correctly calculate the minimum number of invitations needed. It's trying to find the minimum number of friends that Monocarp needs to send invitations to, but it's not considering the fact that each friend needs to receive an invitation to bring their best friend.
+* The solution does not handle the case where a friend's best friend is not in the list of friends.
+
+Here's a new solution:
+
+```python
+```python
+def read_input():
+    lines = sys.stdin.read().splitlines()
+    t = int(lines[0])
+    for i in range(t):
+        n = int(lines[1])
+        p = list(map(int, lines[2].split()))
+        visited = [False] * (n + 1)
+        count = 0
+        for i in range(1, n + 1):
+            if not visited[i]:
+                count += dfs(i, p, visited)
+        print(count)
+
+def dfs(node, p, visited):
+    visited[node] = True
+    for i in p:
+        if not visited[i]:
+            dfs(i, p, visited)
+
+read_input()
+```

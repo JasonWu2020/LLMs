@@ -1,0 +1,16 @@
+```python
+def calculate_moves(disks, target):
+    moves = 0
+    for i in range(len(disks)):
+        moves += abs(int(disks[i]) - int(target[i]))
+    return moves
+
+def main():
+    n = int(input())
+    initial_state = input()
+    target = input()
+    print(calculate_moves(initial_state, target))
+
+if __name__ == "__main__":
+    main()
+```

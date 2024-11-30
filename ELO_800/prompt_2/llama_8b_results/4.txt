@@ -1,0 +1,15 @@
+```python
+import sys
+
+for _ in range(int(input())):
+    n = int(input())
+    s = input()
+    result = ''
+    stack = []
+    for c in s:
+        if stack and stack[-1] == c:
+            result += stack.pop()
+        else:
+            stack.append(c)
+    print(result)
+```

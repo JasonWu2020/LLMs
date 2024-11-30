@@ -1,0 +1,43 @@
+```python
+# Python script to solve the problem.
+
+import sys
+
+def max_zero_and_value(n):
+    """
+    Finds the maximum integer k such that the bitwise AND operation between n, n-1, ..., k results in 0.
+    """
+    k = 0
+    while True:
+        n -= 1
+        if n & (n - 1) == 0:
+            return k + 1
+        k += 1
+
+def read_input(file):
+    """
+    Reads the number of test cases, followed by their corresponding integers.
+    """
+    t = int(next(file))
+    return [(int(next(file)), max_zero_and_value(n)) for _ in range(t)]
+
+def write_output(output):
+    """
+    Writes the output to standard output.
+    """
+    for res in output:
+        print(res)
+
+if __name__ == "__main__":
+    with open("input.txt", "r") as file: # Change 'input.txt' to your actual input file path.
+        inputs = read_input(file)
+    write_output(inputs)
+```
+
+This Python solution includes three functions:
+- `max_zero_and_value(n)` calculates the maximum value of integer k based on the given condition.
+- `read_input(file)` reads the input from a specified file, parsing the number of test cases and the corresponding integers into a list of tuples.
+- `write_output(output)` writes the calculated results back to standard output, aligning with the original requirements.
+
+It also introduces file handling by reading input from a file named "input.txt". Adjust the filename as needed for different use cases.
+```

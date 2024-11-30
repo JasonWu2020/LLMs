@@ -1,0 +1,12 @@
+<start_of_turn>model
+```python3.8
+t = int(input())  # number of test cases
+
+for _ in range(t):
+    n, a, b = map(int, input().split())  # n, a, b for each test case
+
+    if (n - a - b) % 2 == 0 and a + b <= n and n - a - b >= 0:
+        print("Yes")
+    else:
+        print("No")
+```<eos>

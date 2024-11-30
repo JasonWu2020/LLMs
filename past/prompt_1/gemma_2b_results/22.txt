@@ -1,0 +1,21 @@
+<start_of_turn>model
+```python
+n = int(input())
+k = int(input())
+string = input()
+
+m = 0
+ans = ""
+
+for i in range(len(string)):
+  if string[i] not in ans:
+    m += 1
+    ans += string[i]
+    if len(ans) == m:
+      break
+
+if m == 0: 
+  print(0, "")
+else:
+  print(m-1, ans)
+```<end_of_turn>

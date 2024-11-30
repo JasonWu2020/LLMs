@@ -1,0 +1,23 @@
+<start_of_turn>model
+**Critique:**
+
+The code is well-structured and easy to understand. The algorithm is efficient and the time complexity is low. However, the code could be improved by using a more concise method to find the quotient and remainder when $a$ is divided by $b$.
+
+**Updated Solution:**
+
+```python3
+t = int(input())
+
+for _ in range(t):
+    a, b = map(int, input().split())
+    moves = 0
+    if a % b == 0:
+        moves = 0
+    else:
+        moves = (a // b) + 1
+    print(moves)
+```
+
+**Explanation:**
+
+The updated code uses the integer division operator (`//`) to find the quotient and integer remainder when $a$ is divided by $b$. The quotient is then added to the number of moves. If the remainder is not 0, then the number of moves is incremented by 1 until the remainder is 0.<eos>

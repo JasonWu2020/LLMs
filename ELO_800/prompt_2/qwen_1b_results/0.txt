@@ -1,0 +1,26 @@
+```python3
+import sys
+
+def main():
+    # Read input
+    n, k = map(int, input().split())
+    s = input()
+    
+    # Initialize count array for each letter in the alphabet
+    count = [0] * k
+    
+    # Count occurrences of each letter in the string
+    for c in s:
+        if ord(c) - ord('A') < k:
+            count[ord(c) - ord('A')] += 1
+            
+    # Find the maximum value in the count array
+    max_count = max(count)
+    
+    # Print the result
+    print(max_count)
+
+# Call the main function when the script is executed
+if __name__ == "__main__":
+    main()
+```

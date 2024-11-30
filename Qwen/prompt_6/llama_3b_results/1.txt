@@ -1,0 +1,28 @@
+```python
+from collections import defaultdict
+
+def solve():
+    n = int(input())
+    p = list(map(int, input().split()))
+    visited = [False] * (n + 1)
+    cnt = 0
+
+    for i in range(1, n + 1):
+        if not visited[i]:
+            if dfs(i, p, visited):
+                cnt += 1
+
+    print(cnt)
+
+def dfs(node, p, visited):
+    visited[node] = True
+    for i in range(1, n + 1):
+        if not visited[i] and i!= p[node - 1]:
+            if dfs(i, p, visited):
+                return True
+    return False
+
+t = int(input())
+for _ in range(t):
+    solve()
+```

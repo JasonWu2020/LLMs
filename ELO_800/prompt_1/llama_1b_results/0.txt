@@ -1,0 +1,17 @@
+```python
+n, k = map(int, input().split())
+s = input()
+count = [[0] * 26 for _ in range(k + 1)]
+for i in range(n):
+    for j in range(k):
+        if s[i] == chr(j + ord('A')):
+            count[j][i % 26] += 1
+
+ans = 0
+for i in range(k):
+    for j in range(n):
+        if count[i][j] > 0:
+            ans = max(ans, count[i][j])
+ans = sum(ans) * (n - ans)
+print(ans)
+```

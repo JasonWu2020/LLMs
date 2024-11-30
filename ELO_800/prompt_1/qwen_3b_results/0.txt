@@ -1,0 +1,21 @@
+```python
+def longest_good_subsequence(s, k):
+    freq = [0] * k
+    for char in s:
+        freq[ord(char) - ord('A')] += 1
+    
+    max_len = 0
+    min_freq = float('inf')
+    
+    for count in freq:
+        if count != 0:
+            min_freq = min(min_freq, count)
+    
+    max_len = 2 * min_freq + (k - 2) * min_freq
+    
+    return max_len
+
+n, k = map(int, input().split())
+s = input()
+print(longest_good_subsequence(s, k))
+```

@@ -1,0 +1,19 @@
+```python
+import math
+import sys
+input = sys.stdin.readline
+
+def solve():
+    n = int(input())
+    ans = 0
+    while n > 0 and (n & 1) == 0:
+        ans += 1
+        n >>= 1
+    print(n - 1)
+
+t = int(input())
+for _ in range(t):
+    solve()
+```
+
+This script first reads the number of test cases and then for each test case, it reads the number n. It then enters a loop where it continuously checks if the least significant bit of n is 0. If it is, it increments ans and right shifts n by 1. This effectively removes the least significant bit of n. This process continues until n becomes 0 or the least significant bit of n becomes 1. The maximum value of k for which the continuous & operation gives 0 is then n - 1.

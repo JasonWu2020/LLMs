@@ -1,0 +1,18 @@
+```python
+import sys
+
+def max_k(n):
+    k = 1
+    while True:
+        if (n - k + 1) % 2 == 0:
+            return k
+        else:
+            k += 1
+
+if __name__ == "__main__":
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        print(max_k(n))
+```
+This Python script reads the number of test cases `t`, followed by `t` lines where each line represents a test case with an integer `n`. It calculates and prints the maximum value of `k` for each test case using the `max_k` function defined above.

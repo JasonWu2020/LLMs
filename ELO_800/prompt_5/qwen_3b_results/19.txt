@@ -1,0 +1,14 @@
+```python
+def find_max_k(n):
+    # Iterate from n-1 down to 1
+    for k in range(n-1, 0, -1):
+        if n & (n-1) & (n-2) & (n-3) & k == 0:
+            return k
+    return 1  # If no valid k is found, start from 1
+
+# Read input
+t = int(input().strip())
+for _ in range(t):
+    n = int(input().strip())
+    print(find_max_k(n))
+```

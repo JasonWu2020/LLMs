@@ -1,0 +1,37 @@
+Critique of the original solution:
+
+* The solution does not handle the case where the entire string is balanced. It only checks for substrings that have a single character.
+* The solution does not handle the case where there are multiple balanced substrings. It only prints the first one it finds.
+* The solution uses a lot of repeated code for printing the indices of 'a' and 'b' substrings.
+* The solution uses a lot of repeated code for checking if a substring is balanced.
+
+Here's a revised solution that addresses these issues:
+
+```python
+import sys
+
+t = int(sys.stdin.readline().strip())
+
+for _ in range(t):
+    n = int(sys.stdin.readline().strip())
+    s = sys.stdin.readline().strip()
+    a_count = 0
+    b_count = 0
+    balanced = False
+
+    for i in range(n):
+        if s[i] == 'a':
+            a_count += 1
+        else:
+            b_count += 1
+
+        if a_count == b_count:
+            print(f"{i+1} {i+2}")
+            balanced = True
+            break
+
+    if not balanced:
+        print("-1 -1")
+```
+
+This revised solution uses a single pass through the string to count the number of 'a's and 'b's. If it finds a match, it prints the indices of the substring and sets a flag to indicate that a balanced substring has been found. If no balanced substring is found, it prints "-1 -1".

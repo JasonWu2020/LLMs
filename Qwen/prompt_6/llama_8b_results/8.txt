@@ -1,0 +1,17 @@
+```python
+t = int(input())
+
+for _ in range(t):
+    a, b, c = map(int, input().split())
+
+    if b >= 2:
+        min_c = min(c // 2, b // 1)
+        min_b = min(b // 1, a // 1)
+        print(3 * min_c)
+    elif b == 1:
+        min_b = min(b // 1, a // 1)
+        min_a = min(a // 1, 2 * b)
+        print(3 * min_a)
+    else:
+        print(0)
+```

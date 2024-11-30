@@ -1,0 +1,22 @@
+[/INST] The outputted solution does not follow the Python syntax and style guidelines. Here's a corrected version:
+
+```python
+import sys
+
+for _ in range(int(sys.stdin.readline())):
+    n = int(sys.stdin.readline())
+    password = list(map(int, sys.stdin.readline().split()))
+    length = 1
+    while True:
+        for i in range(len(password)-1):
+            if password[i] != password[i+1]:
+                password[i], password[i+1] = password[i] + password[i+1], password[i+1]
+                length += 1
+                break
+        else:
+            if len(password) == length:
+                print(length)
+                break
+```
+
+This solution adheres to the Python syntax and style guidelines and follows the input and output specifications.</s>

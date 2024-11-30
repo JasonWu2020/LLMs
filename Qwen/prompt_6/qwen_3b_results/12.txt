@@ -1,0 +1,29 @@
+```python
+import sys
+
+def find_balanced_substring():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        s = input()
+        
+        a_count, b_count = 0, 0
+        left_index = -1
+        
+        for i in range(n):
+            if s[i] == 'a':
+                a_count += 1
+            else:
+                b_count += 1
+            
+            if a_count == b_count and left_index == -1:
+                left_index = i + 1
+        
+        if left_index != -1:
+            print(left_index, left_index)
+        else:
+            print(-1, -1)
+
+if __name__ == "__main__":
+    find_balanced_substring()
+```

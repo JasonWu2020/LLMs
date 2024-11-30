@@ -1,0 +1,10 @@
+```python
+# -*- coding: utf-8 -*-
+
+```python
+import sys
+
+t = int(input())
+for _ in range(t):
+    a, b = map(int, input().split())
+    print((a - 1) % b)

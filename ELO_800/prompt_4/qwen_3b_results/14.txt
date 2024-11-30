@@ -1,0 +1,14 @@
+```python
+def infinity_clock_operations(n, k, arr):
+    max_val = max(arr)
+    for _ in range(k % (n * 2)):
+        max_val = max(max_val - arr[i], arr[i]) for i in range(n)
+    return [max_val - x for x in arr]
+
+t = int(input().strip())
+for _ in range(t):
+    n, k = map(int, input().strip().split())
+    arr = list(map(int, input().strip().split()))
+    result = infinity_clock_operations(n, k, arr)
+    print(' '.join(map(str, result)))
+```

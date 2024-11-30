@@ -1,0 +1,64 @@
+<start_of_turn>model
+You're right! The previous solution contained some errors in handling the output format and was inefficient in exploring the problem. 
+
+Here's a revised solution that addresses those issues:
+
+
+```python
+def find_common_subsequence(a, b):
+    n = len(a)
+    m = len(b)
+    i = 0 
+    j = 0
+    c = []
+    while i < n and j < m:
+        if a[i] == b[j]:
+            c.append(a[i])
+            i += 1
+            j += 1
+        elif a[i] < b[j]:
+            i += 1
+        else:
+            j += 1
+    return c
+
+
+def solve():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())  # Get array size for a
+        m = int(input())  # Get array size for b 
+        a = list(map(int, input().split())) 
+        b = list(map(int, input().split()))
+
+        common = find_common_subsequence(a, b)
+
+        if len(common) > 0:
+            print("YES")
+            print(len(common), *common)
+        else:
+            print("NO")
+
+if __name__ == "__main__":
+    solve()
+
+```
+
+
+**Key Improvements**
+
+1. **Clear Input Handling:** The input is now more explicit, with `int` conversion for clear separation of the array elements:
+  - `n`: The size of array `a`.
+  - `m`: The size of array `b`.
+  - `a`:  The elements of array `a` read from user input using `input()`, separated by spaces, and converted to integers using `map(int, ...)`
+  - Similarly, `b` is read in the same way.
+
+2. **Output Formatting:** The code now directly generates the output as required:
+    - "YES" is output only when a subsequence exists.
+    - The length `k` is printed.
+    - The elements are printed with spaces as a string. 
+
+
+
+
+Let me know if you'd like to further clarify any specific parts or explore other aspects of the problem. <end_of_turn>

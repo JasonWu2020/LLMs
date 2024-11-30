@@ -1,0 +1,45 @@
+<start_of_turn>model
+```python
+import sys
+
+t = int(input())  # Read the number of test cases
+
+for _ in range(t):
+    a, b = map(int, input().split())  # Read the input a and b
+    if a % b == 0:
+      print(0) 
+    else:
+      moves = 0
+      while a != b:
+        moves += 1
+        a += 1
+
+      print(moves)  
+``` 
+
+
+**Explanation**
+
+1. **Input:** 
+   - The code reads the number of test cases (`t`) and then `t` test cases. 
+   - Then each test case reads two integers `a` and `b`.
+
+
+2. **Initial Check:** 
+   - It directly checks if `a` is divisible by `b` without any calculation:
+       - If so, it prints 0 as no moves are required.
+ 
+3. **Finding Moves:**
+   -  For cases where `a` isn't divisible by `b`:
+       - `moves` is initialized to 0. 
+       - The `while` loop executes as long as `a` is not divisible by `b` .
+       - `a` is incrementing by 1 in each iteration. 
+       - In each iteration, the `moves` counter is incremented.
+        
+4. **Output**
+   - Finally, the code prints the number of moves required to make `a` divisible by `b`.
+
+
+
+
+Let me know if you have any additional questions about this code. <end_of_turn>

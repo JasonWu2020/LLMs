@@ -1,0 +1,11 @@
+```python
+import math
+
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    p = math.floor(math.log2(n))
+    k = n - 2**p + 1
+    print(k)
+```

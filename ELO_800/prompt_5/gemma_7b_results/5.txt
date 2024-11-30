@@ -1,0 +1,13 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    a, b = map(int, input().split())
+    moves = 0
+    if a % b == 0:
+        moves = 0
+    else:
+        moves = int((a // b) + 1)
+    print(moves)
+```<eos>

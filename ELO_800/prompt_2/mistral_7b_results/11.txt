@@ -1,0 +1,10 @@
+[/INST] ```python3
+import sys
+from math import gcd
+
+input = sys.stdin.readline().strip().split()
+k, r = map(int, input)
+
+shovels = (k // gcd(k, r)) if gcd(k, r) != 10 else 1
+print(shovels)
+```</s>

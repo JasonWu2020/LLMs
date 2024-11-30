@@ -1,0 +1,26 @@
+```python
+import sys
+
+def analyze_performance(n):
+    red_users = set()
+    increased_ratings = []
+
+    for _ in range(n):
+        name, before_i, after_i = input().split()
+        before_i, after_i = int(before_i), int(after_i)
+        
+        if after_i > before_i:
+            increased_ratings.append(after_i)
+        if before_i >= 2400:
+            red_users.add(name)
+
+    if red_users and increased_ratings:
+        return "YES"
+    else:
+        return "NO"
+
+if __name__ == "__main__":
+    n = int(input())
+    result = analyze_performance(n)
+    print(result)
+```

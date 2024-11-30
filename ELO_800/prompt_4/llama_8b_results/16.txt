@@ -1,0 +1,13 @@
+The outputted solution has a time complexity of O(t*n), where t is the number of test cases and n is the maximum value in the input. This is because for each test case, it calculates the result directly using the formula.
+
+However, this solution can be optimized to have a time complexity of O(t) by using a mathematical formula to calculate the result directly.
+
+```python
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    ans = max(1, (n + 2) // 10 - 1 + 9 * 9 * (10 ** (n // 100 - 1)) + 91)
+    print(ans)
+```
+
+This solution works by first calculating the number of interesting numbers from 1 to n that have a hundreds digit of 1. The number of such numbers is (n + 2) // 10 - 1. Then, it calculates the number of interesting numbers from 100 to n that have a hundreds digit greater than 1, which is 9 * 9 * (10 ** (n // 100 - 1)). The total number of interesting numbers is the sum of these two numbers plus 91.

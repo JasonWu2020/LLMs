@@ -1,0 +1,33 @@
+The outputted solution has a time complexity of O(n * m * log(n * m)) due to the BFS algorithm, which is not efficient for large inputs.
+
+A better approach would be to use a depth-first search (DFS) algorithm, which has a time complexity of O(n * m). We can use a queue to keep track of the cells to visit and their corresponding levels.
+
+Here's the corrected solution:
+
+```python
+n, m = map(int, input().split())
+s = [input() for _ in range(n)]
+
+def dfs(sx, sy, sx1, sy1, visited):
+    q = [[sx, sy, 0]]
+    visited[sx][sy] = True
+    level = 0
+    while q:
+        x, y, level = q.pop(0)
+        if x == sx1 and y == sy1:
+            return level
+        for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+            nx, ny = x + dx, y + dy
+            if 0 <= nx < n and 0 <= ny < m and s[nx][ny] == '.' and not visited[nx][ny]:
+                q.append([nx, ny, level + 1])
+                visited[nx][ny] = True
+
+    return -1
+
+sx, sy = n//2, m//2
+visited = [[False for _ in range(m)] for _ in range(n)]
+level = dfs(sx, sy, sx, sy, visited)
+print('Yes' if level!= -1 else 'No')
+```
+
+This solution has a time complexity of O(n * m), which is much more efficient for large inputs.

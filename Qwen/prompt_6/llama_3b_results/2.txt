@@ -1,0 +1,10 @@
+```python
+t = int(input())
+
+for _ in range(t):
+    n, a, b = map(int, input().split())
+    if a == n - b:
+        print("Yes")
+    else:
+        print("No")
+```

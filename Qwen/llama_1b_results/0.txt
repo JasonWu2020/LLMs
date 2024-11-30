@@ -1,0 +1,25 @@
+```python
+def maxGoodSubsequence(s, k):
+    n = int(input())
+    s = input()
+    freq = [0] * 26
+    for char in s:
+        freq[ord(char) - 65] += 1
+
+    max_length = 0
+    for i in range(1, n + 1):
+        dp = [0] * (k + 1)
+        for j in range(1, k + 1):
+            if s[i - 1] in freq:
+                dp[j] = max(dp[j] + 1, dp[j - 1])
+        max_length = max(max_length, max(dp))
+
+    print(max_length)
+
+# Test the function
+maxGoodSubsequence(10, 26)
+```
+
+This updated solution first reads the input and initializes a frequency dictionary `freq` to store the frequency of each letter in the string. Then it initializes a 2D array `dp` to store the maximum length of good subsequence of each possible length. It iterates over the string and for each position, it updates the maximum length of good subsequence by considering all possible previous positions and adding the current letter's frequency to the maximum length of good subsequence of the previous position. Finally, it prints the maximum length of good subsequence of the entire string.
+
+The time complexity of this solution is O(n \* k), where n is the length of the string and k is the number of letters. The space complexity is also O(k), as we need to store the frequency dictionary and the 2D array.

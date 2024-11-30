@@ -1,0 +1,43 @@
+**Critique of the outputted solution:**
+
+The solution provided uses a depth-first search (DFS) approach to calculate the number of ways to get from home to school. The DFS function `dfs` is recursive, but it has a potential issue. The line `dp[u] += dfs(v, u, dp)` can lead to a stack overflow for large inputs because it performs a lot of repeated work. For example, if the graph is very dense, the function may visit the same bus multiple times, leading to a lot of redundant calculations.
+
+The solution also doesn't handle the case where a bus doesn't go to the next stop. In such cases, the `dfs` function will still be called with the next bus stop, which is not a valid move.
+
+**Alternative solution:**
+
+```python
+from collections import defaultdict
+
+def read_input():
+    n, m = map(int, input().split())
+    adj = defaultdict(list)
+    in_degree = [0] * (n + 1)
+    for _ in range(m):
+        s, t = map(int, input().split())
+        adj[s].append(t)
+        in_degree[t] += 1
+    return n, adj, in_degree
+
+def main():
+    n, adj, in_degree = read_input()
+    MOD = 1000000007
+    dp = [0] * (n + 1)
+    dp[0] = 1
+    queue = [i for i in range(1, n + 1) if in_degree[i] == 0]
+    while queue:
+        u = queue.pop(0)
+        for v in adj[u]:
+            dp[v] = (dp[v] + dp[u]) % MOD
+            in_degree[v] -= 1
+            if in_degree[v] == 0:
+                queue.append(v)
+    print(dp[n])
+
+if __name__ == "__main__":
+    main()
+```
+
+This solution uses a topological sorting approach to find the order of buses. It first initializes a `dp` array to store the number of ways to reach each bus stop. Then it uses a queue to process the buses in the correct order. For each bus, it updates the `dp` array with the number of ways to reach the bus stop. Finally, it prints the value of `dp[n]`, which represents the number of ways to get from home to school.
+
+This solution avoids the potential stack overflow issue of the previous solution and correctly handles the case where a bus doesn't go to the next stop.

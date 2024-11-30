@@ -1,0 +1,21 @@
+<start_of_turn>model
+```python
+def decrypt_message(ciphertext):
+  n = len(ciphertext)
+  decrypted = ''
+  for i in range(n):
+    char = ciphertext[i]
+    if i > 0 and i < n-1: 
+      if ciphertext[i-1] != char:
+        decrypted += char
+    if i < n-1:
+      return char
+  return ''
+
+ t = int(input())  
+
+for _ in range(t):
+  n = int(input()) 
+  ciphertext = input() 
+  print(decrypt_message(ciphertext)) 
+```<end_of_turn>

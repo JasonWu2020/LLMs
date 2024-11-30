@@ -1,0 +1,48 @@
+### Critique of the provided solution:
+
+The provided solution appears to implement an algorithm for determining whether Anton has performed well enough in a given contest based on his ratings and the colors of other users' handles. However, there are several issues and improvements that can be made to ensure correctness and efficiency.
+
+1. **Incorrect Handling of Ratings**: The current logic does not correctly determine if a user's rating has increased after the contest.
+2. **Handling of User Handles**: The logic assumes that a user's handle changes their color based solely on their rating, which may not always be accurate due to potential system-level factors affecting handle colorings.
+3. **Complexity**: The current implementation seems overly complex and could benefit from simplification.
+
+### Improved Solution:
+
+```python
+def check_contest_performance(n, contests):
+    # Initialize dictionary to keep track of previous ratings
+    prev_ratings = {}
+    
+    # Iterate through each contest result
+    for i in range(1, n+1):
+        name, before_rating, after_rating = contests[i]
+        
+        # Check if the user's handle is already colored red
+        if name in prev_ratings:
+            continue
+        
+        # Update the previous ratings dictionary
+        prev_ratings[name] = before_rating
+        
+        # Determine if the performance is good
+        if after_rating > before_rating:
+            return "YES"
+    
+    return "NO"
+
+# Read input
+n = int(input())
+contests = [input().split() for _ in range(n)]
+
+# Output the result
+print(check_contest_performance(n, contests))
+```
+
+### Explanation of Changes:
+
+1. **Dictionary for Previous Ratings**: A `prev_ratings` dictionary is used to store the rating of each user before the contest.
+2. **Efficient Rating Checking**: Instead of checking if a user's handle is colored red every time, we only update the dictionary when necessary. This reduces redundancy.
+3. **Simplified Logic**: The logic now checks if the user's handle exists in the `prev_ratings` dictionary and skips performing the comparison if so. This ensures that we only compare new contestants.
+4. **Return Early**: If a contestant's rating increases after the contest, we immediately return "YES" without further processing.
+
+This revised approach should improve efficiency and accuracy while maintaining the required functionality.

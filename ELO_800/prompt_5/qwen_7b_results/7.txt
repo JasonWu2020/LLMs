@@ -1,0 +1,36 @@
+```python
+from itertools import permutations
+
+def solve(S, T):
+    # Generate all permutations of T
+    perms = list(permutations('abc', len(T)))
+    min_perm = 'z' * len(S)
+    
+    for perm in perms:
+        new_S = list(S)
+        # Check if perm forms a subsequence in S
+        for i, char in enumerate(perm):
+            if char in new_S:
+                idx = new_S.index(char)
+                if idx == len(new_S)-1 or new_S[idx+1] != perm[i+1]:
+                    new_S.pop(idx)
+                else:
+                    break
+        else:
+            # If we've checked all characters of perm without breaking the loop, it's not a subsequence
+            min_perm = ''.join(sorted(new_S)) if ''.join(sorted(new_S)) < min_perm else min_perm
+    
+    return min_perm
+
+def main():
+    T = int(input())
+    for _ in range(T):
+        S = input()
+        T = input()
+        print(solve(S, T))
+
+if __name__ == "__main__":
+    main()
+```
+
+This Python script solves the given problem by generating all permutations of the given string T and then checking each permutation to see if it forms a subsequence in the given string S. It keeps track of the lexicographically smallest string that does not contain T as a subsequence, ensuring to update this value whenever a valid permutation is found.

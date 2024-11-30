@@ -1,0 +1,17 @@
+```python
+import sys
+
+def min_moves_to_divide_by_b(a, b):
+    if a % b == 0:
+        return 0
+    else:
+        return ((a + b - 1) // b)
+
+if __name__ == "__main__":
+    t = int(input())
+    
+    for _ in range(t):
+        a, b = map(int, input().split())
+        print(min_moves_to_divide_by_b(a, b))
+```
+```

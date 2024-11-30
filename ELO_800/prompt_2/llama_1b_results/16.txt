@@ -1,0 +1,15 @@
+```python3.8
+from collections import deque
+
+def solve():
+    count = 0
+    for num in range(1, 10**9 + 1):
+        sum_of_digits = sum(int(digit) for digit in str(num))
+        if sum_of_digits % 2!= 0:
+            count += 1
+    print(count)
+
+t = int(input())
+for _ in range(t):
+    solve()
+```

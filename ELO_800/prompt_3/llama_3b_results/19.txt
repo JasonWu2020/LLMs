@@ -1,0 +1,24 @@
+**Critique of the original solution:**
+
+The original solution uses the mathematical property that the maximum value of `k` for which the bitwise AND operation is zero is equal to `2^(log2(n)) - 1`. This is a valid mathematical approach, but it may not be the most efficient solution for large inputs.
+
+**Original solution limitations:**
+
+* The solution uses the `math.log2` function, which may not be available in all Python environments.
+* The solution uses the exponentiation operator `**`, which may be less efficient than other methods for large values of `n`.
+
+**Alternative solution:**
+
+```python
+for _ in range(int(input())):
+    n = int(input())
+    k = 0
+    while n > k + 1:
+        if n & (k + 1):
+            k += 1
+    print(k)
+```
+
+**Explanation:**
+
+This solution works by iteratively checking the bitwise AND of `n` and `k+1` until the result is zero. The value of `k` is incremented after each iteration. This process continues until `n` is no longer greater than `k+1`, at which point `k` is the maximum value for which the bitwise AND operation is zero.

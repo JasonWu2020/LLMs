@@ -1,0 +1,43 @@
+```python3
+import sys
+from typing import List
+
+def main():
+    n = int(input().strip())
+    points = []
+    for _ in range(n):
+        x, y = map(int, input().strip().split(' '))
+        points.append((x, y))
+    
+    graph = [[] for _ in range(n)]
+    for i in range(1, n):
+        u, v = map(int, input().strip().split(' '))
+        graph[u-1].append(v-1)
+        graph[v-1].append(u-1)
+
+    # Your algorithm here to find the optimal mapping of vertices to points
+    # Once you have found it, print the result
+    
+    # Example solution:
+    mapping = [0] * n
+    for i in range(n):
+        if len(graph[i]) == 1:
+            mapping[i] = i + 1
+        else:
+            parent = None
+            max_val = float('-inf')
+            for j in graph[i]:
+                if mapping[j] < max_val:
+                    max_val = mapping[j]
+                    parent = j
+            mapping[i] = max_val + 1
+            for j in graph[i]:
+                if mapping[j] > max_val:
+                    mapping[j] += 1
+            
+    for i in range(n):
+        print(mapping[i], end=' ')
+        
+if __name__ == "__main__":
+    main()
+```

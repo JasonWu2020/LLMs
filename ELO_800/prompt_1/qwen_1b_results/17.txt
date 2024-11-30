@@ -1,0 +1,25 @@
+```python
+import sys
+
+def min_moves(n, initial, target):
+    moves = 0
+    i = 0
+    
+    while i < n:
+        if initial[i] == '0' and target[i] != '0':
+            moves += abs(int(target[i]) - int('1'))
+        elif initial[i] == '9' and target[i] != '9':
+            moves += abs(int(target[i]) - int('9'))
+        else:
+            moves += min(abs(int(target[i]) - int(initial[i])), 10 - abs(int(target[i]) - int(initial[i])))
+        
+        i += 1
+    
+    return moves
+
+n = int(input().strip())
+initial = input().strip()
+target = input().strip()
+
+print(min_moves(n, initial, target))
+```

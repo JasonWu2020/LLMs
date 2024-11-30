@@ -1,0 +1,20 @@
+```python
+import sys
+
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    d = max(a)
+    for _ in range(k % 2):
+        a = [d - i for i in a]
+        d = d - min(a)
+    print(*a)
+
+t = int(input())
+for _ in range(t):
+    solve()
+```
+
+This Python script reads the number of test cases `t`, then for each test case, it reads the number of elements `n` and the number of operations `k`, and then reads the array `a`. It calculates the maximum value `d` in the array, and then performs the operations `k` times (or `k % 2` times, since every 2 operations the array will be the same). Finally, it prints the array after the operations.
+
+Note: The script assumes that the input is well-formed and does not contain any invalid characters. It also assumes that the input is read from standard input and written to standard output.

@@ -1,0 +1,38 @@
+```python
+import sys
+input = sys.stdin.readline
+from heapq import heappush, heappop
+
+def solve():
+    n, k = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    A.sort()
+    B.sort()
+
+    total_profit = 0
+    bought_items = 0
+    free_items_taken = False
+    for j in range(n):
+        if not free_items_taken:
+            if bought_items < k:
+                total_profit += B[j]
+                bought_items += 1
+            else:
+                free_items_taken = True
+                heappush(free_items_taken_items, B[j])
+        else:
+            if A[j] > free_items_taken_items[0]:
+                total_profit -= A[j]
+                heappop(free_items_taken_items)
+                total_profit += heappop(free_items_taken_items)
+            else:
+                total_profit -= A[j]
+                heappop(free_items_taken_items)
+
+    print(total_profit)
+
+for _ in range(int(input())):
+    solve()
+```

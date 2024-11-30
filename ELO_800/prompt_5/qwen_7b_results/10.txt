@@ -1,0 +1,34 @@
+```python
+# This Python script calculates the maximum number of days Vasya the Hipster can wear different colored socks,
+# followed by the number of days he can wear the same colored socks. The script takes two inputs: 'a' for red socks,
+# and 'b' for blue socks. It outputs two space-separated integers: the first integer is the maximum number of days
+# Vasya can wear different socks, and the second integer is the number of days he can wear the same socks.
+#
+# Example:
+# >>> solve_socks(2, 1)
+# "1 1"
+# >>> solve_socks(4, 3)
+# "2 1"
+
+def solve_socks(red_socks, blue_socks):
+    # Calculate the number of days Vasya can wear different socks
+    different_days = min(red_socks, blue_socks)
+
+    # After wearing different socks, calculate the remaining days for the same socks
+    same_days = (max(red_socks, blue_socks) - different_days) // 2
+
+    return f"{different_days} {same_days}"
+
+# Function to check the solution against provided test cases
+def check_solution():
+    assert solve_socks(2, 1) == "1 1", "Test case 1 failed"
+    assert solve_socks(4, 3) == "2 1", "Test case 2 failed"
+    assert solve_socks(5, 5) == "5 0", "Test case 3 failed"
+    assert solve_socks(6, 7) == "3 2", "Test case 4 failed"
+    print("All test cases passed!")
+
+# Uncomment the following line to check the solution
+# check_solution()
+```
+
+To run the script, simply call `check_solution()` function.

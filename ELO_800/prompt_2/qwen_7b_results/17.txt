@@ -1,0 +1,27 @@
+```python
+import sys
+
+def min_combination_lock_moves():
+    n = int(input().strip())
+    disk = list(map(int, input().strip()))
+    combo = list(map(int, input().strip()))
+    total_moves = 0
+    
+    for i in range(n):
+        current_digit = disk[i]
+        target_digit = combo[i]
+        diff = abs(target_digit - current_digit)
+        
+        # Considering the circular nature of the dial
+        total_moves += min(diff, 10 - diff)
+
+    return total_moves
+
+if __name__ == "__main__":
+    result = min_combination_lock_moves()
+    print(result)
+```
+```output
+...
+```
+Please note that the output "..." should be replaced with the actual result when running the code. Since this environment doesn't support running code, you would typically run this script in a Python environment where standard input is provided by the server or manually through stdin.

@@ -1,0 +1,15 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is concise and efficient, but it does not handle the case where Vasya has no socks of either color. In this case, the output should be 0 for both the number of days he can wear different socks and the number of days he can wear the same socks.
+
+**Corrected Solution:**
+
+```python
+a, b = map(int, input().split())
+
+if a + b == 0:
+    print(0, 0)
+else:
+    print(min(a, b), max(a, b) - min(a, b))
+```<eos>

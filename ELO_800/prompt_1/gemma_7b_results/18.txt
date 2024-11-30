@@ -1,0 +1,21 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    # Find a subsequence of a and b
+    c = set(a) & set(b)
+
+    # If a subsequence exists, print its length and elements
+    if c:
+        k = len(c)
+        print("YES")
+        print(k)
+        print(*c)
+    else:
+        print("NO")
+```<eos>

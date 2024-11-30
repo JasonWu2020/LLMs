@@ -1,0 +1,24 @@
+<start_of_turn>model
+```python3.8
+
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    p = list(map(int, input().split()))
+
+    degree = dict()
+    for i in range(n):
+        degree[i] = sum(p) - p[i]
+
+    min_inv = float('inf')
+    for i in degree:
+        if degree[i] >= 2:
+            min_inv = min(min_inv, degree[i] + 1)
+
+    if min_inv == float('inf'):
+        print(-1)
+    else:
+        print(min_inv)
+
+```<eos>

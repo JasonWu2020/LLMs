@@ -1,0 +1,33 @@
+```python
+
+import sys
+
+def solve():
+    t = int(input())
+    for _ in range(t):
+        n, m = map(int, input().split())
+        a = list(map(int, input().split()))
+        b = list(map(int, input().split()))
+        c = []
+        found = False
+        for i in range(n):
+            for j in range(m):
+                if a[i] in b:
+                    if not found:
+                        c.append(a[i])
+                        found = True
+                    else:
+                        break
+        if not found:
+            print("NO")
+        else:
+            print(len(c))
+            print(*c)
+
+def main():
+    solve()
+
+if __name__ == "__main__":
+    main()
+
+```

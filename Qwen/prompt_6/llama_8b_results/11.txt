@@ -1,0 +1,22 @@
+```python
+import math
+
+# Read input
+k, r = map(int, input().split())
+
+# Check if r is a factor of k
+if k % r == 0:
+    print(1)
+else:
+    # Calculate the LCM of r and 10
+    lcm = r * (10 // math.gcd(r, 10))
+    
+    # If the LCM is greater than 10r, return the ceiling of k / r
+    if lcm > 10 * r:
+        print(math.ceil(k / r))
+    else:
+        # If the LCM is 10, 2r, 5r, or 10r, return 1
+        print(1)
+```
+
+This code reads the input from the user, checks if `r` is a factor of `k`, and calculates the LCM of `r` and 10. It then uses this LCM to determine the minimum number of shovels Polycarp needs to buy. If the LCM is greater than 10r, it returns the ceiling of `k / r`. Otherwise, it returns 1.

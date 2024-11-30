@@ -1,0 +1,20 @@
+```python
+import sys
+import collections
+
+n, k = map(int, input().split())
+s = input()
+cnt = [0] * k
+for char in s:
+    cnt[ord(char) - ord('A')] += 1
+
+max_count = max(cnt)
+if max_count == 0:
+    print(0)
+else:
+    ans = 0
+    for i in range(k):
+        if cnt[i] == max_count:
+            ans += 1
+    print(ans * max_count)
+```

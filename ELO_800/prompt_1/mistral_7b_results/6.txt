@@ -1,0 +1,8 @@
+[/INST] ```python
+table_card, hand = input().split()[:2], input().split()[:5]
+table_rank, table_suit = map(str, table_card.split("-"))
+
+cards = [(rank, suit) for rank, suit in hand]
+can_play = any(rank == table_rank or suit == table_suit for rank, suit in cards)
+print(" YES " if can_play else " NO ")
+```</s>

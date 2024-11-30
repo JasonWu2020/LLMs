@@ -1,0 +1,21 @@
+```python
+
+def decrypt(s):
+    n = len(s)
+    a = [0] * n
+    for i in range(n):
+        a[i] = ord(s[i]) - ord('a')
+    ans = ''
+    for i in range(n):
+        if a[i]!= 0:
+            ans += chr(a[i])
+        a[i] = 0
+    return ans
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()
+    print(decrypt(s))
+
+```

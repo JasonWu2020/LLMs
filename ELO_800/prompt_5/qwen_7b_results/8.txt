@@ -1,0 +1,21 @@
+```python
+import sys
+
+def solve_stones(a, b, c):
+    # Alice can take 3 stones (one from the first heap and two from the second)
+    total_stones = a + 2*b + 2*c
+    # Alice can take an additional stone by taking one stone from the first or second heap
+    # and two stones from the third heap, which effectively adds 2 stones per turn
+    max_stones = total_stones + min(2*(b-1), min(2*(c-1), a))
+    return max_stones
+
+if __name__ == "__main__":
+    # Read the number of test cases
+    t = int(input())
+    for _ in range(t):
+        # Read the number of stones in each heap
+        a, b, c = map(int, input().split())
+        # Solve the problem and print the result
+        print(solve_stones(a, b, c))
+```
+This Python script takes into account the constraints mentioned and efficiently calculates the maximum number of stones Alice can take based on the operations she can perform.

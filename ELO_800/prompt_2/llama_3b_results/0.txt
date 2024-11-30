@@ -1,0 +1,19 @@
+```python
+from collections import defaultdict
+
+def longest_good_subsequence(s, k):
+    freq = [0] * k
+    freq[0] = 1
+    for c in s:
+        freq[ord(c) - ord('A')] += 1
+    if min(freq) < 1:
+        return 0
+    for i in range(1, k):
+        if freq[i]!= freq[0]:
+            return 0
+    return max(freq)
+
+n, k = map(int, input().split())
+s = input()
+print(longest_good_subsequence(s, k))
+```

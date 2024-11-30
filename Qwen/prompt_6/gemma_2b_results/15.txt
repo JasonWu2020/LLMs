@@ -1,0 +1,12 @@
+<start_of_turn>model
+```python
+n = int(input())
+
+for _ in range(n):
+    name, before, after = map(str, input().split())
+    if before > 2400 and after > before:
+      print("YES")
+    elif before < 2400 and after > before: 
+      print("YES")
+
+```<end_of_turn>

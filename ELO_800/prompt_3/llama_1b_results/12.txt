@@ -1,0 +1,21 @@
+```python
+def solve():
+    n = int(input())
+    s = input()
+    for i in range(n):
+        cnt_a = 0
+        cnt_b = 0
+        for j in range(i, n):
+            if s[j] == 'a':
+                cnt_a += 1
+            else:
+                cnt_b += 1
+            if cnt_a == cnt_b:
+                print(f"{i+1} {j+1}")
+                return
+    print(-1, -1)
+
+t = int(input())
+for _ in range(t):
+    solve()
+```

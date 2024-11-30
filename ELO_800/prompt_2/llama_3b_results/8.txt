@@ -1,0 +1,16 @@
+```python
+# -*- coding: utf-8 -*-
+
+def get_max_stones(a, b, c):
+    if b >= 2 and c >= 2:
+        return 2 * a + 2 * b - 1
+    elif b >= 2 and c >= 2:
+        return 2 * b + 2 * c - 1
+    else:
+        return 2 * c
+
+t = int(input())
+for _ in range(t):
+    a, b, c = map(int, input().split())
+    print(get_max_stones(a, b, c))
+```

@@ -1,0 +1,19 @@
+[/INST] The outputted solution does not include proper error checking and edge case handling. It assumes that the input will always be valid, which is not guaranteed. It also does not handle the case where a is already divisible by b.
+
+```python
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+for _ in range(int(input())):
+    a, b = map(int, input().split())
+    if a < b or b > 10**9:
+        print(-1)
+        continue
+    ans = 0
+    while a % b != 0:
+        ans += 1
+        a += 1
+    print(ans)
+```</s>

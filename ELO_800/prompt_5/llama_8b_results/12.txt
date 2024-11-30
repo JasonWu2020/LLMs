@@ -1,0 +1,25 @@
+```python
+def find_balanced_substring(n, s):
+    for i in range(n):
+        for j in range(i + 1, n + 1):
+            if s[i:j].count('a') == s[i:j].count('b'):
+                return f"{i + 1} {j}"
+    return "-1 -1"
+
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    s = input().strip()
+    print(find_balanced_substring(n, s))
+```
+
+This script works as follows:
+
+1. The function `find_balanced_substring(n, s)` takes the length of the string `n` and the string `s` as input.
+2. It then iterates over all possible substrings of the string `s` using two nested loops.
+3. For each substring, it checks if the number of 'a's and 'b's are equal. If they are, it returns the start and end indices of the substring.
+4. If no balanced substring is found after checking all substrings, it returns "-1 -1".
+5. The main part of the script reads the number of test cases `t` and then iterates over each test case.
+6. For each test case, it reads the length of the string `n` and the string `s`, and then calls the `find_balanced_substring(n, s)` function to find a balanced substring.
+7. The result is then printed to the console.

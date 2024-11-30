@@ -1,0 +1,34 @@
+```python3.8
+import sys
+
+def main():
+    # Read the number of test cases
+    t = int(input())
+    
+    for _ in range(t):
+        # Read the length of the password
+        n = int(input())
+        
+        # Read the initial content of the password
+        a = list(map(int, input().split()))
+        
+        # Initialize the minimum length to infinity
+        min_length = float('inf')
+        
+        # Iterate through all pairs of adjacent elements
+        for i in range(n-1):
+            if a[i] != a[i+1]:
+                # Calculate the new length after applying the operation
+                new_length = n - 1
+                
+                # Update the minimum length if necessary
+                if new_length < min_length:
+                    min_length = new_length
+        
+        # Print the minimum length
+        print(min_length)
+
+if __name__ == "__main__":
+    main()
+```
+```

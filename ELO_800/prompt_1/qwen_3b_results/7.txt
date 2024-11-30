@@ -1,0 +1,23 @@
+```python
+import sys
+
+def find_smallest_permutation(S, T):
+    # Find the index of 'a', 'b', and 'c' in S
+    indices = [S.index(char) for char in T]
+    
+    # Sort indices to ensure the smallest lexicographical order
+    sorted_indices = sorted(indices)
+    
+    # Reconstruct S' by placing characters at their sorted indices
+    S_prime = ''.join([S[i] for i in sorted_indices])
+    
+    return S_prime
+
+if __name__ == "__main__":
+    num_cases = int(input())
+    for _ in range(num_cases):
+        S = input().strip()
+        T = input().strip()
+        result = find_smallest_permutation(S, T)
+        print(result)
+```

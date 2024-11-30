@@ -1,0 +1,56 @@
+[/INST] ```python3
+import sys
+
+def is_valid(board, row, col):
+    for i in range(len(board)):
+        for j in range(len(board[0])):
+            if board[i][j] == 'R' and (abs(i-row) == 1 or abs(j-col) == 1):
+                return False
+    return True
+
+def find_rook_placement(board, row, cols):
+    if len(cols) == len(board):
+        if is_good(board):
+            return board
+
+    for col in cols:
+        if is_valid(board, row, col):
+            board[row][col] = 'R'
+            placement = find_rook_placement(board, row+1, [x for x in cols if x != col])
+            if placement is not None:
+                return placement
+            board[row][col] = '.'
+    return None
+
+def is_good(board):
+    for i in range(len(board)):
+        for j in range(len(board[0])):
+            if len([b[0] for b in [(i+x, j+y) for x, y in [(-1,0), (0,1), (1,0), (0,-1)] if 0 <= i+x < len(board) and 0 <= j+y < len(board[0]) and board[i+x][j+y] == 'R'])>1:
+                return False
+    return True
+
+def attack_rooks(board, i, j):
+    attacks = []
+    for x, y in [(x+i, y+j) for x, y in [(x+1, y), (x-1, y), (x, y+1), (x, y-1)] if 0 <= x < len(board) and 0 <= y < len(board[0])]:
+        attacks.append((x, y)) if board[x][y] == 'R' else ()
+    return attacks
+
+def main():
+    t = int(sys.stdin.readline().strip())
+    for _ in range(t):
+        n, k = map(int, sys.stdin.readline().strip().split())
+        board = [['.' for _ in range(n)] for _ in range(n)]
+        if k > n:
+            print(-1)
+            continue
+        cols = list(range(1, n+1))
+        placement = find_rook_placement(board, 0, cols)
+        if placement is not None:
+            for row in placement:
+                print("".join(["R" if i in row else "." for i in range(n)]) + "\n")
+        else:
+            print(-1)
+
+if __name__ == '__main__':
+    main()
+```</s>

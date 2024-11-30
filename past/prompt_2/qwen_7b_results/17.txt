@@ -1,0 +1,26 @@
+```python
+import math
+
+def min_travel_time(l, d, v, g, r):
+    # Calculate time to reach traffic lights during green light phase
+    t1 = math.ceil(d/v) * (g + r) - d/v
+    
+    # Calculate time to reach point B
+    t2 = l/d
+    
+    # Adjust t1 to ensure it aligns with green light cycles
+    t1 += (t2 // (g + r)) * (g + r)
+    
+    # Total time including adjustment for t2 to match traffic light cycle
+    T = t1 + t2 + ((t2 % (g + r)) * (g + r))
+    
+    return T
+
+if __name__ == "__main__":
+    # Read input
+    l, d, v, g, r = map(int, input().split())
+    
+    # Compute and print output
+    print(min_travel_time(l, d, v, g, r))
+```
+

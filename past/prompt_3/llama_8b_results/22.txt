@@ -1,0 +1,30 @@
+The outputted solution has a time complexity of O(n log n) due to the sorting operation, where n is the number of unique characters in the string. This is acceptable for the given constraints.
+
+However, the solution can be optimized further by using a heap data structure, which would reduce the time complexity to O(n log k), where k is the maximum number of characters that can be deleted. 
+
+Here's an alternative solution:
+
+```python
+import heapq
+from collections import Counter
+
+s = input()
+k = int(input())
+c = Counter(s)
+heap = []
+
+for i in c:
+    heapq.heappush(heap, (-c[i], i))
+
+del_count = 0
+ans = ''
+while heap and del_count + (-heap[0][0]) <= k:
+    count, char = heapq.heappop(heap)
+    del_count += -count
+    ans += char
+
+print(len(set(ans)))
+print(ans)
+```
+
+This solution first counts the frequency of each character in the string, then pushes the characters and their frequencies onto a min-heap. The heap is implemented as a list where the smallest element is always at the beginning. We then pop characters from the heap until the total count of characters deleted is greater than or equal to k, and add the characters to the result string. This way, we ensure that we always pop the characters with the smallest frequency first, which corresponds to the greedy strategy of deleting characters with the smallest frequency first.

@@ -1,0 +1,19 @@
+```python
+t = int(input())
+
+for _ in range(t):
+    s = input()
+    n = len(s)
+    ones = [0] * (n + 1)
+    for i in range(n):
+        ones[i + 1] = ones[i] + (1 if s[i] == '1' else 0)
+
+    max_ones = max(ones)
+    max_suffix_ones = 0
+    for i in range(n - 1, -1, -1):
+        max_suffix_ones = max(max_suffix_ones, ones[i])
+        if ones[i] == max_ones:
+            break
+
+    print(n - max_suffix_ones + max(ones) - max_suffix_ones)
+```

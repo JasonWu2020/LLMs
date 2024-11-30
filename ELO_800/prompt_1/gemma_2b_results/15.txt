@@ -1,0 +1,32 @@
+<start_of_turn>model
+```python
+# input
+n = int(input())
+for i in range(n):
+  name = input()
+  before = int(input())
+  after = int(input())
+  if before < 2400 and after > 2400:
+    print('YES')
+  
+# example
+#  name   before   after
+#  Burunduk1  2300  2500
+#  Applejack   1900  1900  
+```
+
+```python
+# input
+n = int(input())
+for i in range(n):
+  name = input()
+  before = int(input())
+  after = int(input())
+  if before < 2400 and after > 2400:
+    print('YES')
+  
+  
+
+
+
+```<end_of_turn>

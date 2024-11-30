@@ -1,0 +1,9 @@
+```python
+for _ in range(int(input())):
+    n, a, b = map(int, input().split())
+    if max(a, b) > n or a + b < n:
+        print("No")
+    else:
+        print("Yes")
+```
+This Python code solves the problem as described. It iterates over the number of test cases provided at the beginning, reads the three integers for each case, and checks whether the given conditions can be satisfied. If it can, it prints "Yes"; otherwise, it prints "No". The solution takes into account that for `max(a, b)` to be less than or equal to `n`, it's necessary that the sum of `a` and `b` is greater than or equal to `n`.

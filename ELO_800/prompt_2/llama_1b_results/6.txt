@@ -1,0 +1,14 @@
+```python3
+from collections import deque
+
+def can_play(hand, table):
+    table_ranks = {i: i for i in '23456789TJQKA'}
+    table_suits = 'DCSH'
+    table = table[1:]  # remove the card on the table from the string
+    hand_ranks = deque(hand[1:])  # remove the card on the hand from the string
+    return 'YES' if any(r == table_ranks[rank] for rank in hand_ranks) or any(s == table_suits[suit] for suit in table) else 'NO'
+
+table = input()
+hand = input()
+print(can_play(hand, table))
+```

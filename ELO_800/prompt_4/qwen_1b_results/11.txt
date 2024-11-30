@@ -1,0 +1,35 @@
+**Solution 1:**  
+```python
+def min_shovels(k, r):
+    return k // r + 1 if k % r == 0 else k // r
+
+# Read input
+k, r = map(int, input().split())
+
+# Calculate and print the result
+print(min_shovels(k, r))
+```
+
+**Critique on Solution 1:**  
+- **Time Complexity**: O(1) - Constant time complexity because the operations inside the function are simple arithmetic calculations.
+- **Space Complexity**: O(1) - Constant space usage due to the use of constant variables.
+- **Readability**: The code is easy to understand with clear variable names.
+
+**Solution 2:**  
+```python
+from math import ceil
+
+def min_shovels(k, r):
+    return ceil(k / r)
+
+# Read input
+k, r = map(int, input().split())
+
+# Calculate and print the result
+print(min_shovels(k, r))
+```
+
+**Critique on Solution 2:**  
+- **Time Complexity**: O(log(max(k, r))) - Logarithmic time complexity due to the division operation in Python's `ceil` function which uses binary search internally.
+- **Space Complexity**: O(1) - Constant space usage similar to Solution 1.
+- **Readability**: The code is concise but slightly less readable compared to Solution 1 due to the use of the built-in `math.ceil` function.

@@ -1,0 +1,22 @@
+[/INST] ```python
+import sys
+
+for t in map(int, itertools.islice(sys.stdin.buffer, 1, None, 1)):
+    n = int(input().strip())
+    s = input().strip()
+    l, r = 0, -1
+    cnt_a, cnt_b = 0, 0
+    for i in range(n + 1):
+        if i < n and s[i] == 'a':
+            cnt_a += 1
+        elif i < n and s[i] == 'b':
+            cnt_b += 1
+        if cnt_a == cnt_b and i - r >= 1:
+            l, r = i - r, i
+        if l != -1 and r != -1:
+            break
+    if l == -1:
+        print(-1, -1)
+    else:
+        print(l, r + 1)
+```</s>

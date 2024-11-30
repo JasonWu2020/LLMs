@@ -1,0 +1,14 @@
+<start_of_turn>model
+```python
+t = int(input())  # Read the test case number
+for i in range(t):
+    n = int(input())  # Read the input value for n
+    k = 1
+    while (k <= n):
+        if n & (n - 1) & (n - 2) & (n - 3) ... & k == 0:
+            break
+        k += 1
+    print(k)
+
+``` 
+<end_of_turn>

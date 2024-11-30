@@ -1,0 +1,17 @@
+```python
+import math
+
+def max_students_getting_favorite_drink(n, k):
+    # Calculate the number of sets needed
+    num_sets = math.ceil(n / 2)
+    
+    # Calculate the maximum number of students that can get their favorite drink
+    return min(n, 2 * num_sets)
+
+# Reading input
+n, k = map(int, input().split())
+favorite_drinks = list(map(int, input().split()))
+
+# Calculating and printing the result
+print(max_students_getting_favorite_drink(n, k))
+```

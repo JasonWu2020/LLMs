@@ -1,0 +1,15 @@
+```python
+import math
+
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    k = n
+    while True:
+        k = k & (k - 1)
+        if k == 0:
+            break
+        n -= 1
+    print(n)
+```

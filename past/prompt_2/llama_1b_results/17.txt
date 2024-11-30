@@ -1,0 +1,9 @@
+```python
+import math
+l, d, v, g, r = map(int, input().split())
+
+t1 = math.ceil(d / (v + g))
+t2 = t1 + (d - v * g) / v
+t3 = math.ceil(t1 + g)
+print(max(t1, t2, t3))
+```

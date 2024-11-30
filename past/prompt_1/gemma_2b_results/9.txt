@@ -1,0 +1,10 @@
+<start_of_turn>model
+```python
+def sport_mafia_result(n, k):
+  return sum(1 for _ in range(n) if _ % 2 == 0)
+
+
+if __name__ == '__main__':
+  n, k = map(int, input().split())
+  print(sport_mafia_result(n, k))
+```<end_of_turn>

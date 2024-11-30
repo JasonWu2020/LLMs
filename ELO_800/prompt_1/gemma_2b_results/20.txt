@@ -1,0 +1,10 @@
+<start_of_turn>model
+```python
+t = int(input())
+for i in range(t):
+  n = int(input())
+  k = 0
+  while (n & (n-1) & (n-2) & (n-3) & ... & k) == 0:
+    k+=1
+  print(k)
+```<end_of_turn>

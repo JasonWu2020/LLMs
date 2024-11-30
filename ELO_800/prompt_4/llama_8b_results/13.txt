@@ -1,0 +1,17 @@
+The outputted solution has a time complexity of O(n), which is efficient. However, it does not handle the case where all numbers in the password are equal. In this case, the solution will output 1, which is incorrect. The correct output should be the length of the password, which is n.
+
+Here's another solution that handles this case correctly:
+
+```python
+import sys
+
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    unique = len(set(a))
+    print(min(unique, 1))
+```
+
+This solution works by first converting the list of numbers to a set, which removes duplicates. The length of the set is then the number of unique numbers in the list. The `min` function is used to ensure that the output is at least 1, in case all numbers in the password are equal.

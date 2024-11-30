@@ -1,0 +1,44 @@
+The outputted solution is not entirely correct. It assumes that the disks are indexed in the same order in both the current state and the target combination, which is not the case. The solution should consider the disks in the order of the target combination, not the current state.
+
+Here's another solution that addresses this issue:
+
+```python
+import sys
+
+n = int(input())
+s = input()
+t = input()
+
+def min_moves(i, j):
+    return min(abs(int(s[i]) - int(t[j]), 10 - abs(int(s[i]) - int(t[j])))
+
+ans = 0
+for i in range(n):
+    ans += min_moves(i, t.index(t[i]))
+
+print(ans)
+```
+
+This solution uses the `index` method of the string to find the index of the current disk in the target combination. This way, it correctly considers the disks in the order of the target combination.
+
+However, this solution still has a time complexity of O(n^2) due to the `index` method, which is not efficient for large inputs. A more efficient solution would be to use a dictionary to store the indices of the target combination, which allows us to look up the index of each disk in constant time.
+
+Here's an improved solution:
+
+```python
+import sys
+
+n = int(input())
+s = input()
+t = input()
+
+d = {str(i): i for i in range(10)}
+
+ans = 0
+for i in range(n):
+    ans += min(abs(d[s[i]] - d[t[i]]), 10 - abs(d[s[i]] - d[t[i]]))
+
+print(ans)
+```
+
+This solution uses a dictionary `d` to store the indices of the digits 0-9, and then uses these indices to calculate the minimum number of moves. This approach has a time complexity of O(n), making it more efficient for large inputs.

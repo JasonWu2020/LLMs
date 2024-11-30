@@ -1,0 +1,20 @@
+```python
+from typing import List
+
+def check_permutations(n: int, a: int, b: int) -> bool:
+    if a + b >= n:
+        return True
+    return False
+
+def solve() -> None:
+    T = int(input())
+    for _ in range(T):
+        n, a, b = map(int, input().split())
+        if check_permutations(n, a, b):
+            print("Yes")
+        else:
+            print("No")
+
+if __name__ == "__main__":
+    solve()
+```

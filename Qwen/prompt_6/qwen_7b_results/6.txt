@@ -1,0 +1,20 @@
+```python
+import sys
+
+def can_play_card(table_card, hand_cards):
+    rank_table, suit_table = table_card[0], table_card[1]
+    playable = False
+
+    for card in hand_cards:
+        rank_hand, suit_hand = card[0], card[1]
+        if rank_hand == rank_table or suit_hand == suit_table:
+            playable = True
+            break
+
+    return "YES" if playable else "NO"
+
+if __name__ == "__main__":
+    table_card = sys.stdin.readline().strip()
+    hand_cards = [sys.stdin.readline().strip() for _ in range(5)]
+    print(can_play_card(table_card, hand_cards))
+```

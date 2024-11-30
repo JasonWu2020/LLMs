@@ -1,0 +1,27 @@
+```python
+def shortest_password_length():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        a = list(map(int, input().split()))
+        
+        # Count occurrences of each number
+        count = {}
+        for num in a:
+            if num in count:
+                count[num] += 1
+            else:
+                count[num] = 1
+        
+        # Find the maximum frequency of any number
+        max_freq = max(count.values())
+        
+        # If there's only one unique number or all numbers have the same frequency, the length remains unchanged
+        if max_freq == 1 or max_freq == len(a):
+            print(n)
+        else:
+            # Otherwise, we can reduce the length by removing pairs of different numbers
+            print(n - max_freq + 1)
+
+shortest_password_length()
+```

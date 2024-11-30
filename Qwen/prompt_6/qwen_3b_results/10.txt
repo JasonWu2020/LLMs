@@ -1,0 +1,12 @@
+```python
+def sock_wearing_days(a, b):
+    max_days = min(a, b)
+    same_socks_days = abs(a - b) // 2 + abs(a - b) % 2
+    return max_days, same_socks_days
+
+# Reading input
+a, b = map(int, input().split())
+
+# Calculating and printing the result
+print(*sock_wearing_days(a, b))
+```

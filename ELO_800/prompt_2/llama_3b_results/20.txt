@@ -1,0 +1,13 @@
+```python
+import math
+import sys
+
+def solve():
+    n = int(input())
+    k = n - 2 * (n & -n)
+    print(k)
+
+t = int(input())
+for _ in range(t):
+    solve()
+```

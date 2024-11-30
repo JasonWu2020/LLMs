@@ -1,0 +1,15 @@
+```python
+import sys
+
+input = sys.stdin.read
+data = input().split()
+
+t = int(data[0])
+cases = data[1:]
+
+for _ in range(t):
+    n = int(cases[_ * (len(cases) // t + 1)])
+    p = list(map(int, cases[_ * (len(cases) // t) + 2 : _ * (len(cases) // t) + 2 + n]))
+    count = sum(1 for i in range(n) if i != p[i])
+    print(max(2, count))
+```

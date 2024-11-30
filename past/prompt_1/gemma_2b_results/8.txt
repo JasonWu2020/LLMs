@@ -1,0 +1,22 @@
+<start_of_turn>model
+```python
+def main():
+  n, k = [int(x) for x in input().split()]
+  drinks = [int(x) for x in input().split()]
+  
+  total_drinks = 0
+  remaining_students = n
+  
+  sets = 1
+  while remaining_students > remaining_students + k:
+    sets += 1
+    
+  print(sets)
+
+if __name__ == "__main__":
+  main()
+``` 
+
+
+
+<end_of_turn>

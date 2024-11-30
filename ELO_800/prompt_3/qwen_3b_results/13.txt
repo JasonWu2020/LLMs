@@ -1,0 +1,25 @@
+```python
+def min_password_length(n, a):
+    # Count the occurrences of each unique number
+    counts = {}
+    for num in a:
+        if num in counts:
+            counts[num] += 1
+        else:
+            counts[num] = 1
+    
+    # If all numbers are the same, the length of the password is 1
+    if len(counts) == 1:
+        return 1
+    
+    # Otherwise, the minimum length is the number of unique numbers
+    return len(counts)
+
+# Read input
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    result = min_password_length(n, a)
+    print(result)
+```

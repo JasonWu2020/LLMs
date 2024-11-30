@@ -1,0 +1,32 @@
+```python
+
+import sys
+
+def solve():
+    n = int(input())
+    p = list(map(int, input().split()))
+    p = [i-1 for i in p]
+
+    visited = [False] * n
+    ans = 0
+    for i in range(n):
+        if not visited[i]:
+            if dfs(i, visited, p):
+                ans += 1
+    return ans
+
+def dfs(i, visited, p):
+    if visited[i]:
+        return False
+    visited[i] = True
+    for j in range(len(p)):
+        if not visited[p[j]]:
+            if dfs(p[j], visited, p):
+                return True
+    return False
+
+t = int(input())
+for _ in range(t):
+    print(solve())
+
+```

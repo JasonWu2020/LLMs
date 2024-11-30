@@ -1,0 +1,32 @@
+```python
+import sys
+input = sys.stdin.readline
+from math import gcd
+
+def main():
+    t = int(input())
+    for _ in range(t):
+        n, k = map(int, input().split())
+        arr = list(map(int, input().split()))
+        
+        # Calculate GCD of all elements in the array
+        g = gcd(*arr)
+        
+        # Divide each element by their GCD to simplify the array
+        simplified_arr = [a // g for a in arr]
+        
+        # Perform k operations on the simplified array
+        for i in range(k):
+            max_val = max(simplified_arr)
+            for j in range(len(simplified_arr)):
+                simplified_arr[j] -= max_val
+        
+        # Multiply each element back by their original GCD to get the final array
+        final_arr = [g * val for val in simplified_arr]
+        
+        # Print the final array
+        print(" ".join(map(str, final_arr)))
+
+if __name__ == "__main__":
+    main()
+```

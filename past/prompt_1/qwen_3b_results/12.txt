@@ -1,0 +1,29 @@
+```python
+import sys
+
+def solve(n, m, a, b, g0, x, y, z):
+    MOD = 10**9 + 7
+    dp = [[0] * (m + 1) for _ in range(a + 1)]
+    prev = [0] * (m + 1)
+    
+    for i in range(1, n + 1):
+        cur = [0] * (m + 1)
+        for r in range(1, a + 1):
+            for c in range(1, m + 1):
+                h = g0 if i == 1 else (prev[c - 1] * x + (h_next(c - 1, c, r - 1) - prev[c - 1]) * y) % z
+                cur[c] = min(cur[c], h)
+            dp[r][c] = (dp[r - 1][c] + cur[c]) % MOD
+        prev = cur
+    
+    return dp[a][m]
+
+def h_next(r, c, d):
+    if r + d >= m or c + d >= m:
+        return 0
+    return (prev[c + d] - prev[c - 1]) * x + (prev[r + d] - prev[r - 1]) * y
+
+if __name__ == "__main__":
+    n, m, a, b = map(int, input().split())
+    g0, x, y, z = map(int, input().split())
+    print(solve(n, m, a, b, g0, x, y, z))
+```

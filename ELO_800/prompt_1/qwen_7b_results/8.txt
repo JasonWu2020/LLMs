@@ -1,0 +1,8 @@
+```python
+def max_stones(a, b, c):
+    return (a + 2*b + c)//3 * 2
+
+for _ in range(int(input())):
+    a, b, c = map(int, input().split())
+    print(max_stones(a, b, c))
+```

@@ -1,0 +1,43 @@
+Sure, let's first critique the provided solution and then generate a new solution adhering to the same input and output specifications.
+
+### Critique of Provided Solution
+Since the provided solution is not available, I'll assume a typical approach for solving this problem based on the given constraints and requirements.
+
+### Proposed Solution
+Here's a Python script that reads the number of test cases, processes each test case, and outputs the maximum number of stones Alice can take.
+
+```python
+def max_stones(t):
+    results = []
+    for _ in range(t):
+        a, b, c = map(int, input().split())
+        max_stones = 0
+        
+        # First operation: take one stone from the first heap and two stones from the second heap
+        max_stones += min(a, b // 2)
+        
+        # Second operation: take one stone from the second heap and two stones from the third heap
+        max_stones += min(b - 2 * max_stones, c // 2)
+        
+        results.append(max_stones)
+    
+    return "\n".join(map(str, results))
+
+# Read the number of test cases
+t = int(input())
+
+# Process each test case and print the result
+print(max_stones(t))
+```
+
+### Explanation
+1. **Reading Test Cases**: We first read the number of test cases `t`.
+2. **Processing Each Test Case**:
+   - For each test case, we read the number of stones in the three heaps (`a`, `b`, `c`).
+   - We initialize `max_stones` to keep track of the maximum number of stones Alice can take.
+   - We calculate the maximum number of stones using the two allowed operations:
+     - From the first operation: `min(a, b // 2)` because Alice can take at most `b // 2` times, where `b >= 2`.
+     - From the second operation: `min(b - 2 * max_stones, c // 2)` because Alice can take at most `c // 2` times, but considering the constraint that she already took `2 * max_stones` stones from the second heap.
+3. **Output Results**: Finally, we print the results for all test cases.
+
+This script ensures that the constraints and the logic for determining the maximum number of stones are correctly handled.

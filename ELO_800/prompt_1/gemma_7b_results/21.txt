@@ -1,0 +1,13 @@
+<start_of_turn>model
+```python
+n = int(input())
+a = list(map(int, input().split()))
+a.sort()
+c = 1
+p = 0
+for i in a:
+    if i != a[p]:
+        c += 1
+    p = i
+print(c)
+```<eos>

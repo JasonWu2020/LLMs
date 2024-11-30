@@ -1,0 +1,17 @@
+```python3
+import sys
+
+def find_camel_spit(camels):
+    positions = set()
+    for x, d in camels:
+        if x + d in positions:
+            return "YES"
+        positions.add(x)
+    return "NO"
+
+if __name__ == "__main__":
+    n = int(input())
+    camels = [list(map(int, input().split())) for _ in range(n)]
+    result = find_camel_spit(camels)
+    print(result)
+```

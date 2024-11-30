@@ -1,0 +1,20 @@
+<start_of_turn>model
+```python
+def find_k(n):
+  ans = 1
+  while ans <= n:
+    if bin(ans).count("1") == bin(n).count("1"): 
+      for j in range(1, ans + 1):
+        if j < ans: 
+          if bin(j).count("1") == bin(n).count("1"): 
+            if bin(min(j, ans)).count("1") == bin(n).count("1"):  
+              print(j - 1)
+    ans += 1
+  return ans
+
+t = int(input())
+for _ in range(t):
+  n = int(input())
+  k = find_k(n)
+  print(k)
+```<end_of_turn>

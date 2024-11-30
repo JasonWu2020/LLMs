@@ -1,0 +1,29 @@
+```python
+# Read the number of test cases from stdin
+T = int(input())
+
+for _ in range(T):
+    # Read the size of the array from stdin
+    N = int(input())
+    # Read the array from stdin as a space-separated string
+    arr = list(map(int, input().split()))
+
+    # Initialize variables
+    unique_pairs = set()
+    unique_elements_count = 0
+
+    # Find all unique adjacent pairs in the array
+    for i in range(N-1):
+        if arr[i] != arr[i+1]:
+            unique_pairs.add((arr[i], arr[i+1]))
+
+    # Add the unique elements in the last position of the array (if not duplicate of the previous element)
+    if arr[-1] not in unique_pairs:
+        unique_elements_count += 1
+
+    # The result is the length of the array minus the count of unique adjacent pairs
+    result = N - len(unique_pairs)
+    
+    # Print the result to stdout
+    print(result)
+```

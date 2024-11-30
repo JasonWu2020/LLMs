@@ -1,0 +1,23 @@
+```python
+def min_pockets(n, coins):
+    coin_counts = {}
+    for coin in coins:
+        if coin in coin_counts:
+            coin_counts[coin] += 1
+        else:
+            coin_counts[coin] = 1
+
+    sorted_coins = sorted(coin_counts.keys())
+    max_pockets = 1
+    current_pockets = 1
+    for coin in sorted_coins:
+        if coin_counts[coin] > current_pockets:
+            current_pockets = coin_counts[coin]
+        max_pockets = max(max_pockets, current_pockets)
+
+    return max_pockets
+
+n = int(input())
+coins = list(map(int, input().split()))
+print(min_pockets(n, coins))
+```

@@ -1,0 +1,70 @@
+```python
+def min_total_sum(t):
+    for _ in range(t):
+        n, k = map(int, input().split())
+        a = list(map(int, input().split()))
+        
+        # Sort the array to facilitate finding the minimums
+        a.sort()
+        
+        # Calculate the minimum sum after applying k operations
+        min_sum = sum(a[:-k]) + (k * a[-1])
+        print(min_sum)
+
+min_total_sum(int(input()))
+```
+
+### Critique of the Provided Solution
+
+The provided solution has a few issues:
+
+1. **Sorting the Array**: The approach of sorting the array to find the minimum sum after performing `k` operations is flawed. Sorting the array does not guarantee that we can achieve the minimum sum efficiently. Instead, we should focus on reducing large elements to smaller ones through the allowed operations.
+
+2. **Calculation of Minimum Sum**: The calculation of `min_sum` is incorrect. The logic used to compute the minimum sum is not aligned with the problem requirements. We need to ensure that we are minimizing the sum by replacing elements in a strategic manner.
+
+### Corrected Solution
+
+Here’s a more accurate solution:
+
+```python
+def min_total_sum(t):
+    for _ in range(t):
+        n, k = map(int, input().split())
+        a = list(map(int, input().split()))
+        
+        # Calculate the sum of the array
+        total_sum = sum(a)
+        
+        # If k is greater than or equal to the length of the array, we can make all elements equal to the smallest element
+        if k >= n:
+            print(total_sum - (n-1) * min(a))
+            continue
+        
+        # Otherwise, we need to strategically reduce the largest elements
+        a.sort()
+        max_val = max(a)
+        min_val = min(a)
+        
+        # Replace the largest elements with the smallest until we have applied k operations
+        while k > 0:
+            total_sum -= max_val
+            max_val = min(max_val - 1, max(a))
+            k -= 1
+        
+        # Print the final sum
+        print(total_sum)
+
+min_total_sum(int(input()))
+```
+
+### Explanation of the Corrected Solution
+
+1. **Initial Sum Calculation**: We start by calculating the initial sum of the array.
+  
+2. **Special Case Handling**: If `k` is greater than or equal to the length of the array (`n`), we can reduce all elements to the smallest element, and the new sum will be `(n-1) * min(a) + min(a)`.
+
+3. **Strategic Reduction**: For the general case, we sort the array and keep track of the maximum and minimum values. We repeatedly replace the largest element with the next smallest element until we have applied `k` operations.
+
+4. **Final Output**: After applying the necessary operations, we print the updated sum.
+
+This solution ensures that we are making strategic replacements to minimize the sum while adhering to the constraints.

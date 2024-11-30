@@ -1,0 +1,32 @@
+[/INST] The given solution is correct in terms of logic, but it doesn't fully adhere to the input and output specifications provided in the problem statement. Here's an updated version of the solution that follows the input and output specifications:
+
+```python
+n = int(input())
+exercises = list(map(int, input().split()))
+
+chest_reps = 0
+biceps_reps = 0
+back_reps = 0
+muscle = "chest"
+max_reps = 0
+
+for i in range(n):
+    current_muscle, reps = i % 3, exercises[i]
+    if current_muscle == 0:
+        chest_reps += reps
+    elif current_muscle == 1:
+        biceps_reps += reps
+    elif current_muscle == 2:
+        back_reps += reps
+
+    max_reps = max(max_reps, chest_reps, biceps_reps, back_reps)
+
+if max_reps == chest_reps:
+    print("chest")
+elif max_reps == biceps_reps:
+    print("biceps")
+else:
+    print("back")
+```
+
+The solution reads the input as specified, with the first line containing an integer `n`, and the second line containing `n` integers, each representing the number of repetitions for a specific exercise. The output is also printed according to the problem statement, with the winning muscle printed as a string without quotes.</s>

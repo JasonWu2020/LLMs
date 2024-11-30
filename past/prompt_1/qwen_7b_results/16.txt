@@ -1,0 +1,20 @@
+```python
+def check_spit_collision(n, camels):
+    camels.sort()
+    for i in range(n-1):
+        for j in range(i+1, n):
+            if abs(camels[i][0] + camels[j][1] - camels[j][0] - camels[i][1]) < 2:
+                return "YES"
+    return "NO"
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    camels = []
+    for _ in range(n):
+        x, d = map(int, input().strip().split())
+        camels.append((x, d))
+    
+    result = check_spit_collision(n, camels)
+    print(result)
+```
+

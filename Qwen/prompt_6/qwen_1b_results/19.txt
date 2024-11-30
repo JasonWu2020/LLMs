@@ -1,0 +1,19 @@
+```python
+import sys
+
+def max_k(n):
+    k = 0
+    while True:
+        if (n >> k) & 1 == 1:
+            return k
+        k += 1
+
+# Read input
+t = int(input().strip())
+
+for _ in range(t):
+    n = int(input().strip())
+    result = max_k(n)
+    print(result)
+```
+This Python script correctly implements the logic described in the problem statement. It reads the number of test cases, iterates through each one, calculates the maximum value `k` using the provided function `max_k`, and prints it out for each test case.

@@ -1,0 +1,43 @@
+```python
+from typing import List
+from collections import defaultdict
+
+def min_invitations(n: int, p: List[int]) -> int:
+    # Initialize the graph
+    graph = defaultdict(list)
+    for i, pi in enumerate(p):
+        graph[i].append(pi)
+    
+    # Function to find SCC count
+    def dfs(node: int, visited: set, scc_count: int, parent: int) -> None:
+        visited.add(node)
+        for neighbor in graph[node]:
+            if neighbor not in visited and neighbor != parent:
+                dfs(neighbor, visited, scc_count, node)
+            elif neighbor not in visited:
+                scc_count += 1
+        return scc_count
+    
+    # Perform DFS on the graph
+    visited = set()
+    scc_count = 0
+    for node in range(n):
+        if node not in visited:
+            scc_count = dfs(node, visited, scc_count, -1)
+    
+    # Calculate minimum invitations
+    return max(scc_count - 1, 1)
+
+# Reading input
+t = int(input())
+results = []
+
+for _ in range(t):
+    n = int(input())
+    p = list(map(int, input().split()))
+    results.append(min_invitations(n, p))
+
+# Outputting solutions
+for result in results:
+    print(result)
+```

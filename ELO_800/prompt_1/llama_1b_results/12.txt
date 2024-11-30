@@ -1,0 +1,19 @@
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    s = input()
+    i = 0
+    while i < n - 1:
+        if s[i] == s[i + 1]:
+            j = i + 1
+            while j < n - 1 and s[j] == s[j + 1]:
+                j += 1
+            print(j, j + 1)
+            i = j
+        else:
+            i += 1
+    if i == n - 1:
+        print(-1, -1)
+```

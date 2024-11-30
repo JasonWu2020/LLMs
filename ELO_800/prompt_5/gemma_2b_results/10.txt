@@ -1,0 +1,33 @@
+<start_of_turn>model
+```python
+a = int(input())
+b = int(input())
+
+max_days = (a + b)
+days = 0
+socks = set()
+
+while len(socks) <= a + b:
+  days += 1
+  socks.add(a)
+  if len(socks) == a + b:
+    break
+```
+
+```python
+
+# Example usage
+number_of_red_socks = 5
+number_of_blue_socks = 3
+
+total_red_socks = number_of_red_socks  
+total_blue_socks = number_of_blue_socks 
+final_days = 0
+
+# Calculate maximum days
+days = (total_red_socks + total_blue_socks)  #  Example for calculating days
+print(f'The maximum number of days when he can wear different socks: {days}')
+
+print(f'The number of days when he can wear the same socks until he either runs out of socks or cannot make a single pair: {final_days}')
+```
+<end_of_turn>

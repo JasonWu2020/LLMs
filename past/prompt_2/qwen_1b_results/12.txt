@@ -1,0 +1,44 @@
+To solve this problem, we need to compute the sum of minimum heights in all possible subrectangles of size \(a \times b\) within the given matrix. Given the constraints, an efficient approach involves using dynamic programming.
+
+Here's the Python code to solve the problem:
+
+```python3
+import sys
+from typing import List
+
+def min_height_sum(n: int, m: int, a: int, b: int, g0: int, x: int, y: int, z: int) -> int:
+    MOD = 10**9 + 7
+    
+    # Initialize DP table
+    dp = [[0] * (m + 1) for _ in range(n + 1)]
+    
+    # Fill the DP table
+    for i in range(1, n + 1):
+        for j in range(1, m + 1):
+            dp[i][j] = ((dp[i-1][j] * x + y) % z)
+        
+    # Calculate prefix sums for each row
+    for i in range(n + 1):
+        prefix_sum = [0]
+        for j in range(m + 1):
+            prefix_sum.append((prefix_sum[-1] + dp[i][j]) % z)
+    
+    # Calculate total minimum heights
+    total_min_heights = 0
+    for i in range(a):
+        for j in range(b):
+            total_min_heights += prefix_sum[m - j] // z
+            
+    return total_min_heights % MOD
+
+if __name__ == "__main__":
+    input = sys.stdin.read
+    data = list(map(int, input().split()))
+    
+    n, m, a, b = data[0], data[1], data[2], data[3]
+    g0, x, y, z = data[4], data[5], data[6], data[7]
+    
+    print(min_height_sum(n, m, a, b, g0, x, y, z))
+```
+
+This code reads the input values from standard input and prints the computed result to standard output, following the specified format.

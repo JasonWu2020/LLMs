@@ -1,0 +1,14 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    p = list(map(int, input().split()))
+    min_invitations = 0 
+    for i in range(n):
+        if i not in p:
+            min_invitations += 1
+    print(min_invitations)
+```
+<end_of_turn>

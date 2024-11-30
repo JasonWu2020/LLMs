@@ -1,0 +1,25 @@
+```python
+for _ in range(int(input())):
+    s = input()
+    t = input()
+    cnt = [0] * 3
+    for char in s:
+        cnt[ord(char) - ord('a')] += 1
+    if cnt[0] == 0:
+        if cnt[1] == 0:
+            if cnt[2] == 0:
+                print('d' * len(s))
+            else:
+                print('c' + 'd' * (len(s) - 1))
+        else:
+            print('b' + 'd' * (len(s) - 1))
+    elif cnt[0] == 1:
+        if cnt[1] == 0:
+            print('b' + 'c' * (len(s) - 1))
+        elif cnt[2] == 0:
+            print('b' + 'a' + 'c' * (len(s) - 2))
+        else:
+            print('b' + ''.join(sorted(s)))
+    else:
+        print('a' + ''.join(sorted(s)))
+```

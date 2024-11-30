@@ -1,0 +1,30 @@
+```python
+import sys
+
+def decrypt_message(s):
+    decrypted = []
+    stack = []
+    
+    for char in s:
+        if char not in stack:
+            decrypted.append(char)
+            stack.append(char)
+        else:
+            while stack[-1] != char:
+                decrypted.append(stack.pop())
+            stack.pop()
+    
+    while stack:
+        decrypted.append(stack.pop())
+    
+    return ''.join(decrypted)
+
+if __name__ == "__main__":
+    sys.stdin.readline()  # Read the number of test cases
+    for _ in range(int(input().strip())):
+        n = int(sys.stdin.readline().strip())
+        s = sys.stdin.readline().strip()
+        print(decrypt_message(s))
+```
+
+Please note that the provided solution assumes the input format and structure as described in the problem statement. It reads the number of test cases, then processes each test case individually, decrypting the given encrypted string `s` and printing the decrypted result.

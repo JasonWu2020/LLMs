@@ -1,0 +1,39 @@
+```python
+def max_stones_taken(a: int, b: int, c: int) -> int:
+    """
+    Calculate the maximum number of stones Alice can take given the constraints on operations.
+    """
+    # Since we need to maximize the total number of stones taken, we try both operations as many times as possible
+    # and then check if we can still take additional stones without violating the constraints.
+    max_stones = 0
+    
+    # First operation: take 1 from first heap and 2 from second heap
+    if a >= 1 and b >= 2:
+        max_stones += 1 + 2
+        b -= 2
+        a -= 1
+    
+    # Second operation: take 1 from second heap and 2 from third heap
+    if b >= 1 and c >= 2:
+        max_stones += 1 + 2
+        c -= 2
+        b -= 1
+    
+    # If there are any remaining stones that can be taken (not part of the operations), add them.
+    if a > 0:
+        max_stones += a
+    if b > 0:
+        max_stones += b
+    if c > 0:
+        max_stones += c
+    
+    return max_stones
+
+# Read input
+t = int(input().strip())
+for _ in range(t):
+    a, b, c = map(int, input().strip().split())
+    print(max_stones_taken(a, b, c))
+```
+
+This Python script defines a function `max_stones_taken` that calculates the maximum number of stones Alice can take based on the rules provided. It reads the number of test cases and the initial number of stones in each heap for each test case, then outputs the maximum number of stones Alice can take.

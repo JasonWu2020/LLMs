@@ -1,0 +1,43 @@
+<start_of_turn>model
+```python
+def min_invitations(n, p):
+    invitations = set()
+    invited = set()
+    for i in range(n):
+        invitations.add(i)  
+        invited.add(p[i])
+    return len(invitations)
+
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    p = [int(x) for x in input().split()]
+    print(min_invitations(n, p)) 
+```
+
+**Explanation**
+
+1. **Function `min_invitations(n, p)`**:
+   - Takes the number of friends (`n`) and a list of best friends (`p`) as input.
+   - Initializes two sets:
+     - `invitations`: Stores all possible friends who can receive invitations.
+     - `invited`: Stores the friends who have actually received invitations.
+
+   - Iterates through the `p` list and:
+     - Adds each `p[i]` (best friend) to the `invitations` set.
+     - Adds the corresponding friend `i` to the `invited` set. 
+
+   - Returns the length of the `invitations` set, countng all unique invitations possible
+
+2. **Main part**:
+   - Reads the number of test cases (`t`).
+   - For each test case:
+     - Reads the number of friends (`n`).
+     - Reads the list of best friends (`p`) and converts it to a list of integers.
+     - Calls `min_invitations` to calculate the minimum invitations needed.
+     - Prints the result to the output.
+
+The code uses sets to efficiently track which friends have received invitations to make sure that the minimum number must be based on invitations given 
+
+Let me know if you would like more detailed explanation! <end_of_turn>

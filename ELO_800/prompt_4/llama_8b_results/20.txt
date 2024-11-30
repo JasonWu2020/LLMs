@@ -1,0 +1,22 @@
+The outputted solution is not optimal because it uses the bitwise OR operator (`|`) to find the rightmost 0 bit in the binary representation of `n`. However, this approach is not efficient because it requires multiple iterations to find the rightmost 0 bit.
+
+A more efficient approach is to use the bitwise AND operator (`&`) with a number that has all bits set to 1 (except for the least significant bit), which is `n & -n`. This will give us the rightmost 0 bit in the binary representation of `n`.
+
+Here is a revised solution:
+
+```python
+for _ in range(int(input())):
+    n = int(input())
+    k = n & -n
+    while k < n:
+        k <<= 1
+    print(k >> 1 - 1)
+```
+
+This solution works as follows:
+
+1. `n & -n` gives us the rightmost 0 bit in the binary representation of `n`.
+2. We shift `k` to the left by 1 bit until it is greater than or equal to `n`.
+3. We then shift `k` to the right by 1 bit to get the maximum value of `k` that has the same 0 bits as `n`.
+
+This solution is more efficient because it uses a single operation to find the rightmost 0 bit, rather than multiple iterations.

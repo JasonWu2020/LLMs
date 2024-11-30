@@ -1,0 +1,11 @@
+[/INST] ```python
+import collections
+n, k = map(int, input().split())
+s = input()
+counter = collections.Counter(s[:k])
+subseq_len = 0
+for i in range(1, n):
+    if s[i-1:i+1] in counter and counter[s[i:i+1]] == counter[s[i-1]]:
+        subseq_len += 1
+print(subseq_len)
+```</s>

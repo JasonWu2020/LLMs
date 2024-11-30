@@ -1,0 +1,42 @@
+### Critique of the Provided Solution:
+
+The provided Python code correctly reads the input for the number of test cases (`t`), iterates through each test case, checks if there exists a non-empty balanced substring within the string `s`, and prints the indices if found. However, it does not handle edge cases where the input might not meet the specified constraints (e.g., negative numbers, invalid lengths, etc.). Additionally, while the logic appears correct, there could be performance issues with large inputs due to nested loops. 
+
+### Another Solution Adhering to Same Specifications:
+
+```python
+def find_balanced_substring(n, s):
+    # Check if the string can have a balanced substring
+    if sum(c == 'a' for c in s) != len(s) // 2:
+        return -1, -1
+    
+    for i in range(n):
+        count_a = count_b = 0
+        j = i
+        
+        # Count characters until we reach an unbalanced part of the string
+        while j < n and (count_a + count_b == len(s) // 2):
+            if s[j] == 'a':
+                count_a += 1
+            else:
+                count_b += 1
+            
+            if count_a > count_b:
+                break
+            j += 1
+        
+        # Check if we've reached a valid balanced substring
+        if count_a == count_b and j < n:
+            return i + 1, j + 1
+
+# Read input
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()
+    
+    result = find_balanced_substring(n, s)
+    print(result[0], result[1])
+```
+
+This revised solution introduces a function `find_balanced_substring` that encapsulates the logic for checking and finding a balanced substring. It uses a more efficient approach by counting characters up to the point where the current substring becomes unbalanced rather than iterating over every possible substring individually. This should help reduce computational complexity, especially for larger inputs.

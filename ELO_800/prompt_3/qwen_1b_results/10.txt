@@ -1,0 +1,33 @@
+Solution:
+```python
+def max_days(a, b):
+    # Calculate total possible pairs
+    total_pairs = min(a, b)
+    
+    # Calculate remaining pairs after first day
+    remaining_pairs = total_pairs - 1
+    
+    return total_pairs, remaining_pairs
+
+
+# Read input
+a, b = map(int, input().split())
+
+# Print output
+print(max_days(a, b))
+```
+
+Analysis:
+
+This solution works as follows:
+
+1. The function `max_days` takes two inputs `a` and `b`, which represent the number of red and blue socks respectively.
+2. We calculate the total number of possible pairs (`total_pairs`) by taking the minimum value between `a` and `b`.
+3. After accounting for the initial pairing, we subtract 1 from the total pairs to get the remaining pairs (`remaining_pairs`).
+4. Finally, it prints both values.
+
+Example usage:
+
+For inputs `(5, 3)`, the output would be `(3, 2)` because with 5 red socks and 3 blue socks, there are initially 3 pairs. After pairing one pair, we have 2 pairs left, so the answer is 3 days with different socks and 2 days with the same socks.
+
+This approach ensures that we correctly handle all cases where the number of socks could lead to varying numbers of days with different and same socks, while keeping the logic simple and straightforward.

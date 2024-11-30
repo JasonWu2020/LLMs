@@ -1,0 +1,15 @@
+<start_of_turn>model
+```python
+n = int(input())
+
+for _ in range(n):
+    name, before, after = input().split()
+
+    if int(before) < int(after) and name not in red_list:
+        red_list.append(name)
+
+if Anton_outscored(red_list):
+    print("YES")
+else:
+    print("NO")
+```<eos>

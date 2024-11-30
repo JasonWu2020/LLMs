@@ -1,0 +1,27 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    n, k = map(int, input().split())
+
+    if k > n or (n == 3 and k == 3):
+        print(-1)
+    else:
+        board = [['R' if i == k else '.' for i in range(n)] for _ in range(n)]
+
+        # Place rooks in the first row
+        board[0][0] = board[0][k-1] = 'R'
+
+        # Place rooks in the first column
+        for i in range(k):
+            board[i][0] = 'R'
+
+        # Place remaining rooks
+        for i in range(1, n):
+            for j in range(1, k):
+                if board[i][j] == '.':
+                    board[i][j] = 'R'
+
+        print('\n'.join([''.join(board[i]) for i in range(n)]))
+```<eos>

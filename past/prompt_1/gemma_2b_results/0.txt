@@ -1,0 +1,21 @@
+<start_of_turn>model
+```python
+def solve(n, k, s):
+  count = {}
+  for i in range(k):
+    count[chr(ord('A') + i)] = s.count(chr(ord('A') + i))
+  max_length = 0
+  for i in range(n):
+    j = i
+    while j < n and s[i] == s[j]:
+      count[chr(ord('A') + j - 1)] = s.count(chr(ord('A') + j - 1))
+      j += 1
+    if all(count[chr(ord('A') + x)] == s.count(chr(ord('A') + x)) for x in range(k)):
+      max_length = max(max_length, i + 1) 
+  return max_length
+```
+```python
+n, k = map(int, input().split())
+s = input().strip()
+print(solve(n, k, s))
+```<end_of_turn>

@@ -1,0 +1,20 @@
+The outputted solution is not optimal because it sorts the items based on the difference between their prices, which may not be the correct approach to maximize Alice's profit. The correct approach is to sort the items based on their prices for Bob, so that Alice buys the items that Bob would take for free if he takes k items.
+
+Here's another solution:
+
+```python
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = sorted([(a[i], b[i]) for i in range(n)])
+    ans = 0
+    for i in range(min(k, n)):
+        ans += c[i][1] - c[i][0]
+    for i in range(n - k):
+        ans += c[i][1]
+    print(ans)
+```
+
+This solution sorts the items based on their prices for Alice, and then calculates the profit by adding the difference between the price for Bob and the price for Alice for the first k items, and then adding the price for Bob for the remaining items.

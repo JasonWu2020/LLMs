@@ -1,0 +1,24 @@
+[/INST] ```python
+import sys
+
+def main():
+    n, k = map(int, sys.stdin.readline().strip().split())
+    s = sys.stdin.readline().strip()
+    freq = [0] * 26
+    max_len = 0
+    curr_len = 0
+
+    for char in s:
+        index = ord(char.lower()) - ord('a')
+        freq[index] += 1
+        while sum(freq != [curr_len // k * [x] for x in freq]):
+            freq[index] -= 1
+            curr_len -= 1
+        max_len = max(max_len, curr_len + 1)
+        curr_len += 1
+
+    print(max_len)
+
+if __name__ == "__main__":
+    main()
+```</s>

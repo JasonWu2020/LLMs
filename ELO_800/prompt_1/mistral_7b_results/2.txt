@@ -1,0 +1,19 @@
+[/INST] ```python
+from itertools import permutations
+
+def lcp(p, q): return len(list(filter(lambda x: x[0] == x[1], zip(p, q)))[0][0])
+def lcs(p, q): return len(list(filter(lambda x: x[0] == x[1], reversed(zip(p, q)))[0][0])[0])
+
+def solve(n, a, b):
+ for p in permutations(list(range(1, n+1))):
+ for q in permutations(list(range(1, n+1))):
+ if lcp(list(p), list(q)) == a and lcs(list(p), list(q)) == b:
+ print(" Yes ")
+ return
+ print(" No ")
+
+t = int(input())
+for _ in range(t):
+ n, a, b = map(int, input().split())
+ solve(n, a, b)
+```</s>

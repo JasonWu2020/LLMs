@@ -1,0 +1,39 @@
+```python
+def find_stable_arrangement(n, k):
+    if k == 1:
+        return ['R' * n]
+    
+    # Check if it's impossible to place k rooks
+    if k > n:
+        return ['-1']
+    
+    # Try placing rooks in a checkerboard pattern
+    placement = [['.' for _ in range(n)] for _ in range(n)]
+    placed = 0
+    for i in range(n):
+        for j in range(n):
+            if (i + j) % 2 == 0:
+                placement[i][j] = 'R'
+                placed += 1
+                if placed == k:
+                    break
+        if placed == k:
+            break
+    
+    # Check if the arrangement is stable
+    for i in range(n):
+        for j in range(n):
+            if placement[i][j] == 'R':
+                if (i > 0 and placement[i - 1][j] == 'R') or (j > 0 and placement[i][j - 1] == 'R'):
+                    return ['-1']
+    
+    return placement
+
+for _ in range(int(input().strip())):
+    n, k = map(int, input().strip().split())
+    result = find_stable_arrangement(n, k)
+    for line in result:
+        print(''.join(line))
+```
+
+This Python script reads the number of test cases, the dimensions of the chessboard, and the number of rooks for each test case, then attempts to find a stable arrangement of rooks on the given board. If such an arrangement exists, it outputs the arrangement; otherwise, it outputs `-1`.

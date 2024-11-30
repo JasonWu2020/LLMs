@@ -1,0 +1,22 @@
+```python
+def find_spitting_camel(n):
+    positions = {}
+    for _ in range(n):
+        x, d = map(int, input().split())
+        positions[x] = positions.get(x, []) + [d]
+    
+    for pos in positions:
+        hits = 0
+        for dist in positions[pos]:
+            if pos + dist in positions and positions[pos + dist]:
+                hits += 1
+                if hits == 2:
+                    return "YES"
+        if hits == 1:
+            del positions[pos]
+    
+    return "NO"
+
+n = int(input())
+print(find_spitting_camel(n))
+```

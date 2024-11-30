@@ -1,0 +1,39 @@
+```python
+def min_moves_to_open_lock(n, current, target):
+    def manhattan_distance(a, b):
+        return sum(abs(int(a[i]) - int(b[i])) for i in range(n))
+
+    # Convert strings to lists for easier manipulation
+    current = list(current)
+    target = list(target)
+
+    moves = 0
+    while current != target:
+        moves += 1
+        for i in range(n):
+            if current[i] == '0':
+                current[i] = '9'
+            elif current[i] == '9':
+                current[i] = '0'
+            else:
+                next_digit = str((int(current[i]) + 1) % 10)
+                prev_digit = str((int(current[i]) - 1) % 10)
+                if manhattan_distance(''.join(current), ''.join(target)) < manhattan_distance(''.join(current), next_digit) and \
+                   manhattan_distance(''.join(current), ''.join(target)) < manhattan_distance(''.join(current), prev_digit):
+                    current[i] = prev_digit
+                else:
+                    current[i] = next_digit
+
+    return moves
+
+# Reading input
+import sys
+input = sys.stdin.read
+data = input().splitlines()
+n = int(data[0])
+current = data[1]
+target = data[2]
+
+# Calculating and printing the result
+print(min_moves_to_open_lock(n, current, target))
+```

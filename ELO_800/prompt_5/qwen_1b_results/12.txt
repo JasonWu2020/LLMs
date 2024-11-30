@@ -1,0 +1,16 @@
+```python
+def find_balanced_substring(n, s):
+    for i in range(n):
+        for j in range(i + 1, n + 1):
+            if sum(c == 'a' for c in s[i:j]) == len(s[i:j]) // 2:
+                return i, j - 1
+    return -1, -1
+
+# Read input
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()
+    result = find_balanced_substring(n, s)
+    print(result[0], result[1])
+```

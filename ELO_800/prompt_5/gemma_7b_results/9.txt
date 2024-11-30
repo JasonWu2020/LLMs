@@ -1,0 +1,22 @@
+<start_of_turn>model
+```python
+n = int(input())
+a = list(map(int, input().split()))
+
+c = 0
+b = 0
+for i in range(n):
+    if a[i] % 3 == 0:
+        c += a[i]
+    elif a[i] % 3 == 1:
+        b += a[i]
+    else:
+        pass
+
+if c > b:
+    print("chest")
+elif b > c:
+    print("biceps")
+else:
+    print("back")
+```<eos>

@@ -1,0 +1,7 @@
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    print(max(0, (n - 10) // 9 + (1 if n >= 9 else 0)))
+```

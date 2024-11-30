@@ -1,0 +1,13 @@
+The outputted solution has a small issue. The expression `(b - remainder + b - 1) // b` is not the most efficient way to calculate the minimum number of moves needed. It can be simplified to just `remainder // b + (remainder % b!= 0)`. However, this can be further simplified to just `-(a % b) if a % b else 0`.
+
+Here's an alternative solution:
+
+```python
+t = int(input())
+
+for _ in range(t):
+    a, b = map(int, input().split())
+    print(- (a % b) if a % b else 0)
+```
+
+This solution is more concise and easier to read. The expression `-(a % b)` calculates the remainder of `a` divided by `b` and negates it, which effectively gives the minimum number of moves needed to make `a` divisible by `b`. If `a` is already divisible by `b`, then `a % b` will be 0, and the expression will evaluate to 0.

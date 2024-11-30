@@ -1,0 +1,24 @@
+```python
+def can_transform(A, B, C):
+    # Normalize vectors A, B, and C to avoid dealing with magnitudes
+    A = (A[0], A[1])
+    B = (B[0], B[1])
+    C = (C[0], C[1])
+    
+    # Check if we can reach B from A using the allowed operations
+    for _ in range(4):  # Up to 4 rotations should suffice to check all possibilities
+        if A == B:
+            return "YES"
+        A = (-A[1], A[0])  # Rotate 90 degrees clockwise
+    if A == B or A == C or A == tuple(map(sum, zip(B, C))):
+        return "YES"
+    return "NO"
+
+# Reading input
+Ax, Ay = map(int, input().split())
+Bx, By = map(int, input().split())
+Cx, Cy = map(int, input().split())
+
+# Printing output
+print(can_transform((Ax, Ay), (Bx, By), (Cx, Cy)))
+```

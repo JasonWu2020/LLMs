@@ -1,0 +1,19 @@
+<start_of_turn>model
+```python3.8
+
+n, m, a, b = map(int, input().split())
+g_0, x, y, z = map(int, input().split())
+
+h = [[int(input()) for _ in range(m)] for _ in range(n)]
+
+g = [(g_0 + i * x + j) % z for i in range(n) for j in range(m)]
+
+sm = 0
+for i in range(n - a + 1):
+    for j in range(m - b + 1):
+        mn = min(g[i:i + a][j:j + b])
+        sm += mn
+
+print(sm)
+
+```<eos>

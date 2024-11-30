@@ -1,0 +1,28 @@
+The outputted solution has a time complexity of O(n log n) due to the sorting operation. This is because the sorting operation has a time complexity of O(n log n) in Python. The rest of the operations have a linear time complexity.
+
+However, the solution can be improved by using a different approach. Instead of sorting the items, we can use a priority queue to keep track of the items that Bob will take for free. This will allow us to find the items that Bob will take in O(n) time.
+
+Here's an improved solution:
+
+```python
+import heapq
+
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    pairs = sorted(zip(a, b))
+    total_a = 0
+    total_b = 0
+    heap = []
+    for i, (x, y) in enumerate(pairs):
+        total_a += x
+        total_b += y
+        heapq.heappush(heap, (-y, i))
+        if i >= k:
+            total_b += heap[0][0]
+            heapq.heappop(heap)
+    print(total_b - total_a)
+```
+
+This solution has a time complexity of O(n log k) due to the heap operations. This is a significant improvement over the original solution when k is much smaller than n. However, it's worth noting that the original solution may still be faster in practice due to the overhead of the heap operations.

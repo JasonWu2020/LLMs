@@ -1,0 +1,15 @@
+<start_of_turn>model
+```python3.8
+t = int(input())
+
+for _ in range(t):
+    s = input()
+    t = input().split()
+    
+    s_set = set(s)
+    t_set = set(t)
+    
+    s_sorted = ''.join(sorted(s_set - t_set) + list(t_set))
+    
+    print(s_sorted)
+```<eos>

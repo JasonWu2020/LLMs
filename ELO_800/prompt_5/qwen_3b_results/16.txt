@@ -1,0 +1,19 @@
+```python
+def count_interesting_numbers(n):
+    count = 0
+    for x in range(1, n + 1):
+        if S(x + 1) < S(x):
+            count += 1
+    return count
+
+def S(x):
+    return sum(int(digit) for digit in str(x))
+
+# Read input
+t = int(input().strip())
+for _ in range(t):
+    n = int(input().strip())
+    print(count_interesting_numbers(n))
+```
+
+This Python script defines a function `count_interesting_numbers` that calculates how many numbers from 1 to `n` are interesting according to the defined criteria. It also includes a helper function `S` to compute the sum of digits of a number. The script reads the number of test cases and then processes each case by calling `count_interesting_numbers` and printing the result for each test case.

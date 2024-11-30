@@ -1,0 +1,28 @@
+```python
+import sys
+
+def min_pockets(n, coins):
+    """
+    Finds the minimum number of pockets required to store given coins such that no two coins of the same value are placed in the same pocket.
+
+    Args:
+    - n (int): Number of coins.
+    - coins (List[int]): List of coin values.
+
+    Returns:
+    - int: Minimum number of pockets required.
+    """
+    coins.sort()
+    pockets = 1
+    current_coin = coins[0]
+    for coin in coins[1:]:
+        if coin != current_coin:
+            pockets += 1
+            current_coin = coin
+    return pockets
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    coins = list(map(int, input().strip().split()))
+    print(min_pockets(n, coins))
+```

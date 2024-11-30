@@ -1,0 +1,17 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    s = input().split()
+    s = ''.join(s)
+
+    for l in range(1, n + 1):
+        for r in range(l, n + 1):
+            if s[l:r] == s[l:r].replace('a', '') or s[l:r] == s[l:r].replace('b', ''):
+                print(l, r)
+                exit()
+
+    print(-1, -1)
+```<eos>

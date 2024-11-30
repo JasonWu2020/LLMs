@@ -1,0 +1,50 @@
+```python
+from collections import defaultdict
+
+def find_common_subsequence(arr1, arr2):
+    dict_arr2 = defaultdict(list)
+    for idx, val in enumerate(arr2):
+        dict_arr2[val].append(idx)
+    
+    sequence = []
+    prev_index = -1
+    
+    for val in arr1:
+        if val in dict_arr2 and max(dict_arr2[val]) > prev_index:
+            # Select the first occurrence of this value within arr2 that's farthest
+            last_occurrence_idx = max(dict_arr2[val])
+            sequence.append(val)
+            prev_index = last_occurrence_idx
+            
+            # Remove selected index to ensure we don't pick it again
+            dict_arr2[val].remove(last_occurrence_idx)
+            
+            # If all occurrences are removed, break out of loop
+            if not dict_arr2[val]:
+                del dict_arr2[val]
+                
+    return sequence if sequence else ["NO"]
+
+# Main function for processing inputs and printing outputs
+def main():
+    total_cases = int(input())
+    for _ in range(total_cases):
+        n, m = list(map(int, input().split()))
+        arr1 = list(map(int, input().split()))
+        arr2 = list(map(int, input().split()))
+        
+        result = find_common_subsequence(arr1, arr2)
+        
+        if isinstance(result, list):
+            print("YES")
+            print(len(result))
+            print(*result)
+        else:
+            print(result)
+
+# Start of the execution block
+if __name__ == "__main__":
+    main()
+```
+
+This solution makes use of a Python dictionary where each key represents an element in `arr2`, and the corresponding value is a list of indices at which this element appears in `arr2`. By iterating over `arr1` and finding the maximum index at which an element appears in `arr2`, it ensures that the longest possible sequence is constructed. It stops processing when an element no longer appears in `arr2` or all its appearances have been considered. This approach avoids generating subsequences and instead focuses on efficiently identifying valid subsequences between the two arrays.

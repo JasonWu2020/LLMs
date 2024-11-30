@@ -1,0 +1,15 @@
+```python
+for _ in range(int(input())):
+    n = int(input())
+    s = input()
+    i = 0
+    while i < n:
+        c = s[i]
+        while i + 1 < n and s[i + 1]!= c:
+            i += 1
+        if i + 1 < n:
+            i += 2
+        else:
+            break
+    print(c, end='')
+```

@@ -1,0 +1,17 @@
+```python
+from math import ceil
+
+l, d, v, g, r = map(int, input().split())
+
+def calculate_time():
+    time = 0
+    while True:
+        if d <= v * time:
+            time = ceil((d - v * time) / v) * (g + r)
+        else:
+            time += g + r
+        if time > l / v:
+            return time
+
+print(calculate_time())
+```

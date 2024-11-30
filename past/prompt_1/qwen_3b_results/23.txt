@@ -1,0 +1,17 @@
+```python
+def count_ways(n, m):
+    mod = 1000000007
+    dp = [0] * (n + 1)
+    dp[0] = 1
+    
+    for _ in range(m):
+        s, t = map(int, input().split())
+        for i in range(t, n + 1):
+            dp[i] += dp[i - t]
+            dp[i] %= mod
+            
+    return dp[n]
+
+n, m = map(int, input().split())
+print(count_ways(n, m))
+```

@@ -1,0 +1,21 @@
+```python
+import sys
+
+t = int(input())
+
+for _ in range(t):
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    set_a = set(a)
+    set_b = set(b)
+
+    common = set_a & set_b
+    if not common:
+        print("NO")
+    else:
+        print("YES")
+        print(len(common))
+        print(*sorted(list(common)))
+```

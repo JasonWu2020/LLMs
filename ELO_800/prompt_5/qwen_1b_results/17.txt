@@ -1,0 +1,27 @@
+```python
+from functools import lru_cache
+
+def min_moves_to_open_lock(n, initial_state, target_state):
+    @lru_cache(maxsize=None)
+    def dfs(i, j):
+        if i == n - 1:
+            return abs(j - int(target_state[i]))
+        
+        # Calculate cost for rotating left
+        left_cost = dfs(i + 1, (j - 1) % 10)
+        right_cost = dfs(i + 1, (j + 1) % 10)
+        
+        # Calculate cost for not rotating
+        no_rotate_cost = dfs(i + 1, j)
+        
+        return min(left_cost, right_cost, no_rotate_cost)
+
+    return dfs(0, initial_state[0])
+
+# Example usage:
+n = int(input())
+initial_state = input()
+target_state = input()
+
+print(min_moves_to_open_lock(n, initial_state, target_state))
+```

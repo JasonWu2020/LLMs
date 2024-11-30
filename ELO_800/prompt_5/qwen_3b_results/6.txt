@@ -1,0 +1,20 @@
+```python
+def can_play_card(table_card, hand_cards):
+    table_rank, table_suit = table_card[0], table_card[1]
+    for card in hand_cards:
+        hand_rank, hand_suit = card[0], card[1]
+        # Check if the rank matches
+        if hand_rank == table_rank:
+            return "YES"
+        # Check if the suit matches
+        elif hand_suit == table_suit:
+            return "YES"
+    return "NO"
+
+# Example usage
+table_card = input().strip()
+hand_cards = [input().strip() for _ in range(5)]
+print(can_play_card(table_card, hand_cards))
+```
+
+This script reads the card on the table and the cards in your hand from stdin, checks if you can play a card according to the rules of Mau-Mau, and prints the result to stdout.

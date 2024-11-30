@@ -1,0 +1,20 @@
+[/INST] ```python
+import sys, heapq
+
+def min_sum(a, k):
+    n = len(a)
+    q = [(abs(x - a[0]), i, x) for i, x in enumerate(a)]
+    heapq.heapify(q)
+
+    for _ in range(k):
+        dist, i, _ = heapq.heappop(q)
+        a[i] = a[i - 1] if i > 0 else a[i] = a[i + 1]
+        heapq.heappush(q, (abs(a[i] - a[i - 1]) if i > 0 else abs(a[i] - a[i + 1]), i, a[i]))
+
+    return sum(a)
+
+for _ in range(int(sys.stdin.readline())):
+    n, k = map(int, sys.stdin.readline().split())
+    a = list(map(int, sys.stdin.readline().split()))
+    print(min_sum(a, k))
+```</s>

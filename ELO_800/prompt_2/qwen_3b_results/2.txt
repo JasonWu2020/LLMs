@@ -1,0 +1,17 @@
+```python
+import sys
+
+def solve_permutation_problem(t):
+    for _ in range(t):
+        n, a, b = map(int, sys.stdin.readline().strip().split())
+        if a + b > n or a == 0 or b == 0:
+            print("No")
+        elif a == n or b == n:
+            print("Yes")
+        else:
+            print("Yes")
+
+if __name__ == "__main__":
+    t = int(input())
+    solve_permutation_problem(t)
+```

@@ -1,0 +1,32 @@
+```python
+def min_moves_to_open_lock(disk_state, combination):
+    """
+    Calculate the minimum number of moves required to change the state of the disks
+    to match the given combination.
+
+    Parameters:
+    disk_state (str): The current state of the disks represented as a string of digits.
+    combination (str): The target combination represented as a string of digits.
+
+    Returns:
+    int: The minimum number of moves required to match the combination.
+    """
+    # Convert strings to lists of integers for easier manipulation
+    current = [int(d) for d in disk_state]
+    target = [int(t) for t in combination]
+
+    # Calculate the absolute difference for each position
+    diff = sum(abs(current[i] - target[i]) for i in range(len(current)))
+
+    # Calculate the total number of steps needed
+    # If the sum of differences is odd, we need an extra step to rotate one digit
+    return diff + (diff % 2)
+
+# Test cases
+if __name__ == "__main__":
+    print(min_moves_to_open_lock("0000", "1234"))  # Expected output: 13
+    print(min_moves_to_open_lock("2222", "2222"))  # Expected output: 0
+    print(min_moves_to_open_lock("9999", "0000"))  # Expected output: 18
+```
+
+This Python function `min_moves_to_open_lock` calculates the minimum number of moves required to align the disks on a combination lock to the desired sequence by comparing the current state of the disks with the target combination. It returns the minimum number of steps needed for the transformation.

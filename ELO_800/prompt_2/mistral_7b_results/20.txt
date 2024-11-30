@@ -1,0 +1,8 @@
+[/INST] ```python
+import sys
+
+for t in range(int(input())):
+    n = int(input())
+    k = (n & (n - 1)) | (~(n - 1) & (~0 << (bin(n)[0] == '1' and len(bin(n)[0:bin(n)[0].index('1')] | int(bin(n)[-1]) - 1))
+    print(k)
+```</s>

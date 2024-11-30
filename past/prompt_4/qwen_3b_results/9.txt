@@ -1,0 +1,12 @@
+```python
+def count_eaten_candies(n, k):
+    eaten = 0
+    extra = k - 1
+    for _ in range(extra):
+        eaten += 1
+        extra -= eaten
+    return eaten
+
+n, k = map(int, input().split())
+print(count_eaten_candies(n, k))
+```

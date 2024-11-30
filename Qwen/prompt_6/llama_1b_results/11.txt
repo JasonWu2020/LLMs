@@ -1,0 +1,17 @@
+```python
+import sys
+
+def gcd(a, b):
+    while b!= 0:
+        a, b = b, a % b
+    return a
+
+def min_shovels(k, r):
+    if k == 10:
+        return 1
+    else:
+        return 1 + min_shovels(k * r, r)
+
+k, r = map(int, input().split())
+print(min_shovels(k, r))
+```

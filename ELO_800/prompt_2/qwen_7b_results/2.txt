@@ -1,0 +1,19 @@
+```python
+from typing import List
+
+def check_permutations(n: int, a: int, b: int) -> str:
+    if a + b >= n:
+        return 'No'
+    if a == b == 0:
+        return 'Yes' if n <= 1 else 'No'
+    
+    if n > max(a, b) * 2:
+        return 'Yes'
+    return 'No'
+
+if __name__ == "__main__":
+    t = int(input())
+    for _ in range(t):
+        n, a, b = map(int, input().split())
+        print(check_permutations(n, a, b))
+```

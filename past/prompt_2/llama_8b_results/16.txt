@@ -1,0 +1,15 @@
+```python
+n = int(input())
+spits = {}
+
+for _ in range(n):
+    x, d = map(int, input().split())
+    for j in range(2):
+        spit = x + (d if j == 0 else -d)
+        if spit in spits:
+            print("YES")
+            exit()
+        spits[x] = 1
+
+print("NO")
+```

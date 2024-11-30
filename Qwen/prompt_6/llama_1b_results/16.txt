@@ -1,0 +1,15 @@
+```python
+def count_interesting_numbers():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        count = 0
+        for i in range(1, n + 1):
+            sum_of_digits = sum(int(digit) for digit in str(i))
+            if sum_of_digits < i:
+                count += 1
+        print(count)
+
+# Read and print the result
+count_interesting_numbers()
+```

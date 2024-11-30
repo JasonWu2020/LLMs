@@ -1,0 +1,44 @@
+**Critique of the outputted solution**
+
+The outputted solution has some potential issues:
+
+1.  It does not handle the case when `a[i]` is not in `d`. In this case, `a[i]` should not be appended to `c` and `a[i]` and `b[d[a[i]]]` should not be set to 1001.
+2.  It does not check if `d[a[i]]` is valid before accessing `b[d[a[i]]]`. If `d[a[i]]` is not a valid index, this will result in an `IndexError`.
+3.  The solution assumes that the input arrays `a` and `b` are non-empty. It does not handle the case when either `a` or `b` is empty.
+
+**Alternative solution**
+
+```python
+t = int(input())
+for _ in range(t):
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    d = {}
+    for i in range(m):
+        d[b[i]] = i
+
+    a.sort()
+    b.sort()
+    c = []
+    i = 0
+    j = 0
+    while i < n and j < m:
+        if a[i] == b[j]:
+            c.append(a[i])
+            i += 1
+            j += 1
+        elif a[i] < b[j]:
+            i += 1
+        else:
+            j += 1
+
+    if len(c) == 0:
+        print("NO")
+    else:
+        print("YES")
+        print(len(c))
+        print(*c)
+```
+
+This solution uses two pointers `i` and `j` to iterate through `a` and `b` respectively. It checks if the current elements of `a` and `b` are equal, and if so, appends the element to `c`. If the current element of `a` is less than the current element of `b`, it increments `i`. Otherwise, it increments `j`. This solution handles the cases when `a[i]` is not in `d` and when `d[a[i]]` is not a valid index. It also handles the case when either `a` or `b` is empty.

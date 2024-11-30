@@ -1,0 +1,13 @@
+```python
+import sys
+import math
+
+def main():
+    input = sys.stdin.readline
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        p = list(map(int, input().split()))
+        print(math.ceil(math.sqrt(n) + 0.5))
+main()
+```

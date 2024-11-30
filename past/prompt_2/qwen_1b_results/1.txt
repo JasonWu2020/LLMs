@@ -1,0 +1,36 @@
+```python3
+import math
+
+def gcd(a, b):
+    return math.gcd(a, b)
+
+def find_partition(n):
+    if n == 1:
+        return "No"
+    
+    total_sum = int((n * (n + 1)) / 2)
+    half_sum = total_sum // 2
+    
+    if gcd(total_sum, half_sum) < 2:
+        return "No"
+    
+    S1_size = n - 1
+    S2_size = 1
+    
+    S1_elements = [i for i in range(1, n)]
+    S2_elements = [n]
+    
+    if len(S1_elements) % 2 != 0:
+        S1_elements.append(-1)
+    
+    S1_str = f"{len(S1_elements)} {' '.join(map(str, S1_elements))}\n"
+    S2_str = f"{len(S2_elements)} {S2_elements[0]}\n"
+    
+    return "Yes\n" + S1_str + S2_str
+
+if __name__ == "__main__":
+    n = int(input())
+    print(find_partition(n))
+```
+
+This Python script reads an integer `n` from standard input, then calculates whether it's possible to partition the numbers from 1 to `n` into two disjoint sets `S1` and `S2` such that their sums have a greatest common divisor greater than 1. If so, it prints "Yes", followed by descriptions of `S1` and `S2`. If not, it prints "No".

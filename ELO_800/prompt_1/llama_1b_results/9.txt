@@ -1,0 +1,15 @@
+```python
+n = int(input())
+nums = list(map(int, input().split()))
+
+max_chest = max(nums)
+max_biceps = max(nums)
+max_back = max(nums)
+
+if max_chest == max_biceps:
+    print("chest")
+elif max_biceps > max_chest:
+    print("biceps")
+else:
+    print("back")
+```

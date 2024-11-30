@@ -1,0 +1,17 @@
+[/INST] ```python
+import sys
+
+def gcd(a, b):
+ return b if b == 0 else gcd(b, a % b)
+
+for _ in range(int(sys.stdin.readline())):
+ a, b = map(int, sys.stdin.readline().split())
+ print(gcd(a, b) if gcd(a, b) else 0)
+ a += 1
+ while a % b != 0:
+ print(a - (a % b), end=' ')
+ a += 1
+ print()
+```
+
+This code uses the Euclidean algorithm to find the GCD. It then checks if $a$ is already divisible by $b$. If it is, it prints $0$. If not, it calculates the difference between $a$ and the next multiple of $b$ and prints it, followed by the next number to be incremented, and then the next multiple of $b$ until $a$ becomes divisible by $b$. Finally, it moves to the next test case. The input is read line by line using `sys.stdin.readline()`. The solution is printed using the `print()` function, as required.</s>

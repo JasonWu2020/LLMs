@@ -1,0 +1,14 @@
+```python
+def max_k(n):
+    k = n - 1
+    while True:
+        if (n & (n-1) & (n-2) & (n-3) & (n-k)) == 0:
+            return k
+        k -= 1
+
+if __name__ == "__main__":
+    t = int(input().strip())
+    for _ in range(t):
+        n = int(input().strip())
+        print(max_k(n))
+```

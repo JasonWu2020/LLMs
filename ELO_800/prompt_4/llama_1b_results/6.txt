@@ -1,0 +1,28 @@
+```python
+from collections import deque
+
+def can_play(card, hand):
+    # Create a dictionary to store the count of each card in the hand
+    hand_count = {}
+    for c in hand:
+        if c in hand_count:
+            hand_count[c] += 1
+        else:
+            hand_count[c] = 1
+
+    # Create a dictionary to store the count of each card on the table
+    table_count = {'2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0, '8': 0, '9': 0, 'T': 0, 'J': 0, 'Q': 0, 'K': 0, 'A': 0}
+    for c in card:
+        if c in table_count:
+            table_count[c] += 1
+
+    # Check if there is at least one card that can be played
+    return 'YES' if any(x > 0 for x in table_count.values()) and any(x > 0 for x in hand_count.values()) else 'NO'
+
+# Read the input
+card = input().split()
+hand = input().split()
+
+# Print the result
+print(can_play(card, hand))
+```

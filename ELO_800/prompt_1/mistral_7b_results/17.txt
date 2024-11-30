@@ -1,0 +1,8 @@
+[/INST] ```python
+n = int(input())
+state = list(map(int, input().split()))
+combination = list(map(int, input().split()))
+diff = [abs(x - y) for x, y in zip(state, combination)]
+min_moves = sum(min(diff[i], diff[i] % 10 + 1) for i in range(n))
+print(min_moves)
+```</s>

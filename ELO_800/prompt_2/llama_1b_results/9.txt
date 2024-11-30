@@ -1,0 +1,25 @@
+```python3.8
+# -*- coding: utf-8 -*-
+
+n = int(input())
+muscle_times = list(map(int, input().split()))
+chest = 0
+biceps = 0
+back = 0
+
+for i in range(n):
+    if muscle_times[i] % 2 == 0:
+        chest += muscle_times[i]
+    else:
+        biceps += muscle_times[i]
+    if chest > biceps:
+        chest = biceps
+    elif biceps > chest:
+        biceps = chest
+    if chest > biceps:
+        print("chest")
+    elif biceps > chest:
+        print("biceps")
+    else:
+        print("back")
+```

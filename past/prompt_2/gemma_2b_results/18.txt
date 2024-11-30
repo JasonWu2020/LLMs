@@ -1,0 +1,23 @@
+<start_of_turn>model
+```python
+n = int(input())
+stamp_list = []
+for _ in range(n):
+  city1, city2 = map(int, input().split())
+  stamp_list.append((city1, city2))
+
+stamp_list.sort()
+res = []
+for i in range(n):
+  res.append(stamp_list[i][0])
+if len(res) % 2 == 1:
+  print(*res)
+else:
+  print(*res[::2]) 
+
+```
+
+
+
+
+<end_of_turn>

@@ -1,0 +1,10 @@
+```python
+def max_stones():
+    for _ in range(int(input().strip())):
+        a, b, c = map(int, input().strip().split())
+        # Calculate the maximum stones Alice can take
+        max_stones = min(a, b//2 + c//2)
+        print(max_stones)
+
+max_stones()
+```

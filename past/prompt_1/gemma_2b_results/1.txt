@@ -1,0 +1,25 @@
+<start_of_turn>model
+```python
+def gcd(a, b):
+  while b:
+    a, b = b, a % b
+  return a
+
+def partition(n):
+  for i in range(1, n + 1):
+    if i % 2 == 0:
+      sum1 = i
+      sum2 = 1
+    if i % 2 != 0:
+      sum1 = i
+      sum2 = 1
+  return sum1, sum2
+
+n = int(input())
+if partition(n)[0] > 1 and partition(n)[1] > 1:
+  print("Yes")
+  print("".join(map(str, partition(n)[0])) + " ")
+  print("".join(map(str, partition(n)[1])))
+else:
+  print("No")
+```<end_of_turn>

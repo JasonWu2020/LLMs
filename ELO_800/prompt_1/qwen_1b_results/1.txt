@@ -1,0 +1,9 @@
+```python
+def min_invitations(n):
+    return max(1, n - 1)
+
+for _ in range(int(input())):
+    n = int(input())
+    p = list(map(int, input().split()))
+    print(min_invitations(max(p)))
+```

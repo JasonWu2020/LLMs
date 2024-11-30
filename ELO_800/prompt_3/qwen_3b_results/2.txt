@@ -1,0 +1,22 @@
+```python
+import sys
+
+def check_permutations(n, a, b):
+    if a + b > n:
+        return " No "
+    elif a == n and b == n:
+        return " Yes "
+    else:
+        return " No "
+
+if __name__ == "__main__":
+    t = int(input().strip())
+    for _ in range(t):
+        n, a, b = map(int, input().strip().split())
+        result = check_permutations(n, a, b)
+        print(result)
+```
+
+This Python script reads the number of test cases `t`, and then for each test case, it reads three integers `n`, `a`, and `b`. It checks if a pair of permutations satisfying the given conditions exists based on the logic provided in the `check_permutations` function. If such permutations exist, it prints " Yes "; otherwise, it prints " No ". 
+
+This solution adheres to the input and output specifications you provided.

@@ -1,0 +1,27 @@
+```python
+from typing import List
+
+def check_rating_change(participants_results: List[List[str]]) -> str:
+    # Mapping of red ratings
+    red_ratings = {True: True}
+
+    # Checking each participant
+    for _, before, after in participants_results:
+        if int(before) >= 2400 and int(after) < 2400:
+            del red_ratings[True]
+        elif int(before) < 2400 and int(after) >= 2400:
+            red_ratings[True] = True
+
+    # Check if Anton has performed good in the contest
+    if True in red_ratings.values():
+        return 'YES'
+    else:
+        return 'NO'
+
+# Read input
+n = int(input())
+participants_results = [input().split() for _ in range(n)]
+
+# Print the solution
+print(check_rating_change(participants_results))
+```

@@ -1,0 +1,16 @@
+```python
+n = int(input())
+a = input()
+b = input()
+
+diff = 0
+for i in range(n):
+    diff += abs(int(a[i]) - int(b[i]))
+
+for i in range(n):
+    diff = min(diff, n - abs(int(a[i]) - int(b[i])) + abs(int(a[i]) + 10 - int(b[i])))
+
+print(diff)
+```
+
+This code first calculates the absolute difference between each corresponding digit in the two input strings. It then checks if rotating the disk by adding 10 to the difference and subtracting the current digit is a shorter path. The minimum of these two values is added to the total difference.

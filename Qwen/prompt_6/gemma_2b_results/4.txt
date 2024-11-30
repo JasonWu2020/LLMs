@@ -1,0 +1,22 @@
+<start_of_turn>model
+```python
+def decrypt(s):
+  a = ""
+  for i in range(len(s)):
+    current_char = s[i]
+    if i < len(s) - 1:
+      added_letters_length = len( s[i+1:i+2])
+      if added_letters_length > 0 :
+        a += current_char
+      # print(s[i+1:i+2])
+  return a
+
+
+t = int(input())
+for _ in range(t):
+  n = int(input())
+  s = input()  
+  a = decrypt(s)
+  print(a)
+``` 
+<end_of_turn>

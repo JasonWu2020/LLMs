@@ -1,0 +1,19 @@
+```python
+def count_interesting_numbers(n):
+    count = 0
+    for i in range(1, n+1):
+        if sum(int(digit) for digit in str(i)) > sum(int(digit) for digit in str(i+1)):
+            count += 1
+    return count
+
+# Read input from stdin
+t = int(input())
+
+# Iterate through each test case
+for _ in range(t):
+    n = int(input())
+    # Print the result for the current test case
+    print(count_interesting_numbers(n))
+```
+
+This Python script correctly implements the logic described in the problem statement. It iterates over all numbers from 1 to `n`, checks if the sum of their digits increases when incremented by 1 (`S(x + 1) < S(x)`), and counts how many such numbers exist within the specified range. The script handles multiple test cases efficiently by using a loop to process each input pair `(n, t)`.

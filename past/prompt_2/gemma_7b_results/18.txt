@@ -1,0 +1,26 @@
+<start_of_turn>model
+```python3.8
+
+n = int(input())
+
+stamps = []
+for _ in range(n):
+    a, b = map(int, input().split())
+    stamps.append((a, b))
+
+# Create a graph
+graph = {i: set() for i in range(1, 11)}
+for a, b in stamps:
+    graph[a].add(b)
+
+# Find the intermediate city
+intermediate = set(graph[graph[1].pop()]) & set(graph[10].pop())
+
+# Trace the route
+route = list(intermediate)
+route.extend(graph[ intermediate ].pop())
+route.append(10)
+
+print(*route)
+
+```<eos>

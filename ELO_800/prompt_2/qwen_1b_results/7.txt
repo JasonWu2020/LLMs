@@ -1,0 +1,18 @@
+```python
+import sys
+input = sys.stdin.readline
+from itertools import permutations
+
+def find_smallest_permutation(S):
+    for perm in sorted(permutations("abc"), key=lambda x: ''.join(x)):
+        if set(perm).issubset(set(S)):
+            return ''.join(perm)
+    return 'impossible'
+
+for _ in range(int(input())):
+    S = input().strip()
+    T = input().strip()
+    result = find_smallest_permutation(S)
+    print(result)
+```
+```

@@ -1,0 +1,28 @@
+```python
+import sys
+input = sys.stdin.readline
+
+def process(n, k, arr):
+    min_val = min(arr)
+    max_val = max(arr)
+    diff = max_val - min_val
+    if diff == 0:
+        return [-min_val for _ in range(n)]
+    num_operations = k // (n * (diff + 1))
+    remainder = k % (n * (diff + 1))
+    
+    result = [max_val - abs(i - max_val) for i in arr]
+    for _ in range(num_operations):
+        result = [max_val - abs(i - max_val) for i in result]
+    for idx, val in enumerate(result):
+        if idx < remainder:
+            result[idx] = max_val - abs(val - max_val)
+    return result
+
+if __name__ == "__main__":
+    T = int(input())
+    for _ in range(T):
+        n, k = map(int, input().split())
+        arr = list(map(int, input().split()))
+        print(*process(n, k, arr))
+```

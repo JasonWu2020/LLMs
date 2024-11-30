@@ -1,0 +1,12 @@
+<start_of_turn>model
+```python
+n, m = map(int, input().split())
+s, t, i = map(int, input().split())
+
+ways = 0
+for _ in range(m):
+    s_i, t_i, i_i = map(int, input().split())
+    ways += (t_i - s_i + 1) * i_i
+
+print(ways % 1000000007)
+```<eos>

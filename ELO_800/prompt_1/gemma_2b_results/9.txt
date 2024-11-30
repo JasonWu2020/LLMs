@@ -1,0 +1,18 @@
+<start_of_turn>model
+```python
+n = int(input())
+a = list(map(int, input().split()))
+max_count = 0
+muscle = ''
+for i in range(n):
+  if a[i] > max_count:
+    max_count = a[i]
+    muscle = 'chest'
+  elif a[i] == max_count:
+    if muscle == 'chest':
+      muscle = 'biceps'
+    else:
+      muscle = 'back'
+  
+print(muscle)
+```<end_of_turn>

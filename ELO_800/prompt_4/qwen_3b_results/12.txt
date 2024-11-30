@@ -1,0 +1,38 @@
+```python
+def find_balanced_substring():
+    import sys
+    input = sys.stdin.read
+    data = input().split()
+    
+    t = int(data[0])
+    result = []
+    
+    for _ in range(t):
+        n = int(data[2 * (_ + 1)])
+        s = data[2 * (_ + 1) + 1]
+        
+        count_a = s.count('a')
+        count_b = s.count('b')
+        
+        if count_a == count_b:
+            return _ + 1, _ + 1
+        
+        for i in range(n - 1):
+            if s[i] == 'a':
+                count_a -= 1
+            else:
+                count_b -= 1
+            
+            if count_a == count_b:
+                result.append(_ + 1)
+                result.append(i + 1)
+                break
+                
+        if len(result) == 0:
+            result.extend([-1, -1])
+            
+    return result
+
+t = int(input())
+print('\n'.join(map(str, find_balanced_substring())))
+```

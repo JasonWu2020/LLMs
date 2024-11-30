@@ -1,0 +1,11 @@
+```python
+import sys
+
+t = int(input().strip())
+for _ in range(t):
+    n = int(input().strip())
+    k = n - 1
+    while not (n & k):
+        k -= 1
+    print(k)
+```

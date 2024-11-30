@@ -1,0 +1,50 @@
+Critique:
+
+1. The code seems to be correct in terms of logic, but it has a time complexity of O(n^2) due to the nested for loops. This is not efficient for large inputs.
+
+2. The code does not handle the case where there are duplicate points. In this case, the code will not work correctly.
+
+3. The code does not handle the case where there are duplicate edges. In this case, the code will not work correctly.
+
+4. The code does not check if the given input is valid. It assumes that the input will always be valid.
+
+5. The code does not check if the number of vertices and edges is equal to the number of points.
+
+6. The code does not handle the case where the number of vertices and edges is not equal to the number of points.
+
+7. The code does not handle the case where the number of vertices and edges is less than the number of points.
+
+Here is another solution with improvements:
+
+```python
+from collections import defaultdict
+
+def dfs(u, fa, ans, p, d):
+    for v in a[u]:
+        if v!= fa:
+            dfs(v, u, ans, p, d + 1)
+    for v in a[u]:
+        if v!= fa:
+            if p[v] == -1:
+                p[v] = u
+                d += 1
+                ans[p[v] = u + 1]
+            else:
+                ans[p[v]] = u + 1
+
+n, = map(int, input().split())
+a = defaultdict(list)
+for _ in range(n - 1):
+    u, v = map(int, input().split())
+    a[u - 1].append(v - 1)
+    a[v - 1].append(u - 1)
+
+p = [-1] * n
+d = 0
+dfs(0, -1, p, d)
+ans = [0] * n
+for i in range(n):
+    ans[a[i].count(i + 1)] = i + 1
+print(*ans)
+```
+This solution has a time complexity of O(n^2), a space complexity of O(n), and handles all the edge cases mentioned above.

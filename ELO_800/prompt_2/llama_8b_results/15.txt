@@ -1,0 +1,22 @@
+```python
+import sys
+
+n = int(input())
+participants = {}
+
+for _ in range(n):
+    name, before, after = input().split()
+    before = int(before)
+    after = int(after)
+    color ='red' if after >= 2400 else 'orange' if after >= 2200 else 'yellow' if after >= 2000 else 'green' if after >= 1800 else 'blue' if after >= 1600 else 'violet' if after >= 1400 else 'grey' if after >= 1200 else 'pink'
+
+    if (name not in participants) or (after > participants[name][0]):
+        participants[name] = (color, after)
+
+color ='red'
+for name, (c, _) in participants.items():
+    if c == color:
+        print('YES')
+        sys.exit()
+print('NO')
+```

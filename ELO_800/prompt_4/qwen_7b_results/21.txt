@@ -1,0 +1,39 @@
+```python
+# Importing the necessary package
+from typing import List
+
+def calculate_min_pockets(num_coins: int, coin_values: List[int]) -> int:
+    """
+    Function to determine the minimum number of pockets needed
+    to distribute coins such that no two coins with the same value are placed in the same pocket.
+    
+    :param num_coins: An integer representing the number of coins.
+    :param coin_values: A list of integers representing the values of the coins.
+    :return: An integer representing the minimum number of pockets needed.
+    """
+    # Convert the list of coin values into a set to eliminate duplicate values.
+    unique_coins = set(coin_values)
+    
+    # The length of the set gives the minimum number of pockets required.
+    return len(unique_coins)
+
+# Function to check the correctness of the calculate_min_pockets function
+def check_solution():
+    assert calculate_min_pockets(5, [1, 2, 3, 4, 5]) == 5, "Test case 1 failed"
+    assert calculate_min_pockets(4, [2, 2, 1, 1]) == 2, "Test case 2 failed"
+    assert calculate_min_pockets(3, [1, 2, 3]) == 3, "Test case 3 failed"
+    print("All test cases passed!")
+
+# Read the input from stdin
+num_coins = int(input())
+coin_values = list(map(int, input().split()))
+
+# Calculate the minimum number of pockets using the provided function
+min_pockets = calculate_min_pockets(num_coins, coin_values)
+
+# Print the result to stdout
+print(min_pockets)
+
+# Optionally, run the check function
+check_solution()
+```

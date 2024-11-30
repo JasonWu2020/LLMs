@@ -1,0 +1,25 @@
+n = int(input())
+stamps = {}
+for i in range(n):
+    a, b = map(int, input().split())
+    if a not in stamps:
+        stamps[a] = [b]
+    else:
+        stamps[a].append(b)
+    if b not in stamps:
+        stamps[b] = [a]
+    else:
+        stamps[b].append(a)
+start = None
+for k in stamps:
+    if len(stamps[k]) == 1:
+        start = k
+        break
+path = [start]
+while len(path) < n + 1:
+    last = path[-1]
+    for i in stamps[last]:
+        if i not in path:
+            path.append(i)
+            break
+print(*path)

@@ -1,0 +1,27 @@
+The outputted solution is correct and efficient. However, it has a time complexity of O(n + k), which is sufficient for the given constraints. The solution iterates through the input to count the occurrences of each drink type, and then it iterates through the drink types to calculate the maximum number of students who can get their favorite drink.
+
+Here's another solution with a similar approach but with a more Pythonic way of counting the occurrences of each drink type:
+
+```python
+import math
+n, k = map(int, input().split())
+cnt = [0] * (k + 1)
+for _ in range(n):
+    cnt[int(input())] += 1
+ans = 0
+for i in range(1, k + 1):
+    ans += min(cnt[i], math.ceil(n / 2) - cnt[i] // 2)
+print(ans)
+```
+
+However, if we want to optimize the solution further, we can use a more mathematical approach. We can calculate the maximum number of students who can get their favorite drink directly without iterating through the drink types. Here's another solution:
+
+```python
+import math
+n, k = map(int, input().split())
+cnt = [0] * (k + 1)
+for _ in range(n):
+    cnt[int(input())] += 1
+s = sum(min(i // 2, math.ceil(n / 2) - i // 2) for i in cnt)
+print(s)
+```

@@ -1,0 +1,11 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is concise and efficient, as it calculates the minimum of `k` and `n` and subtracts 1 from it. However, it does not handle the case where `k` is 0 correctly. In this case, the output should be 0, but the code will output -1.
+
+**Revised Solution:**
+
+```python
+n, k = map(int, input().split())
+print(min(k, n) - 1 if k else 0)
+```<eos>

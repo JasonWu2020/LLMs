@@ -1,0 +1,11 @@
+<start_of_turn>model
+```python
+n = int(input())
+s = input()
+t = input()
+min_moves = 0
+for i in range(n):
+  if s[i] != t[i]:
+    min_moves += 1
+print(min_moves)
+```<end_of_turn>

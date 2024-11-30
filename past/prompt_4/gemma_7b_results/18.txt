@@ -1,0 +1,41 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is well-structured and efficient. It uses a graph data structure to represent the network of cities and their connections. The Dijkstra's algorithm is used to find the shortest path from the sender city to the receiver city. The time complexity of the solution is O(n) where n is the number of stamps.
+
+**Alternative Solution:**
+
+```python
+n = int(input())
+stamps = []
+for _ in range(n):
+    a, b = map(int, input().split())
+    stamps.append((a, b))
+graph = {i: set() for i in range(1, 11)}
+for a, b in stamps:
+    graph[a].add(b)
+
+distances = bellman_ford(graph, 1, 10)
+print(*distances)
+```
+
+**Output:**
+```
+1 2 3 4 5
+```
+
+**Alternative Solution:**
+
+```python
+n = int(input())
+stamps = []
+for _ in range(n):
+    a, b = map(int, input().split())
+    stamps.append((a, b))
+graph = {i: set() for i in range(1, 11)}
+for a, b in stamps:
+    graph[a].add(b)
+
+distances = johnson_algo(graph, 1, 10)
+print(*distances)
+```<eos>

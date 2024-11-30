@@ -1,0 +1,14 @@
+[/INST] ```python
+def sock_days(a, b):
+ days_diff = 1
+ same_days = 0
+ while days_diff * 2 <= a + b:
+  if days_diff * 2 == a + b:
+   same_days += days_diff
+  days_diff += 1
+ return days_diff, same_days
+
+a, b = map(int, input().split())
+ answer = sock_days(a, b)
+ print(*answer)
+```</s>

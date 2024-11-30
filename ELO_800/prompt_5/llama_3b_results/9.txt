@@ -1,0 +1,15 @@
+```python
+n = int(input())
+a = list(map(int, input().split()))
+max_count = max(a)
+chest = a.count(max_count)
+biceps = a.count(max_count - 3)
+back = a.count(max_count - 1)
+
+if chest >= biceps and chest >= back:
+    print("chest")
+elif biceps >= chest and biceps >= back:
+    print("biceps")
+else:
+    print("back")
+```

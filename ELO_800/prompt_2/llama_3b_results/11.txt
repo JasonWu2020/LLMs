@@ -1,0 +1,7 @@
+```python
+# -*- coding: utf-8 -*-
+
+k, r = map(int, input().split())
+
+print(max(k, k // r + 1))
+```

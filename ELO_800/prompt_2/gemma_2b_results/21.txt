@@ -1,0 +1,17 @@
+<start_of_turn>model
+```python
+def min_pockets(n, a):
+    a = sorted(a)
+    pockets = 0
+    used_coins = {}
+    for coin in a:
+        if coin not in used_coins:
+            pockets += 1 
+            used_coins[coin] = True
+    return pockets
+
+n = int(input().strip())
+a = list(map(int, input().strip().split()))
+print(min_pockets(n, a)) 
+``` 
+<end_of_turn>

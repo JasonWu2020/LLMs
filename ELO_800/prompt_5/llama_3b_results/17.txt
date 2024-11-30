@@ -1,0 +1,17 @@
+```python
+def min_moves(disks, target):
+    moves = 0
+    for i in range(len(disks)):
+        if disks[i]!= target[i]:
+            moves += abs(ord(disks[i]) - ord(target[i]))
+            if disks[i] > target[i]:
+                moves += disks[i] - target[i] - 1
+            else:
+                moves += target[i] - disks[i] - 1
+    return moves
+
+n = int(input())
+disks = input()
+target = input()
+print(min_moves(disks, target))
+```

@@ -1,0 +1,32 @@
+```python
+import sys
+input = sys.stdin.readline
+
+n, k = map(int, input().split())
+s = input().rstrip()
+
+if k == 1:
+    print(n)
+    print(s)
+    exit()
+
+gcd = k
+for i in range(2, n):
+    if n % i == 0 and k % i == 0:
+        gcd = i
+        break
+
+x = n // gcd
+y = n // gcd * gcd
+if n % gcd!= 0:
+    y += gcd
+
+if n % gcd == 0:
+    print(n)
+    print(s[:n])
+else:
+    for i in range(k):
+        s += s[i]
+    print(y)
+    print(s[:y])
+```

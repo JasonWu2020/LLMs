@@ -1,0 +1,14 @@
+```python
+def min_shovels(k, r):
+    # Calculate the remainder when k is divided by 11
+    remainder = k % 11
+    if remainder == r:
+        return 1
+    elif remainder > r:
+        return 1 + (remainder - r) // 11
+    else:
+        return 1 + (11 - remainder) // 11
+
+k, r = map(int, input().split())
+print(min_shovels(k, r))
+```

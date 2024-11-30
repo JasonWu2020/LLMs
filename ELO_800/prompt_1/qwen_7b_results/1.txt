@@ -1,0 +1,16 @@
+```python
+def min_invitations(n, p):
+    needs_invitation = set()
+    for i, friend in enumerate(p):
+        if friend not in needs_invitation:
+            needs_invitation.add(i)
+            needs_invitation.add(friend)
+    
+    return len(needs_invitation)
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    p = list(map(int, input().split()))
+    print(min_invitations(n, p))
+```

@@ -1,0 +1,15 @@
+[/INST] ```python
+import sys
+
+input() # read the card on the table
+hand = list(map(str, input().split())) # read the five cards in hand
+table_rank, table_suit = map(str, input().split()) # parse rank and suit of table card
+
+for card in hand:
+    rank, suit = card.split()
+    if rank == table_rank or suit == table_suit:
+        print("YES")
+        exit()
+
+print("NO")
+```</s>

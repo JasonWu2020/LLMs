@@ -1,0 +1,17 @@
+```python
+n = int(input())
+a = list(map(int, input().split()))
+
+max_exercises = max(a)
+max_exercises_count = a.count(max_exercises)
+
+if max_exercises_count == 1:
+    print("chest")
+elif max_exercises_count == 2:
+    if a.index(max_exercises) % 2 == 0:
+        print("biceps")
+    else:
+        print("back")
+else:
+    print("back")
+```

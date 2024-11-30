@@ -1,0 +1,11 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    s = input().strip()
+    n = len(s)
+    s_sorted = ''.join(sorted(s))
+    cost = min(sum(abs(x - ord(y) for x, y in zip(s, s_sorted)) for _ in range(n))
+    print(cost)
+```<eos>

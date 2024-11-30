@@ -1,0 +1,15 @@
+<start_of_turn>model
+```python
+n, m, a, b = map(int, input().split())
+g0, x, y, z = map(int, input().split())
+
+h = [[int(g_0 * (i - 1) * m + j - 1) % z for j in range(m)] for i in range(n)]
+
+ans = 0
+for i in range(n - a + 1):
+    for j in range(m - b + 1):
+        res = min(h[i:i + a][j:j + b])
+        ans += res
+
+print(ans)
+```<eos>

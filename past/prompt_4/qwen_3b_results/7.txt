@@ -1,0 +1,31 @@
+```python
+def alice_profit():
+    t = int(input().strip())
+    for _ in range(t):
+        n, k = map(int, input().strip().split())
+        prices_a = list(map(int, input().strip().split()))
+        prices_b = list(map(int, input().strip().split()))
+        
+        # Sort items by price difference a_i - b_i
+        sorted_items = sorted(zip(prices_a, prices_b), key=lambda x: x[0] - x[1], reverse=True)
+        
+        total_profit = 0
+        items_bought_by_alice = 0
+        
+        for a, b in sorted_items:
+            if items_bought_by_alice < k:
+                items_bought_by_alice += 1
+            else:
+                break
+        
+        for a, b in sorted_items:
+            if items_bought_by_alice < k:
+                total_profit += b
+            else:
+                total_profit -= a
+            items_bought_by_alice += 1
+        
+        print(total_profit)
+
+alice_profit()
+```

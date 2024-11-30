@@ -1,0 +1,32 @@
+[/INST] ```python
+import sys
+import string
+
+def main():
+    input = sys.stdin.readline().strip().split()
+    n, k = map(int, input)
+    s = input()[0]
+
+    freq = [0] * 26
+    longest_length = 0
+    current_length = 0
+    start = 0
+
+    for i in range(len(s)):
+        index = ord(s[i]) - ord('A')
+        freq[index] += 1
+        while all(freq[i] == current_length for i in range(k)):
+            current_length += 1
+            longest_length = max(longest_length, current_length)
+            if i + current_length < len(s):
+                index = ord(s[i + current_length]) - ord('A')
+                freq[index] -= 1
+        if i - longest_length >= 0:
+            index = ord(s[i - longest_length]) - ord('A')
+            freq[index] += 1
+
+    print(longest_length)
+
+if __name__ == '__main__':
+    main()
+```</s>

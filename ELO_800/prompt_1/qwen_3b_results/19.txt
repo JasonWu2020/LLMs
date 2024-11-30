@@ -1,0 +1,15 @@
+```python
+import sys
+
+def find_max_k(t):
+    for _ in range(t):
+        n = int(sys.stdin.readline().strip())
+        k = n - 1
+        while (n & k) != 0:
+            k -= 1
+        print(k)
+
+if __name__ == "__main__":
+    t = int(input().strip())
+    find_max_k(t)
+```

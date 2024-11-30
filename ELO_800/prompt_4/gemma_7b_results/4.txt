@@ -1,0 +1,26 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is straightforward and efficient. It iterates over the encrypted string only once, and the time complexity is O(n) where n is the length of the string. However, the solution could be improved by using a dictionary to store the characters that have already been added after each character in $a. This would reduce the time complexity to O(n) as well.
+
+**Improved Solution:**
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    s = input().strip()
+
+    a = ""
+    added_chars = {}
+    for i in s:
+        if i not in added_chars:
+            added_chars[i] = 0
+        added_chars[i] += 1
+    for i in s:
+        char_added = s[s.index(i) + 1: s.index(i) + 1]
+        a += s.replace(char_added, "")
+
+    print(a)
+```<eos>

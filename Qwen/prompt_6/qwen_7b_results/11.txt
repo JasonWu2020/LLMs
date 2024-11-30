@@ -1,0 +1,13 @@
+```python
+# Read input values
+k, r = map(int, input().split())
+
+# Calculate minimum number of shovels
+if r > 10:
+    min_shovels = max(1, (k * 10 - r) // (k - 10))
+else:
+    min_shovels = 1
+
+# Print the solution
+print(min_shovels)
+```

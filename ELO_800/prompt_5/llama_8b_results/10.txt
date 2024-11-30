@@ -1,0 +1,8 @@
+```python
+a, b = map(int, input().split())
+a -= 1
+b -= 1
+print(a + b, min(a, b) // 2 + (a + b) % 2)
+```
+
+This Python code reads the number of red socks (`a`) and blue socks (`b`) from the input, subtracts 1 from each to account for the first day when Vasya wears a pair of different socks, and then prints the maximum number of days when Vasya can wear different socks and the number of days when he can wear the same socks.

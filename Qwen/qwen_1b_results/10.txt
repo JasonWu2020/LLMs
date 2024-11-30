@@ -1,0 +1,43 @@
+To address the given problem, we need to determine the optimal way to use Vasya's socks over multiple days while adhering to his fashion rules. The goal is to maximize the number of days he can wear different colored socks and minimize the number of days he wears the same color socks.
+
+### Problem Breakdown:
+- **Objective**: Maximize the number of distinct pairs of socks Vasya can wear.
+- **Constraints**:
+  - Vasya has `a` red socks and `b` blue socks.
+  - Every day, he uses exactly one sock per foot (one red and one blue).
+  - After using a pair, he discards both socks.
+
+### Approach:
+1. **Initial Pair Usage**: On the first day, Vasya can wear one pair of different socks (one red and one blue). This gives us the initial usage of one pair.
+2. **Remaining Socks Calculation**: After using the first pair, there will be `a-1` red and `b-1` blue socks remaining.
+3. **Maximizing Distinct Pairs**: To find the maximum number of distinct pairs, we calculate the minimum of `a-1` and `b-1`, which represents the number of socks of each color available after the first pair has been used.
+
+### Python Code Implementation:
+
+```python
+def max_days(a, b):
+    # Calculate the maximum number of distinct pairs of socks Vasya can wear
+    distinct_pairs = min(a-1, b-1)
+    
+    # Remaining socks after forming the initial pair
+    remaining_red_socks = a - 1
+    remaining_blue_socks = b - 1
+    
+    return distinct_pairs, remaining_red_socks + remaining_blue_socks
+
+# Example usage
+if __name__ == "__main__":
+    # Reading input from stdin
+    a, b = map(int, input().split())
+    
+    # Calculating and printing the result
+    distinct_pairs, remaining_red_blue = max_days(a, b)
+    print(distinct_pairs, remaining_red_blue)
+```
+
+### Explanation:
+- **distinct_pairs**: This variable calculates the maximum number of distinct pairs of socks Vasya can wear based on the available red and blue socks.
+- **remaining_red_socks** and **remaining_blue_socks**: These variables represent the number of red and blue socks left after the first pair has been worn.
+- **print(distinct_pairs, remaining_red_blue)**: Outputs the maximum number of distinct pairs and the total number of socks remaining after forming these pairs.
+
+This approach ensures that Vasya maximizes the number of days he can wear different-colored socks while minimizing the time spent with the same color socks.

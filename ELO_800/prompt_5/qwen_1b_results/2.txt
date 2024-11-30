@@ -1,0 +1,19 @@
+```python
+def check_permutations(n, a, b):
+    # If a + b > n, it's impossible to have both a long common prefix and suffix
+    if a + b > n:
+        return "No"
+    
+    # If a = b, then all numbers must be consecutive for a valid pair
+    if a == b:
+        return "Yes" if all(x == i+1 for x, i in enumerate(range(1, n+1))) else "No"
+    
+    # Otherwise, it's possible to find a valid pair
+    return "Yes"
+
+# Read input
+t = int(input())
+for _ in range(t):
+    n, a, b = map(int, input().split())
+    print(check_permutations(n, a, b))
+```

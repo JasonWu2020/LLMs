@@ -1,0 +1,7 @@
+```python
+
+for _ in range(int(input())):
+    a, b = map(int, input().split())
+    print(max(0, a - b) + b - 1)
+
+```

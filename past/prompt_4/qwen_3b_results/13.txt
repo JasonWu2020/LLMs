@@ -1,0 +1,11 @@
+```python
+def find_max_subsequence(s):
+    max_subseq = ''
+    for char in reversed(s):
+        if char >= max_subseq[-1]:
+            max_subseq += char
+    return max_subseq[::-1]
+
+s = input().strip()
+print(find_max_subsequence(s))
+```

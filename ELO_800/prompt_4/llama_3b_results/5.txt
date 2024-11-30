@@ -1,0 +1,17 @@
+Critique of the original solution:
+
+* The solution is concise and directly addresses the problem statement.
+* It uses the modulo operator (`%`) to find the remainder of `a` divided by `b`, which is a straightforward approach.
+* However, the solution does not handle the case where `b` is zero, which would cause a ZeroDivisionError.
+* The solution uses `max(0, b - (a % b))`, which is equivalent to `(b - (a % b))`. This is unnecessary and can be simplified to `(a % b)`. 
+
+Here's an improved solution:
+
+```python
+```python
+t = int(input())
+
+for _ in range(t):
+    a, b = map(int, input().split())
+    print((a + b - 1) // b)
+```

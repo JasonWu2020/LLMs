@@ -1,0 +1,20 @@
+```python3.8
+import sys
+
+def max_k(n):
+    if n == 1:
+        return 1
+    k = 1
+    while True:
+        if (n - k) > 0 and (n - k) % 2 != 0:
+            break
+        k += 1
+    return k
+
+if __name__ == "__main__":
+    t = int(input().strip())
+    for _ in range(t):
+        n = int(input().strip())
+        print(max_k(n))
+```
+```

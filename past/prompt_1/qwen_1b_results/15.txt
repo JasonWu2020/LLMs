@@ -1,0 +1,34 @@
+```python
+import sys
+
+def solve():
+    n = int(input())
+    
+    # Read points and build adjacency list
+    points = []
+    adj_list = [[] for _ in range(n)]
+    for i in range(2*n):
+        x, y = map(int, input().split())
+        if len(points) < i+1:
+            points.append((x, y))
+        else:
+            adj_list[points.index((x, y))].append(i)
+    
+    # Assign vertices to points
+    assignment = [0] * n
+    
+    def dfs(point):
+        if assignment[point]:
+            return
+        assignment[point] = 1
+        for neighbor in adj_list[point]:
+            dfs(neighbor)
+    
+    for point in points:
+        dfs(point)
+
+    for i in range(n):
+        print(assignment[i]+1)
+
+solve()
+```

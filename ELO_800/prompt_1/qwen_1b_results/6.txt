@@ -1,0 +1,19 @@
+```python
+def can_play(table_card, player_cards):
+    suits = {'D': 'Diamonds', 'C': 'Clubs', 'S': 'Spades', 'H': 'Hearts'}
+    ranks = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'T': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
+    
+    # Check if any of the player's cards match the table card
+    for card in player_cards:
+        if card[0] == table_card[0] or card[1] == table_card[1]:
+            return "YES"
+    
+    return "NO"
+
+# Read input
+table_card = input().strip()
+player_cards = [input().strip() for _ in range(5)]
+
+# Print output
+print(can_play(table_card, player_cards))
+```

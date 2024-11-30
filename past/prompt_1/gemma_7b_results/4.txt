@@ -1,0 +1,22 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    p = list(map(int, input().split()))
+
+    # Create a map to store the best friends and their invitations
+    best_friends = {}
+    for i in range(n):
+        best_friends[i] = p[i]
+
+    # Count the number of friends who have received an invitation
+    num_invites = 0
+    for i in range(n):
+        if best_friends[i] in invites:
+            num_invites += 1
+
+    # Print the minimum number of invitations
+    print(num_invites)
+```<eos>

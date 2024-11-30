@@ -1,0 +1,26 @@
+```python
+import sys
+
+def can_play_card(table_card, player_hand):
+    # Check if the table card matches the rank of any card in the player's hand
+    if table_card[0] == player_hand[0]:
+        return True
+    
+    # Check if the table card matches the suit of any card in the player's hand
+    elif table_card[1] == player_hand[1]:
+        return True
+    
+    return False
+
+
+if __name__ == "__main__":
+    table_card = input().strip()
+    player_hand = [input().strip() for _ in range(5)]
+    
+    if can_play_card(table_card, player_hand):
+        print("YES")
+    else:
+        print("NO")
+```
+
+This Python script reads the card on the table and the five cards in your hand from standard input, then checks if you can play at least one card based on the rules provided. It outputs "YES" if you can play a card, and "NO" otherwise.

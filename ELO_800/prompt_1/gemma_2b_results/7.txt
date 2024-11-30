@@ -1,0 +1,25 @@
+<start_of_turn>model
+```python
+def lexicographically_smallest_permutation(S, T):
+  s = list(S)
+  t = list(T)
+  for i in range(len(s)):
+    if s[i] != t[i]:
+      j = i + 1
+      while j < len(s):
+        if s[j] < t[j] and s[j] != t[j]:
+          break
+        j += 1
+      if j < len(s):
+        for k in range(j, len(s)):
+          s[k:], s = s, s[:k]
+        break
+  return "".join(s)
+
+t = int(input())
+for _ in range(t):
+  S = input()
+  T = input()
+  print(lexicographically_smallest_permutation(S, T))
+```
+<end_of_turn>

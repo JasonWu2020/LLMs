@@ -1,0 +1,17 @@
+<start_of_turn>model
+```python
+def minimum_cost(s):
+  n = len(s)
+  ans = 0
+  for i in range(n - 1, 0, -1):
+    if i + 1 < n and s[i] > s[i + 1]:
+      ans += i * 2
+  return ans
+
+# Take input
+t = int(input())
+for _ in range(t):
+  s = input()
+  cost = minimum_cost(s)
+  print(cost) 
+```<end_of_turn>

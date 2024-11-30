@@ -1,0 +1,16 @@
+[/INST] ```python
+import sys
+
+n = int(sys.stdin.readline())
+positions = []
+for _ in range(n):
+    x, d = map(int, sys.stdin.readline().split())
+    positions.append((x, d))
+
+for pos in positions:
+    x, d = pos
+    if (x + d) in positions and abs(d) != abs(positions[(positions.index(positions[0]) if pos == positions[0] else positions.index(pos) - 1)]["d"]):
+        print("YES")
+        exit()
+print("NO")
+```</s>

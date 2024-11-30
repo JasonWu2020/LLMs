@@ -1,0 +1,18 @@
+```python
+import sys
+input = sys.stdin.readline
+
+n, k = map(int, input().split())
+s = input().strip()
+cnt = [0] * k
+for i in range(n):
+    cnt[ord(s[i]) - ord('A')] += 1
+for i in range(k):
+    if cnt[i] == 0:
+        print(0)
+        exit()
+ans = min(cnt)
+for i in range(k):
+    ans += min(cnt) * (cnt[i] // min(cnt))
+print(ans)
+```

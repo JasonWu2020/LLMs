@@ -1,0 +1,20 @@
+```python
+import sys; readline = sys.stdin.readline
+
+def solve(n, a, b):
+    # If the sum of a and b is greater than n, it's impossible to have both as the longest common prefix and suffix
+    if a + b > n:
+        return "No"
+    # If the length of the permutation is less than the maximum of a and b, it's impossible to have a common prefix/suffix
+    if n < max(a, b):
+        return "No"
+    # Otherwise, such permutations always exist
+    return "Yes"
+
+t = int(readline())
+for _ in range(t):
+    n, a, b = map(int, readline().split())
+    print(solve(n, a, b))
+```
+
+This Python script reads multiple test cases where each test case consists of three integers \( n \), \( a \), and \( b \). It then checks if such permutations \( p \) and \( q \) can be formed according to the given conditions and prints "Yes" or "No" accordingly.

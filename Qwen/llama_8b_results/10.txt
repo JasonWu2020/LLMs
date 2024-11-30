@@ -1,0 +1,41 @@
+The outputted solution is mostly correct, but it can be improved in a few ways.
+
+1. The solution assumes that the input is always valid (i.e., the input is two positive integers between 1 and 100). However, in a real-world scenario, the input may not always be valid. It's a good practice to add error checking code to handle invalid input.
+
+2. The solution does not handle the case where the input is not two integers. It's a good practice to add error checking code to handle this case.
+
+3. The solution does not handle the case where the input integers are not between 1 and 100. It's a good practice to add error checking code to handle this case.
+
+4. The solution can be simplified by using a single expression to calculate the number of days Vasya can wear the same socks.
+
+Here's an updated solution that addresses these issues:
+
+```python
+def max_days(a, b):
+    # Check if the input is valid
+    if not (isinstance(a, int) and isinstance(b, int) and 1 <= a <= 100 and 1 <= b <= 100):
+        raise ValueError("Invalid input")
+
+    # Calculate the number of days Vasya can wear different socks
+    days_different = min(a, b)
+    
+    # Calculate the number of days Vasya can wear the same socks
+    remaining = a + b - 2 * days_different
+    days_same = remaining // 2 if remaining >= 2 else remaining
+    
+    return days_different, days_same
+
+# Get the input
+while True:
+    try:
+        a, b = map(int, input().split())
+        break
+    except ValueError:
+        print("Invalid input. Please enter two integers between 1 and 100 separated by a space.")
+
+# Call the function and print the result
+days_different, days_same = max_days(a, b)
+print(f"{days_different} {days_same}")
+```
+
+This updated solution adds error checking code to handle invalid input, simplifies the calculation of the number of days Vasya can wear the same socks, and prints the solution according to the specifications.

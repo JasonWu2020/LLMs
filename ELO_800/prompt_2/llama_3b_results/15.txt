@@ -1,0 +1,23 @@
+```python
+from collections import defaultdict
+
+for _ in range(int(input())):
+    red_handle = set()
+    for _ in range(int(input())):
+        name, before, after = input().split()
+        before, after = int(before), int(after)
+        if after > before:
+            if after >= 2400:
+                red_handle.add(name)
+            else:
+                if before >= 2200:
+                    red_handle.add(name)
+
+    anton_before, anton_after = map(int, input().split())
+    if anton_before < 2400:
+        anton_before = 0
+    if anton_after > anton_before:
+        print("YES" if anton_after >= 2400 else "NO")
+    else:
+        print("NO")
+```

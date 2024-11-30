@@ -1,0 +1,33 @@
+```python
+from typing import List
+
+def min_cyclic_shift_cost(s: str) -> int:
+    n = len(s)
+    left = [n] * n
+    stack = []
+    for i, char in enumerate(s):
+        while stack and (stack[-1] == '1' and char == '0'):
+            top = stack.pop()
+            left[i] = min(left[i], i - top)
+        stack.append(i)
+    
+    stack.clear()
+    right = [n] * n
+    for i in range(n - 1, -1, -1):
+        char = s[i]
+        while stack and (stack[-1] == '1' and char == '0'):
+            top = stack.pop()
+            right[i] = min(right[i], top - i)
+        stack.append(i)
+    
+    total_cost = 0
+    for i in range(n):
+        total_cost += min(left[i], right[i])
+    return total_cost
+
+if __name__ == "__main__":
+    num_tests = int(input())
+    for _ in range(num_tests):
+        s = input().strip()
+        print(min_cyclic_shift_cost(s))
+```

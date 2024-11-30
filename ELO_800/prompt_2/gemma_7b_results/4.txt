@@ -1,0 +1,16 @@
+<start_of_turn>model
+```python
+read_num_test_cases = int(input())
+
+for _ in range(read_num_test_cases):
+    read_n = int(input())
+    s = input().strip()
+
+    # Find the number of letters added after each character
+    added_letters = set(s) - set(s[0:1])
+
+    # Remove the added letters from the encrypted string
+    a = ''.join(['a' if ch not in added_letters else ch for ch in s])
+
+    print(a)
+```<eos>

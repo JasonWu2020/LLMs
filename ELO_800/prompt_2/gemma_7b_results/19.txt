@@ -1,0 +1,15 @@
+<start_of_turn>model
+```python
+
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    k = 0
+    bin_n = bin(n)[2:].split('0')
+    for i in range(len(bin_n)):
+        if bin_n[i] == '1':
+            k += 1
+    print(k)
+
+```<eos>

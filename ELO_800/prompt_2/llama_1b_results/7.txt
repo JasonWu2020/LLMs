@@ -1,0 +1,25 @@
+```python
+def solve():
+    s = input()
+    t = input()
+    n = len(s)
+    cnt = [0, 0, 0]
+    for c in s:
+        cnt[ord(c) - ord('a')] += 1
+    for c in t:
+        if c!= 'a':
+            cnt[ord(c) - ord('a')] -= 1
+    ans = ['a'] * n
+    for i in range(n):
+        if cnt[ord(s[i]) - ord('a')] > 0:
+            ans[i] = chr(ord('a') + cnt[ord(s[i]) - ord('a') - 1])
+            cnt[ord(s[i]) - ord('a')] -= 1
+    for i in range(n):
+        if ans[i]!= 'a':
+            print(ans[i], end='')
+    print()
+
+t = int(input())
+for _ in range(t):
+    solve()
+```

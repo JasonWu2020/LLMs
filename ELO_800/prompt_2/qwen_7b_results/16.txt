@@ -1,0 +1,41 @@
+```python
+import sys
+
+def count_interesting_numbers(n):
+    """
+    Calculates the number of interesting numbers in the range [1, n].
+    """
+    # Base case: the first interesting number is 9
+    if n < 9:
+        return 0
+    
+    # Count trailing 9s in n
+    num_trailing_nines = len(str(n)) - len(str(n).rstrip('9'))
+    
+    # Calculate the maximum interesting number with the same number of trailing 9s
+    max_interesting_num_with_same_nines = int('9' * num_trailing_nines)
+    
+    # Check if max_interesting_num_with_same_nines is interesting
+    if S(max_interesting_num_with_same_nines + 1) < S(max_interesting_num_with_same_nines):
+        # If it is interesting, add the count of numbers with trailing 9s
+        # that come before the max_interesting_num_with_same_nines
+        return num_trailing_nines * (n // (10**num_trailing_nines))
+    else:
+        # If it is not interesting, add the count of numbers with trailing 9s
+        # that come before the max_interesting_num_with_same_nines
+        return (num_trailing_nines - 1) * (n // (10**num_trailing_nines)) + 1
+
+def S(x):
+    """Returns the sum of digits of x."""
+    return sum(int(digit) for digit in str(x))
+
+def main():
+    T = int(input())
+    for _ in range(T):
+        n = int(input())
+        print(count_interesting_numbers(n))
+
+if __name__ == "__main__":
+    main()
+```
+```

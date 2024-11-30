@@ -1,0 +1,12 @@
+```python
+def shortest_password_length(t):
+    for _ in range(t):
+        n = int(input())
+        a = list(map(int, input().split()))
+        unique_elements = set(a)
+        print(len(unique_elements))
+
+# Call function with input data
+t = int(input())
+shortest_password_length(t)
+```

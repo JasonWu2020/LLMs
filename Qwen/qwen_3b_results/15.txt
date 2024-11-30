@@ -1,0 +1,65 @@
+To solve this problem, we need to determine if Anton's performance in the contest qualifies him as having performed "good." This means checking if he outscored a participant whose handle was red before the contest and whose rating increased after the contest.
+
+Here's a step-by-step plan:
+1. Parse the input data to understand each participant's initial and final ratings.
+2. Determine the color of each participant's handle based on their initial rating.
+3. Identify participants whose handle color was red before the contest and whose rating increased after the contest.
+4. Check if Anton outscored any of these participants.
+
+Let's implement this plan in Python:
+
+```python
+def determine_performance(n):
+    # Dictionary to store the color of each participant's handle based on their initial rating
+    colors = {}
+    
+    # Process each participant
+    for i in range(1, n + 1):
+        name = input().strip()
+        before_rating = int(input())
+        after_rating = int(input())
+        
+        # Determine the color based on the initial rating
+        if before_rating >= 2400:
+            colors[name] = 'red'
+        elif before_rating < 2400 and before_rating >= 2200:
+            colors[name] = 'orange'
+        elif before_rating < 2200 and before_rating >= 2000:
+            colors[name] = 'yellow'
+        elif before_rating < 2000 and before_rating >= 1800:
+            colors[name] = 'green'
+        else:
+            colors[name] = 'blue'
+        
+        # Update the color if the rating increased after the contest
+        if before_rating != after_rating and after_rating > before_rating:
+            colors[name] = 'red'  # Red if the rating increased
+    
+    # Find participants whose handle color was red before the contest and whose rating increased
+    participants_to_check = []
+    for name, color in colors.items():
+        if color == 'red':
+            participants_to_check.append((name, before_rating, after_rating))
+    
+    # Check if Anton outscored any of these participants
+    for name, before_rating, after_rating in participants_to_check:
+        if int(input()) > after_rating:
+            return "YES"
+    
+    return "NO"
+
+# Read the number of participants
+n = int(input())
+
+# Get the result
+result = determine_performance(n)
+print(result)
+```
+
+### Explanation:
+1. **Input Parsing**: We use `input().strip()` to get the participant names, and `int(input())` to get the initial and final ratings.
+2. **Color Determination**: We use a dictionary `colors` to map each participant's name to their handle color based on their initial rating.
+3. **Rating Increase Check**: If a participant's rating increases after the contest, we update their color to 'red'.
+4. **Performance Check**: We check if Anton outscored any participant whose color was 'red' before the contest and whose rating increased after the contest.
+
+This solution ensures that we correctly determine whether Anton's performance qualifies him as having performed "good" in the contest.

@@ -1,0 +1,20 @@
+```python
+import sys
+
+t = int(input())
+
+for _ in range(t):
+    n, a, b = map(int, input().split())
+
+    if a == b and a == n:
+        print("YES")
+    elif a == b and a < n:
+        print("YES")
+    elif a == n - b:
+        print("YES")
+    elif a + b < n:
+        print("YES")
+    else:
+        print("NO")
+
+```

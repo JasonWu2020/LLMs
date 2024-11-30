@@ -1,0 +1,65 @@
+```python
+# Critique of the Original Solution:
+# 1. The solution is correct in terms of producing outputs as specified.
+# 2. However, it does not include error handling, which is crucial when dealing with invalid inputs.
+# 3. The code uses dynamic generation of the board array, which might not be the most efficient method for large inputs.
+# 4. There's no mechanism to validate if the placement of rooks leads to a stable arrangement. 
+
+# New Solution:
+def is_stable(board):
+    """
+    Check if given board configuration is stable.
+    A configuration is stable if there's no rook attacking another rook on the same row or column.
+    """
+    rows = [''.join(row) for row in board]
+    cols = [''.join(col) for col in zip(*board)]
+
+    # Check rows
+    for row in rows:
+        if 'RR' in row:
+            return False
+
+    # Check columns
+    for col in cols:
+        if 'RR' in col:
+            return False
+
+    return True
+
+def generate_stable_board(n, k):
+    """
+    Generate a stable configuration of rooks on the board.
+    """
+    # Base case: If k equals n, we can place one rook per column
+    if k == n:
+        board = [['.' if j != i else 'R' for j in range(n)] for i in range(n)]
+        return board
+    
+    # Recursive case: Start with k rooks in the last row and one less rook in each subsequent row
+    board = [['.' for _ in range(n)] for _ in range(n)]
+    placed_rooks = 0
+    
+    for row in range(n - 1, -1, -1):
+        for col in range(n):
+            if placed_rooks < k and col == n - 1 - placed_rooks:
+                board[row][col] = 'R'
+                placed_rooks += 1
+                
+    return board if is_stable(board) else None
+
+# Main execution block
+def main():
+    t = int(input())
+    for _ in range(t):
+        n, k = map(int, input().split())
+        result = generate_stable_board(n, k)
+        if result is not None:
+            for row in result:
+                print(''.join(row))
+        else:
+            print(-1)
+
+if __name__ == '__main__':
+    main()
+```
+```

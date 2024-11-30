@@ -1,0 +1,22 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is correct, but it can be improved. The code calculates the maximum of the three variables `a`, `2*b`, and `2*c`, which will give the maximum number of stones that can be taken. However, it does not check if the necessary conditions for each operation are met. For example, the operation of taking one stone from the first heap and two stones from the second heap can only be done if the first heap has at least one stone and the second heap has at least two stones. The code does not check if these conditions are met, which could lead to incorrect results.
+
+**Revised solution:**
+
+```python3.8
+
+t = int(input())
+
+for _ in range(t):
+    a, b, c = map(int, input().split())
+    m = max(a, 2*b, 2*c)
+    if a and 2*b and 2*c:
+        m = min(m, 1 + 2*b, 2 + 2*c)
+    print(m)
+```
+
+**Explanation:**
+
+The revised solution calculates the maximum number of stones that can be taken, taking into account the necessary conditions for each operation. It checks if the first heap has at least one stone, the second heap has at least two stones, and the third heap has at least two stones. If all conditions are met, the solution calculates the minimum of the maximum number of stones that can be taken from each operation, which ensures that the maximum number of stones is taken.<eos>

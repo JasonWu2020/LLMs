@@ -1,0 +1,25 @@
+[/INST] ```python
+def handle_color(rating):
+    if rating >= 2400:
+        return "red"
+    elif rating >= 2200:
+        return "orange"
+    else:
+        return "other"
+
+def perform_good(contest_results):
+    red_handles = []
+    for i in range(len(contest_results)):
+        name_i, before_i, after_i = contest_results[i]
+        color_i = handle_color(before_i)
+        if color_i == "red" and after_i > before_i:
+            red_handles.append(name_i)
+    return len(red_handles) > 0 and any(name in red_handles for name in ["Burunduk1"])*"YES":"NO"
+
+n = int(input())
+contest_results = []
+for i in range(n):
+    name_i, before_i, after_i = input().split()
+    contest_results.append([name_i, int(before_i), int(after_i)])
+print(perform_good(contest_results))
+```</s>

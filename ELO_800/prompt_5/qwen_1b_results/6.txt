@@ -1,0 +1,15 @@
+```python
+def can_play_card(table_card, hand_cards):
+    # Convert the string representation of the card into its actual value
+    table_rank = 'A' if table_card == 'AS' else table_card[0]
+    table_suit = table_card[-1]
+
+    # Check if any card in the hand matches the table card's rank or suit
+    return any(card[0] == table_rank or card[-1] == table_suit for card in hand_cards)
+
+# Example inputs
+table_card = 'AS'
+hand_cards = ['2D', '3C', '4S', '5H', '6C']
+
+print(can_play_card(table_card, hand_cards))  # Expected output: "YES"
+```

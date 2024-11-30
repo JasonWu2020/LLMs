@@ -1,0 +1,21 @@
+```python
+def min_invitations(t):
+    results = []
+    for _ in range(t):
+        n = int(input())
+        p = list(map(int, input().split()))
+        # If there are at least 3 friends, sending invitations to the first three works
+        if n >= 3:
+            result = 3
+        else:
+            # Otherwise, calculate the minimum based on the given constraints
+            result = n + 1
+        results.append(result)
+    return "\n".join(map(str, results))
+
+# Reading input and printing output
+t = int(input())
+print(min_invitations(t))
+```
+
+This solution reads the input as specified and outputs the minimum number of invitations needed for each test case. It handles the logic for determining the minimum number of invitations required, which is based on whether there are at least 3 friends or fewer. For scenarios with 3 or more friends, it sends invitations to the first three friends, as they cover all possible best friend pairs. For fewer than 3 friends, it calculates the minimum number of invitations needed to ensure at least two friends attend, which is always `n + 1`.

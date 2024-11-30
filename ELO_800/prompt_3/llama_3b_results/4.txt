@@ -1,0 +1,23 @@
+Critique of the provided solution:
+
+The provided solution is quite straightforward and correctly implements the required functionality. However, it has a time complexity of O(n^2) due to the `find` method, which is not efficient for large inputs. A more efficient solution can be achieved by using a stack data structure.
+
+Here's a more efficient solution:
+
+```python
+python
+for _ in range(int(input())):
+    n = int(input())
+    s = input()
+    ans = []
+    for i in range(n):
+        while s and s[i]!= s[0]:
+            i += 1
+        if i == n:
+            break
+        ans.append(s[i])
+        i += 1
+    print(''.join(ans))
+```
+
+This solution iterates over the string `s` only once, and it stops as soon as it finds the first character that matches the first character of the substring. This approach reduces the time complexity to O(n), making it more efficient for large inputs.

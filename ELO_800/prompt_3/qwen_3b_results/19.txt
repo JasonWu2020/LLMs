@@ -1,0 +1,22 @@
+Here's a Python solution to the problem:
+
+```python
+def find_max_k(t):
+    results = []
+    for _ in range(t):
+        n = int(input())
+        k = n - 1
+        while (k > 0) and ((n & k) != 0):
+            k -= 1
+        results.append(k)
+    return results
+
+t = int(input())
+results = find_max_k(t)
+for result in results:
+    print(result)
+```
+
+This solution reads the number of test cases `t`, then iterates through each test case. For each test case, it calculates the maximum value of `k` such that the bitwise AND operation between `n` and all integers from `n-1` down to `k` equals 0. It starts with `k=n-1` and decrements `k` until the condition fails. The results are printed for each test case. 
+
+Please note that this solution works within the given constraints but may not be the most efficient one for large values of `n`. It involves checking every integer from `n-1` down to `k` which could be slow for very large inputs. However, it complies with the specified input and output formats.

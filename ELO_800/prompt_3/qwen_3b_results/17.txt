@@ -1,0 +1,13 @@
+```python
+def min_moves_to_open_lock(n, current, target):
+    def manhattan_distance(s1, s2):
+        return sum(abs(int(d1) - int(d2)) for d1, d2 in zip(s1, s2))
+    
+    return sum(manhattan_distance(current[i], target[i]) for i in range(n))
+
+n = int(input())
+current = input()
+target = input()
+
+print(min_moves_to_open_lock(n, current, target))
+```

@@ -1,0 +1,26 @@
+<start_of_turn>model
+```python
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()
+    l = 0
+    r = 0
+    count_a = 0
+    count_b = 0
+    for i in range(n):
+        if s[i] == 'a':
+            count_a += 1
+        else:
+            count_b += 1
+        if count_a == count_b:
+            if r - l + 1 > 0:
+              l = 0
+              r = l + 1
+            else:
+              r = n
+    if l != -1 and r != -1:
+        print(l, r)
+    else:
+        print(-1, -1)
+```<end_of_turn>

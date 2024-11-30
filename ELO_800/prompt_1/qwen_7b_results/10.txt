@@ -1,0 +1,20 @@
+```python
+def calculate_days(a: int, b: int) -> None:
+    """
+    Calculate the maximum number of days Vasya can wear different socks and then wear the same socks.
+    
+    Parameters:
+    a (int): The number of red socks.
+    b (int): The number of blue socks.
+    
+    Output:
+    Prints two space-separated integers - the maximum number of days with different socks and the subsequent days with same socks.
+    """
+    different_socks_days = min(a, b)
+    same_socks_days = (max(a, b) - different_socks_days) // 2
+    print(different_socks_days, same_socks_days)
+
+if __name__ == "__main__":
+    a, b = map(int, input().split())
+    calculate_days(a, b)
+```

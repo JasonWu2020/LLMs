@@ -1,0 +1,8 @@
+[/INST] ```python
+from sys import stdin, stdout
+
+for _ in range(int(stdin.readline())):
+    a, b, c = map(int, stdin.readline().split())
+    x, y = max(0, min(a, b) - 1), max(0, b, c) - 1
+    print(stdout.write(str(a + b - 2 if x > 0 and y > 1 else (a + c - 2 if x > 0 and y < c else max(a, b, c)))) or exit(), end='\n')
+```</s>

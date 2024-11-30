@@ -1,0 +1,30 @@
+```python
+import sys
+
+def print_board(n, k):
+    for i in range(1, n+1):
+        for j in range(1, n+1):
+            if i == 1 and j == k:
+                print("R", end='')
+            elif i == k and j == 1:
+                print("R", end='')
+            elif i == k or j == k:
+                print("R", end='')
+            else:
+                print(".", end='')
+        print()
+
+def main():
+    t = int(input())
+    for _ in range(t):
+        n, k = map(int, input().split())
+        if k > n:
+            print(-1)
+        else:
+            print_board(n, k)
+
+if __name__ == "__main__":
+    main()
+```
+
+This script will first read the number of test cases, and then for each test case, it will read the size of the board `n` and the number of rooks `k`. If `k` is greater than `n`, it will print `-1`, because it's impossible to place `k` rooks on an `n x n` board in a stable way. Otherwise, it will print a stable arrangement of `k` rooks on the `n x n` board.

@@ -1,0 +1,57 @@
+[/INST] Here's the Python code to solve the problem and output the result according to the specifications:
+
+```python
+import sys
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+def bfs(graph, visited, start):
+    queue = [(start, [start])]
+    visited[start] = True
+
+    while queue:
+        vertex, path = queue.pop(0)
+
+        for neighbor in graph[vertex]:
+            if not visited[neighbor]:
+                visited[neighbor] = True
+                queue.append((neighbor, path + [neighbor]))
+                if len(path) > 1:
+                    return path
+
+def partition(n):
+    graph = [[[] for _ in range(n + 1)] for _ in range(n + 1)]
+
+    for i in range(1, n + 1):
+        for j in range(i + 1, n + 1):
+            if i - j <= 1:
+                graph[i].append(j)
+                graph[j].append(i)
+
+    visited = [False] * (n + 1)
+    result = bfs(graph, visited, 1)
+
+    if result is None:
+        print("No")
+        return
+
+    set1, set2 = [], []
+    for i in range(1, n + 1):
+        if i in result:
+            set1 += [i]
+        else:
+            set2 += [i]
+
+    print("Yes")
+    print(f'{len(set1)} {len(set1)[0]} {", ".join(map(str, set1))}')
+    print(f'{len(set2)} {len(set2)[0]} {", ".join(map(str, set2))}')
+
+if __name__ == "__main__":
+    n = int(sys.stdin.readline().strip())
+    partition(n)
+```
+
+This code reads the input from the standard input, solves the problem using the algorithm described above, and outputs the solution according to the specifications. Note that the code assumes that the input is a single integer on a separate line, and that the output is printed to the standard output. The code uses Python 3.8 syntax and built-in functions.</s>

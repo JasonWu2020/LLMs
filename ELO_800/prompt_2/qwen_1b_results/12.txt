@@ -1,0 +1,23 @@
+```python3
+from typing import List
+
+def find_balanced_substring(n: int, s: str) -> List[int]:
+    for i in range(n):
+        for j in range(i+1, n+1):
+            if s[i:j].count('a') == s[i:j].count('b'):
+                return [i+1, j]
+    return [-1, -1]
+
+# Read input
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()
+    
+    # Solve the problem
+    result = find_balanced_substring(n, s)
+    
+    # Output the result
+    print(*result)
+```
+```

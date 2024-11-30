@@ -1,0 +1,26 @@
+[/INST] ```python
+from sys import stdin, stdout
+
+for _ in range(int(stdin.readline())):
+    n, k = map(int, stdin.readline().split())
+    if k > n:
+        stdout.write("-1\n")
+        continue
+    board = [[0] * n for _ in range(n)]
+    def is_valid(x, y):
+        for i in range(n):
+            if x == i or y == i: continue
+            for j in range(n):
+                if board[i][j] or board[j][i]:
+                    if abs(i-x) == abs(j-y) or i-x in range(j, n, y-j): return False
+        return True
+    for _ in range(k):
+        x, y = map(int, stdin.readline().split())
+        if not is_valid(x, y):
+            stdout.write("-1\n")
+            break
+        board[x-1][y-1] = 1
+    else:
+        for row in board:
+            stdout.write("." + "R."*(len(row)-1) + "\n") if row else stdout.write(".{}".format("R"*(len(row) or 1))+"\n")
+```</s>

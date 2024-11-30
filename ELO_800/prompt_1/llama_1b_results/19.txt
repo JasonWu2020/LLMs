@@ -1,0 +1,6 @@
+```python
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    print(bin(n - 1).count('1') - 1)
+```

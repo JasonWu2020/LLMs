@@ -1,0 +1,36 @@
+```python3
+import sys
+input = sys.stdin.readline
+
+def main():
+    n, k = map(int, input().strip().split())
+    s = input().strip()
+    
+    # Count the frequency of each letter in the first k letters
+    freq = [0] * k
+    for i in range(k):
+        freq[ord(s[i]) - ord('A')] += 1
+    
+    max_len = 0
+    for i in range(1 << k):
+        count = [0] * k
+        for j in range(k):
+            if i & (1 << j): 
+                count[j] = freq[j]
+        
+        # Check if all letters have the same frequency
+        valid = True
+        for c in count:
+            if c != count[0]:
+                valid = False
+                break
+        
+        if valid:
+            max_len = max(max_len, bin(i).count("1"))
+    
+    print(max_len)
+
+main()
+```
+
+This Python program reads the input values `n` and `k`, followed by the string `s`. It then counts the frequency of each letter in the first `k` letters of the string and checks every possible combination of `1`s and `0`s in binary representation of numbers up to `2^k` to find the longest sequence where all letters appear with equal frequency. The result is printed out.

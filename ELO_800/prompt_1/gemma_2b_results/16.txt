@@ -1,0 +1,14 @@
+<start_of_turn>model
+```python
+def interesting(n):
+  s = 0
+  x = 9
+  while x <= n:
+    s+=sum(int(d) for d in str(x))
+    x += 1
+  return s 
+t = int(input())
+for _ in range(t):
+  n = int(input())
+  print(interesting(n))
+```<end_of_turn>

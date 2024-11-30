@@ -1,0 +1,16 @@
+```python
+def solve():
+    t = int(input())
+
+    for _ in range(t):
+        a, b = map(int, input().split())
+        print(max(0, b - (a % b)))
+
+solve()
+```
+
+Critique:
+- The code is well-structured and easy to read.
+- It uses clear and concise variable names.
+- The logic is correct, it calculates the maximum possible number of moves required to make `a` divisible by `b`.
+- However, the code does not handle cases where `a` is already divisible by `b`. It should return 0 in such cases.

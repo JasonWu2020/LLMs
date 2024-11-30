@@ -1,0 +1,32 @@
+The original solution I provided earlier only calculates the minimum number of shovels Polycarp needs to buy, but it doesn't take into account the fact that he has an unlimited number of 10-burle coins.
+
+Here's an updated solution that reads the input and prints the solution according to the specifications:
+
+```python
+def min_shovels(k, r):
+    """
+    Calculate the minimum number of shovels Polycarp needs to buy.
+
+    Args:
+        k (int): The price of one shovel.
+        r (int): The denomination of the coin different from 10-burle coins.
+
+    Returns:
+        int: The minimum number of shovels Polycarp needs to buy.
+    """
+    # Read the input
+    k, r = map(int, input().split())
+
+    # Calculate the minimum number of shovels
+    # We use the ceiling of the division of k by r, and multiply it by the number of 10-burle coins
+    # We add 1 to account for the fact that Polycarp should buy at least one shovel
+    min_shovels = (k - 1) // r + 1
+
+    return min_shovels
+
+# Read the input and print the solution
+k, r = map(int, input().split())
+print(min_shovels(k, r))
+```
+
+This solution reads the input, calculates the minimum number of shovels Polycarp needs to buy, and prints the result according to the specifications. The `//` operator is used for integer division, and the `+ 1` is used to account for the fact that Polycarp should buy at least one shovel.

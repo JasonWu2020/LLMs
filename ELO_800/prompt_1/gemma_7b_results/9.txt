@@ -1,0 +1,13 @@
+<start_of_turn>model
+```python
+n = int(input())
+a = list(map(int, input().split()))
+
+c = a.count(max(a))
+if c == a.count(a[0]):
+    print("chest")
+elif c == a.count(a[1]):
+    print("biceps")
+else:
+    print("back")
+```<eos>

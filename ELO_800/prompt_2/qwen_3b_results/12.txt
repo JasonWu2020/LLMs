@@ -1,0 +1,32 @@
+```python
+import sys
+
+def find_balanced_substring():
+    input = sys.stdin.read
+    data = input().split()
+    
+    t = int(data[0])
+    for _ in range(t):
+        n = int(data[2 * (_ + 1)])
+        s = data[2 * (_ + 1) + 1]
+        
+        balance_count = 0
+        left = 0
+        min_left, min_right = -1, -1
+        
+        for right in range(n):
+            balance_count += 1 if s[right] == 'a' else -1
+            
+            if balance_count == 0:
+                if min_left == -1 or right - left < min_right - min_left:
+                    min_left, min_right = left, right
+            
+            elif balance_count < 0:
+                left = right + 1
+                balance_count = 0
+        
+        print(min_left, min_right)
+
+if __name__ == "__main__":
+    find_balanced_substring()
+```

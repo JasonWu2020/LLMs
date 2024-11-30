@@ -1,0 +1,27 @@
+Critique of the original solution:
+
+- The solution works fine for the given problem. It correctly identifies the first occurrence of a balanced substring in the input string.
+- It assumes that the first balanced substring is the first one it encounters, which might not always be the case. For example, in the input string "abbaba", the first balanced substring is "baba" but the second one is "abbaba" itself.
+- It does not handle the case when there are multiple balanced substrings in the input string. It only prints the first one it finds.
+
+Here is an improved solution that addresses these issues:
+
+```python
+import sys
+
+t = int(sys.stdin.readline().strip())
+for _ in range(t):
+    n = int(sys.stdin.readline().strip())
+    s = sys.stdin.readline().strip()
+    min_length = sys.maxsize
+    l, r = -1, -1
+    count = [0, 0]
+    for i in range(n):
+        count[int(s[i])] += 1
+    for i in range(n - 1):
+        if count[s[i]] == count[s[i + 1]]:
+            if i + 1 < min_length:
+                min_length = i + 1
+                l, r = i + 1, i + 2
+    print(l, r)
+```

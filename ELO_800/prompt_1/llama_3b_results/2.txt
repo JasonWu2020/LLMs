@@ -1,0 +1,13 @@
+```python
+# -*- coding: utf-8 -*-
+
+```python
+def solve(n, a, b):
+    if a + b < n - 1 or a == b == n - 1:
+        return "No"
+    return "Yes"
+
+for _ in range(int(input())):
+    n, a, b = map(int, input().split())
+    print(solve(n, a, b))
+```

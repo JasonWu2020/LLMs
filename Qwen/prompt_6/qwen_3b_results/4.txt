@@ -1,0 +1,25 @@
+```python
+import sys
+
+def decrypt_string(s):
+    decrypted = []
+    for char in s:
+        # Find the position of the current character in the decrypted string
+        pos = len(decrypted)
+        while decrypted[pos-1] != char:
+            pos -= 1
+        # Append the sequence of characters that were added after the current character
+        decrypted.append(char)
+        decrypted.extend(decrypted[pos-1])
+    return ''.join(decrypted)
+
+# Read input
+input_data = sys.stdin.read
+lines = input_data().strip().split('\n')
+t = int(lines[0])
+
+for _ in range(t):
+    n = int(lines[_ * 2 + 1])
+    s = lines[_ * 2 + 2]
+    print(decrypt_string(s))
+```

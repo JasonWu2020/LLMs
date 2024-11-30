@@ -1,0 +1,23 @@
+```python
+def can_transform():
+    x1, y1 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x3, y3 = map(int, input().split())
+
+    # Calculate slopes
+    slope_a_b = y2 / x2 if x2 != 0 else float('inf')
+    slope_a_c = y3 / x3 if x3 != 0 else float('inf')
+
+    # Calculate magnitudes
+    magnitude_a = (x1**2 + y1**2)**0.5
+    magnitude_b = (x2**2 + y2**2)**0.5
+
+    # Check conditions
+    if abs(slope_a_b - slope_a_c) < 1e-6 and abs(magnitude_a - magnitude_b) < 1e-6:
+        print("YES")
+    else:
+        print("NO")
+
+# Call function to simulate input and output process
+can_transform()
+```

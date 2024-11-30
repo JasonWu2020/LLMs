@@ -1,0 +1,11 @@
+<start_of_turn>model
+```python
+s = input()
+max_subsequence = ""
+for i in range(len(s)):
+  for j in range(i, len(s)):
+    subsequence = s[i:j+1]
+    if subsequence > max_subsequence:
+      max_subsequence = subsequence
+print(max_subsequence)
+```<end_of_turn>

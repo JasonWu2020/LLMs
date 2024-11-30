@@ -1,0 +1,11 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is concise and efficient but lacks clarity. It uses the minimum of *a* and *b* twice, which is redundant. The second term should be *min(a, b) - 1* instead of *min(a, b) + min(a, b) - 1*.
+
+**Revised Solution:**
+
+```python
+a, b = map(int, input().split())
+print(min(a, b) + min(a, b) - 1, min(a, b) - 1)
+```<eos>

@@ -1,0 +1,12 @@
+<start_of_turn>model
+```python
+k = int(input())
+r = int(input())
+n = 1
+shovels = 0
+while k >= (10 * n) : 
+    n +=1
+    k -= (10 * n)
+shovels +=1 
+print(shovels)
+```<end_of_turn>

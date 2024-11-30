@@ -1,0 +1,17 @@
+```python
+import sys
+
+def minimum_moves(n, current_state, target_combination):
+    moves = 0
+    for i in range(n):
+        diff = abs(int(current_state[i]) - int(target_combination[i]))
+        moves += min(diff, 10 - diff)
+    return moves
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    current_state = input().strip()
+    target_combination = input().strip()
+
+    print(minimum_moves(n, current_state, target_combination))
+```

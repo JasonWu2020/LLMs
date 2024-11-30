@@ -1,0 +1,18 @@
+```python
+def min_moves_to_unlock(n, initial, target):
+    moves = 0
+    for i in range(n):
+        if int(initial[i]) != int(target[i]):
+            # Calculate the absolute difference and adjust to get the minimum moves
+            diff = abs(int(initial[i]) - int(target[i]))
+            moves += min(diff, 10 - diff)
+    return moves
+
+# Reading input
+n = int(input())
+initial = input()
+target = input()
+
+# Calculating and printing the result
+print(min_moves_to_unlock(n, initial, target))
+```

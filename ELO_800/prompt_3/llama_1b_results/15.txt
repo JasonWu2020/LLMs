@@ -1,0 +1,17 @@
+```python
+# Input
+n = int(input())
+m = {}
+for i in range(n):
+    name, before, after = input().split()
+    m[name] = {'before': int(before), 'after': int(after)}
+
+# Check if Anton performed well
+for name, data in m.items():
+    if data['before'] - data['after'] > 2200:
+        print("YES")
+        exit()
+
+# Output
+print("NO")
+```

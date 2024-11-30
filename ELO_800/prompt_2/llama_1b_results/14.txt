@@ -1,0 +1,15 @@
+```python
+import sys
+input = sys.stdin.readline
+
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    for _ in range(k % 2):
+        a = [max(a) - a[-1] for _ in range(n)]
+    print(*a)
+
+t = int(input())
+for _ in range(t):
+    solve()
+```

@@ -1,0 +1,14 @@
+[/INST] The outputted solution is a valid Python solution that follows the input and output specifications. However, it can be improved in terms of readability and efficiency.
+
+Here's an alternative solution that is more efficient and easier to read:
+
+```python
+n = int(input())
+muscles = cycle(["chest", "biceps", "back"])
+exercises = list(map(int, input().split()))
+most_exercises = max(exercises)
+muscle = next(muscle for muscle in muscles if exercises.count(exercises.index(most_exercises)) == most_exercises)
+print(muscle)
+```
+
+In this solution, we first define a cycle generator for the muscles, and then use a list comprehension to map the input integers to a list. We find the maximum number of exercises for a given muscle using the `max` function and the `count` method of lists. Finally, we use a generator expression to find the muscle that corresponds to the maximum number of exercises, and print the result. This solution is more readable, as it uses more descriptive variable names and separates the logic into smaller, more manageable chunks.</s>

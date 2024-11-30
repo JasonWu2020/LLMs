@@ -1,0 +1,35 @@
+```python
+def find_balanced_substring():
+    t = int(input())
+    results = []
+
+    for _ in range(t):
+        n = int(input())
+        s = input().strip()
+
+        balance = 0
+        last_a_pos = -1
+        found = False
+
+        for i, char in enumerate(s):
+            if char == 'a':
+                balance += 1
+            else:
+                balance -= 1
+            
+            if balance == 0:
+                results.append([last_a_pos + 1, i])
+                found = True
+                break
+            
+            if char == 'a':
+                last_a_pos = i
+
+        if not found:
+            results.append([-1, -1])
+
+    for result in results:
+        print(result[0], result[1])
+
+find_balanced_substring()
+```

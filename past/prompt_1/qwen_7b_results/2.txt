@@ -1,0 +1,28 @@
+```python
+def find_optimal_difference(n, A, B):
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    a_index, b_index = 0, 0
+    a_score, b_score = 0, 0
+    
+    while a_index < n or b_index < n:
+        if a_index < n:
+            a_score += A[a_index]
+            a_index += 1
+        
+        if b_index < n:
+            b_score += B[b_index]
+            b_index += 1
+    
+    return a_score - b_score
+
+if __name__ == "__main__":
+    import sys
+    input = sys.stdin.readline
+    n = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    
+    print(find_optimal_difference(n, A, B))
+```
+

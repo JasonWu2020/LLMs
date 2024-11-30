@@ -1,0 +1,16 @@
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    s = input()
+
+    result = ""
+    i = 0
+    while i < n:
+        result += s[i]
+        i += 2
+    print(result)
+```
+
+This Python script will solve the problem by iterating through the input string `s` and adding every other character to the result string. The `while` loop will continue until it has processed all characters in `s`, effectively skipping over the characters that are added after each character in the original string `a`.

@@ -1,0 +1,28 @@
+Here's a Python solution for the given problem:
+
+```python
+import sys
+
+def find_max_k(n):
+    k = 1
+    while (n - k) & (n - k + 1) & (n - k + 2) & ((n - k) if k != 1 else 0) != 0:
+        k += 1
+    return k
+
+def main():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        print(find_max_k(n))
+
+if __name__ == "__main__":
+    main()
+```
+
+This program follows these steps:
+
+1. Define a function `find_max_k(n)` that calculates the maximum value of integer `k` based on the conditions provided.
+2. Initialize a variable `k` to 1, and check if the bitwise AND operation between `n`, `n-1`, `n-2`, ..., `k` equals 0. If not, increment `k` by 1 and repeat the check until the condition is met.
+3. In the `main()` function, read the number of test cases `t`, and for each test case, read the value of `n` and call the `find_max_k(n)` function to find the result, which is then printed.
+
+Remember to run this code in a Python environment that supports handling large integers. This example assumes the use of Python 3 and standard library functions. The script can be executed from the command line by passing it to your interpreter along with any necessary arguments or input.

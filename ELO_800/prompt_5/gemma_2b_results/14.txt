@@ -1,0 +1,26 @@
+<start_of_turn>model
+```python
+def modify_array(a, k):
+  d = max(a)
+  for _ in range(k):
+    for i in range(1, len(a) + 1):
+      a[i - 1] = d - a[i - 1]
+  return a
+
+# Get the number of test cases
+t = int(input())
+
+for _ in range(t):
+  # Get the length and number of operations
+  n, k = map(int, input().split())
+
+  # Read the array
+  a = list(map(int, input().split()))
+
+  # Calculate and print the modified array
+  modified_array = modify_array(a, k)
+  print(*modified_array)
+``` 
+
+
+<end_of_turn>

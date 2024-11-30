@@ -1,0 +1,29 @@
+```python
+from math import gcd
+
+def find_partition(n):
+    if n == 1:
+        return "No"
+    
+    # Initialize sums and their GCD tracker
+    sum1, sum2 = 0, 0
+    gcd_value = -1
+    
+    # Try to find a valid partition
+    for i in range(1, n // 2 + 1):
+        if gcd_value == -1 or gcd(sum1, sum2) > gcd_value:
+            gcd_value = gcd(sum1, sum2)
+            sum1 += i
+            sum2 += n - i
+    
+    if gcd_value > 1:
+        print("Yes")
+        print(f"{n//2} {str(i)*n//2}")
+        print(f"{n-n//2} {str(n-i)*n//2}")
+    else:
+        print("No")
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    find_partition(n)
+```

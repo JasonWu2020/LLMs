@@ -1,0 +1,30 @@
+```python
+import sys
+
+t = int(input())
+for _ in range(t):
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    s = set(b)
+    if not set(a).issubset(s):
+        print("NO")
+        continue
+    i, j = 0, 0
+    c = []
+    while i < n and j < m:
+        if a[i] == b[j]:
+            c.append(a[i])
+            i += 1
+            j += 1
+        elif a[i] < b[j]:
+            i += 1
+        else:
+            j += 1
+    if i == n and j == m:
+        print("YES")
+        print(len(c))
+        print(*c)
+    else:
+        print("NO")
+```

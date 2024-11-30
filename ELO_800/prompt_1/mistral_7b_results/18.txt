@@ -1,0 +1,21 @@
+[/INST] ```python
+import sys
+from collections import defaultdict
+input = sys.stdin.readline
+
+for _ in range(int(input())):
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    if not set(a) & set(b):
+        print("NO")
+        continue
+
+    c = list(set(a) & set(b))
+    ans = [i for i in c if a.count(i) >= 1 and b.count(i) >= 1]
+    k = len(ans)
+    print("YES")
+    print(k)
+    print(*ans)
+```</s>

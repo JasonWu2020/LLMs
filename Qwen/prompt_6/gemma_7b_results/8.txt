@@ -1,0 +1,11 @@
+<start_of_turn>model
+```python3.8
+
+t = int(input())
+
+for _ in range(t):
+    a, b, c = map(int, input().split())
+    stones = max(a, max(b, c) - 2)
+    print(stones)
+
+```<eos>

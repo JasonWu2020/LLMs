@@ -1,0 +1,17 @@
+Here's the updated code that reads the input and prints the solution according to the specifications:
+
+```python
+def solve():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        result = 0
+        while n > 0:
+            result = (result & (n - 1)) | ((n - 1) & n)
+            n -= 1
+        print(result)
+
+solve()
+```
+
+This code works by repeatedly performing the bitwise AND operation with `n-1` until `n` becomes 0. The result is the maximum value of `k` that satisfies the condition. This is because when `n` becomes 0, the bitwise AND operation with `n` will result in 0.

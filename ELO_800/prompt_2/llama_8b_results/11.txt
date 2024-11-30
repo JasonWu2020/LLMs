@@ -1,0 +1,12 @@
+```python
+import math
+
+r = int(input())
+k = int(input())
+
+n = 1
+while (k * n) % r!= 0:
+    n += 1
+
+print(n)
+```

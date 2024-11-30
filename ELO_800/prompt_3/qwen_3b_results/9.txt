@@ -1,0 +1,20 @@
+```python
+def analyze_training_plan(n, exercises):
+    chest_count = exercises.count(1)
+    biceps_count = exercises.count(2)
+    back_count = exercises.count(3)
+    
+    max_count = max(chest_count, biceps_count, back_count)
+    
+    if max_count == chest_count:
+        return "chest"
+    elif max_count == biceps_count:
+        return "biceps"
+    else:
+        return "back"
+
+n = int(input().strip())
+exercises = list(map(int, input().strip().split()))
+
+print(analyze_training_plan(n, exercises))
+```

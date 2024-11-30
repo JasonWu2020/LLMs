@@ -1,0 +1,23 @@
+[/INST] The outputted solution correctly reads the input and calculates the minimum number of invitations Monocarp has to send for at least two friends to attend the party. However, it could be improved in terms of readability and efficiency.
+
+Instead of creating a dictionary to store the friends and their best friends, we can create a list of pairs representing friendships. This will reduce the number of operations required to find the best friend of a given friend.
+
+Also, instead of using a set to keep track of the number of unique friends attending, we can use a set to keep track of the friends that have been invited, and check the length of the list of friends after inviting one friend and their best friend.
+
+Lastly, we can use a list comprehension to generate the list of friends' best friends in a single line.
+
+Here is the improved solution:
+
+```python
+for _ in range(int(input())):
+    n = int(input())
+    friendships = list(map(lambda x, y: (x, y), enumerate(map(int, input().split()))))
+    invitations = 0
+    friends = set()
+    while len(friends) < 2:
+        friend, best_friend = friendships.pop(friendships.index(min(friendships, key=lambda x: x[0] if x[1] not in friends else float('inf'))))
+        invitations += 1
+        friends.add(friend)
+        friends.add(best_friend)
+    print(invitations)
+```</s>

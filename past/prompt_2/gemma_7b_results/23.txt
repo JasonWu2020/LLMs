@@ -1,0 +1,17 @@
+<start_of_turn>model
+```python
+n, m = map(int, input().split())
+
+s = []
+t = []
+for _ in range(m):
+    s.append(int(input().split()[0]))
+    t.append(int(input().split()[1]))
+
+ans = 0
+for i in range(n):
+    if s[i] <= t[i] <= t[i] - 1:
+        ans += 1
+
+print(ans)
+```<eos>

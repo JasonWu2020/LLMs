@@ -1,0 +1,16 @@
+[/INST] ```python
+# Read the number of test cases
+t = int(input())
+
+# Process each test case
+for _ in range(t):
+    n = int(input())
+    # Find the position of the most significant set bit in the binary representation of n
+    p = 0
+    while (n & 1) == 0:
+        n >>= 1
+        p += 1
+    # Compute k and output it
+    k = (1 << p) - 1
+    print(k)
+```</s>

@@ -1,0 +1,24 @@
+```python
+def max_k(n: int) -> int:
+    k = 1
+    while (n - k) & (n - k + 1) & (n - k + 2) & n != 0:
+        k += 1
+    return k
+
+def run_code():
+    from io import StringIO
+    from contextlib import redirect_stdout
+
+    t = int(input())
+    results = []
+
+    for _ in range(t):
+        n = int(input())
+        result = max_k(n)
+        results.append(result)
+
+    with redirect_stdout(StringIO()):
+        print(*results, sep='\n')
+
+run_code()
+```

@@ -1,0 +1,22 @@
+```python
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    if k > n * (n - 1) // 2:
+        print(-1)
+    else:
+        for i in range(n):
+            for j in range(n):
+                if i == j or i == n - j + 1:
+                    print("R", end="")
+                else:
+                    print("R", end=" ")
+            print()
+        for i in range(n):
+            for j in range(n):
+                if i == j or i == n - j + 1:
+                    print("R", end="")
+                else:
+                    print("R", end=" ")
+            print()
+```

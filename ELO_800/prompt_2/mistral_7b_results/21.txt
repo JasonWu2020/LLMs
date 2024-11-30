@@ -1,0 +1,22 @@
+[/INST] ```python
+import sys
+
+n = int(sys.stdin.readline())
+coins = list(map(int, sys.stdin.readline().split()))
+
+coins.sort()
+pockets = []
+pocket = []
+
+for coin in coins:
+    if not pockets or pocket[-1] != coin:
+        if pocket:
+            pockets.append(pocket)
+            pocket = []
+    pocket.append(coin)
+
+if pocket:
+    pockets.append(pocket)
+
+print(len(pockets))
+```</s>

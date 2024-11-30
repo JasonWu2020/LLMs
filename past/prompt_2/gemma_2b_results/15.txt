@@ -1,0 +1,12 @@
+<start_of_turn>model
+```python
+n = int(input())
+edges = [tuple(map(int, input().split())) for _ in range(n - 1)]
+points = []
+for _ in range(n):
+    x, y = map(int, input().split())
+    points.append((x, y))
+ 
+print(*[i + 1 for i,  vertex in enumerate(range(1,n+1))])
+
+```<end_of_turn>

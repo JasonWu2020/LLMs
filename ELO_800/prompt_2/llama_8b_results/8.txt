@@ -1,0 +1,6 @@
+```python
+for _ in range(int(input())):
+    a, b, c = map(int, input().split())
+    min_b_and_sum_ac = min(b, a + c)
+    print(min(b, 2 * min_b_and_sum_ac) + min(a + c, min_b_and_sum_ac))
+```

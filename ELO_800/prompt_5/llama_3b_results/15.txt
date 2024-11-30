@@ -1,0 +1,16 @@
+```python
+n = int(input())
+s = []
+for _ in range(n):
+    name, before, after = input().split()
+    s.append((name, int(before), int(after)))
+
+s.sort(key=lambda x: (x[2], x[1]))
+
+for i in range(n-1):
+    if s[i][2] < s[i+1][2] and s[i][1] < s[i+1][1]:
+        print("YES")
+        break
+else:
+    print("NO")
+```

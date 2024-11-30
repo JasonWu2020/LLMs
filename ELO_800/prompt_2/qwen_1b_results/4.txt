@@ -1,0 +1,29 @@
+```python
+import sys
+from collections import defaultdict
+
+def find_prefix(s):
+    dp = defaultdict(lambda : -1)
+    stack = []
+    
+    for i, c in enumerate(s):
+        while stack and s[stack[-1]] < c:
+            dp[s[stack.pop()]] = i
+        stack.append(i)
+
+    return dp
+
+for _ in range(int(input().strip())):
+    n = int(input().strip())
+    s = input().strip()
+    
+    prefix_dp = find_prefix(s)
+    
+    ans = ''
+    for i, c in enumerate(s):
+        if prefix_dp[i] == -1 or i != prefix_dp[i]:
+            ans += c
+    
+    print(ans)
+```
+```

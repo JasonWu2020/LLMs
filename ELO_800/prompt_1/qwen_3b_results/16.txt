@@ -1,0 +1,15 @@
+```python
+import sys
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    count = 0
+    for x in range(1, n+1):
+        if S(x + 1) < S(x):
+            count += 1
+    print(count)
+
+def S(x):
+    return sum(int(digit) for digit in str(x))
+```

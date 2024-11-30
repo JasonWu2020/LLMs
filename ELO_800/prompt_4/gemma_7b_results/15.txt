@@ -1,0 +1,20 @@
+<start_of_turn>model
+**Critique:**
+
+The code reads the number of participants, then iterates over them, reading their handle, rating before and after the contest. If the rating before the contest was greater than 2400 or the rating after the contest was less than or equal to 2400, it prints "YES". Otherwise, it prints "NO".
+
+This code is efficient as it uses a single loop to read the input and make the decision. However, it could be improved by using a dictionary to store the handles of participants whose handles were colored red before the contest, and then checking if the participant's handle is in the dictionary before making the decision. This would reduce the time complexity of the code.
+
+**Revised solution:**
+
+```python
+n = int(input())
+
+red_handles = {}
+for _ in range(n):
+    name, before, after = input().split()
+    if before > 2400 or after <= 2400:
+        red_handles[name] = True
+
+print("YES" if name in red_handles else "NO")
+```<eos>

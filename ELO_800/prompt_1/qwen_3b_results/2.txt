@@ -1,0 +1,17 @@
+```python
+import sys
+
+def check_permutations(n, a, b):
+    # If the sum of a and b exceeds n, it's impossible to have both a common prefix and suffix of those lengths
+    if a + b > n:
+        return "No"
+    else:
+        return "Yes"
+
+if __name__ == "__main__":
+    t = int(input().strip())
+    for _ in range(t):
+        n, a, b = map(int, input().strip().split())
+        result = check_permutations(n, a, b)
+        print(result)
+```

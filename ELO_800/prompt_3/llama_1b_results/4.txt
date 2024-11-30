@@ -1,0 +1,16 @@
+```python
+def decrypt(s):
+    res = ""
+    for i in range(1, len(s)):
+        if s[i]!= s[i - 1]:
+            res += s[i]
+    return res
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()
+    print(decrypt(s))
+```
+
+In this solution, we iterate over the string `s` and check if the current character is different from the previous one. If it is, we add it to the result string. This process continues until we reach the last character of the string. The decrypted string is then printed.

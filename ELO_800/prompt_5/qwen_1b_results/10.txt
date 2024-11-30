@@ -1,0 +1,31 @@
+```python
+def max_days(a, b):
+    """
+    Calculate the maximum number of days Vasya can wear different colored socks,
+    followed by the number of days he can wear the same color socks.
+    
+    Parameters:
+    a (int): Number of red socks.
+    b (int): Number of blue socks.
+    
+    Returns:
+    tuple: A tuple containing the maximum number of days Vasya can wear different socks
+           and the number of days he can wear the same socks.
+    """
+    # Days Vasya can wear different colored socks
+    diff_days = min(a, b)
+    # Remaining socks after wearing different colored socks
+    remaining_diff = max(0, a - diff_days) + max(0, b - diff_days)
+    # Days Vasya can wear the same colored socks
+    same_days = remaining_diff
+    
+    return (diff_days, same_days)
+
+# Reading input
+a, b = map(int, input().split())
+
+# Calculating and printing the result
+print(max_days(a, b))
+```
+
+This Python script defines a function `max_days` that calculates the maximum number of days Vasya can wear different-colored socks and the number of days he can wear the same-colored socks until he either runs out of socks or cannot make a single pair from the socks he's got. The input is taken from standard input, and the result is printed to standard output.

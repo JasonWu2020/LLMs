@@ -1,0 +1,16 @@
+```python
+def find_muscle_with_most_exercise():
+    n = int(input())
+    exercises = list(map(int, input().split()))
+    
+    chest_count, biceps_count, back_count = exercises.count(1), exercises.count(2), exercises.count(3)
+    
+    if chest_count >= max(biceps_count, back_count):
+        print("chest")
+    elif biceps_count > back_count:
+        print("biceps")
+    else:
+        print("back")
+
+find_muscle_with_most_exercise()
+```

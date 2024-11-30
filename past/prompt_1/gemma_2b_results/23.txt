@@ -1,0 +1,19 @@
+<start_of_turn>model
+```python
+n, m = map(int, input().split())
+MOD = int(1e9) + 7
+
+b = []
+
+for _ in range(m):
+  s, t = map(int, input().split())
+  b.append((s, t))
+
+ans = 0
+for i in range(n + 1):
+  for j in range(m):
+    if i <= b[j][0] and i >= b[j][1] and i + 1 <= n:
+      ans = (ans + 1) % MOD
+
+print(ans)
+```<end_of_turn>

@@ -1,0 +1,11 @@
+n = input()
+k = int(input())
+s = set()
+for i in range(len(n)):
+    s.add(n[i])
+m = len(s)
+if k >= m:
+    print(m)
+    print(''.join(sorted(s - set(input().split()))
+for i in range(k + 1, m + 1)):
+    print(len(s - set([n[i - k]])) + 1)

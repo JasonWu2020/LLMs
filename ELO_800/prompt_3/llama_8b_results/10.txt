@@ -1,0 +1,21 @@
+**Critique of the outputted solution:**
+
+The solution is concise and readable. However, it does not handle the case when the total number of socks is odd. In this case, the number of days when Vasya can wear the same socks until he either runs out of socks or cannot make a single pair from the socks he's got will be odd. The current solution may produce incorrect results in this case.
+
+**Alternative solution:**
+
+```python
+# Read input
+a, b = map(int, input().split())
+
+# Calculate the number of days when Vasya can wear different socks
+different_days = min(a, b)
+
+# Calculate the number of days when Vasya can wear the same socks
+same_days = (a + b - min(a, b)) // 2
+
+# Print the result
+print(different_days, same_days)
+```
+
+This solution uses integer division (//) to ensure that the number of days when Vasya can wear the same socks is always an integer, even if the total number of socks is odd.

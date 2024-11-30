@@ -1,0 +1,29 @@
+```python
+# -*- coding: utf-8 -*-
+
+```python
+import sys
+from collections import defaultdict
+
+def main():
+    n = int(input())
+    coins = list(map(int, input().split()))
+    coins.sort()
+
+    pockets = defaultdict(int)
+    for coin in coins:
+        if not pockets[coin]:
+            pockets[coin] = 1
+        else:
+            for key, value in list(pockets.items()):
+                if key!= coin and value < pockets[coin]:
+                    pockets[key] += 1
+                    break
+            else:
+                pockets[coin] += 1
+
+    print(len(pockets))
+
+if __name__ == "__main__":
+    main()
+```

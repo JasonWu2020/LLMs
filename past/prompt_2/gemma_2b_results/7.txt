@@ -1,0 +1,21 @@
+<start_of_turn>model
+```python
+def max_profit(n, k, a, b):
+    total_money_alice = 0
+    items_alice_to_buy = []
+    total_money_bob = 0
+
+    for i in range(n):
+        if i in items_alice_to_buy:
+            continue
+        if i == 0 or total_money_alice < k + len(items_alice_to_buy):
+            total_money_alice += b[i]
+            items_alice_to_buy.append(i)
+        else:
+            to_offer = min(len(items_alice_to_buy), k - len(items_alice_to_buy))
+            total_money_bob += b[i] * to_offer + sum(b[i+ to_offer:])
+            break
+
+    return sorted(set(items_alice_to_buy))
+``` 
+<end_of_turn>

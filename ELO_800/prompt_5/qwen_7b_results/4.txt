@@ -1,0 +1,20 @@
+```python
+def decrypt_string(s):
+    decrypted = []
+    for char in s:
+        if decrypted and char == decrypted[-1]:
+            decrypted.pop()
+        else:
+            decrypted.append(char)
+    return ''.join(decrypted)
+
+if __name__ == "__main__":
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        s = input().strip()
+        result = decrypt_string(s)
+        print(result)
+```
+
+This Python script reads a number of test cases `t`, processes each case by reading the length `n` of the encrypted string and then the encrypted string itself. It decrypts the string using the specified method (`decrypt_string`) and prints the decrypted result for each case. The `decrypt_string` function works by iterating through the encrypted string, removing the last character from the `decrypted` list whenever it encounters a character that matches the last one in the list (indicating that the pair has been fully processed).

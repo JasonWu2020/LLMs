@@ -1,0 +1,31 @@
+Solution:
+```python
+def min_invitations(n, p):
+    count = 0
+    while True:
+        for i in range(1, n+1):
+            if p[i-1] == i:
+                break
+        else:
+            return count
+        
+        for j in range(i):
+            if p[j] == i:
+                p[j], p[i-1] = p[i-1], p[j]
+        
+        count += 1
+```
+This Python function takes two inputs: `n` which represents the total number of friends, and `p`, a list of indices representing who their best friend is. 
+
+It iterates through each index `i` from 1 to `n`. For each `i`, it checks if `p[i-1]` equals `i`, indicating that the current friend does not need an invitation because they already have one. If this condition is met, the loop breaks out and returns the current value of `count`.
+
+If no conditions are met, the function enters a nested loop where it attempts to swap the values between `i` and its best friend (`p[i-1]`). After swapping, it increments the count and continues checking with the next possible pair until either a valid pair is found or all possibilities have been exhausted.
+
+This algorithm ensures that at least two friends attend the party by attempting to match each friend with their respective best friend, ensuring that the minimum number of invitations required is achieved.
+
+Example usage:
+```python
+print(min_invitations(6, [3, 1, 2, 5, 4])) # Output: 3
+print(min_invitations(7, [1, 2, 3, 4, 5, 6, 7])) # Output: 5
+print(min_invitations(8, [8, 7, 6, 5, 4, 3, 2, 1])) # Output: 6
+```

@@ -1,0 +1,5 @@
+```python
+k, r = map(int, input().split())
+count = k // (10 - r)
+print(count)
+```

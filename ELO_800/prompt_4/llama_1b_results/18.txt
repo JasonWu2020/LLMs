@@ -1,0 +1,25 @@
+```python
+def find_subsequence(a, b):
+    n, m = len(a), len(b)
+    for i in range(n):
+        for j in range(m):
+            if a[i] == b[j]:
+                c = a[:i] + a[i+1:]
+                if c == sorted(b):
+                    return c, i
+    return None, None
+
+t = int(input())
+for _ in range(t):
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c, i = find_subsequence(a, b)
+    if c is not None:
+        print("YES")
+        print(len(c), " ".join(map(str, c)))
+    else:
+        print("NO")
+```
+
+In the given code, we iterate over all pairs of elements in the arrays `a` and `b` and check if the current element of `a` is equal to any element of `b`. If it is, we create a new list `c` by removing the current element of `a` from `a` and check if `c` is sorted. If it is, we return the length of `c` and the index of the last occurrence of the current element of `a` in `b`. If no such pair is found after checking all pairs, we return `None` for both `c` and `i`.

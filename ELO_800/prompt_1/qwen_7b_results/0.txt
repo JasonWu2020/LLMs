@@ -1,0 +1,26 @@
+```python
+from typing import List
+
+def longest_good_subsequence(n: int, k: int, s: str) -> int:
+    freq = [0] * k
+    max_len = 0
+    left = 0
+    
+    for right in range(n):
+        index = ord(s[right]) - ord('A')
+        freq[index] += 1
+        
+        while min(freq) > 0:
+            index = ord(s[left]) - ord('A')
+            freq[index] -= 1
+            left += 1
+        
+        max_len = max(max_len, right - left + 1)
+    
+    return max_len
+
+if __name__ == "__main__":
+    n, k = map(int, input().split())
+    s = input()
+    print(longest_good_subsequence(n, k, s))
+```

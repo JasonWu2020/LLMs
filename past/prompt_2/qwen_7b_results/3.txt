@@ -1,0 +1,19 @@
+```python
+from typing import List
+import sys
+
+def max_slime_value(n: int, slime_values: List[int]) -> int:
+    slime_values.sort()
+    modulo = 10**9 + 7
+    result = 0
+    while len(slime_values) > 1:
+        result = (result * 10 + slime_values.pop()) % modulo
+        if slime_values:
+            slime_values[-1] -= slime_values.pop()
+    return (result * 10 + slime_values[0]) % modulo
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    slime_values = list(map(int, input().strip().split()))
+    print(max_slime_value(n, slime_values))
+```

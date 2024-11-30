@@ -1,0 +1,32 @@
+```python3
+import sys
+
+# Read input
+input = sys.stdin.readline
+print = sys.stdout.write
+
+n = int(input())
+results = [list(map(int, input().split())) for _ in range(n)]
+
+# Determine if Anton performed good
+for i in range(n):
+    name_i, before_i, after_i = results[i]
+    # Check if Anton outscored a participant who had their handle color change due to rating increase
+    if before_i >= 2400:
+        continue
+    else:
+        # If Anton did not score higher than a participant who had their handle color change due to rating increase, check other conditions
+        if 'Burunduk1' == name_i:
+            if after_i > before_i:
+                print('YES\n')
+                break
+        elif 'Applejack' == name_i:
+            pass
+        elif 'Fluttershy' == name_i:
+            pass
+        elif 'Pinkie_Pie' == name_i:
+            pass
+else:
+    print('NO\n')
+
+```

@@ -1,0 +1,27 @@
+Critique of the outputted solution:
+
+The outputted solution is concise and efficient. It directly calculates the minimum number of shovels Polycarp needs to buy by finding the smallest multiple of `k` that is greater than or equal to `r`. However, it does not handle the case where `r` is greater than `k`.
+
+To improve the solution, we can add a simple check to handle this case.
+
+Here's the critique:
+
+* The solution is easy to understand and implement.
+* It is concise and efficient.
+* It handles the case where `r` is less than `k` correctly.
+
+However, it does not handle the case where `r` is greater than `k`.
+
+Here's the improved solution:
+
+```python
+k, r = map(int, input().split())
+
+ans = k
+while (ans // k) * r < r:
+    ans += k
+
+print(ans)
+```
+
+This solution adds an additional check to ensure that `ans` is greater than or equal to `r` before printing the result. This handles the case where `r` is greater than `k`.

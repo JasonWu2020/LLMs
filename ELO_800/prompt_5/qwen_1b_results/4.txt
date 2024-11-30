@@ -1,0 +1,9 @@
+```python
+def decrypt(s):
+    return s[:-len(s)-1:-1]
+
+for _ in range(int(input())):
+    n = int(input())
+    s = input()
+    print(decrypt(s))
+```

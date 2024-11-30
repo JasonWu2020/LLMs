@@ -1,0 +1,35 @@
+```python
+# This critique addresses the first provided solution
+# The critique focuses on efficiency, readability, and potential errors in the logic
+# The first solution iterates through each number from 1 to n checking whether the number ends with a '9'
+# This approach is somewhat inefficient, especially for large values of n,
+# as it performs a full scan for each test case.
+# It also uses an if-else block to check if the number is between 1-99 or exactly 100, which could be simplified.
+
+# A more efficient solution could use a mathematical approach to calculate directly the number of interesting numbers without iterating through each number
+# By calculating the total number of numbers ending with '9', and adjusting for edge cases,
+# the algorithm would be significantly faster and more efficient for large inputs.
+
+# New Solution
+
+def count_interesting_numbers_optimized(n):
+    # Count numbers ending with 9 up to n
+    count_ending_with_9 = n // 10
+    
+    # Count numbers from 10 to n excluding those already counted
+    if n > 99:
+        count_ending_with_9 += (n // 100)
+        if n % 100 >= 100 - 9:
+            count_ending_with_9 += (n % 100 - (100 - 9)) // 10 + 1
+        
+    # Count numbers from 1 to 99 ending with 9
+    if n >= 100:
+        count_ending_with_9 -= 9
+    
+    return count_ending_with_9
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    print(count_interesting_numbers_optimized(n))
+```

@@ -1,0 +1,7 @@
+[/INST] ```python
+from math import gcd, ceil
+
+k, r = map(int, input().split())
+shovels = ceil((k + r - 1) / (10 * (r - 1)))
+print(int(shovels))
+```</s>

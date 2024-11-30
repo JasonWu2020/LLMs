@@ -1,0 +1,26 @@
+```python3
+import sys
+
+def main():
+    t = int(input())
+    
+    for _ in range(t):
+        n, k = map(int, input().split())
+        prices_a = list(map(int, input().split()))
+        prices_b = list(map(int, input().split()))
+        
+        alice_profit = 0
+        
+        for i in range(n):
+            if i < k:
+                alice_profit += prices_b[i]
+            else:
+                alice_profit -= prices_a[i]
+                
+        print(alice_profit)
+
+if __name__ == "__main__":
+    main()
+```
+
+This Python script reads the input data from stdin, processes it to compute Alice's optimal profit, and prints the result to stdout. The script handles multiple test cases, ensuring the solution works correctly across different inputs as specified in the problem description.

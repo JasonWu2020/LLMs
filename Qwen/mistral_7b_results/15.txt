@@ -1,0 +1,34 @@
+[/INST] The provided solution reads and processes the input correctly, but it doesn't print the output in the required format, which is to print "YES" or "NO" enclosed in quotes for clarity. Here's an updated solution that reads the input, checks if Anton has performed good, and prints the output according to the specifications:
+
+```python
+# Function to check if a handle was red before the contest
+def was_red(rating):
+    return rating >= 2400
+
+# Function to read and process the input
+def process_input():
+    n = int(input())
+    participants = []
+    for _ in range(n):
+        name, before, after = input().split()
+        before = int(before)
+        after = int(after)
+        participants.append((name, before, after))
+    return participants
+
+# Main function to determine if Anton performed good
+def performed_good(participants):
+    for participant in participants:
+        name, before, after = participant
+        if was_red(before) and after > before:
+            return True
+    return False
+
+# Main program
+if __name__ == "__main__":
+    participants = process_input()
+    result = performed_good(participants)
+    print('"{}"'.format("YES" if result else "NO"))
+```
+
+This updated solution reads the input, processes it, checks if Anton has performed good, and prints the output in the required format.</s>

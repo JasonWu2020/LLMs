@@ -1,0 +1,17 @@
+```python
+def min_pockets():
+    n = int(input().strip())
+    a = list(map(int, input().strip().split()))
+    
+    pockets = {}
+    for coin in a:
+        if coin in pockets:
+            del pockets[coin]
+        else:
+            pockets[coin] = True
+            
+    return len(pockets)
+
+# Read input and print the solution
+print(min_pockets())
+```

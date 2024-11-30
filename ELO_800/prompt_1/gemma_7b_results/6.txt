@@ -1,0 +1,15 @@
+<start_of_turn>model
+```python
+table_card = input().strip()
+hand_cards = input().strip().splitlines()
+
+table_card_rank = table_card[0]
+table_card_suit = table_card[1]
+
+for card_rank, card_suit in hand_cards:
+    if card_rank == table_card_rank or card_suit == table_card_suit:
+        print("YES")
+        exit()
+
+print("NO")
+```<eos>

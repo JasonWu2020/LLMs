@@ -1,0 +1,26 @@
+```python
+def min_invitations():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        p = list(map(int, input().split()))
+        count = 0
+        visited = set()
+        
+        for i in range(n):
+            if i not in visited:
+                count += 1
+                to_visit = {i}
+                while to_visit:
+                    current = to_visit.pop()
+                    if current == p[current] and current not in visited:
+                        break
+                    if current in visited:
+                        continue
+                    visited.add(current)
+                    to_visit.update([current, p[current]])
+        
+        print(count)
+
+min_invitations()
+```

@@ -1,0 +1,47 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is simple and straight forward. It reads the input, creates a dictionary to store the positions and distances of each camel's spit, checks if there are two camels whose distances add up to 0, and prints YES if they exist, otherwise print NO.
+
+**Solution:**
+
+```python
+n = int(input())
+
+camels = {}
+for i in range(n):
+    x, d, i = map(int, input().split())
+    camels[x] = d
+
+if 2 in camels and camels[2] + camels[1] == 0:
+    print("YES")
+else:
+    print("NO")
+```
+
+**Improvements:**
+
+- The code could be optimized by sorting the list of camels by position and then iterating over the list to find the two camels whose distances add up to 0.
+- The code could also be improved by using a hash table instead of a dictionary to store the camels, as the hash table would have a better time complexity for retrieving the camel whose position is stored at a given key.
+
+**Optimized Solution:**
+
+```python
+n = int(input())
+
+camels = {}
+for i in range(n):
+    x, d, i = map(int, input().split())
+    camels[x] = d
+
+camels_sorted = sorted(camels.items())
+
+for i in range(len(camels_sorted) - 1):
+    x, d = camels_sorted[i]
+    y, dd = camels_sorted[i + 1]
+    if d + dd == 0 and x != y:
+        print("YES")
+        exit()
+
+print("NO")
+```<eos>

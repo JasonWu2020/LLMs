@@ -1,0 +1,30 @@
+```python
+def find_common_subsequence(a, b):
+    a_set = set(a)
+    b_set = set(b)
+
+    common_elements = a_set & b_set
+
+    if not common_elements:
+        return "NO"
+
+    common_elements = sorted(list(common_elements))
+    common_subsequence = []
+
+    for element in common_elements:
+        if a.index(element) < b.index(element):
+            common_subsequence.append(element)
+
+    return "YES\n" + str(len(common_subsequence)) + "\n" +''.join(map(str, common_subsequence))
+
+t = int(input())
+
+for _ in range(t):
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    print(find_common_subsequence(a, b))
+```
+
+This script first converts the input arrays into sets, which allows for efficient lookup and intersection operations. It then finds the common elements between the two sets, sorts them, and constructs the common subsequence by always choosing the element that appears first in the first array. If there are no common elements, it returns "NO". Otherwise, it returns "YES" followed by the length of the common subsequence and the elements of the common subsequence.

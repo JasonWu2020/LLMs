@@ -1,0 +1,28 @@
+```python
+import sys
+
+def read_input():
+    return [int(x) for x in sys.stdin.readline().strip().split()]
+
+def place_rooks(n, k):
+    board = [['.' for _ in range(n)] for _ in range(n)]
+    if k > n:
+        return -1
+    
+    for i in range(k):
+        if i % 2 == 0:
+            board[i // 2][i] = 'R'
+        else:
+            board[(i + 1) // 2][(n - i - 1)] = 'R'
+
+    for i in range(n):
+        for j in range(n):
+            if board[i][j] == 'R':
+                return ''.join(board[j]) if j == 0 else '\n'.join(board)
+    return -1
+
+t = read_input()[0]
+for _ in range(t):
+    n, k = read_input()
+    print(place_rooks(n, k))
+```

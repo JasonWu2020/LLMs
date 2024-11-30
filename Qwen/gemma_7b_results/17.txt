@@ -1,0 +1,26 @@
+<start_of_turn>model
+**Critique:**
+
+The code is well-structured and easy to understand. It calculates the difference between the current state and the desired combination for each disk, finds the disks with the largest differences first, and rotates the disks until the desired combination is achieved. However, the code could be improved by jorning the logic for calculating the minimum number of moves into a separate function for better readability.
+
+**Updated solution:**
+
+```python
+n = int(input())
+s = input().split()
+c = input().split()
+
+# Calculate the difference between the current state and the desired combination for each disk.
+differences = [abs(int(c[i]) - int(s[i]) for i in range(n)]
+
+# Find the disks with the largest differences first.
+disks_with_largest_differences = sorted(enumerate(differences), key=lambda x: x[1], reverse=True)
+
+# Calculate the minimum number of moves.
+moves = 0
+for i, d in disks_with_largest_differences:
+    moves += d
+
+# Print the minimum number of moves.
+print(moves)
+```<eos>

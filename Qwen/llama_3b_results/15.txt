@@ -1,0 +1,64 @@
+The original solution had some issues:
+
+1. It didn't correctly map the colors to their corresponding rating ranges.
+2. It didn't correctly check if the rating of a participant increased after the contest.
+3. It didn't handle the case where Anton outscored a participant with a handle that was not red before the contest.
+
+Here's an updated solution that addresses these issues:
+
+```python
+def solve():
+    # Read the number of participants
+    n = int(input())
+
+    # Create a dictionary to map colors to their corresponding rating ranges
+    color_map = {
+        "red": (2400, float('inf')),
+        "orange": (2200, 2399),
+        "yellow": (2100, 2199),
+        "green": (2000, 2099),
+        "blue": (1900, 1999),
+        "indigo": (1800, 1899),
+        "violet": (1700, 1799),
+    }
+
+    # Initialize a dictionary to store the handles of participants with red handles
+    red_handles = set()
+
+    # Initialize a dictionary to store the ratings of participants
+    ratings = {}
+
+    # Read the input data
+    for _ in range(n):
+        name, before, after = input().split()
+        before, after = int(before), int(after)
+        ratings[name] = (before, after)
+
+        # Update the ratings of participants
+        for color, (lower, upper) in color_map.items():
+            if after >= lower and after <= upper:
+                if before < lower:
+                    red_handles.add(name)
+
+    # Check if Anton outscored a participant with a red handle
+    for name, (before, after) in ratings.items():
+        if name in red_handles and after > ratings[name][0]:
+            print("YES")
+            return
+
+    # Check if Anton outscored a participant with a handle that was not red before the contest
+    for name, (before, after) in ratings.items():
+        for red_name, (red_before, red_after) in list(ratings.items()):
+            if name!= red_name and after > red_before and after > red_after:
+                print("YES")
+                return
+
+    # Print "NO" if no participant with a red handle was outscored
+    print("NO")
+
+
+if __name__ == "__main__":
+    solve()
+```
+
+This updated solution correctly maps the colors to their corresponding rating ranges, checks if the rating of a participant increased after the contest, and handles the case where Anton outscored a participant with a handle that was not red before the contest.

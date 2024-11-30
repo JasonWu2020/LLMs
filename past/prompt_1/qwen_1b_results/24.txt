@@ -1,0 +1,18 @@
+```python3
+import sys
+
+def rotate_clockwise(x, y):
+    return (-y, x)
+
+def add_vectors(v1, v2):
+    return (v1[0] + v2[0], v1[1] + v2[1])
+
+# Read inputs
+x_A, y_A = map(int, input().split())
+x_B, y_B = map(int, input().split())
+x_C, y_C = map(int, input().split())
+
+# Rotate A 90 degrees clockwise
+A_rotated = rotate_clockwise(x_A, y_A)
+print("YES" if add_vectors(A_rotated, C) == B else "NO")
+```

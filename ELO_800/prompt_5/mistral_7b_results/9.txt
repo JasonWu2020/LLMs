@@ -1,0 +1,8 @@
+[/INST] ```python
+def get_most_trained_muscle(n, a):
+ muscle = ["chest", "biceps", "back"] * (n // 3)
+ return muscle[sum([(i == "chest") for i in muscle[0:3] + muscle[n-2:])].index(sum(map(int, a)))]
+n, a = map(int, input().split())
+print(get_most_trained_muscle(n, ["chest" if i > 0 else "back" for i in a] + ["biceps"] * (n-len(a))))
+```
+This code uses a list comprehension to create a list of alternating muscle types with the given length, and then uses list slicing and the sum function to determine which muscle gets the most exercise based on the given repetition counts. The input is read from the standard input using the `input()` function and the `split()` method, and the output is printed to the standard output using the `print()` function.</s>

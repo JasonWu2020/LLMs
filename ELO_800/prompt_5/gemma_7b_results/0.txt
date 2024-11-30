@@ -1,0 +1,15 @@
+<start_of_turn>model
+```python
+n, k = map(int, input().split())
+s = input().upper()
+
+freq = {"a": 0 for _ in range(k)}
+for i in s:
+    freq[i] += 1
+
+max_length = 0
+for letter, count in freq.items():
+    max_length = max(max_length, count)
+
+print(max_length)
+```<eos>

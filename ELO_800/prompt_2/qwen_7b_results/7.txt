@@ -1,0 +1,51 @@
+```python
+from collections import Counter
+import sys
+
+def rearrange_string(S, T):
+    # Count the frequency of each character in S
+    freq = Counter(S)
+    # Sort characters based on their frequency and lexicographical order
+    sorted_chars = sorted(freq.items(), key=lambda x: (-x[1], x[0]))
+    
+    # Initialize result as empty string
+    result = ''
+    
+    # Loop through the sorted characters
+    for char, count in sorted_chars:
+        # Add enough instances of the character to form the missing parts of T
+        # and make sure not to exceed the total number of occurrences in S
+        add_count = min(count, len(T) - len(result))
+        result += char * add_count
+        
+        # Reduce the count of used characters
+        freq[char] -= add_count
+        
+        # Break the loop if the required length is reached
+        if len(result) == len(T):
+            break
+    
+    # Append the remaining characters in order of their frequency and lexicographical order
+    for char, count in sorted(freq.items()):
+        result += char * count
+    
+    return result
+
+def main():
+    # Read test cases
+    t = int(sys.stdin.readline().strip())
+    for _ in range(t):
+        S = sys.stdin.readline().strip()
+        T = sys.stdin.readline().strip()
+        
+        # Ensure T is a permutation of 'abc'
+        if set(T) != {'a', 'b', 'c'}:
+            print("Invalid T")
+            continue
+        
+        result = rearrange_string(S, T)
+        print(result)
+
+if __name__ == "__main__":
+    main()
+```

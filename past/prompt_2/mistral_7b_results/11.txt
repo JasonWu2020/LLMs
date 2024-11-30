@@ -1,0 +1,19 @@
+[/INST] ```python
+import sys
+
+n = int(sys.stdin.readline().strip())
+h_row1 = list(map(int, sys.stdin.readline().strip().split()))
+h_row2 = list(map(int, sys.stdin.readline().strip().split()))
+
+max_one_row = [0] * (n + 1)
+max_alternating = [0] * (n + 1)
+
+max_one_row[0] = sum(h_row1)
+max_alternating[0] = max_one_row[0]
+
+for i in range(1, n + 1):
+    max_one_row[i] = max(max_one_row[i - 1], sum(h_row1[0:i]))
+    max_alternating[i] = max(max_alternating[i - 1], max_one_row[i - 1] + max_alternating[i - n])
+
+print(max(max_one_row[n], max_alternating[n]))
+```</s>

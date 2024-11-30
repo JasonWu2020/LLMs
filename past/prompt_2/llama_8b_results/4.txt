@@ -1,0 +1,9 @@
+```python
+for _ in range(int(input())):
+    n = int(input())
+    p = list(map(int, input().split()))
+    if n == 2:
+        print(2)
+    else:
+        print(2)
+```

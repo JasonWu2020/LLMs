@@ -1,0 +1,40 @@
+### Solution 1 (Original Code)
+
+```python
+def max_k(n):
+    k = 0
+    while True:
+        if n & k == 0:
+            return k
+        k += 1
+
+for _ in range(int(input())):
+    n = int(input())
+    print(max_k(n))
+```
+
+### Critique of Solution 1
+- **Time Complexity**: The original solution has a time complexity of O(log n), where `n` is the given number. However, it can be improved by using bitwise operations more efficiently.
+  
+- **Space Complexity**: The space complexity is O(1) since we only use a few extra variables (`k`, `n`) regardless of the size of `n`.
+
+### Improved Solution
+
+```python
+def max_k_optimized(n):
+    i = 0
+    mask = n - 1
+    while mask != 0:
+        mask >>= 1
+        i += 1
+    return i
+
+for _ in range(int(input())):
+    n = int(input())
+    print(max_k_optimized(n))
+```
+
+### Critique of Improved Solution
+- **Time Complexity**: The optimized solution now has a time complexity of O(1), which means it runs in constant time regardless of the size of `n`.
+  
+- **Space Complexity**: The space complexity remains O(1) because we still use a fixed amount of memory to store the current bit position (`i`).

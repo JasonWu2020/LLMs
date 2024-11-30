@@ -1,0 +1,23 @@
+```python
+import sys
+
+def solve():
+    s = input()
+    n = len(s)
+    cost = 0
+    ones = 0
+    zeros = 0
+    for i in range(n):
+        if s[i] == '0':
+            cost += ones
+            ones = 0
+            zeros += 1
+        else:
+            ones += 1
+    cost += zeros
+    print(cost)
+
+t = int(input())
+for _ in range(t):
+    solve()
+```

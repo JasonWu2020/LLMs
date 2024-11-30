@@ -1,0 +1,32 @@
+```python
+from typing import List
+
+def find_balanced_substring(s: str) -> List[int]:
+    """
+    Finds any non-empty balanced substring s[l; r] of string s.
+    Prints its l and r (1 ≤ l ≤ r ≤ n), or -1 -1 if there's no such substring.
+    """
+    count = 0
+    last_index = {}
+    for i, char in enumerate(s):
+        if char == 'a':
+            count += 1
+        else:
+            count -= 1
+        if count == 0:
+            return [i, i]
+        last_index[count] = i
+    
+    return [-1, -1]
+
+def main():
+    T = int(input())
+    for _ in range(T):
+        n = int(input())
+        s = input().strip()
+        result = find_balanced_substring(s)
+        print(result[0] + 1, result[1] + 1)
+
+if __name__ == "__main__":
+    main()
+```

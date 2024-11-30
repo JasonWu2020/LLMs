@@ -1,0 +1,15 @@
+n, k = map(int, input().split())
+s = input()
+a = list(s)
+b = [a[0]]
+for i in range(1, n):
+    if i % k == 0:
+        b.append(a[i])
+for i in range(k, n):
+    if a[i] > a[i % k]:
+        b = b + a[i-k+1:i] + a[i-k+1:i] + a[i-k+1:i]
+        break
+if len(b) < n:
+    b = b + a
+print(len(b))
+print(''.join(b))

@@ -1,0 +1,56 @@
+<start_of_turn>model
+## Critique
+
+The code is well-structured and efficient. It uses an adjacency list `adj` to represent the relationships between friends and their best friends. The code iterates over the adjacency list to count the number of best friends for each friend and updates the `min_inv` variable if necessary.
+
+**Improvements:**
+
+* **Use a dictionary `visited` to prevent repeated counting of best friends:**
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    p = list(map(int, input().split()))
+
+    adj = {i: set() for i in range(n)}
+    visited = {i: False for i in range(n)}
+    for i in range(n):
+        adj[p[i]].add(i)
+
+    min_inv = 0
+    for friend, best_friends in adj.items():
+        if not visited[friend] and len(best_friends) > min_inv:
+            min_inv = len(best_friends)
+            visited[friend] = True
+
+    print(min_inv)
+```
+
+* **Use a set `best_friends` to store the best friends of each friend:**
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    p = list(map(int, input().split()))
+
+    adj = {i: set() for i in range(n)}
+    best_friends = {i: set() for i in range(n)}
+    for i in range(n):
+        adj[p[i]].add(i)
+        best_friends[i].add(p[i])
+
+    min_inv = 0
+    for friend in best_friends:
+        if len(best_friends[friend]) > min_inv:
+            min_inv = len(best_friends[friend])
+
+    print(min_inv)
+```
+
+These improvements would make the code more efficient and prevent repeated calculations.
+
+**Note:** The code assumes that the input is valid and meets the specified constraints.<eos>

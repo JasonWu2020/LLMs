@@ -1,0 +1,34 @@
+```python
+# This Python script aims to solve the problem of finding the length of the longest good subsequence of a given string.
+
+from typing import List
+
+def find_longest_good_subsequence(s: str) -> int:
+    """
+    Finds the length of the longest good subsequence in a given string.
+    
+    :param s: The input string containing uppercase letters from the first 'k' letters of the Latin alphabet.
+    :return: The length of the longest good subsequence.
+    """
+    n, k = len(s), len(set(s))
+    dp = [0] * (k + 1)
+    for char in s:
+        char_index = ord(char) - ord('A')
+        for i in range(k):
+            dp[i + 1] = max(dp[i + 1], dp[i])
+        dp[char_index] += 1
+    
+    return max(dp)
+
+# Function to test the correctness of the solution
+def check_solution():
+    assert find_longest_good_subsequence("AABBBCC") == 6, "Test case 1 failed"
+    assert find_longest_good_subsequence("ABBBBBCC") == 4, "Test case 2 failed"
+    assert find_longest_good_subsequence("ABC") == 3, "Test case 3 failed"
+    assert find_longest_good_subsequence("DDEEEFFG") == 0, "Test case 4 failed"
+    print("All test cases passed!")
+
+# Running the check function to verify the solution
+check_solution()
+```
+This alternative solution includes a separate function `find_longest_good_subsequence` for calculating the length of the longest good subsequence. It iterates over the input string `s`, using dynamic programming to keep track of the best result so far for each character position within the alphabet range. After processing the entire string, it returns the maximum value found in the DP table, which represents the length of the longest good subsequence. A check function is provided to validate the solution against predefined test cases.

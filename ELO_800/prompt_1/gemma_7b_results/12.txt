@@ -1,0 +1,20 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    s = input().strip()
+
+    l = -1
+    r = -1
+
+    for i in range(n):
+        a = s[i:i+1] == 'a'
+        b = s[i:i+1] == 'b'
+        if a and b and (l == -1 or a > b):
+            l = i
+            r = i
+
+    print(l, r) if l != -1 else print(-1, -1)
+```<eos>

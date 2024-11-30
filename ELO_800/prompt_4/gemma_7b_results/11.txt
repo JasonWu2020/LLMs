@@ -1,0 +1,20 @@
+<start_of_turn>model
+**Critique:**
+The solution is well-written and efficient. It finds the common multiple of the price of one shovel and the denomination of the coin in Polycarp's pocket in a single iteration over the factors of the price of one shovel. The time complexity of the code is O(sqrt(k)). 
+
+**Improved Solution:**
+
+```python3.8
+k, r = map(int, input().split())
+g = egregence(k, r)
+print(g)
+```
+
+```python3.8
+def egregence(a, b):
+    for i in range(1, int(a**0.5) + 1):
+        if a % i == 0 and b % i == 0:
+            return i
+
+    return -1
+```<eos>

@@ -1,0 +1,19 @@
+```python
+def can_play_card(table_card, hand_cards):
+    table_rank, table_suit = table_card[0], table_card[1]
+    for card in hand_cards:
+        hand_rank, hand_suit = card[0], card[1]
+        if hand_rank == table_rank or hand_suit == table_suit:
+            return "YES"
+    return "NO"
+
+# Reading input from stdin
+table_card_input = input()
+hand_card_inputs = input().split()
+
+# Converting list of space-separated strings into a list of tuples representing the hand cards
+hand_cards = [tuple(card.split(',')) for card in hand_card_inputs]
+
+# Call function and output solution to stdout
+print(can_play_card(table_card_input, hand_cards))
+```

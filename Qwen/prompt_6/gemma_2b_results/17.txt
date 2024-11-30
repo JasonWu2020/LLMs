@@ -1,0 +1,27 @@
+<start_of_turn>model
+```python
+# Input: File name for reading the numbers
+#  n   -  The number of disks on the combination lock
+#  digits   -  the original state of the disks
+#  target -  the target combination
+
+n = int(input())  
+disks = list(input().strip())
+secret = list(input().strip())
+
+min_moves = 0
+ 
+def get_moves(current_state, target_state):
+  while current_state != target_state:
+    current_state = current_state[1]
+    if len(current_state)<2:
+      min_moves +=1
+      return 
+  return min_moves
+
+
+min_moves = get_moves(disks, secret)
+print(min_moves)
+
+```
+<end_of_turn>

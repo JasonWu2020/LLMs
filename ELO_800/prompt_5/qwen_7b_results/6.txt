@@ -1,0 +1,40 @@
+```python
+def mau_mau(game_state):
+    """
+    Checks if you can play at least one card given the card on the table and five cards in your hand.
+    
+    Parameters:
+    - game_state (str): The state of the game, including the card on the table and the cards in hand.
+    
+    Returns:
+    - str: "YES" if you can play a card, otherwise "NO".
+    """
+    # Split the game state into the card on the table and the cards in hand
+    table_card, hand_cards = game_state.split('\n')
+    
+    # Extract rank and suit from the card on the table
+    table_rank, table_suit = table_card[0], table_card[1]
+    
+    # List to hold playable cards
+    playable_cards = []
+    
+    # Check each card in hand
+    for hand_card in hand_cards.split():
+        hand_rank, hand_suit = hand_card[0], hand_card[1]
+        # If the rank or suit matches, it's a playable card
+        if hand_rank == table_rank or hand_suit == table_suit:
+            playable_cards.append(hand_card)
+    
+    # If there's at least one playable card, return "YES", otherwise "NO"
+    return "YES" if playable_cards else "NO"
+
+# Function to test the solution with given examples
+def test_solution():
+    assert mau_mau("AS\nAD AC AH JS") == "YES", "Test case 1 failed"
+    assert mau_mau("4D\n2C 3C 4C 5C 6C") == "NO", "Test case 2 failed"
+    assert mau_mau("AD\n4D AS AH KD") == "YES", "Test case 3 failed"
+    print("All test cases passed!")
+
+test_solution()
+```
+This Python code defines a function `mau_mau` that checks whether you can play a card based on the given game state. It includes a test function to verify the correctness of the solution with provided examples.

@@ -1,0 +1,14 @@
+<start_of_turn>model
+```python3.8
+n = int(input())
+
+if n == 1:
+    print("No")
+else:
+    print("Yes")
+    s1, s2 = divmod(n, 2)
+    print(s1, ",", end=" ")
+    print(*sorted(set(range(1, s1+1)) )
+    print(s2, ",", end=" ")
+    print(*sorted(set(range(s1+1, n+1)) )
+```<eos>

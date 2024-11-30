@@ -1,0 +1,9 @@
+n,m = map(int,input().split())
+s = [input() for i in range(n)]
+x,y = 0,0
+for i in range(n):
+    for j in range(m):
+        if s[i][j] == 'S':
+            x,y = i,j
+            break
+print('Yes' if x > 0 and y > 0 and s[x-1][y-1] == '#' else 'No')

@@ -1,0 +1,18 @@
+```python
+import itertools
+
+def find_smallest_permutation(S, T):
+    T_permutations = list(itertools.permutations(T))
+    for perm in T_permutations:
+        if all(char in S for char in perm):
+            continue
+        else:
+            return ''.join(perm)
+    return ''.join(T)
+
+for _ in range(int(input())):
+    S = input()
+    T = input()
+    result = find_smallest_permutation(S, T)
+    print(result)
+```

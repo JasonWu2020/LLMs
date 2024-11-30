@@ -1,0 +1,23 @@
+<start_of_turn>model
+```python
+def main():
+    n = int(input())
+    participants = []
+    for _ in range(n):
+        name, before, after = input().split()
+        participants.append((before, after, name))
+
+    ans = ""
+    for j in range(len(participants)):
+        if participants[j][1] > participants[j][0] and participants[j][0] == "Burunduk1":
+            ans = "YES"
+            break
+        
+    print(ans)
+if __name__ == "__main__":
+    main()
+```
+
+
+ 
+<end_of_turn>

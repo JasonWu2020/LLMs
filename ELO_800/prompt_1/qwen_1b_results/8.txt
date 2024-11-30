@@ -1,0 +1,16 @@
+```python
+def max_stones(a, b, c):
+    # If all heaps have less than 2 stones, no operation can increase the total number of stones
+    if a < 2 or b < 2 or c < 2:
+        return min(a, b) + min(b, c)
+    
+    # Calculate the maximum number of stones Alice can take
+    return max(a - 4, b - 6, c - 8)
+
+# Read input
+t = int(input())
+
+for _ in range(t):
+    a, b, c = map(int, input().split())
+    print(max_stones(a, b, c))
+```

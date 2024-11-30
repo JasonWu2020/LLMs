@@ -1,0 +1,21 @@
+```python3.8
+from collections import defaultdict
+
+def good():
+    n = int(input())
+    g = defaultdict(list)
+    for _ in range(n):
+        name, before, after = input().split()
+        before = int(before)
+        after = int(after)
+        if after > before:
+            g[name].append((before, after))
+    edges = set()
+    for node, neighbors in g.items():
+        for before, after in neighbors:
+            if after > before:
+                edges.add((node, (before, after)))
+    print("YES" if len(edges) == n else "NO")
+
+good()
+```

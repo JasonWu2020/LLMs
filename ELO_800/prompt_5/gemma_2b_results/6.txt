@@ -1,0 +1,26 @@
+<start_of_turn>model
+```python
+def can_play(table_card, hand):
+  table_rank = int(table_card[0])
+  table_suit = table_card[1]
+  hand_ranks = [int(card[0]) for card in hand]
+  for rank in hand_ranks:
+    if rank == table_rank or (rank == 10 and table_suit == 'A'):
+      return True
+  return False
+  
+ 
+# Get input
+table_card = input().strip()
+hand = input().strip()
+hand = [x.strip() for x in hand.split(", ")]
+  
+# Analyze the cards
+if can_play(table_card, hand):
+  print("YES") 
+else:
+  print("NO")
+```
+
+
+<end_of_turn>

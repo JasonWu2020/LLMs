@@ -1,0 +1,15 @@
+Critique of the original solution:
+
+The original solution is concise and directly addresses the problem. However, it does not handle the case where `a` and `b` are equal. In this case, the solution would output `(a, 0)`, which is incorrect.
+
+Here's a revised solution that handles this edge case:
+
+```python
+a, b = map(int, input().split())
+if a == b:
+    print(a, 0)
+else:
+    print(min(a, b), min((a - 1) // 2, (b - 1) // 2))
+```
+
+This solution first checks if `a` and `b` are equal. If they are, it prints `(a, 0)`, which is the correct output. Otherwise, it calculates the maximum number of days when Vasya can wear different socks as `min(a, b)`, and the maximum number of days when he can wear the same socks as `min((a - 1) // 2, (b - 1) // 2)`. The `//` operator is used for integer division to ensure that the result is an integer.

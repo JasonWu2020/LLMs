@@ -1,0 +1,26 @@
+```python
+def longest_good_subsequence(n, k, s):
+    # Initialize counts for each letter from 'A' to the k-th letter
+    counts = [0] * k
+    
+    # Count occurrences of each letter in the string
+    for char in s:
+        counts[ord(char) - ord('A')] += 1
+    
+    # Find the minimum count among all letters
+    min_count = min(counts)
+    
+    # The length of the longest good subsequence is the sum of the minimum count for each letter
+    return min_count * k
+
+# Reading input
+import sys
+input = sys.stdin.read
+data = input().split()
+
+n, k = map(int, data[0].split())
+s = data[1]
+
+# Calculate and print the result
+print(longest_good_subsequence(n, k, s))
+```

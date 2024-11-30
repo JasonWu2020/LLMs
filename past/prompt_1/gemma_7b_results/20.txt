@@ -1,0 +1,9 @@
+<start_of_turn>model
+```python3.8
+n, k = map(int, input().split())
+x = int("".join(map(str, map(int, input().split()))))
+m = len(str(x))
+y = int(str(x).rjust(m + k - 1, str(x)) + str(x // 10 ** (m - k) * 10 ** (k - 1)))
+print(m)
+print(str(y).ljust(m, "0"))
+```<eos>

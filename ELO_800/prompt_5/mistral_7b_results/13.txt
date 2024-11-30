@@ -1,0 +1,18 @@
+[/INST] ```python
+def shortest_password_length(arr):
+    n = len(arr)
+    while n > 1 and arr[n-2] != arr[n-1]:
+        i = n - 1
+        arr[i:] = [arr[i] + arr[i+1]]
+        n -= 1
+    return n if n > 0 else -1
+
+import sys
+input = sys.stdin.readline
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    arr = list(map(int, input().split()))
+    print(shortest_password_length(arr))
+```</s>

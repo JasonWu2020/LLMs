@@ -1,0 +1,30 @@
+```python
+import sys
+
+def decrypt_message(s):
+    decrypted = []
+    stack = []
+    
+    for char in s:
+        if char not in stack:
+            decrypted.append(char)
+            stack.append(char)
+        else:
+            while stack[-1] != char:
+                decrypted.append(stack.pop())
+            stack.pop()
+    
+    while stack:
+        decrypted.append(stack.pop())
+    
+    return ''.join(decrypted)
+
+if __name__ == "__main__":
+    sys.stdin.readline()  # consume the first line with T
+    for _ in range(int(sys.stdin.readline())):
+        n = int(sys.stdin.readline())
+        s = sys.stdin.readline().strip()
+        print(decrypt_message(s))
+```
+
+Please note that the provided solution assumes that the input format matches the problem statement closely, specifically that there's no specific number of test cases specified upfront, which aligns with the `T` line being skipped. Also, it assumes that the input is properly formatted and each encrypted message is followed by its length.

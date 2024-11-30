@@ -1,0 +1,24 @@
+<start_of_turn>model
+```python
+def longest_good_subsequence(n, k, s):
+    hashmap = {}
+    for i in range(k):
+        hashmap[chr(ord('A') + i)] = 0
+    slen = 0
+    for i in range(n):
+        if s[i] in hashmap:
+            hashmap[s[i]] += 1
+        else:
+            hashmap[s[i]] = 1
+        if i != 0 and hashmap[s[i]] == hashmap[s[i - 1]]:
+            slen = max(slen, i + 1)
+    return slen
+
+```
+
+```python 
+n, k = map(int,input().split())
+s = input()
+print(longest_good_subsequence(n, k, s))
+```
+<end_of_turn>

@@ -1,0 +1,17 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    p = list(map(int, input().split()))
+
+    best_friend_map = {i: set(p) for i, p in enumerate(p)}
+
+    num_invites = 0
+    for i in range(n):
+        if i in best_friend_map[p[i]] and len(best_friend_map[p[i]]) >= 2:
+            num_invites += 1
+
+    print(num_invites)
+```<eos>

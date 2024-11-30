@@ -1,0 +1,16 @@
+[/INST] ```python
+import sys
+input = sys.stdin.readline
+
+for _ in range(int(input())):
+    n = int(input())
+    p = list(map(int, input().split()))
+    visited = set()
+    invitations = 0
+    while len(visited) < 2:
+        invitations += 1
+        friend = p.pop(0)
+        visited.add(friend)
+        visited.add(p[friend-1])
+    print(invitations)
+```</s>

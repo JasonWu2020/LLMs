@@ -1,0 +1,42 @@
+```python
+import math
+
+# Critique: The original code has a slightly more complex logic flow due to the difference between elements. The new approach simplifies this, leveraging the mathematical understanding of repeating patterns in array transformations.
+
+def process_array(n, k, arr):
+    """
+    Simulates the given array transformation based on the operation count (k) and the array's properties.
+    """
+    # Find the largest element and its index in the array
+    max_element = max(arr)
+    idx_max = arr.index(max_element)
+
+    # Determine the difference between the max and min element
+    diff = max_element - min(arr)
+    
+    # Handle cases where no operations would change the array
+    if diff == 0:
+        return [max_element] * n
+    
+    # Determine how many full cycles (k // 2) and remaining operations (k % 2) will occur
+    full_cycles = k // 2
+    remaining_operations = k % 2
+
+    # Perform the transformation for each element
+    transformed_arr = [(full_cycles * diff) + (remaining_operations * abs(max_element - arr[i])) for i in range(n)]
+    
+    return transformed_arr
+
+# Main function for reading input, processing it, and writing the output
+def main():
+    t = int(input().strip())  # Read number of test cases
+    for _ in range(t):
+        n, k = map(int, input().strip().split())  # Read array size and operation count
+        arr = list(map(int, input().strip().split()))  # Read array
+        result = process_array(n, k, arr)  # Process array
+        print(' '.join(map(str, result)))  # Print result
+        
+# Execute the main function when script runs
+if __name__ == "__main__":
+    main()
+```

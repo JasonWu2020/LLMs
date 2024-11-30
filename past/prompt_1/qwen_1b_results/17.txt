@@ -1,0 +1,17 @@
+```python3
+import math
+
+def min_time(l, d, v, g, r):
+    t = 0
+    while d > 0:
+        if d >= v*g:
+            t += v*g
+            d -= v*g
+        else:
+            t += math.ceil(d/v)*v + d*r
+            break
+    return round(t, 6)
+
+# Example usage
+print(min_time(1000, 250, 50, 20, 10))
+```

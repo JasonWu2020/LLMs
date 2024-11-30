@@ -1,0 +1,39 @@
+[/INST] The given solution reads the input, processes it, and outputs the solution according to the input and output specifications. However, it could be improved by adding error handling for invalid inputs and better indentation for readability. Here's a revised version of the code:
+
+```python
+import sys
+
+def turn_vector_90(x, y):
+    return (-y, x)
+
+def main():
+    try:
+        x1, y1 = map(int, sys.stdin.readline().strip().split())
+        x2, y2 = map(int, sys.stdin.readline().strip().split())
+        cx, cy = map(int, sys.stdin.readline().strip().split())
+
+        a = (x1, y1)
+        b = (x2, y2)
+        c = (cx, cy)
+
+        if not (type(x1) is int and type(y1) is int and type(x2) is int and type(y2) is int and type(cx) is int and type(cy) is int):
+            raise ValueError("Invalid input")
+
+        a_prime = turn_vector_90(y1, x1)
+        if a_prime[0] != x2 or a_prime[1] != y2 - cx:
+            raise ValueError("Cannot get B from A")
+
+        a_prime = turn_vector_90(x1, y1)
+        if a_prime[0] != y2 or a_prime[1] != -x2 + cy:
+            raise ValueError("Cannot get B from A")
+
+        print("YES")
+
+    except ValueError as ve:
+        print(ve)
+
+if __name__ == "__main__":
+    main()
+```
+
+This version of the code adds error handling for invalid inputs and better indentation to make it more readable.</s>

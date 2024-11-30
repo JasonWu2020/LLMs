@@ -1,0 +1,11 @@
+<start_of_turn>model
+```python
+n = int(input())
+stamps = []
+for _ in range(n):
+  a, b = map(int, input().split())
+  stamps.append((a, b))
+
+stamps.sort()
+print(*stamps, sep=' ')
+```<end_of_turn>

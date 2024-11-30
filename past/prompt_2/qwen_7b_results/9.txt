@@ -1,0 +1,9 @@
+```python
+import sys
+
+def candies_eaten(n, k):
+    return n - (k - 1)
+
+n, k = map(int, sys.stdin.readline().strip().split())
+print(candies_eaten(n, k))
+```

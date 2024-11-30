@@ -1,0 +1,9 @@
+[/INST] ```python
+for _ in range(int(input())):
+    n = int(input())
+    k = 0
+    while (n & (n-1)) != 0:
+        k = n
+        n -= 1
+    print(k)
+```</s>

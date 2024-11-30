@@ -1,0 +1,12 @@
+<start_of_turn>model
+```python
+def is_valid_pair(n, a, b):
+    return a < n and b <= 1
+for _ in range(int(input())):
+    n, a, b = map(int, input().split())
+    if is_valid_pair(n, a, b):
+        print(" Yes ")
+    else:
+        print(" No ")
+``` 
+<end_of_turn>

@@ -1,0 +1,30 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is correct, but it can be improved. The algorithm is O(n) where n is the number of friends. We can improve the algorithm to O(n) by using a dictionary to store the friends of each person and then iterating over the dictionary only once.
+
+**Improved solution:**
+
+```python
+
+t = int(input())
+
+for _ in range(t):
+    n, p = map(int, input().split())
+
+    p.sort()
+
+    min_inv = 2
+    count = 0
+    friends = {}
+
+    for i in range(len(p)):
+        if p[i] not in friends:
+            friends[p[i]] = 1
+            count += 1
+
+    min_inv = max(min_inv, count)
+
+    print(min_inv)
+
+```<eos>

@@ -1,0 +1,45 @@
+```python
+def max_stones(a, b, c):
+    """
+    Calculate the maximum number of stones Alice can take.
+    
+    Parameters:
+    a (int): The number of stones in the first heap.
+    b (int): The number of stones in the second heap.
+    c (int): The number of stones in the third heap.
+    
+    Returns:
+    int: The maximum number of stones Alice can take.
+    """
+    # If the first heap has more stones than the second and third heap, 
+    # Alice should take stones from the second and third heap first.
+    if a >= b and a >= c:
+        return min(b + 2 * c, a + b + c)
+    # If the second heap has more stones than the first and third heap, 
+    # Alice should take stones from the first and third heap first.
+    elif b >= a and b >= c:
+        return min(a + 2 * c, a + b + c)
+    # If the third heap has more stones than the first and second heap, 
+    # Alice should take stones from the first and second heap first.
+    elif c >= a and c >= b:
+        return min(b + 2 * a, a + b + c)
+    # If the first heap has less stones than the second and third heap, 
+    # Alice should take stones from the second and third heap.
+    elif a < b and a < c:
+        return b + 2 * c
+    # If the second heap has less stones than the first and third heap, 
+    # Alice should take stones from the first and third heap.
+    elif b < a and b < c:
+        return a + 2 * c
+    # If the third heap has less stones than the first and second heap, 
+    # Alice should take stones from the first and second heap.
+    elif c < a and c < b:
+        return a + b
+
+t = int(input())
+for _ in range(t):
+    a, b, c = map(int, input().split())
+    print(max_stones(a, b, c))
+```
+
+This code defines a function `max_stones` that takes the number of stones in each heap as input and returns the maximum number of stones Alice can take. The main part of the code reads the number of test cases and the input for each test case, and then prints the result for each test case.

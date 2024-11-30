@@ -1,0 +1,18 @@
+**Critique of the outputted solution:**
+
+The solution is a good start, but it can be improved in terms of efficiency and readability. The while loop condition is checking if the bitwise AND of the current number `i` and `i-1` is zero. However, this is not the most efficient way to check if a number is a power of two. A more efficient way is to check if the number is not zero and if the least significant bit is one.
+
+The solution also assumes that the input number `n` is a power of two. However, the problem statement does not guarantee this. Therefore, the solution should handle the case where `n` is not a power of two.
+
+**Alternative solution:**
+
+```python
+import math
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    k = math.floor(math.log2(n))
+    print(2**k - 1)
+```
+
+This solution uses the `math.log2` function to find the base-2 logarithm of `n`, which is the exponent of the largest power of two less than or equal to `n`. It then uses this exponent to calculate the largest power of two less than or equal to `n`, which is the maximum value of `k` that satisfies the condition.

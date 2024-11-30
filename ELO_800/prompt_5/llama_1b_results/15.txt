@@ -1,0 +1,12 @@
+```python
+n = int(input())
+red = 0
+for _ in range(n):
+    name, before, after = input().split()
+    if int(after) - int(before) > 4000:
+        red += 1
+    if int(after) >= 2400 and (int(before) > 0 or red == 0):
+        print("YES")
+    else:
+        print("NO")
+```

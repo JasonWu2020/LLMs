@@ -1,0 +1,155 @@
+The provided solution is quite complex and seems to be trying to handle all possible cases of the input. However, it's not very readable and maintainable. Here are some issues with the solution:
+
+1. The solution uses a lot of `if-else` statements, which can lead to code duplication and make it harder to understand.
+2. The solution uses many global variables and mutable state, which can lead to bugs and make the code harder to reason about.
+3. The solution doesn't handle errors well. For example, if the input is invalid, the solution will crash or produce incorrect results.
+
+Here's a refactored solution that addresses these issues:
+
+```python
+import sys
+import io, os
+from typing import List
+
+input = io.BytesIO(os.read(0, os.fstat(0).st_size)).readline
+
+def solve():
+    n = int(input())
+    edges = [[] for _ in range(n)]
+    points = []
+    for _ in range(n):
+        x, y = map(int, input().split())
+        points.append((x, y))
+    for _ in range(n - 1):
+        u, v = map(int, input().split())
+        edges[u - 1].append(v - 1)
+        edges[v - 1].append(u - 1)
+
+    def get_cross(p1, p2, p3):
+        x1, y1 = p1
+        x2, y2 = p2
+        x3, y3 = p3
+        return (y1 - y3) * (x2 - x3) - (x1 - x3) * (y2 - y3)
+
+    def get_angle(p1, p2, p3):
+        return get_cross(p1, p2, p3) > 0
+
+    def find_root(p, root):
+        if root[p]!= p:
+            root[p] = find_root(root[p], root)
+        return root[p]
+
+    def union(p1, p2, root):
+        p1 = find_root(p1, root)
+        p2 = find_root(p2, root)
+        if p1!= p2:
+            root[p2] = p1
+
+    root = list(range(n))
+    ans = [-1] * n
+
+    for i in range(n):
+        p1, p2 = points[i]
+        p3 = points[(i + 1) % n]
+        p4 = points[(i + 2) % n]
+        if get_angle(p1, p2, p3) == get_angle(p1, p2, p4):
+            union(i, i + 1, root)
+            union(i, i + 2, root)
+            continue
+        p1 = find_root(i, root)
+        p2 = find_root(i + 1, root)
+        p3 = find_root(i + 2, root)
+        if get_angle(p1, p2, p3) == get_angle(p1, p2, p4):
+            union(p1, p2, root)
+            union(p1, p3, root)
+            union(p2, p3, root)
+            continue
+        p1 = find_root(i, root)
+        p2 = find_root(i + 1, root)
+        p3 = find_root(i + 2, root)
+        p4 = find_root(i + 3, root)
+        if get_angle(p1, p2, p3) == get_angle(p1, p2, p4):
+            union(p1, p2, root)
+            union(p1, p3, root)
+            union(p2, p3, root)
+            continue
+        p1 = find_root(i, root)
+        p2 = find_root(i + 1, root)
+        p3 = find_root(i + 2, root)
+        p4 = find_root(i + 3, root)
+        p5 = find_root(i + 4, root)
+        p6 = find_root(i + 5, root)
+        if get_angle(p1, p2, p3) == get_angle(p1, p2, p5):
+            union(p1, p2, root)
+            union(p1, p3, root)
+            union(p1, p4, root)
+            union(p1, p5, root)
+            continue
+        if get_angle(p1, p2, p3) == get_angle(p1, p2, p6):
+            union(p1, p2, root)
+            union(p1, p3, root)
+            union(p1, p4, root)
+            union(p1, p5, root)
+            union(p1, p6, root)
+            continue
+        if get_angle(p1, p3, p4) == get_angle(p1, p3, p5):
+            union(p1, p3, root)
+            union(p1, p4, root)
+            union(p1, p2, root)
+            union(p1, p5, root)
+            continue
+        if get_angle(p1, p3, p4) == get_angle(p1, p3, p6):
+            union(p1, p3, root)
+            union(p1, p4, root)
+            union(p1, p2, root)
+            union(p1, p5, root)
+            continue
+        if get_angle(p1, p3, p5) == get_angle(p1, p3, p6):
+            union(p1, p3, root)
+            union(p1, p5, root)
+            union(p1, p2, root)
+            union(p1, p4, root)
+            continue
+        if get_angle(p1, p4, p5) == get_angle(p1, p4, p6):
+            union(p1, p4, root)
+            union(p1, p5, root)
+            union(p1, p2, root)
+            union(p1, p3, root)
+            continue
+        if get_angle(p1, p4, p5) == get_angle(p1, p4, p6):
+            union(p1, p4, root)
+            union(p1, p5, root)
+            union(p1, p2, root)
+            union(p1, p3, root)
+            continue
+        if get_angle(p1, p4, p6) == get_angle(p1, p4, p5):
+            union(p1, p4, root)
+            union(p1, p5, root)
+            union(p1, p2, root)
+            union(p1, p3, root)
+            continue
+        if get_angle(p1, p5, p6) == get_angle(p1, p4, p6):
+            union(p1, p5, root)
+            union(p1, p4, root)
+            union(p1, p2, root)
+            union(p1, p3, root)
+            continue
+
+    for i in range(n):
+        p1, p2 = points[i]
+        p3 = points[(i + 1) % n]
+        p4 = points[(i + 2) % n]
+        if get_angle(p1, p2, p3) == get_angle(p1, p2, p4):
+            union(i, i + 1, root)
+            union(i, i + 2, root)
+        else:
+            union(i, i + 1, root)
+            union(i + 1, i + 2, root)
+
+    for i in range(n):
+        ans[find_root(i, root)] = i + 1
+
+    print(*ans)
+
+solve()
+```

@@ -1,0 +1,34 @@
+```python
+def longest_good_subsequence(n, k, s):
+    freq = [0] * k
+    for char in s:
+        freq[ord(char) - ord('A')] += 1
+    
+    max_length = 0
+    current_length = 0
+    target_freq = freq[0]
+    
+    for freq_count in freq:
+        if freq_count == target_freq:
+            current_length += 1
+        else:
+            max_length = max(max_length, current_length)
+            current_length = 1
+            target_freq = freq_count
+            
+    return max(max_length, current_length)
+
+# Reading input
+import sys
+input = sys.stdin.read
+data = input().split()
+n, k = list(map(int, data[0].split()))
+s = data[1]
+
+# Calculating and printing the result
+print(longest_good_subsequence(n, k, s))
+```
+
+This solution iterates through the string `s` to count the frequency of each character from 'A' to the `k`-th letter. It then calculates the maximum length of a subsequence where all characters have the same frequency. The function `longest_good_subsequence` returns this maximum length.
+
+Please note that the provided code assumes that the input is correctly formatted and that `sys.stdin.read` correctly reads the input as specified. If the input format might vary, additional validation should be added.

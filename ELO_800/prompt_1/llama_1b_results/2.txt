@@ -1,0 +1,9 @@
+```python
+t = int(input())
+for _ in range(t):
+    n, a, b = map(int, input().split())
+    if a + b == n and (n - a) % 2 == 0 and (n - b) % 2 == 0:
+        print("Yes")
+    else:
+        print("No")
+```

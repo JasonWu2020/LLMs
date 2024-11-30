@@ -1,0 +1,37 @@
+**Critique of the original solution:**
+
+The original solution is straightforward and easy to understand. However, it has a few issues:
+
+1. The solution does not handle the case where the maximum value in the array is zero. In this case, the solution should print the array as it is, but the current solution will throw an error when trying to add or subtract zero.
+2. The solution assumes that the maximum value in the array is either positive or negative. However, it does not handle the case where the maximum value is zero.
+
+**Alternative solution:**
+
+```python
+```python
+import sys
+
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    max_val = max(a)
+    if max_val == 0:
+        print(*a)
+        return
+    d = max_val
+    if k % 2 == 0:
+        for i in range(n):
+            a[i] = d - a[i]
+    else:
+        for i in range(n):
+            a[i] = d - a[i]
+        for i in range(n):
+            a[i] -= d
+    print(*a)
+
+t = int(input())
+for _ in range(t):
+    solve()
+```
+
+This solution first checks if the maximum value in the array is zero. If it is, the solution simply prints the array as it is. If the maximum value is not zero, the solution applies the operation as before. However, if the number of operations is odd, the solution first applies the operation and then subtracts the maximum value from each element to get the final result. This ensures that the solution handles all possible cases correctly.

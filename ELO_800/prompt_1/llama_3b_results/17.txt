@@ -1,0 +1,13 @@
+```python
+```python
+import sys
+
+n = int(sys.stdin.readline())
+a = sys.stdin.readline().strip()
+b = sys.stdin.readline().strip()
+
+ans = 0
+for i in range(n):
+    ans += abs(int(a[i]) - int(b[i]))
+print(ans)
+```

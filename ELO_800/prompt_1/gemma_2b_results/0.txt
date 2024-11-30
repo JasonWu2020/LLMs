@@ -1,0 +1,22 @@
+<start_of_turn>model
+```python
+def sol(s):
+  n = len(s)
+  k = ord('a') + 1  
+  counts = [0 for i in range(k)]
+  for i in range(n):
+    if 65 <= ord(s[i]) <= 90:
+      counts[ord(s[i]) - 65] += 1
+  max_len = 0
+  for i in range(k):
+    if counts[i] == len(set(s)):
+      max_len = max(max_len, i)
+  return max_len 
+
+n, k = map(int, input().split())
+s = input()
+
+print(sol(s) )
+
+``` 
+<end_of_turn>

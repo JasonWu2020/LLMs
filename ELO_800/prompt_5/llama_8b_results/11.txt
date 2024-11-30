@@ -1,0 +1,16 @@
+```python
+import math
+
+k, r = map(int, input().split())
+
+min_shovels = math.ceil(k / 10)
+
+if k % r == 0:
+    print(1)
+elif k % r < 5:
+    print(min_shovels)
+else:
+    print(min_shovels + math.ceil((k % r) / r))
+```
+
+This script first calculates the minimum number of shovels that can be bought with 10-burle coins. If the price of one shovel is divisible by the value of the other coin, Polycarp only needs to buy one shovel. If the remainder of the price of one shovel divided by the value of the other coin is less than 5, the minimum number of shovels remains the same. Otherwise, we need to add one more shovel to cover the remainder.

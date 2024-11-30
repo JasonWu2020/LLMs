@@ -1,0 +1,22 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    p = list(map(int, input().split()))
+
+    # Create a dictionary to store the best friends and their invitations
+    best_friends = {}
+    for i in range(n):
+        best_friends[i] = p[i]
+
+    # Calculate the minimum number of invitations
+    min_invites = 0
+    for i in range(n):
+        if best_friends[i] in best_friends and best_friends[i] != i:
+            min_invites += 1
+
+    # Print the minimum number of invitations
+    print(min_invites)
+```<eos>

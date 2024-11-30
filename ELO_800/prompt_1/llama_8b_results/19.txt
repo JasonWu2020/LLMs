@@ -1,0 +1,8 @@
+```python
+import math
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    k = n & -n
+    print(k-1)
+```

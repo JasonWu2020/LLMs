@@ -1,0 +1,24 @@
+```python
+#!/usr/bin/env python3
+# Import necessary packages at the beginning of your snippet
+import sys
+
+def min_pockets(n, coins):
+    # Use a dictionary to count occurrences of each coin value
+    coin_counts = {}
+    for coin in coins:
+        if coin in coin_counts:
+            coin_counts[coin] += 1
+        else:
+            coin_counts[coin] = 1
+    
+    # The minimum number of pockets needed is the maximum count of any coin value
+    return max(coin_counts.values())
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    coins = list(map(int, input().strip().split()))
+    
+    result = min_pockets(n, coins)
+    print(result)
+```

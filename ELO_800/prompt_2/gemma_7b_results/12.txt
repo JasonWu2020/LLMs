@@ -1,0 +1,26 @@
+<start_of_turn>model
+```python3.8
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    s = input().strip()
+
+    l = -1
+    r = -1
+    a = 0
+    b = 0
+
+    for i in range(len(s)):
+        if s[i] == 'a':
+            a += 1
+        elif s[i] == 'b':
+            b += 1
+
+        if a == b and l != -1:
+            r = i
+            print(l, r)
+
+    if l == -1:
+        print(-1, -1)
+```<eos>

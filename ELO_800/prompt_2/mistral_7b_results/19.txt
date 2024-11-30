@@ -1,0 +1,26 @@
+[/INST] ```python
+import math
+
+def trailing_zeros(n):
+    prime_factorization = []
+    i = 2
+    while i * i <= n:
+        while n % i == 0:
+            prime_factorization.append(i)
+            n //= i
+        i += 1
+    if n > 1:
+        prime_factorization.append(n)
+
+    trailing_zero_n = 0
+    for prime in prime_factorization:
+        trailing_zero_n += prime ** math.floor(math.log2(len(prime_factorization) * math.log(2) / math.log(prime)) - 1)
+
+    trailing_zero_n_minus_one = trailing_zeros(n - 1)
+    return trailing_zeros_n - trailing_zero_n_minus_one
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    print(trailing_zeros(n))
+```</s>

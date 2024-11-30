@@ -1,0 +1,26 @@
+```python
+# Read the number of test cases
+num_test_cases = int(input())
+
+for _ in range(num_test_cases):
+    # Read two integers a and b
+    a, b = map(int, input().split())
+
+    # Calculate the remainder of a divided by b
+    remainder = a % b
+
+    # If the remainder is 0, then a is already divisible by b
+    if remainder == 0:
+        print(0)
+    else:
+        # Calculate the minimum number of moves needed
+        # This is done by subtracting the remainder from b and adding 1
+        # The subtraction gives the number of moves needed to make a divisible by b
+        # The addition of 1 is to account for the current value of a
+        min_moves = (b - remainder) + 1
+
+        # Print the result
+        print(min_moves)
+```
+
+This code reads the number of test cases, then for each test case, it reads two integers `a` and `b`, calculates the remainder of `a` divided by `b`, and prints the minimum number of moves needed to make `a` divisible by `b`.

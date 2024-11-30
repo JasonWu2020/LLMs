@@ -1,0 +1,4 @@
+```python
+k, r = map(int, input().split())
+print((k + r - 1) // r)
+```

@@ -1,0 +1,26 @@
+```python
+from collections import Counter
+
+def find_smallest_permutation(S, T):
+    count_T = Counter(T)
+    S_count = Counter(S)
+    
+    for char in 'abc':
+        if count_T[char] > S_count[char]:
+            return None
+    
+    result = []
+    for char in sorted('abc'):
+        while count_T[char] > 0 and S_count[char] == 0:
+            result.append(char)
+            count_T[char] -= 1
+            S_count[char] += 1
+            
+    return ''.join(result)
+
+for _ in range(int(input())):
+    S = input()
+    T = input()
+    S_prime = find_smallest_permutation(S, T)
+    print(S_prime)
+```

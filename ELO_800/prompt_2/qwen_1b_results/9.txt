@@ -1,0 +1,21 @@
+```python
+import sys
+
+# Read input
+n = int(input().strip())
+nums = list(map(int, input().strip().split()))
+
+# Calculate total exercises for each type of muscle
+chest_exercises = nums.count(1)
+biceps_exercises = nums.count(2)
+back_exercises = nums.count(3)
+
+# Determine the muscle with the most exercises
+if chest_exercises > biceps_exercises and chest_exercises > back_exercises:
+    print("chest")
+elif biceps_exercises > chest_exercises and biceps_exercises > back_exercises:
+    print("biceps")
+else:
+    print("back")
+```
+```

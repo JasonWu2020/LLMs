@@ -1,0 +1,10 @@
+```python
+def find_k(n):
+    k = n.bit_length() - 1
+    return k
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    print(find_k(n))
+```

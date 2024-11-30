@@ -1,0 +1,11 @@
+```python
+s = input()
+h = input()
+a = [input() for _ in range(5)]
+s = list(s)
+h = list(h)
+a = [list(h) for _ in a]
+s = ''.join(s)
+h = ''.join(h)
+print("YES" if s in a or any(x in a for x in h) else "NO")
+```

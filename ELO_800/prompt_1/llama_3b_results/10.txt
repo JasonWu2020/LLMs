@@ -1,0 +1,24 @@
+```python
+# Read the input
+a, b = map(int, input().split())
+
+# Initialize variables
+max_days = min(a, b)
+remaining_red = a - max_days
+remaining_blue = b - max_days
+
+# Calculate days with different socks
+different_days = max_days
+
+# Calculate days with same socks
+while remaining_red > 0 and remaining_blue > 0:
+    remaining_red -= 1
+    remaining_blue -= 1
+    different_days += 1
+
+# Calculate total days
+total_days = different_days + remaining_red + remaining_blue
+
+# Print the result
+print(different_days, total_days)
+```

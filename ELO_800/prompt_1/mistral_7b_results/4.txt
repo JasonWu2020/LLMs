@@ -1,0 +1,8 @@
+[/INST] ```python
+import re
+
+for _ in range(int(input())):
+    n = int(input())
+    s = input()
+    print(re.findall(r"(.)(.*)", s)[::2])
+```</s>

@@ -1,0 +1,17 @@
+<start_of_turn>model
+```python
+t = int(input())
+for _ in range(t):
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    if is_solution(a, b):
+      print('YES')
+      k = len(find_subsequence(a, b))
+      print(k)
+      print(*find_subsequence(a, b))
+    else:
+      print('NO') 
+  
+def find_subsequence(a, b):
+```<end_of_turn>

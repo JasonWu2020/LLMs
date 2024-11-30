@@ -1,0 +1,15 @@
+<start_of_turn>model
+```python
+def check_pair(n, a, b):
+    if a == 0 or b == 0:
+        return False
+    return True
+
+t = int(input())
+for _ in range(t):
+    n, a, b = map(int, input().split())
+    if check_pair(n, a, b):
+        print(" Yes ")
+    else:
+        print(" No ") 
+```<end_of_turn>

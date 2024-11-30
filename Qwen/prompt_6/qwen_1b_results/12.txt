@@ -1,0 +1,21 @@
+```python
+import sys
+
+# Read the number of test cases
+t = int(input())
+
+for _ in range(t):
+    # Read the length of the string
+    n = int(input())
+    
+    # Read the string s
+    s = input()
+    
+    # Check for balanced substrings
+    for i in range(n):
+        for j in range(i+1, n+1):
+            if s[i:j].count('a') == s[i:j].count('b'):
+                print(f"{i} {j}")
+                break
+```
+This Python script reads the number of test cases, followed by the lengths of the strings and the actual strings themselves. It then checks all possible substrings of the given strings to find any that are balanced (i.e., have an equal number of 'a's and 'b's). If found, it prints the starting and ending indices of the balanced substring. If no balanced substrings are found, it prints "-1 -1".

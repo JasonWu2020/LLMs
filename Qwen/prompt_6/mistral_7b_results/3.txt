@@ -1,0 +1,42 @@
+[/INST] Here's a Python solution using backtracking and bitmasks to represent the rows occupied by rooks:
+
+```python
+import sys
+
+def is_valid(n, board, mask):
+    # Check if current arrangement is good
+    for i in range(n):
+        if mask & (1 << i):
+            for j in range(n):
+                if i != j and (mask & (1 << j)):
+                    if abs(i - j) == 1 or j - i in [i - 1, i, i + 1]:
+                        return False
+    return True
+
+def backtrack(n, k, pos, board, mask):
+    if k == 0:
+        if is_valid(n, board, mask):
+            for _ in range(n):
+                print("." * n)
+                print("R" if mask & (1 << _) else "." for _ in range(n))
+            print()
+            return
+
+    for i in range(n):
+        if not (mask & (1 << i)):
+            mask |= 1 << i
+            if backtrack(n, k - 1, i + 1, board, mask):
+                return
+            mask &= ~(1 << i)
+
+for _ in range(int(sys.stdin.readline())):
+    n, k = map(int, sys.stdin.readline().split())
+    board = [[0] * n for _ in range(n)]
+    backtrack(n, k, 0, 0, 0)
+    if k > n:
+        print("-1")
+```
+
+This code reads the input, initializes the board and backtracking variables, and then calls the `backtrack` function to find a stable arrangement of rooks. If no stable arrangement is found, it prints `-1`. Otherwise, it prints the arrangement for each test case.
+
+Note that this code assumes that the input is read from standard input and that there is no need to print anything before the test cases, as specified in the problem statement. If this is not the case, you may need to modify the input reading and outputting parts accordingly.</s>

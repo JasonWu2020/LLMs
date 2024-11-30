@@ -1,0 +1,18 @@
+<start_of_turn>model
+```python
+def check_mau_mau(table, hand):
+    for card in hand:
+        if (card[0] == table[0] or card[1] == table[1]):
+            return "YES"
+
+    return "NO"
+
+# input 
+table = input()
+hand = [input() for _ in range(5)]
+ 
+result = check_mau_mau(table, hand) 
+   
+print(result)
+``` 
+<end_of_turn>

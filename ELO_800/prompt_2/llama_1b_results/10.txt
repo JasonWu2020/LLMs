@@ -1,0 +1,12 @@
+```python
+import sys
+from collections import Counter
+
+def solve():
+    a, b = map(int, sys.stdin.readline().split())
+    r, b = a, b
+    print(min(a, b), max(a, b) // 2)
+
+if __name__ == '__main__':
+    solve()
+```

@@ -1,0 +1,17 @@
+```python
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    if n == 1:
+        print(1)
+        return
+    res = n
+    for i in range(n - 1):
+        if a[i]!= a[i + 1]:
+            res -= 1
+    print(res)
+
+t = int(input())
+for _ in range(t):
+    solve()
+```

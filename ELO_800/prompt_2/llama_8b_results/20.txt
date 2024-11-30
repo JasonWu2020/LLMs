@@ -1,0 +1,11 @@
+```python
+import math
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    if n == 1:
+        print(0)
+    else:
+        p = int(math.log2(n))
+        print(2**p - 1)
+```

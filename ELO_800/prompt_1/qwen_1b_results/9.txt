@@ -1,0 +1,9 @@
+```python
+n = int(input())
+a = list(map(int, input().split()))
+
+max_exercise_count = max(a)
+most_exercised_muscle = 'chest' if max_exercise_count % 3 == 1 else 'back'
+
+print(most_exercised_muscle)
+```

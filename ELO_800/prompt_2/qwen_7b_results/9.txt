@@ -1,0 +1,21 @@
+```python
+def workout_plan():
+    n = int(input())
+    exercises = list(map(int, input().split()))
+
+    chest, biceps, back = 0, 0, 0
+    for i in range(n):
+        exercise_type = i % 3 + 1
+        if exercise_type == 1:
+            chest += exercises[i]
+        elif exercise_type == 2:
+            biceps += exercises[i]
+        else:
+            back += exercises[i]
+
+    muscles = ['chest', 'biceps', 'back']
+    max_exercises = max(chest, biceps, back)
+    print(muscles[chest == max_exercises], muscles[biceps == max_exercises], muscles[back == max_exercises])
+
+workout_plan()
+```

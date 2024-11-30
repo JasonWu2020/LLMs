@@ -1,0 +1,12 @@
+```python
+import sys
+
+sys.stdin.readline = lambda: sys.stdin.readline().strip()
+n = int(sys.stdin.readline())
+edges = [tuple(map(int, sys.stdin.readline().split())) for _ in range(n-1)]
+points = [tuple(map(int, sys.stdin.readline().split())) for _ in range(n)]
+
+# Solution goes here
+
+print(" ".join(map(str, result)))
+```

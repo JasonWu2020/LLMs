@@ -1,0 +1,16 @@
+<start_of_turn>model
+```python
+
+n = int(input("Enter the number of disks: "))
+original_state = list(map(int, input("Enter the original state of the disks: ").split()))
+combination = list(map(int, input("Enter Scrooge McDuck's combination: ").split()))
+
+# Calculate the minimum number of moves required for each disk
+moves = 0
+for i in range(len(original_state)):
+    move = abs(original_state[i] - combination[i])
+    moves += move
+
+# Print the total number of moves
+print(moves)
+```<eos>

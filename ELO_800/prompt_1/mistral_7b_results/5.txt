@@ -1,0 +1,7 @@
+[/INST] ```python
+import sys
+
+for _ in range(int(sys.stdin.readline())):
+    a, b = map(int, sys.stdin.readline().split())
+    print(min(b - 1, (a - 1) // b + 1))
+```</s>

@@ -1,0 +1,18 @@
+```python
+def check_card(table, hand):
+    ranks = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'T': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
+    table_rank = ranks[table[0]]
+    table_suit = table[1]
+    hand_ranks = [ranks[card[0]] for card in hand]
+    hand_suits = [card[1] for card in hand]
+    if any(card[0] == table[0] or card[1] == table[1] for card in hand):
+        return "YES"
+    elif table_suit in hand_suits:
+        return "YES"
+    else:
+        return "NO"
+
+table = input()
+hand = [input() for _ in range(5)]
+print(check_card(table, hand))
+```

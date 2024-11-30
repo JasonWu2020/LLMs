@@ -1,0 +1,12 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    n, a, b = map(int, input().split())
+
+    if a + b <= n and a + b <= n:
+        print(" Yes ")
+    else:
+        print(" No ")
+```<eos>

@@ -1,0 +1,31 @@
+```python
+import sys
+
+for _ in range(int(input())):
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    common = set(a) & set(b)
+    if not common:
+        print("NO")
+        continue
+
+    i, j, k = 0, 0, 0
+    c = []
+
+    while i < n and j < m:
+        if a[i] == b[j] and a[i] in common:
+            c.append(a[i])
+            common.remove(a[i])
+            i += 1
+            j += 1
+        elif a[i] < b[j]:
+            i += 1
+        else:
+            j += 1
+
+    print("YES")
+    print(len(c))
+    print(*c)
+```

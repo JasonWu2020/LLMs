@@ -1,0 +1,18 @@
+<start_of_turn>model
+```python
+def find_max_value(n, arr):
+  stack = []
+  for i in range(n):
+    current_slime = arr[i]
+    while stack and stack[-1][0] <= i and (i - stack[-1][1]) > 1:
+      stack.pop()
+    if stack:
+      current_slime = stack[-1][0] - stack[-1][1]
+    stack.append((current_slime, i))
+  return max(stack[0][0], stack[1][0])
+ 
+if __name__ == "__main__":
+  n = int(input())
+  arr = list(map(int, input().split()))
+  print(find_max_value(n, arr))
+```<end_of_turn>

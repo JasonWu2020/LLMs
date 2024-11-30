@@ -1,0 +1,11 @@
+x, y = map(int, input().split())
+c = list(map(int, input().split()))
+for _ in range(3):
+    x, y = map(int, input().split())
+    if (x * y) % 2 == 0:
+        if abs(x) > 8 or abs(y) > 8:
+            print("NO")
+            break
+    else:
+        if abs(x) <= 8 and abs(y) <= 8:
+            print("YES")

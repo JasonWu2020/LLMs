@@ -1,0 +1,23 @@
+<start_of_turn>model
+```python
+n = int(input())
+a = list(map(int, input().split()))
+
+dp = [[0 for _ in range(n)] for _ in range(n)]
+max_domino = 0
+
+for i in range(n):
+  for j in range(n):
+    if i == 0:
+      dp[i][j] = a[i]
+    elif j == 0:
+      dp[i][j] = a[i]
+    elif i > 0 and j > 0:
+      if a[i] >= a[i-1] and a[j] >= a[j-1]:
+        dp[i][j] = max(dp[i][j], dp[i - 1][j] + 1)
+        dp[i][j] = max(dp[i][j], dp[i][j - 1] + 1)
+  max_domino = max(max_domino, dp[i][j])
+
+
+print(max_domino)
+```<end_of_turn>

@@ -1,0 +1,56 @@
+```python
+import sys
+sys.setrecursionlimit(10**6)
+
+def is_stable(board):
+    rows = [0] * len(board)
+    cols = [0] * len(board)
+    
+    for i in range(len(board)):
+        for j in range(len(board)):
+            if board[i][j] == 'R':
+                for r in range(i+1, len(board)):
+                    if board[r][j] == 'R' and (rows[r] > 0 or cols[j] > 0):
+                        return False
+                for c in range(j+1, len(board)):
+                    if board[i][c] == 'R' and (rows[i] > 0 or cols[c] > 0):
+                        return False
+                rows[i] += 1
+                cols[j] += 1
+                
+    return True
+
+def dfs(board, pos):
+    if pos >= len(board)**2:
+        return True
+    
+    i, j = divmod(pos, len(board))
+    board[i][j] = 'R'
+    
+    if is_stable(board):
+        return True
+    
+    for d in range(4):
+        ni, nj = i + dirs[d], j + dirs[d+1]
+        
+        if 0 <= ni < len(board) and 0 <= nj < len(board):
+            if board[ni][nj] != 'R':
+                if dfs(board, pos + 1):
+                    return True
+    
+    board[i][j] = '.'
+    return False
+
+dirs = [(0, -1), (-1, 0), (0, 1), (1, 0)]
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    board = [['.' for _ in range(n)] for _ in range(n)]
+    
+    if k > n // 2:
+        print(-1)
+    else:
+        dfs(board, 0)
+        for row in board:
+            print(''.join(row))
+```
+This Python script solves the given problem by implementing a depth-first search algorithm to explore different configurations of placing rooks on the chessboard until finding a stable arrangement. It checks for stability using a helper function `is_stable` which verifies whether moving any rook would result in a non-stable configuration.

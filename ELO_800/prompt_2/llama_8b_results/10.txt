@@ -1,0 +1,12 @@
+```python
+if __name__ == "__main__":
+    a, b = map(int, input().split())
+    days_different = min(a, b)
+    remaining_a = a - days_different
+    remaining_b = b - days_different
+    if remaining_a >= remaining_b:
+        days_same = remaining_a // 2
+    else:
+        days_same = remaining_b // 2
+    print(days_different, days_same)
+```

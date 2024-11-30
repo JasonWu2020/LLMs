@@ -1,0 +1,13 @@
+```python
+t = int(input())
+for _ in range(t):
+    s = input()
+    t = input()
+    s = sorted(s)
+    t = sorted(t)
+    ans = ""
+    for i in range(len(s)):
+        if t[i]!= s[i]:
+            ans += t[i]
+    print(ans)
+```

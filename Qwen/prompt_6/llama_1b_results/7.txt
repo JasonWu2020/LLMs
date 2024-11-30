@@ -1,0 +1,30 @@
+```python
+def solve():
+    s = input()
+    t = input()
+    s_count = {}
+    for char in s:
+        s_count[char] = s_count.get(char, 0) + 1
+
+    t_count = {}
+    for char in t:
+        t_count[char] = t_count.get(char, 0) + 1
+
+    result = []
+    i = 0
+    for char in s:
+        if char not in t_count or s_count[char] > t_count[char]:
+            result.append(char)
+        else:
+            i += 1
+            while i < len(s) and s[i] == char:
+                i += 1
+            result.append(char)
+
+    result = ''.join(result)
+    print(result)
+
+t = int(input())
+for _ in range(t):
+    solve()
+```

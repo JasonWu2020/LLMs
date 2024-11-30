@@ -1,0 +1,16 @@
+```python
+import sys
+
+if __name__ == "__main__":
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        a = list(map(int, input().split()))
+        
+        # If all elements are the same, no operations can be performed
+        if len(set(a)) == 1:
+            print(n)
+        else:
+            # At least one element must be different from its neighbors to perform the operation
+            print(n - 1)
+```

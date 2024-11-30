@@ -1,0 +1,27 @@
+```python
+from itertools import permutations
+
+def find_lex_smallest_permutation(S, T):
+    # Generate all permutations of S
+    perms = [''.join(p) for p in permutations(S)]
+    
+    # Filter out permutations where T is a subsequence
+    valid_perms = [perm for perm in perms if T not in perm]
+    
+    # Find the lexicographically smallest valid permutation
+    lex_smallest_perm = min(valid_perms)
+    
+    return lex_smallest_perm
+
+# Read input
+t = int(input().strip())
+for _ in range(t):
+    S = input().strip()
+    T = input().strip()
+    
+    # Find and print the result
+    result = find_lex_smallest_permutation(S, T)
+    print(result)
+```
+
+This Python script reads multiple test cases as specified, generates all possible permutations of the string `S`, filters out those that contain `T` as a subsequence, and then finds and prints the lexicographically smallest permutation from the remaining candidates.

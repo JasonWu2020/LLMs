@@ -1,0 +1,10 @@
+```python
+n = int(input())
+a = list(map(int, input().split()))
+
+pockets = set()
+for coin in a:
+    pockets.add(coin)
+
+print(len(pockets))
+```

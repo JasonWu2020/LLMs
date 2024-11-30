@@ -1,0 +1,28 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is well-written, but it can be improved.
+
+**Critique:**
+
+* The code is correct, but it can be made more efficient.
+* The code does not handle the case where the input array is sorted in descending order.
+* The code does not handle the case where the input array is constant.
+
+**Improved Solution:**
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    l = len(a)
+    for i in range(l-1):
+        if a[i] != a[i+1]:
+            a[i:i+2] = [a[i] + a[i+1]]
+            l -= 1
+    print(l)
+
+```<eos>

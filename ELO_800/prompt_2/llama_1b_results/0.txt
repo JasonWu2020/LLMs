@@ -1,0 +1,21 @@
+```python
+import sys
+
+def main():
+    n, k = map(int, input().split())
+    s = input()
+    ans = 0
+    for i in range(k):
+        dp = [[0] * k for _ in range(n + 1)]
+        for j in range(1, n + 1):
+            max_length = 0
+            for l in range(1, k + 1):
+                if s[j - 1] == chr(ord('A') + l - 1):
+                    max_length = max(max_length, dp[j - 1][l - 1] + 1)
+            dp[j][i] = max(dp[j - 1][i], max_length)
+        ans = max(ans, dp[n][i])
+    print(ans)
+
+if __name__ == "__main__":
+    main()
+```

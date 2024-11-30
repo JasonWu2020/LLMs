@@ -1,0 +1,18 @@
+```python
+def max_k(n):
+    # Find the highest bit position where n and (n-1) differ
+    k = n & -n
+    return k
+
+if __name__ == "__main__":
+    import sys
+    input = sys.stdin.read
+    data = input().splitlines()
+    
+    t = int(data[0])
+    test_cases = data[1:]
+
+    for n in test_cases:
+        n = int(n)
+        print(max_k(n))
+```

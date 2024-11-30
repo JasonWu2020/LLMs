@@ -1,0 +1,21 @@
+```python
+def max_slime_value(n, values):
+    from functools import reduce
+
+    def compute_max_value(values):
+        total = sum(values)
+        min_diff = float('inf')
+        for i in range(n):
+            diff = total - 2 * values[i]
+            if diff < min_diff:
+                min_diff = diff
+        return total - min_diff
+    
+    max_value = reduce(compute_max_value, values, values[0])
+    return max_value
+
+n = int(input().strip())
+values = list(map(int, input().strip().split()))
+
+print(max_slime_value(n, values))
+```

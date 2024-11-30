@@ -1,0 +1,22 @@
+```python
+# Read the card on the table
+table_card = input().strip()
+
+# Read the cards in the hand
+hand_cards = [input().strip() for _ in range(5)]
+
+# Define the ranks and suits
+ranks = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
+suits = ['D', 'C', 'S', 'H']
+
+# Check if any card in the hand can be played
+can_play = any(
+    (table_card[0] == card[0] or table_card[1] == card[1]) 
+    for card in hand_cards
+)
+
+# Print the result
+print("YES" if can_play else "NO")
+```
+
+This code works by reading the card on the table and the cards in the hand, then checking if any of the cards in the hand can be played by comparing the rank and suit of each card with the card on the table. The result is then printed to the console.

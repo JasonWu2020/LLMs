@@ -1,0 +1,43 @@
+```python
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+c = list(map(int, input().split()))
+
+def rotate(a, b):
+    return -a[1], a[0]
+
+def add(a, b):
+    return [a[0] + b[0], a[1] + b[1]]
+
+def is_possible(x1, y1, x2, y2, x3, y3):
+    if x1 == x2 and y1 == y2:
+        return True
+    if x1 == 0 and y1 == 0:
+        return x3 == 0 and y3 == 0
+    if x1 == 0 and y1 == 0 and x2 == 0 and y2 == 0:
+        return True
+    if x1 == 0:
+        return y3 == y2
+    if y1 == 0:
+        return x3 == x2
+    if x2 == 0:
+        return y1 == y3
+    if y2 == 0:
+        return x1 == x3
+    if x1 == x3:
+        return y1 + y2 == y3
+    if y1 == y3:
+        return x1 + x2 == x3
+    return False
+
+def solve():
+    a = rotate(a)
+    while True:
+        if is_possible(a[0], a[1], b[0], b[1], c[0], c[1]):
+            return "YES"
+        a = rotate(a)
+        if a == [0, 0]:
+            return "NO"
+
+print(solve())
+```

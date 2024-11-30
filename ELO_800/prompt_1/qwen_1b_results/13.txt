@@ -1,0 +1,19 @@
+```python
+import sys
+
+def solve(n, a):
+    if len(set(a)) == n:
+        return 1
+    elif len(set(a)) > 1:
+        return min(len(a), 2)
+    else:
+        return 0
+
+if __name__ == "__main__":
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        a = list(map(int, input().split()))
+        result = solve(n, a)
+        print(result)
+```

@@ -1,0 +1,14 @@
+```python
+def min_moves_to_unlock(n, current_combination, target_combination):
+    moves = 0
+    for i in range(n):
+        if current_combination[i] != target_combination[i]:
+            moves += min(abs(int(current_combination[i]) - int(target_combination[i])), 10 - abs(int(current_combination[i]) - int(target_combination[i])))
+    return moves
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    current_combination = input().strip()
+    target_combination = input().strip()
+    print(min_moves_to_unlock(n, current_combination, target_combination))
+```

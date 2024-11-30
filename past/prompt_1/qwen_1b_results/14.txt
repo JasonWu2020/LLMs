@@ -1,0 +1,25 @@
+```python
+import sys
+
+def solve(n, m):
+    s = set()
+    x, y = map(int, input().split())
+    grid = [input() for _ in range(n)]
+    
+    def bfs(x, y):
+        q = [(x, y)]
+        while q:
+            cx, cy = q.pop(0)
+            for dx, dy in ((cx - 1, cy), (cx + 1, cy), (cx, cy - 1), (cx, cy + 1)):
+                if 0 <= dx < n and 0 <= dy < m and grid[dx][dy] == '.' and (dx, dy) not in s:
+                    s.add((dx, dy))
+                    q.append((dx, dy))
+                    
+    bfs(x, y)
+    
+    return 'Yes' if len(s) == n * m else 'No'
+
+if __name__ == '__main__':
+    n, m = map(int, sys.stdin.readline().strip().split())
+    print(solve(n, m))
+```

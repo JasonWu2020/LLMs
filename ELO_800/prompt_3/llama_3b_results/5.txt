@@ -1,0 +1,26 @@
+Critique of the original solution:
+
+The original solution is concise and directly addresses the problem. However, it assumes that the input values are valid (i.e., both `a` and `b` are positive integers). If the input values are not valid, the program may produce incorrect results or errors.
+
+Here's a potential improvement to handle invalid inputs:
+
+```python
+for _ in range(int(input())):
+    a, b = map(int, input().split())
+    if b == 0:
+        print("Invalid input: b cannot be zero")
+        continue
+    print((a - 1) % b + 1)
+```
+
+This version of the solution checks if `b` is zero and prints an error message if it is.
+
+Here's another solution that adheres to the input and output specifications:
+
+```python
+for _ in range(int(input())):
+    a, b = map(int, input().split())
+    print(max(0, (a + b - 1) // b))
+```
+
+This solution uses integer division (`//`) to calculate the number of moves needed to make `a` divisible by `b`, and the `max` function to ensure the result is non-negative.

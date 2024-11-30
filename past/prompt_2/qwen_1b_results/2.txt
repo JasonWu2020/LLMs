@@ -1,0 +1,32 @@
+```python3
+import sys
+input = sys.stdin.readline
+from collections import Counter
+
+def main():
+    n = int(input())
+    a = list(map(int, input().strip().split()))
+    b = list(map(int, input().strip().split()))
+
+    c_a = Counter(a)
+    c_b = Counter(b)
+
+    # Calculate the initial differences for each player
+    diff_a = sum(c_a.values()) - len(a)
+    diff_b = sum(c_b.values()) - len(b)
+
+    # If both players start with the same number of unique elements,
+    # then the total difference remains unchanged regardless of their actions.
+    if diff_a == diff_b:
+        return diff_a
+
+    # The player with more unique elements will always gain an advantage
+    if diff_a > diff_b:
+        return diff_a - diff_b
+    else:
+        return diff_b - diff_a
+
+if __name__ == "__main__":
+    print(main())
+```
+This Python script reads inputs for `n` and two lists of integers (`a` and `b`) from standard input, calculates the initial differences for each player based on the counts of unique elements in their respective lists, determines the winner of the game based on these differences, and prints out the resulting difference.

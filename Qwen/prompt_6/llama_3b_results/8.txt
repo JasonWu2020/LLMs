@@ -1,0 +1,18 @@
+```python
+import sys
+
+def solve(a, b, c):
+    if b >= 2 and c >= 2:
+        return min(a + 2 * (b // 2) + 2 * (c // 2), min(b, a + c))
+    elif b >= 2 and a >= 1:
+        return a + b - 2 + 2 * (c // 2)
+    elif c >= 2 and b >= 1:
+        return b + c - 2 + 2 * (a // 2)
+    else:
+        return min(a, b, c)
+
+t = int(input())
+for _ in range(t):
+    a, b, c = map(int, input().split())
+    print(solve(a, b, c))
+```

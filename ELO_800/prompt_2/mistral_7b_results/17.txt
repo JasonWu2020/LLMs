@@ -1,0 +1,15 @@
+[/INST] ```python3
+import sys
+
+def min_moves(n, current, combination):
+    min_moves = 0
+    for i in range(n):
+        diff = int(combination[i]) - int(current[i])
+        min_moves += abs(diff) + 1 if abs(diff) > 5 else min(abs(diff), 10 - abs(diff))
+    return min_moves
+
+if __name__ == "__main__":
+    input = sys.stdin.readlines()
+    n, current, combination = map(str.strip, input[:3])
+    print(min_moves(int(n), current, combination))
+```</s>

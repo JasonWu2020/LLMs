@@ -1,0 +1,14 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    s = input().strip()
+    t = input().strip().split()
+
+    # Find the lexicographically smallest permutation of S that does not contain T
+    s_min = ''.join(sorted(s) - t)
+
+    # Print the smallest permutation
+    print(s_min)
+```<eos>

@@ -1,0 +1,18 @@
+<start_of_turn>model
+```python
+k = int(input())
+r = int(input())
+ 
+#Calculate the minimum number of shovels needed 
+minimum_shovels = 0
+ 
+minimum_shovels= 0
+# Find if possible
+while k >= 10 * (minimum_shovels + 1): 
+
+
+ print(minimum_shovels) 
+
+
+```
+<end_of_turn>

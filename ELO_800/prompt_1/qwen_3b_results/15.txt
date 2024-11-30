@@ -1,0 +1,19 @@
+```python
+def analyze_performance(n):
+    good_participants = []
+    for _ in range(n):
+        name, before, after = input().split()
+        before, after = int(before), int(after)
+        # Check if the participant's rating increased
+        if before < after:
+            good_participants.append(name)
+
+    # Check if any participant with a red handle had their rating increase
+    for name in good_participants:
+        if name[0] >= 'R' and name[0] <= 'Y':
+            return "YES"
+    return "NO"
+
+n = int(input())
+print(analyze_performance(n))
+```

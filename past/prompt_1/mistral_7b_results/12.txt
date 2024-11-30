@@ -1,0 +1,5 @@
+[/INST] ```python
+n, m, a, b, g_0, x, y, z = map(int, input().split())
+h = [g_0 + i*m*x + j for i in range(n-a+1) for j in range(m-b+1)]
+print(sum(h))
+```</s>

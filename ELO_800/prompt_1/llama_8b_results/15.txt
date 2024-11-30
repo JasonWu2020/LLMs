@@ -1,0 +1,20 @@
+```python
+import sys
+
+n = int(input())
+good = False
+antons_before = -1
+for _ in range(n):
+    name, before, after = input().split()
+    before = int(before)
+    after = int(after)
+    if before >= 2400:
+        if before < antons_before and after > antons_before:
+            good = True
+    antons_before = max(antons_before, after)
+
+if good:
+    print("YES")
+else:
+    print("NO")
+```

@@ -1,0 +1,23 @@
+```python
+def get_next_char(s, c):
+    for i in range(len(s) - 1, -1, -1):
+        if s[i]!= c:
+            return s[:i] + c + s[i:]
+    return s
+
+def solve():
+    s = input()
+    t = input()
+    t_index = {'a': 0, 'b': 1, 'c': 2}
+    for c in 'abc':
+        s = get_next_char(s, c)
+        if t[t_index[c]] > 0:
+            t[t_index[c]] -= 1
+        else:
+            break
+    print(s)
+
+t = int(input())
+for _ in range(t):
+    solve()
+```

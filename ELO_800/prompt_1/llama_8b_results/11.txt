@@ -1,0 +1,7 @@
+```python
+import math
+
+k, r = map(int, input().split())
+result = math.ceil(k / r)
+print(result if result * r - k <= k else result - 1)
+```

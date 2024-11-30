@@ -1,0 +1,23 @@
+**Critique of the original solution**
+
+The original solution is concise and easy to understand. However, it assumes that the input list `a` is long enough to have at least three elements, which might not be the case. If `n` is less than 3, the code will raise an `IndexError`. 
+
+Additionally, the solution uses slicing to separate the list into three lists, which might be inefficient for large lists. A more efficient solution would use a single loop to iterate over the list and keep track of the maximum count for each exercise.
+
+**Improved solution**
+
+```python
+python
+n = int(input())
+a = list(map(int, input().split()))
+
+max_count = {'chest': 0, 'biceps': 0, 'back': 0}
+exercise = ['chest', 'biceps', 'back']
+
+for i, num in enumerate(a):
+    max_count[exercise[i % 3]] += num
+
+print('chest' if max_count['chest'] >= max_count['biceps'] and max_count['chest'] >= max_count['back'] else
+      'biceps' if max_count['biceps'] > max_count['chest'] and max_count['biceps'] >= max_count['back'] else
+      'back')
+```

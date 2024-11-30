@@ -1,0 +1,7 @@
+```python
+t = int(input())
+
+for _ in range(t):
+    a, b = map(int, input().split())
+    print((a // b + 1 - a // b) * b - a if a % b!= 0 else 0)
+```

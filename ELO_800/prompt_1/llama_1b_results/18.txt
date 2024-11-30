@@ -1,0 +1,19 @@
+```python
+t = int(input())
+
+for _ in range(t):
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    ans = []
+    for i in range(n):
+        if a[i] in b:
+            ans.append(a[i])
+            b.remove(a[i])
+
+    if len(ans) == 0:
+        print("NO")
+    else:
+        print(len(ans), *ans)
+```

@@ -1,0 +1,52 @@
+Given the constraints, we can solve this problem efficiently by iterating through the string and keeping track of the balance between 'a' and 'b' characters. Here's the Python code to accomplish that:
+
+```python
+def find_balanced_substring(t):
+    for _ in range(t):
+        n = int(input())
+        s = input()
+        
+        # Initialize variables
+        balance = 0
+        start = -1
+        end = -1
+        
+        for i in range(n):
+            if s[i] == 'a':
+                balance += 1
+            else:
+                balance -= 1
+            
+            if balance == 0:
+                start = 1
+                end = i + 1
+            elif start != -1:
+                end = i + 1
+        
+        print(start, end)
+
+# Example usage
+t = int(input().strip())  # Number of test cases
+find_balanced_substring(t)
+```
+
+### Explanation:
+1. **Reading Input**: 
+   - `t` is the number of test cases.
+   - For each test case, read the length `n` of the string and the string itself `s`.
+
+2. **Initialization**:
+   - `balance` is used to keep track of the difference between the count of 'a' and 'b'.
+   - `start` and `end` are initialized to `-1`, indicating no balanced substring has been found yet.
+
+3. **Iterating Through the String**:
+   - For each character in the string:
+     - Increment `balance` if the character is 'a'.
+     - Decrement `balance` if the character is 'b'.
+     - When `balance` equals zero, it means we have found a balanced substring starting from the beginning up to the current index. Hence, update `start` and `end`.
+     - If `start` is already set, update `end` to the current index plus one, ensuring we capture the longest balanced substring ending at the current index.
+
+4. **Output**:
+   - After processing each test case, print the values of `start` and `end`. If no balanced substring is found, `start` and `end` will remain `-1`, so print `-1 -1`.
+
+This approach ensures that we efficiently find the longest balanced substring in linear time, O(n), where n is the length of the string.

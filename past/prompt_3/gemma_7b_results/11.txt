@@ -1,0 +1,19 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is straightforward. It reads the input, creates two lists of heights for each row, merges them into a single list, sorts the list in ascending order, and then calculates the sum of the heights starting from the second element in the sorted list. This ensures that no consecutive chosen students belong to the same row, and maximizes the total height of the team.
+
+**Improved Solution:**
+
+```python
+n = int(input())
+h1 = list(map(int, input().split()))
+h2 = list(map(int, input().split()))
+h = h1 + h2
+h.sort()
+print(sum(h[1:]))
+```
+
+**Explanation:**
+
+This solution is identical to the previous one, but it uses the `sum` function to calculate the total height of the team, rather than manually iterating over the list of heights. This makes the code more concise and efficient.<eos>

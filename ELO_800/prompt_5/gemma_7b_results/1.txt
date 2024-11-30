@@ -1,0 +1,17 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    p = list(map(int, input().split()))
+
+    # Calculate the minimum number of invitations
+    min_inv = 2
+    for i in range(n):
+        if p[i] != i and p[i] not in invited:
+            min_inv += 1
+            invited.append(p[i])
+
+    print(min_inv)
+```<eos>

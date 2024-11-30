@@ -1,0 +1,11 @@
+[/INST] ```python
+import sys
+
+n = int(sys.stdin.readline().strip())
+coins = list(map(int, sys.stdin.readline().strip().split()))
+coins.sort()
+pockets = [[] for _ in range(len(set(coins)))]
+for coin in coins:
+    pockets[coins.index(coin)].append(coin)
+print(len(pockets))
+```</s>

@@ -1,0 +1,21 @@
+The outputted solution has a few issues:
+
+1. It doesn't handle the case when there are friends who are not in the best friend list of anyone else. In this case, they will not be invited and should not be included in the set.
+2. It doesn't handle the case when there are two friends who are each other's best friend. In this case, both of them should be invited.
+
+Here is a revised solution:
+
+```python
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    p = list(map(int, input().split()))
+    s = set()
+    for i in range(n):
+        s.add(p[i])
+        s.add(i)
+    s = {x for x in s if p[x-1] in s}
+    print(min(len(s), 2))
+```
+
+This solution first adds all the friends and their best friends to the set. Then it removes any friends who are not in the best friend list of anyone else. This ensures that only friends who will be invited are included in the set. The minimum of the size of the set and 2 is then printed as the answer.

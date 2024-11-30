@@ -1,0 +1,42 @@
+```python
+def smallest_permutation(s, t):
+    # Count the frequency of each character in s and t
+    s_count = {}
+    t_count = {}
+    for char in s:
+        s_count[char] = s_count.get(char, 0) + 1
+    for char in t:
+        t_count[char] = t_count.get(char, 0) + 1
+
+    # Create a list of characters with their counts
+    s_list = list(s_count.items())
+    t_list = list(t_count.items())
+
+    # Sort the list of characters based on their counts and characters
+    s_list.sort(key=lambda x: (-x[1], s_list.index(x[0]))
+    t_list.sort(key=lambda x: (-x[1], t_list.index(x[0]))
+
+    # Initialize the result string
+    result = [''] * len(s)
+
+    # Iterate over the sorted list of characters
+    for char, count in s_list:
+        # If the character is in t, place it in the result string
+        if char in t_list:
+            index = t_list.index((char, count))
+            result[index] = char
+        # If the character is not in t, place it at the end of the result string
+        else:
+            result.append(char)
+
+    # Join the result string
+    return ''.join(result)
+
+
+t = int(input())
+
+for _ in range(t):
+    s = input()
+    t = input()
+    print(smallest_permutation(s, t))
+```

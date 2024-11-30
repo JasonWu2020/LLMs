@@ -1,0 +1,34 @@
+```python
+from typing import List
+
+def min_pockets(n: int, a: List[int]) -> int:
+    """
+    Distributes n coins among pockets such that no two coins with the same value are placed in the same pocket,
+    minimizing the number of pockets used.
+    
+    :param n: Number of coins.
+    :param a: Values of each coin.
+    :return: Minimum number of pockets needed.
+    """
+    # Count occurrences of each coin value
+    count_map = {}
+    for value in a:
+        count_map[value] = count_map.get(value, 0) + 1
+    
+    max_value = max(count_map.keys())
+    min_pockets = len(a)
+    
+    # If there's at least one coin with the maximum value, we need additional pockets
+    if max_value in count_map and count_map[max_value] > 1:
+        min_pockets += 1
+    
+    return min_pockets
+
+# Example check function (not part of solution)
+def check_solution():
+    assert min_pockets(5, [1, 2, 3, 4, 5]) == 2
+    assert min_pockets(7, [1, 1, 2, 2, 2, 2, 3]) == 3
+    print("All tests passed!")
+
+check_solution()
+```

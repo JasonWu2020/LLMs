@@ -1,0 +1,17 @@
+The outputted solution has a time complexity of O(t * log(n)), where t is the number of test cases and n is the input number. This is because for each test case, it needs to calculate the bit length of the input number, which takes O(log(n)) time.
+
+However, the solution can be improved by directly using the bit length of the input number minus one as the maximum value k, because if n has a certain bit set, it will be cleared in the bitwise AND operation with n-1, n-2, n-3,..., k. Therefore, the maximum value k will be n with the least significant bit cleared.
+
+Here is an improved solution:
+
+```python
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    k = 1
+    while (n | k)!= n:
+        k += 1
+    print(k - 1)
+```
+
+This solution has a time complexity of O(t * log(n)), which is the same as the original solution. However, it is more intuitive and easier to understand because it directly finds the maximum value k by checking whether the bitwise OR operation between n and k is equal to n. If not, it means the least significant bit of k is set, so it increments k until the least significant bit of k is cleared.

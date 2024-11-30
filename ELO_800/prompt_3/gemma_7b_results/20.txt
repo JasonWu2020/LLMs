@@ -1,0 +1,18 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is correct, but it can be improved. The code is iterating over the range `1` to `n` to find the maximum value of `k`. This is inefficient, as the loop iterates over unnecessary elements.
+
+**Improved Solution:**
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    k = 0
+    while n & (n-1):
+        n &= n-1
+        k += 1
+    print(k)
+```<eos>

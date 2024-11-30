@@ -1,0 +1,15 @@
+```python
+def max_k_zero_bitwise_and(n):
+    # The maximum k is found when the least significant bit is flipped in all numbers from n down to k
+    # This happens when we reach a number whose binary representation has all bits set (2^n - 1)
+    # Because the bitwise AND of any number with 2^n - 1 flips all its bits, the result becomes 0
+    return n.bit_length()
+
+# Read number of test cases
+T = int(input())
+for _ in range(T):
+    # Read input for each test case
+    N = int(input())
+    print(max_k_zero_bitwise_and(N))
+```
+This Python code snippet defines a function `max_k_zero_bitwise_and` that calculates the maximum integer \(k\) given an integer \(n\), such that the bitwise AND operation on \(n\) through \(k\) equals zero, based on the provided problem statement and examples. The solution leverages the property that once we reach a number whose binary representation has all bits set, the bitwise AND of this number and any other number results in zero due to flipping all bits in the other number. The function `N.bit_length()` is used to find the position of the least significant bit that needs to be flipped to achieve the desired result, effectively finding \(k\).

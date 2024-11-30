@@ -1,0 +1,19 @@
+```python
+import sys
+
+def flip_array(a, k):
+    max_val = max(a)
+    unique_smaller_than_half_max = {x for x in a if x < max_val / 2}
+    
+    if k % 2 == 0:
+        return [max_val - x for x in a]
+    else:
+        return [max_val if x >= max_val / 2 else 2 * max_val - x for x in a]
+
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    result = flip_array(a, k)
+    print(' '.join(map(str, result)))
+```

@@ -1,0 +1,9 @@
+[/INST] ```python
+import sys
+
+for _ in range(int(sys.stdin.readline())):
+    n = int(sys.stdin.readline())
+    friends = list(map(int, sys.stdin.readline().split()))
+    pairs = [(i, j) for i, j in enumerate(friends) if i != j and friends[i] == friends[j]]
+    print(len(pairs))
+```</s>

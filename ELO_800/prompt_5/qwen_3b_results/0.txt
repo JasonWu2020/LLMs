@@ -1,0 +1,42 @@
+Here's a Python solution for the problem:
+
+```python
+def find_longest_good_subsequence(n, k, s):
+    # Initialize counts for each letter from 'A' to the k-th letter
+    letter_counts = [0] * k
+    
+    # Count occurrences of each letter in the string
+    for char in s:
+        letter_counts[ord(char) - ord('A')] += 1
+    
+    # Find the minimum count among all letters
+    min_count = min(letter_counts)
+    
+    # The length of the longest good subsequence is the total length of the string minus the sum of the minimum counts
+    return n - (min_count * k)
+
+# Read input
+n, k = map(int, input().split())
+s = input()
+
+# Compute and print the result
+print(find_longest_good_subsequence(n, k, s))
+```
+
+### Explanation:
+
+1. **Count Occurrences**:
+   - We initialize an array `letter_counts` where `letter_counts[i]` represents the count of the `(i+1)`-th letter from 'A' to the `k`-th letter.
+   - We iterate through the string `s`, incrementing the corresponding index in `letter_counts`.
+
+2. **Find Minimum Count**:
+   - We find the minimum value in `letter_counts`. This represents the smallest frequency of any letter in the string.
+
+3. **Calculate Length of Longest Good Subsequence**:
+   - The length of the longest good subsequence is computed as the total length of the string `n` minus the sum of the minimum counts across all letters.
+
+4. **Read Input and Print Result**:
+   - We read the values of `n` and `k` followed by the string `s`.
+   - We call the function `find_longest_good_subsequence` and print the result.
+
+This solution ensures that we efficiently compute the required length using simple counting and arithmetic operations.

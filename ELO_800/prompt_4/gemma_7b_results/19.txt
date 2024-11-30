@@ -1,0 +1,15 @@
+<start_of_turn>model
+**Critique:**
+
+The solution above is correct, but it can be simplified. The loop can be iterated from 0 to the square root of $n$ instead of iterating over the entire range from 1 to $n$. This is because the maximum value of $k$ will be the square root of $n$.
+
+**Improved solution:**
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    k = int((n ** 0.5).floor())
+    print(k)
+```<eos>

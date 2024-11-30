@@ -1,0 +1,13 @@
+```python
+t = int(input())
+
+for _ in range(t):
+    a, b = map(int, input().split())
+    q, r = divmod(a, b)
+    
+    if r == 0:
+        print(0)
+    else:
+        print(b - r)
+```
+This Python script takes advantage of the `divmod` function, which returns both the quotient and remainder when dividing the first argument by the second. If there's no remainder, it means `a` is already divisible by `b`, so the answer is zero. Otherwise, it calculates how many additional increments (`b - r`) are needed to make `a` divisible by `b`.

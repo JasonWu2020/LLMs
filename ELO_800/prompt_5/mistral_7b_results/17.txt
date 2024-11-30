@@ -1,0 +1,22 @@
+[/INST] Here's the Python solution for the problem:
+
+```python
+def manhattan_distance(combination, target):
+    return sum(abs(digits[i] - target[i]) for i in range(len(combination)))
+
+def find_min_moves(disks, combination):
+    moves = float('inf')
+    for target in itertools.permutations(combination, len(combination)):
+        moves = min(moves, manhattan_distance(disks, tuple(target)))
+    return moves
+
+import itertools
+
+n = int(input())
+disks = list(map(int, input().split()))
+combination = list(map(int, input().split()))
+
+print(find_min_moves(disks, combination))
+```
+
+This code reads the input, calculates the Manhattan distance between the current state of the disks and the target combination using the `manhattan_distance` function, and finds the minimum Manhattan distance for all possible combinations using the `find_min_moves` function. The function `find_min_moves` uses `itertools.permutations` to generate all possible combinations and `min` to find the minimum distance. Finally, the result is printed as output.</s>

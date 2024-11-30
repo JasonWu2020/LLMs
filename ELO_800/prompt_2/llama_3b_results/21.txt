@@ -1,0 +1,30 @@
+```python
+from collections import Counter
+import sys
+
+def min_pockets(n, coins):
+    count = Counter(coins)
+    sorted_coins = sorted(count.items(), key=lambda x: (-x[1], x[0]))
+    used_pockets = 0
+    current_pocket = 1
+    current_pocket_values = []
+
+    for value, freq in sorted_coins:
+        if not current_pocket_values or value!= current_pocket_values[-1]:
+            current_pocket_values.append(value)
+            used_pockets += 1
+        current_pocket_values.append(value)
+        if len(current_pocket_values) > len(set(current_pocket_values)):
+            current_pocket += 1
+
+    return used_pockets
+
+def main():
+    input = sys.stdin.readline
+    n = int(input())
+    coins = list(map(int, input().split()))
+    print(min_pockets(n, coins))
+
+if __name__ == "__main__":
+    main()
+```

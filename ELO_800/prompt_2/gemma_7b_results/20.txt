@@ -1,0 +1,12 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    k = 0
+    while n & (-n & 1) != 0:
+        n >>= 1
+        k += 1
+    print(k)
+```<eos>

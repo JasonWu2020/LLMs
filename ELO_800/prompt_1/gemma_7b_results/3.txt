@@ -1,0 +1,13 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    n, k = map(int, input().split())
+
+    if k > n or k > n**2:
+        print(-1)
+    else:
+        board = [['R' if i == k else '.' for i in range(n)] for _ in range(n)]
+        print('\n'.join([''.join(board[i]) for i in range(n)]))
+```<eos>

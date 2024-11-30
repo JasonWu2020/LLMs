@@ -1,0 +1,17 @@
+[/INST] ```python3
+import sys
+n = int(sys.stdin.readline())
+red_participants = {}
+for _ in range(n):
+    name, before, after = map(str, sys.stdin.readline().split())
+    if before[-1] in ['R', 'r']:
+        red_participants[name] = before
+
+good_performance = False
+for name, before, after in ((name, before, after) for name, before, after in map(lambda x: map(str, x.split()), sys.stdin.readlines()))[1:]:
+    if name in red_particans and int(after) > int(red_participants[name]):
+        good_performance = True
+        break
+
+print("YES" if good_performance else "NO")
+```</s>

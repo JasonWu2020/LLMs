@@ -1,0 +1,19 @@
+The outputted solution has a few issues:
+
+1. It assumes that the remainder of `k % r` will always be a multiple of 10, which is not necessarily true. For example, if `k = 17` and `r = 3`, the remainder is 1, not a multiple of 10.
+
+2. The line `r = (k % r) * 10` is incorrect. It's trying to calculate the remainder of `k` divided by `r`, but it's not doing it correctly.
+
+Here's an alternative solution:
+
+```python
+k, r = map(int, input().split())
+r = r % 10
+if k % r == 0:
+    print(1)
+else:
+    q, m = divmod(k, r)
+    print(max(q, m + 1))
+```
+
+This solution uses the `divmod` function to correctly calculate the quotient `q` and remainder `m` of `k` divided by `r`. It then prints the maximum of `q` and `m + 1`, which is the minimum number of shovels Polycarp needs to buy.

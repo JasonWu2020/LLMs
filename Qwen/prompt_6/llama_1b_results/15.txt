@@ -1,0 +1,33 @@
+```python
+# Read the number of participants
+n = int(input())
+
+# Initialize a dictionary to store the previous ratings for each participant
+prev_ratings = {}
+
+# Read the ratings for each participant
+for _ in range(n):
+    name, before, after = input().split()
+    before = int(before)
+    after = int(after)
+
+    # Store the ratings in the dictionary
+    prev_ratings[name] = (before, after)
+
+# Initialize a variable to store the result
+result = "YES"
+
+# Iterate over the participants' ratings
+for name, (before, after) in prev_ratings.items():
+    # Calculate the difference between the current and previous ratings
+    diff = after - before
+
+    # If the difference is greater than 0, update the result
+    if diff > 0:
+        result = "NO"
+        break
+
+# Print the result
+print(result)
+
+```

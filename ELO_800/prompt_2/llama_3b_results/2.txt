@@ -1,0 +1,8 @@
+```python
+for _ in range(int(input())):
+    n, a, b = map(int, input().split())
+    if a <= b <= n and n <= 2 * a + 2 * b:
+        print("Yes")
+    else:
+        print("No")
+```

@@ -1,0 +1,5 @@
+```python
+k, r = map(int, input().split())
+shovels = k // (10 - r)
+print(shovels)
+```

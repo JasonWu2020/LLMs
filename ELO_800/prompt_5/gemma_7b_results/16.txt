@@ -1,0 +1,8 @@
+<start_of_turn>model
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    print(int((n - 9) // 11) + 1)
+```<eos>

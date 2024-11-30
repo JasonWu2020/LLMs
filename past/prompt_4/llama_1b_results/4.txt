@@ -1,0 +1,30 @@
+Critique of the outputted solution:
+
+The outputted solution is not correct because it doesn't consider the case when a friend's friend is also a friend of another friend. This is because it only checks if the friend i has a friend j who is not i, but it doesn't check if j is also a friend of i.
+
+The correct solution should check all possible combinations of friendships to ensure that at least 2 friends are invited.
+
+Here is the corrected solution:
+
+```python
+def min_invitations(n, p):
+    colors = [0] * n
+    for i in range(n):
+        for j in range(i+1, n):
+            if p[i]!= j and p[j]!= i:
+                colors[j] += 1
+    colors.sort()
+    return sum(colors)
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    p = list(map(int, input().split()))
+    print(min_invitations(n, p))
+```
+
+Critique of the new solution:
+
+The new solution is correct because it checks all possible combinations of friendships to ensure that at least 2 friends are invited. It uses a list `colors` to keep track of the number of invitations required for each color, and then sorts the colors to find the minimum number of invitations required.
+
+The time complexity of this solution is O(n^2) due to the nested loops, which is the same as the original solution.

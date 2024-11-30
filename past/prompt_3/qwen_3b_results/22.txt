@@ -1,0 +1,33 @@
+```python
+def solve_gerald_homework(s, k):
+    char_count = {}
+    for char in s:
+        if char in char_count:
+            char_count[char] += 1
+        else:
+            char_count[char] = 1
+    
+    chars_to_delete = sorted(char_count.items(), key=lambda x: x[1], reverse=True)
+    chars_to_delete = [char[0] for char in chars_to_delete]
+    
+    min_distinct_chars = len(chars_to_delete)
+    for char in chars_to_delete:
+        remaining_chars = list(filter(lambda x: x != char, s))
+        if len(set(remaining_chars)) <= min_distinct_chars + k:
+            return len(set(remaining_chars)), ''.join(remaining_chars)
+    
+    return min_distinct_chars, ''
+```
+
+This solution checks how many distinct characters remain in the string after deleting up to `k` characters. It starts by counting the occurrences of each character in the string. Then, it sorts these characters by their frequency in descending order. For each character, it calculates the new set of distinct characters after deleting that character and compares it to the minimum number of distinct characters required (`min_distinct_chars`). It continues this process until it finds a valid configuration where the number of distinct characters is less than or equal to `min_distinct_chars + k`.
+
+Here's an example of how to use the function:
+
+```python
+s, k = input().strip(), int(input().strip())
+result, remaining_string = solve_gerald_homework(s, k)
+print(result)
+print(remaining_string)
+```
+
+This script reads the string `s` and the integer `k` from standard input, calls the `solve_gerald_homework` function, and prints the results to standard output.

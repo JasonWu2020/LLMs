@@ -1,0 +1,14 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    p = list(map(lambda x: int(x)-1, input().split()))
+    visited = [False]*n
+    cnt = 0
+    for i in range(n):
+        if not visited[i]:
+            cnt += 1
+            j = i
+            while not visited[j]:
+                visited[j] = True
+                j = p[j]
+    print(cnt)

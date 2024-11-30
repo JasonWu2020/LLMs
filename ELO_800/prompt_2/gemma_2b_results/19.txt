@@ -1,0 +1,18 @@
+<start_of_turn>model
+```python
+def process_input():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        ans = 3
+        while n > 0:
+            if n & (n - 1) & (n - 2) & (n - 3) & (n - 4):
+                ans += 1
+            n -= 1  
+        print(ans)
+
+if __name__ == '__main__':
+  process_input()
+```
+
+<end_of_turn>

@@ -1,0 +1,14 @@
+[/INST] The outputted solution does not include proper error handling or edge case considerations. For example, if the encrypted message does not contain any lowercase Latin letters, the code will raise an exception. Additionally, the solution assumes that the input string $s$ always contains at least one decryptable character, which may not be the case.
+
+Here is an alternative solution that handles these edge cases:
+
+```python
+def decrypt(s):
+    matches = re.findall(r'[a-z]', s)
+    return ''.join(matches[:-1]) if matches else ''
+
+for _ in range(int(input())):
+    n = int(input())
+    s = input()
+    print(decrypt(s))
+```</s>

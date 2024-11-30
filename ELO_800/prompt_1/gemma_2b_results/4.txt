@@ -1,0 +1,17 @@
+<start_of_turn>model
+```python
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()  
+    a = ''
+    for i in range(n):
+        if i == 0:
+            a += s[i]
+        else:
+            if 'a' in s[i:i+1]:
+                a += s[i]
+            else:
+                a += s[i]
+    print(a)
+```<end_of_turn>

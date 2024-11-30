@@ -1,0 +1,34 @@
+```python
+from collections import defaultdict
+
+def analyze_contest_results(n, contests):
+    # Create a dictionary to store the ratings before and after each contest
+    contest_ratings = defaultdict(lambda: {'before': None, 'after': None})
+    
+    # Iterate through each contest result
+    for i in range(1, n + 1):
+        name, before, after = contests[i]
+        
+        # Update the contest ratings dictionary
+        contest_ratings[name]['before'] = int(before)
+        contest_ratings[name]['after'] = int(after)
+    
+    # Count the number of times Anton has outscored users with a rating >= 2400
+    good_count = sum(contest_ratings[name]['after'] > 2400 for name in contest_ratings)
+    
+    # Check if Anton has performed good in the contest
+    return "YES" if good_count else "NO"
+
+# Read input from stdin
+n = int(input())
+
+# Store contest results in an array
+contests = []
+
+for _ in range(n):
+    name, before, after = input().split()
+    contests.append((name, before, after))
+
+# Print the analysis result
+print(analyze_contest_results(n, contests))
+```

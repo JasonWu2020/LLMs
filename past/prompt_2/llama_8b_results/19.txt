@@ -1,0 +1,70 @@
+```python
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+edges = [[] for _ in range(n)]
+for _ in range(n - 1):
+    u, v = map(int, input().split())
+    u -= 1
+    v -= 1
+    edges[u].append(v)
+    edges[v].append(u)
+
+k = int(input())
+leaf_order = list(map(int, input().split()))
+leaf_order = [x - 1 for x in leaf_order]
+
+def dfs(v, p):
+    global tree
+    tree[v] = []
+    for u in edges[v]:
+        if u!= p:
+            tree[v].append(u)
+            dfs(u, v)
+
+tree = [[] for _ in range(n)]
+dfs(0, -1)
+
+def dfs2(v, p, parent_edge, leaf, leaf_order, path):
+    global tree
+    path.append(v + 1)
+    if v in leaf_order:
+        leaf.remove(v)
+    for u in tree[v]:
+        if u!= p:
+            if len(tree[u]) == 1:
+                if leaf and u in leaf:
+                    dfs2(u, v, (u, v), leaf, leaf_order, path)
+                else:
+                    path.append(u + 1)
+                    dfs2(u, v, (u, v), leaf, leaf_order, path)
+                    path.pop()
+            else:
+                dfs2(u, v, (u, v), leaf, leaf_order, path)
+    if v in leaf:
+        path.append(v + 1)
+    if (p, v) in parent_edge:
+        path.append(v + 1)
+        path.append(p + 1)
+    if leaf:
+        path.append(p + 1)
+        path.append(v + 1)
+        path.append(p + 1)
+
+leaf = [i for i in range(n) if len(tree[i]) == 1 and i!= 0]
+leaf_order = [i for i in leaf_order if i in leaf]
+
+if len(leaf_order)!= len(leaf):
+    print(-1)
+else:
+    path = []
+    if len(tree[0]) == 1:
+        for i in leaf_order:
+            path.append(i + 1)
+            path.append(0 + 1)
+        path.append(0 + 1)
+    else:
+        dfs2(0, -1, [], leaf, leaf_order, path)
+    print(*path)
+```

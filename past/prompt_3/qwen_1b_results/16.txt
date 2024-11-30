@@ -1,0 +1,47 @@
+### Solution Analysis:
+
+The provided Python script uses a brute-force approach to check all possible pairs of camels to determine if they have spat at each other. Given that the number of camels \( n \) ranges from 1 to 100, the time complexity of the algorithm would be \( O(n^2) \), which is efficient enough given the constraints.
+
+However, the script does not actually perform the comparison between positions and distances to determine if two camels spat at each other. Instead, it simply checks every pair of camels and outputs "YES" if any match is found, otherwise "NO".
+
+This approach could potentially work but lacks clarity about what constitutes a valid spat scenario. A more refined solution should explicitly compare the positions and distances to ensure the correct conditions for spitting are met.
+
+### Optimized Solution:
+To optimize the solution, we need to check whether the difference in positions of any two camels matches their respective spitting distances. If so, those camels spat at each other.
+
+Here’s how we can do it:
+
+```python
+def has_spit_at_each_other(camel_positions):
+    """
+    Check if there exist two camels that spat at each other based on their positions and spitting distances.
+    
+    :param camel_positions: List[int], a list of tuples [(xi_1, di_1), (xi_2, di_2), ..., (xi_n, di_n)]
+    :return: str, 'YES' if there are two camels that spat at each other, 'NO' otherwise.
+    """
+    n = len(camel_positions)
+    # Iterate over all pairs of camels
+    for i in range(n):
+        for j in range(i + 1, n):
+            xi1, di1 = camel_positions[i]
+            xi2, di2 = camel_positions[j]
+            
+            # Check if the difference in positions equals the difference in distances
+            if abs(xi1 - xi2) == abs(di1 - di2):
+                return 'YES'
+                
+    return 'NO'
+
+# Example usage:
+camel_positions = [
+    (1, 5),
+    (2, 6),
+    (3, -2),
+    (4, 3),
+    (-1, -7)
+]
+
+print(has_spit_at_each_other(camel_positions))  # Output should be 'YES'
+```
+
+In this optimized version, the function iterates through each pair of camels and checks if the absolute difference in their positions equals the absolute difference in their spitting distances. If such a pair is found, it immediately returns "YES". If no such pair exists after checking all combinations, it returns "NO". This ensures that the output is both accurate and clear regarding whether two camels spat at each other.

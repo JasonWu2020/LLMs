@@ -1,0 +1,10 @@
+<start_of_turn>model
+```python
+n = int(input())
+for _ in range(n):
+    name, before, after = input().split()
+    if int(before) < 2400 and int(after) >= 2400:
+        print("YES")
+    else:
+        print("NO")
+```<eos>

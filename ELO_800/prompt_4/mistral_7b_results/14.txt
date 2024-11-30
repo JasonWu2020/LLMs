@@ -1,0 +1,26 @@
+[/INST] The provided solution reads the input, processes the test cases, and outputs the result as required. However, it can be improved by breaking the function `max_scaling` into smaller functions to make it more modular and easier to understand. Also, the input and output formatting should be consistent with the problem statement.
+
+```python
+import sys
+from itertools import accumulate
+
+def read_input():
+    return list(map(lambda: list(map(int, input().split())), map(lambda: input().strip().split(), sys.stdin.readlines()[1:])))
+
+def max_scaling(arr):
+    max_val = max(arr)
+    return list(map(lambda x: max_val - x, arr))
+
+def solve(test_cases):
+    for test_case in test_cases:
+        n, k = test_case
+        arr = test_case[1:]
+        result = max_scaling(arr)
+        print(' '.join(str(x) for x in result))
+
+if __name__ == "__main__":
+    test_cases = read_input()
+    solve(test_cases)
+```
+
+This solution follows the same input and output specifications as the original problem, and it breaks down the `max_scaling` function into smaller functions, such as `read_input`, `max_scaling`, and `solve`.</s>

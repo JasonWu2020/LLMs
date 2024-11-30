@@ -1,0 +1,59 @@
+```python
+def find_max_subsequence(s):
+    max_subseq = ""
+    for char in reversed(s):
+        # Append the current character if it is greater than or equal to the last character in max_subseq
+        max_subseq += char if not max_subseq or ord(char) > ord(max_subseq[-1]) else ""
+    return max_subseq[::-1]
+
+# Read input
+input_str = input().strip()
+# Process input and get the result
+result = find_max_subsequence(input_str)
+# Print the result
+print(result)
+```
+
+### Critique of the Provided Solution
+
+- **Efficiency**: The provided solution iterates over each character of the string `s` from right to left. For each character, it checks whether appending this character to the current `max_subseq` would make it lexicographically larger. If it does, the character is appended; otherwise, nothing is done.
+  
+- **Space Complexity**: The space complexity is O(n), where n is the length of the string `s`. This is because we are storing the characters of the resulting subsequence in the variable `max_subseq`.
+
+- **Time Complexity**: The time complexity is O(n^2). This is due to the fact that for each character, we may need to check up to all previous characters in the string to determine if the current character should be appended to `max_subseq`.
+
+### Alternative Solution
+
+A more efficient approach could be to iterate through the string once and build the maximum subsequence on the fly. This can be achieved using a greedy algorithm where we keep track of the maximum character seen so far and append it to the result when we encounter a character that is greater than or equal to the current maximum.
+
+Here is an alternative implementation:
+
+```python
+def find_max_subsequence(s):
+    max_subseq = ""
+    current_max = ''
+    
+    for char in s:
+        if char >= current_max:
+            current_max = char
+            max_subseq += char
+    
+    return max_subseq
+
+# Read input
+input_str = input().strip()
+# Process input and get the result
+result = find_max_subsequence(input_str)
+# Print the result
+print(result)
+```
+
+### Explanation of the Alternative Solution
+
+- **Greedy Approach**: We iterate through the string `s` and maintain a variable `current_max` which keeps track of the maximum character encountered so far. Whenever we encounter a character that is greater than or equal to `current_max`, we update `current_max` and add this character to our result.
+
+- **Efficiency**: This solution has a time complexity of O(n), making it much faster than the previous one, especially for longer strings.
+
+- **Space Complexity**: The space complexity remains O(n) as before, but the actual space used is less since we do not store all characters in a list until the end. Instead, we keep only the necessary characters in the `max_subseq` string.
+
+This solution adheres to the input and output specifications while being more efficient.

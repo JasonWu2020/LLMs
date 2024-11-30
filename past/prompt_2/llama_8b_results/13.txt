@@ -1,0 +1,8 @@
+s = input()
+ans = []
+last = 'a'
+for c in s:
+    if c > last:
+        ans.append(c)
+        last = c
+print(''.join(ans))

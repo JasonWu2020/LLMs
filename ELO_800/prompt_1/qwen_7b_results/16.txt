@@ -1,0 +1,27 @@
+```python
+from typing import List
+
+def is_interesting(n: int) -> bool:
+    x = str(n)
+    y = str(int(x) + 1)
+    return sum(int(digit) for digit in x) > sum(int(digit) for digit in y)
+
+def count_interesting_numbers(n: int) -> int:
+    count = 0
+    for i in range(1, n + 1):
+        if is_interesting(i):
+            count += 1
+    return count
+
+def solve() -> List[int]:
+    t = int(input())
+    numbers = []
+    for _ in range(t):
+        numbers.append(int(input()))
+    results = [count_interesting_numbers(num) for num in numbers]
+    return results
+
+results = solve()
+for result in results:
+    print(result)
+```

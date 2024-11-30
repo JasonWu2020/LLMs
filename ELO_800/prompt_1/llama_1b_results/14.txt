@@ -1,0 +1,10 @@
+```python
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    d = max(a)
+    for _ in range(k):
+        a = [d - x for x in a]
+    print(*a)
+```

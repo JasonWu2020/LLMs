@@ -1,0 +1,23 @@
+The outputted solution is concise and efficient, but it may not be immediately understandable for someone who is not familiar with the bitwise operation `& -n`. This operation is a clever trick to find the least significant 1 bit in the binary representation of `n`.
+
+Here's an alternative solution that uses a different approach:
+
+```python
+import math
+
+def find_k(n):
+    max_k = n
+    while (max_k & (max_k - 1))!= 0:
+        max_k -= 1
+    return max_k
+
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    print(find_k(n))
+```
+
+This solution iteratively decrements `max_k` until it finds the largest integer that is a power of 2 (i.e., its binary representation has only one 1 bit). This is because the bitwise AND operation with `max_k - 1` will always clear the least significant 1 bit in `max_k`, and we want to stop when this bit is cleared.
+
+This solution is also O(log n) in time complexity, but it may be less efficient in practice due to the repeated subtractions. The original solution using `& -n` is likely to be faster and more concise.

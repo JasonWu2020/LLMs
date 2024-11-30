@@ -1,0 +1,26 @@
+```python
+import sys
+
+def decrypt_string(s):
+    decrypted = ""
+    for i in range(len(s)):
+        char = s[i]
+        # Find the next character that should be the same as the original
+        for j in range(i + 1, len(s)):
+            if s[j] == char:
+                decrypted += char
+                break
+        else:
+            # If no matching character is found, it means the original was a standalone character
+            decrypted += char
+    return decrypted
+
+if __name__ == "__main__":
+    t = int(input().strip())
+    for _ in range(t):
+        n = int(input().strip())
+        s = input().strip()
+        print(decrypt_string(s))
+```
+
+This solution reads the number of test cases `t`, then for each test case, it reads the length `n` of the encrypted string and the string `s`. It then calls the `decrypt_string` function to get the decrypted string and prints it out. The `decrypt_string` function iterates through the string `s`, finding the next occurrence of the current character as the original character, and appending those occurrences to the `decrypted` string. If no such occurrence is found, it means the current character is the original character and it's appended directly to the `decrypted` string.

@@ -1,0 +1,13 @@
+```python
+def find_max_k(t):
+    for _ in range(t):
+        n = int(input())
+        k = 0
+        while n > k:
+            n &= n - 1
+            k += 1
+        print(k)
+
+# Assuming the input is provided via stdin and the output should be printed to stdout
+find_max_k(int(input()))
+```

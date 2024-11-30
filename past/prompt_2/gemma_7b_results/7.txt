@@ -1,0 +1,21 @@
+<start_of_turn>model
+```python
+t = int(input())  # Number of test cases
+
+for _ in range(t):
+    n, k = map(int, input().split())  # Number of items, number of free items
+    a = list(map(int, input().split()))  # Cost of items for Alice
+    b = list(map(int, input().split()))  # Cost of items for Bob
+    
+    a.sort()
+    b.sort()
+    
+    total_cost = 0
+    free_items = 0
+    for i in range(len(a)):
+        if a[i] <= b[0]:
+            free_items += 1
+            total_cost += a[i]
+    
+    print(total_cost - free_items)
+```<eos>

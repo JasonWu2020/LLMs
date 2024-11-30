@@ -1,0 +1,30 @@
+```python
+from typing import List
+
+def analyze_contest_results(n: int, names: List[str], before_ratings: List[int], after_ratings: List[int]) -> str:
+    # Determine if Anton's rating increase qualifies as "good"
+    def is_good_achievement(before, after):
+        return before >= 2400 or (before < 2400 and before >= 2200)
+    
+    for i in range(n):
+        name = names[i]
+        before_rating = before_ratings[i]
+        after_rating = after_ratings[i]
+        
+        # Check if Anton scored against a participant whose handle was previously red
+        if is_good_achievement(before_rating, after_rating):
+            return 'YES'
+    
+    return 'NO'
+
+# Example usage
+if __name__ == "__main__":
+    n = int(input().strip())
+    names = [input().strip() for _ in range(n)]
+    before_ratings = list(map(int, input().strip().split()))
+    after_ratings = list(map(int, input().strip().split()))
+
+    print(analyze_contest_results(n, names, before_ratings, after_ratings))
+```
+
+This Python script follows the guidelines provided, including importing necessary packages at the beginning, ensuring self-containment within the snippet, adhering to the given specifications without any additional explanations.

@@ -1,0 +1,25 @@
+<start_of_turn>model
+```python
+def decrypt(s):
+  result = ''
+  i = 0
+  while i < len(s):
+    curr_char = s[i]
+    if i + 1 < len(s) and s[i + 1].isalpha() and s[i + 1] != curr_char:
+      result += curr_char
+      i += 1
+      while '+' in s[i:i+2]:
+        result += s[i+1]
+        i += 1
+    else:
+      result += curr_char
+      i += 1
+  return result
+
+t = int(input())
+for _ in range(t):
+  n = int(input())
+  s = input()
+  print(decrypt(s)) 
+``` 
+<end_of_turn>

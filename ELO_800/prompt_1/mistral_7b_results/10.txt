@@ -1,0 +1,10 @@
+[/INST] ```python
+import sys
+a, b = map(int, sys.stdin.readline().split())
+different = max(a, b)
+same = min(a, b)
+if different == 1:
+    print(1, (a + b - 1) // (2 if same > 1 else 0))
+else:
+    print(different, (same - 1) // (2 if same > 1 else 0))
+```</s>

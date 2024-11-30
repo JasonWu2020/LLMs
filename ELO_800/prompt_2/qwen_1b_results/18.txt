@@ -1,0 +1,44 @@
+```python3.8
+import sys
+sys.setrecursionlimit(10**6)
+
+def solve():
+    # Read inputs
+    t = int(input())
+    
+    for _ in range(t):
+        n, m = map(int, input().split())
+        a = list(map(int, input().split()))
+        b = list(map(int, input().split()))
+        
+        # Check if there is a common subsequence
+        def dfs(a, b, i, j, memo={}):
+            if (i, j) in memo:
+                return memo[(i, j)]
+            
+            if i == len(a) or j == len(b):
+                return 0
+            
+            ans = max(dfs(a, b, i+1, j, memo), dfs(a, b, i, j+1, memo))
+            
+            if a[i] == b[j]:
+                ans = max(ans, 1 + dfs(a, b, i+1, j+1, memo))
+            
+            memo[(i, j)] = ans
+            return ans
+        
+        ans = dfs(a, b, 0, 0)
+        
+        if ans > 0:
+            print("YES")
+            print(ans)
+            for i in range(len(a)):
+                if a[i] in b[:ans]:
+                    print(a[i], end=" ")
+            print()
+        else:
+            print("NO")
+
+solve()
+```
+```

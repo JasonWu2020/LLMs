@@ -1,0 +1,29 @@
+```python
+from collections import Counter
+
+def solve(S, T):
+    T_set = set(T)
+    S_list = list(S)
+    S_counter = Counter(S_list)
+
+    for c in 'abc':
+        if c not in T_set:
+            for _ in range(S_counter[c]):
+                S_list.append(c)
+            S_counter[c] = 0
+
+    for c in T:
+        if S_counter[c] > 0:
+            for _ in range(S_counter[c]):
+                S_list.append(c)
+            S_counter[c] = 0
+
+    return ''.join(S_list)
+
+if __name__ == "__main__":
+    t = int(input().strip())
+    for _ in range(t):
+        S = input().strip()
+        T = input().strip()
+        print(solve(S, T))
+```

@@ -1,0 +1,22 @@
+```python
+import sys
+
+def read_int():
+    return int(sys.stdin.readline().strip())
+
+def read_ints():
+    return map(int, sys.stdin.readline().strip().split())
+
+def read_list():
+    return list(map(int, sys.stdin.readline().strip().split()))
+
+t = read_int()
+for _ in range(t):
+    n, k = read_ints()
+    a = read_list()
+    max_val = max(a)
+    if k % 2 == 0:
+        print([max_val - x for x in a])
+    else:
+        print([max_val - x for x in a] if max_val - a[0] > 0 else [x + max_val for x in a])
+```

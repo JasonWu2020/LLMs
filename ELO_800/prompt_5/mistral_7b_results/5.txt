@@ -1,0 +1,9 @@
+[/INST] ```python
+for _ in range(int(input())):
+    a, b = map(int, input().split())
+    ans = 0
+    while a % b != 0:
+        ans += 1
+        a += 1
+    print(ans)
+```</s>

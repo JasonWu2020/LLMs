@@ -1,0 +1,31 @@
+```python
+def decrypt_string(s):
+    decrypted = []
+    stack = []
+    
+    for char in s:
+        if char not in stack:
+            # If the character is not in the stack, it means we found a new character in the original string
+            decrypted.append(char)
+            stack.append(char)
+        else:
+            # If the character is already in the stack, we add it back to the stack to maintain order
+            stack.append(char)
+    
+    return ''.join(decrypted)
+
+# Number of test cases
+T = int(input())
+
+for _ in range(T):
+    # Length of the encrypted message
+    N = int(input())
+    # Encrypted message
+    S = input()
+    
+    # Decrypting the string
+    A = decrypt_string(S)
+    print(A)
+```
+
+This Python script reads multiple test cases, each with an encrypted string, and outputs the decrypted string for each case. The `decrypt_string` function iterates through the encrypted string, adding characters to a stack when they are encountered for the first time, ensuring the decryption process is correct.

@@ -1,0 +1,8 @@
+<start_of_turn>model
+```python
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+c = abs(set(a) - set(b))
+print(sum(c))
+```<eos>

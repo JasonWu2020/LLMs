@@ -1,0 +1,20 @@
+```python
+n = int(input())
+s = input()
+c = input()
+
+dp = [[0 for _ in range(n)] for _ in range(n)]
+
+for i in range(n):
+    for j in range(n):
+        if i == 0:
+            dp[i][j] = 0
+        else:
+            min_val = float('inf')
+            for k in range(n):
+                val = dp[i-1][k] + abs(int(c[j]) - int(s[i])) + abs(j - k)
+                min_val = min(min_val, val)
+            dp[i][j] = min_val
+
+print(dp[n-1][0])
+```

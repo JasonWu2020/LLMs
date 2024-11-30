@@ -1,0 +1,31 @@
+The outputted solution is correct in terms of logic, but it can be improved for better readability and maintainability. 
+
+Here's a critique of the solution:
+
+1. The variable name `t` could be more descriptive. `num_test_cases` would be a better name.
+2. The variable name `n` could also be more descriptive. `upper_limit` would be a better name.
+3. The variable name `_` is not descriptive and does not follow PEP 8 conventions. It's better to use a descriptive name like `test_case`.
+4. The comment is missing.
+
+Here's another solution that adheres to the same input and output specifications:
+
+```python
+# Read the number of test cases
+num_test_cases = int(input())
+
+# Process each test case
+for test_case in range(num_test_cases):
+    # Read the upper limit
+    upper_limit = int(input())
+
+    # Calculate the number of interesting numbers
+    if upper_limit < 10:
+        result = 0
+    else:
+        result = upper_limit - 10 + (upper_limit // 10 >= 2)
+
+    # Print the result
+    print(result)
+```
+
+This solution is more readable and maintainable, and it follows PEP 8 conventions.

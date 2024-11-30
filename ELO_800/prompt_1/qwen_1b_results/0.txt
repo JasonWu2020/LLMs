@@ -1,0 +1,27 @@
+```python
+import sys
+
+def find_longest_good_subsequence(n, k, s):
+    freq = [0] * k
+    max_length = 0
+    
+    for char in s:
+        if char.islower():
+            continue
+        
+        idx = ord(char.lower()) - ord('a')
+        
+        if freq[idx] == 0:
+            freq[idx] += 1
+        else:
+            freq[idx] -= 1
+            
+        if all(freq[i] >= 0 for i in range(k)):
+            max_length = max(max_length, sum(freq))
+    
+    return max_length
+
+n, k = map(int, input().split())
+s = input()
+print(find_longest_good_subsequence(n, k, s))
+```

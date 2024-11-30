@@ -1,0 +1,34 @@
+```python
+import sys
+
+def check_permutations(n, a, b):
+    """
+    Check if there exist two permutations p and q with the specified a and b lengths.
+    
+    Parameters:
+    n (int): Length of the permutations.
+    a (int): Length of the longest common prefix between p and q.
+    b (int): Length of the longest common suffix between p and q.
+    
+    Returns:
+    str: "Yes" if there exists two permutations meeting the conditions, "No" otherwise.
+    """
+    if max(a, b) > n or min(a, b) < 0 or n != a + b:
+        return "No"
+    elif a == 0 or a == n - 1:
+        return "Yes"
+    elif b == 0 or b == n - 1:
+        return "Yes"
+    else:
+        return "No"
+
+# Read inputs
+T = int(sys.stdin.readline().strip())
+inputs = [tuple(map(int, sys.stdin.readline().strip().split())) for _ in range(T)]
+
+# Process each input and print results
+for n, a, b in inputs:
+    print(check_permutations(n, a, b))
+```
+
+This version of the solution takes into account all the given constraints and correctly identifies whether two permutations of length `n` can exist with a common prefix of length `a` and a common suffix of length `b`. It reads the inputs using standard input (`sys.stdin`) and prints the results to standard output, adhering to the guidelines provided. The function `check_permutations` encapsulates the logic for determining if the permutations meet the conditions, simplifying the main script.

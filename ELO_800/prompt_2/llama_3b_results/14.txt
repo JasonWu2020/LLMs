@@ -1,0 +1,18 @@
+```python
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    max_val = max(a)
+    if max_val < 0:
+        for _ in range(k):
+            a = [max_val - x for x in a]
+    else:
+        for _ in range(k % 2):
+            a = [max_val - x for x in a]
+
+    print(*a)
+
+for _ in range(int(input())):
+    solve()
+```

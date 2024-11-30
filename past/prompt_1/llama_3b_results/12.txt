@@ -1,0 +1,43 @@
+```python
+import sys
+
+def read_ints():
+    return map(int, sys.stdin.readline().strip().split())
+
+def read_int():
+    return int(sys.stdin.readline().strip())
+
+def read_arr():
+    return list(map(int, sys.stdin.readline().strip().split()))
+
+def read_str():
+    return sys.stdin.readline().strip()
+
+def main():
+    n, m, a, b = read_ints()
+    g0, x, y, z = read_ints()
+    g = [0] * (n * m)
+    for i in range(n):
+        g[i] = g0 + i * m * x + y
+
+    def get_min(i, j):
+        return g[i * m + j]
+
+    def get_min_in_rect(i, j):
+        if i < a:
+            return get_min(0, j)
+        if j < b:
+            return get_min(i - a + 1, 0)
+        if i == a and j == b:
+            return get_min(i, j - b + 1)
+        return min(get_min(i, j - b + 1), get_min(i - a + 1, j))
+
+    ans = 0
+    for i in range(1, n - a + 2):
+        for j in range(1, m - b + 2):
+            ans += get_min_in_rect(i, j)
+    print(ans)
+
+if __name__ == '__main__':
+    main()
+```

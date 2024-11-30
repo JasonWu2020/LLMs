@@ -1,0 +1,48 @@
+```python
+def is_valid(board, i, j, k):
+    for x in range(i):
+        if board[x][j] == 1:
+            return False
+    for x in range(j):
+        if board[i][x] == 1:
+            return False
+    return True
+
+def backtrack(board, k, i, j, rooks):
+    if k == 0:
+        for row in board:
+            print("".join(["R" if cell else "." for cell in row]))
+        return True
+    for x in range(i, n):
+        if is_valid(board, x, j, rooks):
+            board[x][j] = 1
+            if backtrack(board, k-1, x, j+1, rooks+1):
+                return True
+            board[x][j] = 0
+    return False
+
+def solve(n, k):
+    board = [[0]*n for _ in range(n)]
+    if k > n:
+        return -1
+    if k == 1:
+        for i in range(n):
+            board[i][i] = 1
+        for row in board:
+            print("".join(["R" if cell else "." for cell in row]))
+        return
+    for i in range(n):
+        for j in range(n):
+            if board[i][j] == 0:
+                if backtrack(board, k-1, i, j+1, 1):
+                    return
+    return -1
+
+import sys
+input = sys.stdin.readline
+
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    print(solve(n, k))
+```

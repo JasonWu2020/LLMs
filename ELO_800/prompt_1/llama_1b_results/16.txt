@@ -1,0 +1,9 @@
+```python
+def count_interesting_numbers():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        print(sum(int(digit) for digit in str(n) if digit!= '9'))
+
+count_interesting_numbers()
+```

@@ -1,0 +1,17 @@
+<start_of_turn>model
+```python
+t = int(input())
+for _ in range(t):
+  n = int(input())
+  x = list(map(int, input().split()))
+  d = list(map(int, input().split()))
+  for i in range(len(x)):
+    for j in range(i+1, len(x)):
+      if ((x[i]+d[i]) == x[j] or (x[i] + d[i]) == (x[j]+d[j])):
+        print("YES")
+  print("NO")
+  
+```
+
+
+<end_of_turn>

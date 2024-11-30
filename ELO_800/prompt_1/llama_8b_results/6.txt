@@ -1,0 +1,14 @@
+```python
+import sys
+
+table_card = input()
+hand_cards = [input() for _ in range(5)]
+
+can_play = False
+for card in hand_cards:
+    if card[0] == table_card[0] or card[1] == table_card[1]:
+        can_play = True
+        break
+
+print('YES' if can_play else 'NO')
+```

@@ -1,0 +1,26 @@
+```python
+import sys
+
+def min_combination_steps(current, target):
+    steps = 0
+    for char1, char2 in zip(current, target):
+        # Calculate the absolute difference between the current and target digits
+        # and add the minimum to get the step count.
+        steps += min(abs(ord(char1) - ord(char2)), 16-abs(ord(char1) - ord(char2)))
+    return steps
+
+if __name__ == "__main__":
+    try:
+        # Reading input from stdin
+        n = int(sys.stdin.readline())
+        current_comb = sys.stdin.readline().strip()
+        target_comb = sys.stdin.readline().strip()
+
+        # Calculating and printing minimum steps to match the target combination
+        result = min_combination_steps(current_comb, target_comb)
+        print(result)
+
+    except Exception as e:
+        print(f"An error occurred: {e}", file=sys.stderr)
+```
+This alternative solution utilizes Python's built-in `ord` function to convert characters into ASCII values, enabling a comparison of 'digits' as if they were numbers. It calculates the minimum number of steps required by taking the lesser value between two possibilities: either the direct difference between digits (considering 10-digit wrap around) or its complement to 10 when crossing over the midpoint (5).

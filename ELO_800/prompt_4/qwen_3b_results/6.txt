@@ -1,0 +1,14 @@
+```python
+import sys
+
+table_card = input().strip()
+hand_cards = [input().strip() for _ in range(5)]
+
+def can_play(table):
+    for card in hand_cards:
+        if card[0] == table[0] or card[1] == table[1]:
+            return "YES"
+    return "NO"
+
+print(can_play(table_card))
+```

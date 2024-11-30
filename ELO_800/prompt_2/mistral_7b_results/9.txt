@@ -1,0 +1,10 @@
+[/INST] ```python
+n = int(input())
+a = list(map(int, input().split()))
+muscle = [0, 0, 0]
+
+for i in range(n):
+    muscle[remainder(i, 3)] += a[i]
+
+print(["chest", "biceps", "back"][muscle.index(max(muscle))])
+```</s>

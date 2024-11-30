@@ -1,0 +1,16 @@
+```python
+import sys
+
+def min_time_to_reach_B(l, d, v, g, r):
+    if d >= l - d:
+        return float('inf')
+    elif d <= g:
+        return d / v
+    else:
+        full_cycles = (l - d - g) // (g + r)
+        remaining_distance = (l - d - g * full_cycles) * 1.0 / v
+        return full_cycles * (g + r) + remaining_distance
+
+l, d, v, g, r = map(int, sys.stdin.readline().strip().split())
+print(min_time_to_reach_B(l, d, v, g, r))
+```

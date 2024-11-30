@@ -1,0 +1,21 @@
+```python3
+import sys
+
+def main():
+    # Read input from stdin
+    t = int(input().strip())
+    
+    # Process each test case
+    for _ in range(t):
+        n = int(input().strip())
+        
+        # Calculate the number of interesting numbers up to n
+        count = (n - 1) // 9
+        
+        # Print the result
+        print(count)
+
+if __name__ == "__main__":
+    main()
+```
+```

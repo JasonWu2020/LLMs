@@ -1,0 +1,20 @@
+```py
+import re
+
+def check_performance():
+    n = int(input())
+    outscores = [input().split() for _ in range(n)]
+    
+    # Extract ratings
+    before_ratings = [int(outscore[1]) for outscore in outingscores]
+    after_ratings = [int(outscore[2]) for outscore[1] in outingscores]
+    
+    # Check for participants whose handle was colored red before the contest and whose rating increased
+    for i in range(n):
+        name, before_i, after_i = outingscores[i]
+        if before_i >= 2400 and after_i > before_i:
+            return "YES"
+    return "NO"
+
+print(check_performance())
+```

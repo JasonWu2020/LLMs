@@ -1,0 +1,16 @@
+```python
+import sys
+
+def min_moves_to_divisible(a, b):
+    return a % b
+
+t = int(input().strip())
+results = []
+
+for _ in range(t):
+    a, b = map(int, input().strip().split())
+    results.append(min_moves_to_divisible(a, b))
+
+for result in results:
+    print(result)
+```

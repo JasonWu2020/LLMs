@@ -1,0 +1,22 @@
+<start_of_turn>model
+```python
+def shortest_length(n, arr):
+    operations = 0
+    while len(arr) > 1:
+        i = 1
+        while i < len(arr) - 1:
+            if arr[i] != arr[i+1]:
+                break
+            i += 1
+        if i == len(arr) - 1:
+            break
+        arr = ''.join(map(str,arr))
+        operations += 1
+    return operations + len(arr) - 1
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    arr = list(map(int, input().split()))
+    print(shortest_length(n, arr))  
+```<end_of_turn>

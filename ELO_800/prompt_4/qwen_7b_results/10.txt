@@ -1,0 +1,34 @@
+```python
+# This Python script solves the given problem of counting the maximum number of days Vasya can wear socks in a fashionable manner and then continues to wear the same color socks until he either runs out of socks or cannot make a single pair from the socks he's got.
+
+def max_fashion_days(red_socks, blue_socks):
+    """
+    Counts the number of days Vasya can wear different socks and the days he can wear matching socks.
+
+    Args:
+        red_socks (int): The number of red socks.
+        blue_socks (int): The number of blue socks.
+
+    Returns:
+        list: A list containing two elements, first being the number of days he can wear different socks, and second being the number of days he can wear matching socks.
+    """
+    
+    # Determine the number of days he can wear different socks
+    fashion_days = min(red_socks, blue_socks)
+
+    # Calculate the remaining socks after fashion days
+    remaining_socks = abs(red_socks - blue_socks)
+
+    # If remaining socks are even, he can wear matching socks for half of them. If odd, for half minus one.
+    matching_days = remaining_socks // 2 + (remaining_socks % 2 != 0)
+
+    return [fashion_days, matching_days]
+
+if __name__ == "__main__":
+    # Read input from stdin
+    red_socks, blue_socks = map(int, input().split())
+
+    # Get and print the result
+    result = max_fashion_days(red_socks, blue_socks)
+    print(' '.join(map(str, result)))
+```

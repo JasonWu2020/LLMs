@@ -1,0 +1,34 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is well-written and efficient. It uses a dictionary `inv_sent` to store the number of invitations sent to each friend and their best friend. This dictionary is used to calculate the minimum number of invitations to send. The code calculates the minimum number of invitations by iterating over the list of friends and checking if the sum of the invitations sent to the friend and their best friend is greater than or equal to 2. If it is, then the minimum number of invitations is updated if necessary. 
+
+**Solution:**
+
+```python
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    p = list(map(int, input().split()))
+
+    # Create a dictionary to store the number of invitations sent to each friend and their best friend
+    inv_sent = {}
+    for i in range(n):
+        inv_sent[i] = 0
+        inv_sent[p[i]] = 0
+
+    # Calculate the minimum number of invitations to send
+    min_inv = float('inf')
+    for i in range(n):
+        if inv_sent[i] + inv_sent[p[i]] >= 2:
+            min_inv = min(min_inv, inv_sent[i] + inv_sent[p[i]])
+
+    # Print the minimum number of invitations
+    print(int(min_inv))
+```
+
+**Improvements:**
+
+* The code could be improved by using a set instead of a dictionary to store the number of invitations sent to each friend and their best friend. This would prevent the need to search for the key in the dictionary, which could improve performance.
+* The code could also be improved by using a binary search algorithm to find the minimum number of invitations to send. This would reduce the time complexity of the code.<eos>

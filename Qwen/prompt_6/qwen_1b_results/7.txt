@@ -1,0 +1,38 @@
+```python
+from collections import Counter
+
+def find_smallest_permutation(S):
+    # Count characters in S
+    char_count = Counter(S)
+    
+    # Sort the unique characters in T
+    sorted_T = ''.join(sorted(T))
+    
+    # Find the minimum positions for each character in S
+    min_positions = [float('inf')] * len(S)
+    for i, c in enumerate(S):
+        if c in sorted_T:
+            index = sorted_T.index(c)
+            min_positions[i] = index
+    
+    # Adjust positions based on character counts
+    for i, count in char_count.items():
+        if i in sorted_T:
+            index = sorted_T.index(i)
+            min_positions[index] -= count
+    
+    return ''.join([S[min_position] for min_position in min_positions])
+
+# Read input
+import sys
+input = sys.stdin.read
+data = input().split()
+
+t = int(data[0])
+for _ in range(t):
+    S = data[1]
+    T = data[2]
+    result = find_smallest_permutation(S)
+    print(result)
+```
+This Python script reads the number of test cases `t` followed by pairs of strings `S` and `T`, then outputs the lexicographically smallest permutation of `S` such that `T` is not a subsequence of it.

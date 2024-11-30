@@ -1,0 +1,8 @@
+```python
+for _ in range(int(input())):
+    n = int(input())
+    k = 1
+    while (n - k + 1) & (n - k) & (n - k - 1) != 0:
+        k += 1
+    print(k)
+```

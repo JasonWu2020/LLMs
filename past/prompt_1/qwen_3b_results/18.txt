@@ -1,0 +1,33 @@
+```python
+import sys
+
+def find_route(n):
+    stamps = []
+    for _ in range(n):
+        a, b = map(int, input().split())
+        stamps.append((a, b))
+    
+    # Sort by first element of each tuple
+    stamps.sort()
+    
+    # Initialize variables
+    current_city = stamps[0][0]
+    route = [current_city]
+    
+    for next_city in stamps:
+        if next_city[0] == current_city:
+            route.append(next_city[1])
+            current_city = next_city[1]
+        else:
+            break
+    
+    # If we didn't find a complete route, it means the last stamp was invalid
+    if len(route) < n + 1:
+        route = []
+    
+    return route
+
+n = int(input())
+route = find_route(n)
+print(" ".join(map(str, route)))
+```

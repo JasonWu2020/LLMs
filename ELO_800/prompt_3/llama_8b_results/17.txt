@@ -1,0 +1,19 @@
+The outputted solution has a flaw. It calculates the absolute difference of the ASCII values of the characters at the corresponding positions in the two strings. However, this approach does not take into account the fact that rotating a disk from 0 to 9 or 9 to 0 is the same operation, which can be done in one move. 
+
+Here is another solution:
+
+```python
+n = int(input())
+s = input()
+t = input()
+
+def min_moves(s, t):
+    ans = 0
+    for i in range(n):
+        ans += min(abs(int(s[i]) - int(t[i]), 10 - abs(int(s[i]) - int(t[i])))
+    return ans
+
+print(min_moves(s, t))
+```
+
+This solution calculates the minimum number of moves required to rotate each disk to match the target combination. For each disk, it calculates the absolute difference between the current digit and the target digit, and the difference between the absolute difference and 10 (i.e., rotating the disk from 0 to 9 or 9 to 0). It then takes the minimum of these two values and adds it to the total number of moves.

@@ -1,0 +1,10 @@
+```python
+for _ in range(int(input())):
+    n = int(input())
+    s = input()
+    a = ""
+    for c in s:
+        if not a or c != a[-1]:
+            a += c
+    print(a)
+```

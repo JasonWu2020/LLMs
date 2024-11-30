@@ -1,0 +1,13 @@
+[/INST] ```python
+import sys
+
+for t in range(int(input())):
+    a, b, c = map(int, input().split())
+    heaps = [a, b, c]
+    while len(set([h for h in heaps if h > 0])) > 1:
+        for i in range(len(heaps)-1):
+            if heaps[i] > 0 and heaps[i+1] > 1:
+                heaps[i] -= 1
+                heaps[i+1] -= 2
+    print(sum(heaps))
+```</s>

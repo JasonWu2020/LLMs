@@ -1,0 +1,12 @@
+<start_of_turn>model
+```python
+n = int(input())
+ camels = {}
+for _ in range(n):
+    x, i, d = map(int, input().split())
+    camels[x] = d
+    if x - d in camels and camels[x - d] == d:
+        print("YES")
+    else:
+        print("NO")
+```<eos>

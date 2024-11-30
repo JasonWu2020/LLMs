@@ -1,0 +1,36 @@
+```python
+from collections import deque
+
+def decrypt(s):
+    decrypted = deque()
+    i = len(s) - 1
+    
+    while i >= 0:
+        char = s[i]
+        count = 0
+        
+        # Count the number of consecutive characters until a different one is found
+        while i > 0 and s[i-1] == char:
+            i -= 1
+            count += 1
+            
+        # The first character found is added to the front of the decrypted string
+        decrypted.appendleft(char)
+        
+        # Remove counted characters from s
+        for _ in range(count):
+            i -= 1
+            if i < 0: break
+            
+    return ''.join(decrypted)
+
+if __name__ == "__main__":
+    t = int(input())
+    
+    for _ in range(t):
+        n = int(input())
+        s = input().strip()
+        result = decrypt(s)
+        print(result)
+```
+```

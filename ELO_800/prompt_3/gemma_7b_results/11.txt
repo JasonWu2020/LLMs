@@ -1,0 +1,23 @@
+<start_of_turn>model
+**Critique:**
+
+The solution is straightforward. The key is to find the integer division of (r - 1) by k and add 1 to the result. This is because Polycarp needs to buy at least one shovel, and the number of shovels he can buy is equal to the integer division of (r - 1) by k.
+
+**Solution:**
+
+```python
+k, r = map(int, input().split())
+
+print(int((r - 1) // k + 1))
+```
+
+**Generated Solution:**
+
+```python
+k, r = map(int, input().split())
+
+n = (r - 1) // k
+s = n + 1
+
+print(s)
+```<eos>

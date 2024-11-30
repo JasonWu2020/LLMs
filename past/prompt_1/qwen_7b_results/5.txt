@@ -1,0 +1,14 @@
+```python
+import sys
+input = sys.stdin.readline
+for _ in range(int(input())):
+    s = input().strip()
+    zero_pos = [i for i, ch in enumerate(s) if ch == '0']
+    one_pos = [i for i, ch in enumerate(s) if ch == '1']
+    ans = float('inf')
+    for z in zero_pos:
+        for o in one_pos:
+            cost = max(o-z-1, z-o)
+            ans = min(ans, cost+len(s)-o-1)
+    print(ans)
+```

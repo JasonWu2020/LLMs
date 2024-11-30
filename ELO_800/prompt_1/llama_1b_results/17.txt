@@ -1,0 +1,16 @@
+```python
+def solve():
+    n = int(input())
+    s = input()
+    t = input()
+    ans = 0
+    for i in range(n):
+        t = t + t[::-1]
+        for j in range(n):
+            if s[j] == t[j]:
+                ans += 1
+                break
+    print(ans)
+
+solve()
+```

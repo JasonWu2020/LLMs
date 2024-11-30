@@ -1,0 +1,33 @@
+```python
+import sys
+
+input = sys.stdin.read
+data = input().split()
+n, k = map(int, data[1:3])
+s = data[2]
+
+def solve(s, k):
+    char_count = {}
+    for i, c in enumerate(s):
+        if c not in char_count:
+            char_count[c] = []
+        char_count[c].append(i)
+    
+    sorted_chars = sorted(char_count.items(), key=lambda x: len(x[1]))
+    max_gap = 0
+    chars_to_delete = set()
+    
+    for _, indices in sorted_chars:
+        if len(indices) > k:
+            gaps = [indices[i+1] - indices[i] - 1 for i in range(len(indices)-1)]
+            max_gap = max(max_gap, max(gaps))
+            to_delete = k // len(indices)
+            if to_delete * len(indices) < k:
+                to_delete += 1
+            chars_to_delete.update(indices[:to_delete])
+    
+    return len(sorted_chars), ''.join(c for i, c in enumerate(s) if i not in chars_to_delete)
+
+print(solve(s, k)[0])
+print(solve(s, k)[1])
+```

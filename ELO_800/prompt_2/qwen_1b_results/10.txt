@@ -1,0 +1,22 @@
+```python3.8
+from math import gcd
+
+def main():
+    # Read input
+    a, b = map(int, input().split())
+    
+    # Calculate max days with different socks
+    diff_days = min(a, b)
+    
+    # Calculate remaining socks after different socks period
+    remaining_socks = abs(a - b) % gcd(a, b)
+    
+    # Calculate total days
+    total_days = diff_days + remaining_socks
+    
+    # Print result
+    print(diff_days, total_days)
+
+if __name__ == "__main__":
+    main()
+```

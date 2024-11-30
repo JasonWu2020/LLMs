@@ -1,0 +1,11 @@
+```
+def are_two_camels_spit_at_each_other(n):
+    spit_positions = set()
+    for _ in range(n):
+        x, d = map(int, input().split())
+        spit_positions.add((x, d))
+    return len(spit_positions) > 1
+
+n = int(input())
+print("YES" if are_two_camels_spit_at_each_other(n) else "NO")
+```

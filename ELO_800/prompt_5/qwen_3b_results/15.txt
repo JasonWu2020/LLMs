@@ -1,0 +1,15 @@
+```python
+def can_anton_perform_good():
+    n = int(input())
+    results = []
+    for _ in range(n):
+        name, before, after = input().split()
+        before, after = int(before), int(after)
+        # Check if any participant with a red handle (rating >= 2400) had an increased rating
+        if before < 2400 and after > before:
+            print("YES")
+            return
+    print("NO")
+
+can_anton_perform_good()
+```

@@ -1,0 +1,19 @@
+The outputted solution is quite efficient and easy to understand. However, it has a time complexity of O(n log n) due to the sort operation, which might not be necessary in this case. A more efficient solution would be to use a hash set or a dictionary to keep track of the unique values, which would reduce the time complexity to O(n).
+
+```python
+from collections import defaultdict
+
+n = int(input())
+a = list(map(int, input().split()))
+unique_values = defaultdict(int)
+for num in a:
+    unique_values[num] += 1
+
+pockets = 0
+for count in unique_values.values():
+    pockets = max(pockets, count)
+
+print(pockets)
+```
+
+This solution works by counting the occurrences of each unique value in the input array and then finding the maximum count, which represents the minimum number of pockets needed.

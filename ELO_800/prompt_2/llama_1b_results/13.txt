@@ -1,0 +1,23 @@
+```python
+import sys
+
+def min_operations(password):
+    n = int(sys.stdin.readline())
+    arr = list(map(int, sys.stdin.readline().split()))
+    window_sum = 0
+    removed = 0
+    min_length = n
+
+    for i in range(n - 1):
+        window_sum += arr[i]
+        if arr[i] == arr[i + 1]:
+            if window_sum == arr[i + 1]:
+                removed += 1
+            window_sum -= arr[i + 1]
+            window_sum += arr[i]
+        if window_sum < arr[i + 1]:
+            min_length = min(min_length, i + 1 + removed)
+
+    print(min_length)
+
+```

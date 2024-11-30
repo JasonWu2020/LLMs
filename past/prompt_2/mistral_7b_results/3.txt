@@ -1,0 +1,18 @@
+[/INST] ```python
+import sys
+
+n = int(sys.stdin.readline())
+slimes = list(map(int, sys.stdin.readline().split()))
+max_value = max(slimes)
+current_index = slimes.index(max_value)
+
+for i in range(len(slimes) - 1):
+    if slimes[i] < slimes[i + 1]:
+        max_value = slimes[i + 1]
+        current_index = i + 1
+
+    if i + 1 < len(slimes) and slimes[i] >= slimes[i + 1]:
+        slimes[i] -= slimes[i + 1]
+
+print(max_value)
+```</s>

@@ -1,0 +1,27 @@
+```python
+from typing import List
+
+def is_rating_increase(before_rating: int, after_rating: int) -> bool:
+    return after_rating > before_rating
+
+def check_performance(contest_results: List[List[str]]) -> str:
+    red_users = []
+    for i in range(len(contest_results)):
+        name, before_rating, after_rating = contest_results[i]
+        if is_rating_increase(int(before_rating), int(after_rating)) and name in red_users:
+            return "YES"
+        else:
+            red_users.append(name)
+    return "NO"
+
+contest_results = [
+    ["Burunduk1", "2350", "2370"],
+    ["Applejack", "2400", "2400"],
+    ["Fluttershy", "2390", "2380"],
+    ["Pinkie_Pie", "2300", "2310"]
+]
+
+print(check_performance(contest_results))
+```
+
+This code defines a function `check_performance` that checks whether Anton performed good based on the contest results provided in a list of lists, where each inner list contains the name of the competitor, their rating before the contest, and their rating after the contest. It then prints the result as 'YES' or 'NO'.

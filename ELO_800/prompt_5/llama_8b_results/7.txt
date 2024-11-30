@@ -1,0 +1,150 @@
+```python
+for _ in range(int(input())):
+    s = input()
+    t = input()
+    s_count = [0] * 26
+    for char in s:
+        s_count[ord(char) - ord('a')] += 1
+
+    if t == 'abc':
+        if s_count[ord('b') - ord('a')] == 0:
+            if s_count[ord('c') - ord('a')] == 0:
+                print(''.join(sorted(s)))
+            else:
+                s_count[ord('c') - ord('a')] -= 1
+                s_count[ord('b') - ord('a')] += 1
+                print(''.join(sorted(s)))
+        elif s_count[ord('c') - ord('a')] == 0:
+            s_count[ord('c') - ord('a')] += 1
+            s_count[ord('b') - ord('a')] -= 1
+            print(''.join(sorted(s)))
+        else:
+            print(''.join(sorted(s)))
+    elif t == 'acb':
+        if s_count[ord('a') - ord('a')] == 0:
+            if s_count[ord('c') - ord('a')] == 0:
+                print(''.join(sorted(s)))
+            else:
+                s_count[ord('c') - ord('a')] -= 1
+                s_count[ord('a') - ord('a')] += 1
+                print(''.join(sorted(s)))
+        elif s_count[ord('c') - ord('a')] == 0:
+            s_count[ord('c') - ord('a')] += 1
+            s_count[ord('a') - ord('a')] -= 1
+            print(''.join(sorted(s)))
+        else:
+            print(''.join(sorted(s)))
+    elif t == 'bac':
+        if s_count[ord('b') - ord('a')] == 0:
+            if s_count[ord('c') - ord('a')] == 0:
+                print(''.join(sorted(s)))
+            else:
+                s_count[ord('c') - ord('a')] -= 1
+                s_count[ord('b') - ord('a')] += 1
+                print(''.join(sorted(s)))
+        elif s_count[ord('c') - ord('a')] == 0:
+            s_count[ord('c') - ord('a')] += 1
+            s_count[ord('b') - ord('a')] -= 1
+            print(''.join(sorted(s)))
+        else:
+            print(''.join(sorted(s)))
+    elif t == 'cba':
+        if s_count[ord('c') - ord('a')] == 0:
+            if s_count[ord('b') - ord('a')] == 0:
+                print(''.join(sorted(s)))
+            else:
+                s_count[ord('b') - ord('a')] -= 1
+                s_count[ord('c') - ord('a')] += 1
+                print(''.join(sorted(s)))
+        elif s_count[ord('b') - ord('a')] == 0:
+            s_count[ord('b') - ord('a')] += 1
+            s_count[ord('c') - ord('a')] -= 1
+            print(''.join(sorted(s)))
+        else:
+            print(''.join(sorted(s)))
+    elif t == 'bac':
+        if s_count[ord('b') - ord('a')] == 0:
+            if s_count[ord('a') - ord('a')] == 0:
+                print(''.join(sorted(s)))
+            else:
+                s_count[ord('a') - ord('a')] -= 1
+                s_count[ord('b') - ord('a')] += 1
+                print(''.join(sorted(s)))
+        elif s_count[ord('a') - ord('a')] == 0:
+            s_count[ord('a') - ord('a')] += 1
+            s_count[ord('b') - ord('a')] -= 1
+            print(''.join(sorted(s)))
+        else:
+            print(''.join(sorted(s)))
+    elif t == 'cab':
+        if s_count[ord('c') - ord('a')] == 0:
+            if s_count[ord('a') - ord('a')] == 0:
+                print(''.join(sorted(s)))
+            else:
+                s_count[ord('a') - ord('a')] -= 1
+                s_count[ord('c') - ord('a')] += 1
+                print(''.join(sorted(s)))
+        elif s_count[ord('a') - ord('a')] == 0:
+            s_count[ord('a') - ord('a')] += 1
+            s_count[ord('c') - ord('a')] -= 1
+            print(''.join(sorted(s)))
+        else:
+            print(''.join(sorted(s)))
+    elif t == 'bca':
+        if s_count[ord('b') - ord('a')] == 0:
+            if s_count[ord('c') - ord('a')] == 0:
+                print(''.join(sorted(s)))
+            else:
+                s_count[ord('c') - ord('a')] -= 1
+                s_count[ord('b') - ord('a')] += 1
+                print(''.join(sorted(s)))
+        elif s_count[ord('c') - ord('a')] == 0:
+            s_count[ord('c') - ord('a')] += 1
+            s_count[ord('b') - ord('a')] -= 1
+            print(''.join(sorted(s)))
+        else:
+            print(''.join(sorted(s)))
+    elif t == 'cba':
+        if s_count[ord('c') - ord('a')] == 0:
+            if s_count[ord('b') - ord('a')] == 0:
+                print(''.join(sorted(s)))
+            else:
+                s_count[ord('b') - ord('a')] -= 1
+                s_count[ord('c') - ord('a')] += 1
+                print(''.join(sorted(s)))
+        elif s_count[ord('b') - ord('a')] == 0:
+            s_count[ord('b') - ord('a')] += 1
+            s_count[ord('c') - ord('a')] -= 1
+            print(''.join(sorted(s)))
+        else:
+            print(''.join(sorted(s)))
+    elif t == 'acb':
+        if s_count[ord('a') - ord('a')] == 0:
+            if s_count[ord('c') - ord('a')] == 0:
+                print(''.join(sorted(s)))
+            else:
+                s_count[ord('c') - ord('a')] -= 1
+                s_count[ord('a') - ord('a')] += 1
+                print(''.join(sorted(s)))
+        elif s_count[ord('c') - ord('a')] == 0:
+            s_count[ord('c') - ord('a')] += 1
+            s_count[ord('a') - ord('a')] -= 1
+            print(''.join(sorted(s)))
+        else:
+            print(''.join(sorted(s)))
+    elif t == 'cab':
+        if s_count[ord('c') - ord('a')] == 0:
+            if s_count[ord('a') - ord('a')] == 0:
+                print(''.join(sorted(s)))
+            else:
+                s_count[ord('a') - ord('a')] -= 1
+                s_count[ord('c') - ord('a')] += 1
+                print(''.join(sorted(s)))
+        elif s_count[ord('a') - ord('a')] == 0:
+            s_count[ord('a') - ord('a')] += 1
+            s_count[ord('c') - ord('a')] -= 1
+            print(''.join(sorted(s)))
+        else:
+            print(''.join(sorted(s)))
+```
+This code will solve the problem and print the lexicographically smallest permutation of `s` that does not contain `t` as a subsequence.

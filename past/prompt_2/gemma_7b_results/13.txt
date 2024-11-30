@@ -1,0 +1,11 @@
+<start_of_turn>model
+```python
+s = input().strip().lower()
+s_max = ""
+for i in range(len(s)):
+    char = s[i]
+    if char not in s_max or char > s_max[len(s_max) - 1]:
+        s_max += char
+
+print(s_max)
+```<eos>

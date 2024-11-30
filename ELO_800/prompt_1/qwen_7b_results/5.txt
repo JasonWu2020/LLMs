@@ -1,0 +1,12 @@
+```python
+from math import gcd
+
+def min_moves_to_divisible(a, b):
+    return (b - a % b) % b
+
+t = int(input())
+
+for _ in range(t):
+    a, b = map(int, input().split())
+    print(min_moves_to_divisible(a, b))
+```

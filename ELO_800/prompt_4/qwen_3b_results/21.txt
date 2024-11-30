@@ -1,0 +1,8 @@
+```python
+def min_pockets(n, coins):
+    return len(set(coins))
+
+n = int(input().strip())
+coins = list(map(int, input().strip().split()))
+print(min_pockets(n, coins))
+```

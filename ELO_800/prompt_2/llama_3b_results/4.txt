@@ -1,0 +1,20 @@
+```python
+def decrypt_string(s):
+    result = ""
+    i = 0
+    while i < len(s):
+        for j in range(i + 1, len(s)):
+            if s[i] == s[j]:
+                result += s[i]
+                i = j + 1
+                break
+        else:
+            i += 1
+    return result
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()
+    print(decrypt_string(s))
+```
