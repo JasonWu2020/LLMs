@@ -1,9 +1,0 @@
-```python
-import math
-
-t = int(input())
-for _ in range(t):
-    n = int(input())
-    k = 2 ** math.floor(math.log2(n))
-    print(k - 1)
-```

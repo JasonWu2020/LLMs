@@ -1,7 +1,0 @@
-n, k = map(int, input().split())
-a = list(map(int, input().split()))
-b = [a[i-k] for i in range(n)]
-b = [str(i) for i in b]
-m = len(b)
-print(m)
-print(''.join(b))

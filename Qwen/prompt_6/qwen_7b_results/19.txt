@@ -1,8 +1,0 @@
-```python
-for _ in range(int(input())):
-    n = int(input())
-    i = 1
-    while n & (n - i) != 0:
-        i += 1
-    print(n - i + 1)
-```

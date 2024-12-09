@@ -1,8 +1,0 @@
-[/INST] ```python
-import sys
-input = sys.stdin.buffer.readline.buffer.split()
-n, k = map(int, input.pop(0).split())
-students = [int(i) for i in input]
-overlap = sum([min(i, k-i) for i in students])
-print((n - overlap + 1) // 2)
-```</s>

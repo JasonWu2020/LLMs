@@ -1,8 +1,0 @@
-[/INST] ```python
-n, k = map(int, input().split())
-a = [int(x) for x in map(str, input().split())]
-students_with_favorite = min(n // 2 + (1 if n % 2 else 0), k)
-return_map = {i: [i] * 2 for i in set(a)[:students_with_favorite]} if n % 2 else return_map.pop(a[n // 2])
-max_students = sum(len(set(map(lambda x: x[0], list(itertools.chain(*return_map.values())))) - len(set(x) for x in return_map.values()))
-print(max_students + (1 if n % 2 else 0))
-```</s>

@@ -1,9 +1,0 @@
-python3 run_gemma_2B.py
-python3 run_gemma_7B.py
-python3 run_llama_1B.py
-python3 run_llama_3B.py
-python3 run_llama_8B.py
-python3 run_mistral_7B.py
-python3 run_qwen_1B.py
-python3 run_qwen_3B.py
-python3 run_qwen_7B.py

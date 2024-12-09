@@ -1,8 +1,0 @@
-[/INST] ```python
-n = int(input())
-reps = list(map(int, input().split()))
-
-chest_reps = (n // 3) * 3
-biceps_reps = chest_reps + (n % 3)
-print("chest" if chest_reps > biceps_reps else ("biceps" if biceps_reps > chest_reps else "back"))
-```</s>

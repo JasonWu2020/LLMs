@@ -1,6 +1,0 @@
-<start_of_turn>model
-```python
-l, d, v, g, r = map(int, input().split())
-t = (d/v) + g + (r/v) + g
-print(int(t))
-```<eos>

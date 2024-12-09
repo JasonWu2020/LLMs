@@ -1,8 +1,0 @@
-```python
-for _ in range(int(input())):
-    a, b, c = map(int, input().split())
-
-    print(max(a, a + 2 * min(b, 2) - 1, c + 2 * min(b, 2)))
-```
-
-This Python code reads the number of stones in each heap from the input, calculates the maximum number of stones Alice can take by performing the specified operations, and prints the result.

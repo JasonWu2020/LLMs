@@ -1,2 +1,0 @@
-l, d, v, g, r = map(int, input().split())
-print((d/g + 0.5*d/g + 0.5*d/g + 0.5*d/g + d/g)/g)

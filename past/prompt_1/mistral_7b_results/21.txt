@@ -1,8 +1,0 @@
-[/INST] ```python
-n = int(input())
-a = list(map(int, input().split()))
-width = max(a[0], sum(a))
-height = len(a)
-area = width * height - sum([(x * (x - 1) // 2 for x in a])
-print(area)
-```</s>

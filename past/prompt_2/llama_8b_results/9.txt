@@ -1,6 +1,0 @@
-```
-n, k = map(int, input().split())
-m = n - 1
-e = (m * (m + 1) // 2) - k + 1
-print(e)
-```

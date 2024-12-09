@@ -1,7 +1,0 @@
-<start_of_turn>model
-```python
-x1, y1 = map(int, input().split())
-x2, y2 = map(int, input().split())
-x3, y3 = map(int, input().split())
-print( (x2, y2) )
-```<end_of_turn>

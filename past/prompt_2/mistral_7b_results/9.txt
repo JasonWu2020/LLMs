@@ -1,7 +1,0 @@
-[/INST] ```python
-import sys
-
-n, k = map(int, sys.stdin.readline().strip().split())
-x = k - 1
-print(x)
-```</s>

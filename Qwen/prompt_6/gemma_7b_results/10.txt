@@ -1,5 +1,0 @@
-<start_of_turn>model
-```python3.8
-a, b = map(int, input().split())
-print(min(a, b), min(a, b) - 1)
-```<eos>
